@@ -2,7 +2,8 @@
 
 作成日: 2026-09-19。対象は、特に指定がない限り、スピン 1/2 の最近接反強磁性
 kagome Heisenberg 模型の飽和磁化比 `M/Msat = 1/9`。
-これは研究・実装計画であり、以下の DMRG 機能や物理的結論はまだ実装・検証されていない。
+P0 と P1 の小系照合を実装・検証した。以下には未実装の研究計画も含む。
+1/9 plateau のポンプや相同定に関する数値結果はまだ得ていない。
 
 ## 目的と採用方針
 
@@ -30,12 +31,23 @@ D(Z₃) 型と自明相を区別できない。
 
 ## 現在地
 
-- Julia パッケージ、DMRG 本体、テスト基盤は未整備。
-  `Project.toml` と実行可能な最小例を含め、P0 から整備する。
+- P0 完了。Julia package/test 基盤、明示的な格子・winding・固定磁化、
+  seam/uniform gauge、独立したスピン基底 ED を実装した。
+  bond 数、局所・円周 Wilson loop、Hermiticity、U(1)、2π 周期、ゲージ同値性を検証した。
+- P1 の小系照合を完了。複素 U(1) ITensor DMRG を、9 サイトの θ=0 と θ=0.37 で
+  独立 ED のエネルギー・密度・相関と比較した。零 flux の二重縮退は基底空間への
+  射影を用いて扱った。P1 全体の完了には checkpoint・再開照合などが残る。
+- 二サイト校正で upstream の縮退した QN 切断境界に空状態を返す事例を再現した。
+  norm 異常時の停止を追加した。一般的な縮退境界の修正・誤差校正は P1 の残課題である。
+- 標準 `Pkg.test()` は 2,205 assertions 成功。実行環境と数値は
+  [検証記録](docs/research/p0_reference_validation.md)に記載する。
+  [最小実行例](examples/validate_small_system.jl)は独立点の照合結果を TOML に保存する。
 - `../SUNDMRG.jl` は伝統的な SU(N) block DMRG、MPI、GPU、保存処理の参考になる。
   一方、SU(N) 既約表現・縮約係数と `Float64` に依存しており、flux 対応の U(1)
   エンジンにそのまま転用できる構造ではない。
-- U(1) DMRG、flux driver、観測量の実装はこれから着手する。
+- flux continuation、Schmidt charge の校正、既知 CSL ポンプ、1/9 plateau の走行は未実施。
+  18 サイトの縦磁場による零応答対照と合成密度での移送読み出しは検証したが、
+  これだけで P2/P3 完了とはしない。
 
 ## 実装方式の比較
 
@@ -109,23 +121,36 @@ flowchart LR
 円周方向の運動量を使う方式も、spin の局所代数と相互作用の表現を別途設計する必要があり、
 実空間版の検証が済んでから検討する。
 
-## 提案するコードの分割
+## コードの分割と実装状況
 
-以下は将来の配置案であり、現在存在する API を表していない。
+現在実装したファイルは以下のとおり。公開 API と実行手順は
+[English getting started](docs/getting_started.md)を参照。
 
 ```text
-src/lattice.jl              # 座標、bond、winding、順序、cut
-src/model.jl                # Heisenberg/XXZ、基準モデル、ゲージ
-src/backends/itensor.jl     # 基準となる U(1) MPS/MPO/DMRG
-src/backends/custom_u1.jl   # P5 以降
-src/continuation.jl         # θ の追跡、採否、再試行
-src/observables.jl          # 実空間と Schmidt charge、chirality
-src/checkpoint.jl           # 再開、設定照合、許可したメタデータの保存
-test/reference_ed.jl       # DMRG と独立したスピン基底での実装
-examples/flux_pump.jl       # 再現可能な最小実行例
+src/lattice.jl                    # 座標、bond、winding、順序、cut、ゲージ角
+src/model.jl                      # 複素 U(1) Heisenberg/XXZ MPO、縦磁場対照
+src/dmrg.jl                       # ITensor 単一点 DMRG、実測診断
+src/observables.jl                # Sz、zz/+- 相関、実空間移送読み出し
+test/reference_ed.jl              # 距離探索格子と独立したスピン基底 ED
+examples/validate_small_system.jl # 小系照合と許可リスト式 TOML 記録
 ```
 
-最初の実装単位は **P0 と P1 の小系照合まで**。
-次に P2/P3 を一つの測定系として完成させ、そこで得た性能から独自化の範囲を決める。
+`src/checkpoint.jl`、`src/continuation.jl`、Schmidt charge/chirality、独自 backend、
+研究用 flux pump の実行例は今後の実装であり、現在の API ではない。
+
+最初の goal **P0 と P1 の小系照合まで**を達成した。
+次は縮退した QN 切断境界の修正・校正、checkpoint の保存・再開と設定照合、
+Schmidt charge の積状態校正を先に整備し、
+P2 の受理・棄却・rollback を独立 ED と零応答対照で検証する。
+P3 の既知 CSL では原論文の結合図と cylinder を確認してから計算を拡大する。
+その後 P4 の有限サイズ・複数初期状態の測定へ進み、性能の実測から独自化の範囲を決める。
 保存する設定は明示的に選び、ローカルのネットワーク設定・接続情報は
 [AGENTS.md](AGENTS.md) の指示どおり記録しない。
+
+## 英語リリースへの方針
+
+当面の議論と研究記録は日本語でよい。公開 API、docstrings、エラーメッセージ、
+機械可読の保存キーは英語に揃え、英語の導入文書を並行して維持する。
+リリース時には README、物理規約、数値検証・制限、再現手順を英語で揃え、
+実装・数値証拠・未解決事項の区分を翻訳後も保持する。
+ライセンス・著者情報、CI、対応バージョン、保存形式の安定性は公開前に確認する。

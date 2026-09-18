@@ -1,0 +1,119 @@
+"""
+    initial_mps(sites; seed=0, linkdim=4)
+
+Make a reproducible complex random MPS in the `M/Msat = 1/9` sector.
+A private random-number generator chooses a product configuration with
+exactly `5N/9` up spins before randomizing within the same total charge.
+"""
+function initial_mps(sites; seed::Integer=0, linkdim::Integer=4)
+    sector = target_sector(length(sites))
+    _check_sites(sites, sector.N)
+    linkdim > 0 || throw(ArgumentError("linkdim must be positive"))
+    rng = MersenneTwister(seed)
+    labels = fill("Dn", sector.N)
+    labels[randperm(rng, sector.N)[1:sector.Nup]] .= "Up"
+    psi = random_mps(rng, ComplexF64, sites, labels; linkdims=linkdim)
+    flux(psi) == QN("Sz", sector.Q) || error("initial MPS has incorrect total charge")
+    return psi
+end
+
+# Collect measured factorization truncation errors on both halves of each sweep.
+# The configured cutoff is kept separately in the returned settings.
+mutable struct _SweepDiagnostics <: AbstractObserver
+    energies::Vector{Float64}
+    max_truncation_errors::Vector{Float64}
+end
+_SweepDiagnostics() = _SweepDiagnostics(Float64[], Float64[])
+
+function ITensorMPS.measure!(obs::_SweepDiagnostics; sweep, half_sweep, bond,
+                            energy, spec, psi, kwargs...)
+    # The orthogonality center follows the sweep. Some upstream QN
+    # factorizations can remove every block at a degenerate cutoff, while
+    # still reporting a finite truncation error. Never accept that state.
+    center = half_sweep == 1 ? bond + 1 : bond
+    center_norm = norm(psi[center])
+    isfinite(center_norm) && center_norm > 0 || error(
+        "DMRG factorization produced a zero or nonfinite state at sweep $sweep, " *
+        "half-sweep $half_sweep, bond $bond. Increase maxdim and check the " *
+        "upstream QN truncation boundary before continuing.")
+    while length(obs.max_truncation_errors) < sweep
+        push!(obs.max_truncation_errors, 0.0)
+    end
+    obs.max_truncation_errors[sweep] =
+        max(obs.max_truncation_errors[sweep], truncerror(spec))
+    if half_sweep == 2 && bond == 1
+        push!(obs.energies, real(energy))
+    end
+    return nothing
+end
+
+"""
+    run_dmrg(lattice, theta; sites=spin_sites(lattice), psi0=nothing, ...)
+
+Run the ITensor two-site U(1) reference solver at a single, unwrapped flux.
+The result contains the optimized `psi`, freshly built `H`, energy, `sz`,
+per-sweep measured truncation errors, raw energy variance, and solver settings.
+`psi0` is copied; its site indices and total charge must match the request.
+
+This is a single-point optimizer, not an adiabatic branch-tracking driver.
+No convergence or phase label is inferred from a low energy or a warm start.
+The raw variance may be slightly negative from floating-point cancellation.
+Set `measure_variance=false` to skip the additional H² contraction explicitly.
+Local Krylov convergence flags are not exposed by the upstream `dmrg` API.
+With nonzero `noise`, truncation errors refer to a perturbed density matrix;
+they must not be interpreted as exact discarded wavefunction probabilities.
+An empty or nonfinite state after factorization raises an error immediately.
+The tested upstream backend has a known failure when `maxdim` splits exactly
+degenerate Schmidt values across QN sectors; this guard detects total loss,
+but does not constitute general validation of every degenerate truncation.
+"""
+function run_dmrg(lattice::KagomeCylinder, theta::Real;
+                  sites=spin_sites(lattice), psi0=nothing, seed::Integer=0,
+                  initial_linkdim::Integer=4, nsweeps::Integer=8,
+                  maxdim=[16, 32, 64], cutoff::Real=1e-12, noise::Real=0.0,
+                  eigsolve_tol::Real=1e-12, eigsolve_krylovdim::Integer=20,
+                  eigsolve_maxiter::Integer=10, gauge::Symbol=:seam, hz=nothing,
+                  outputlevel::Integer=0, measure_variance::Bool=true)
+    sector = target_sector(nsites(lattice))
+    _check_sites(sites, sector.N)
+    nsweeps > 0 || throw(ArgumentError("nsweeps must be positive"))
+    dims = maxdim isa Integer ? [Int(maxdim)] : Int.(collect(maxdim))
+    !isempty(dims) && all(>(0), dims) || throw(ArgumentError("maxdim must be positive"))
+    isfinite(cutoff) && cutoff >= 0 || throw(ArgumentError("cutoff must be finite and nonnegative"))
+    isfinite(noise) && noise >= 0 || throw(ArgumentError("noise must be finite and nonnegative"))
+    isfinite(eigsolve_tol) && eigsolve_tol > 0 || throw(ArgumentError("eigsolve_tol must be positive"))
+    eigsolve_krylovdim >= 2 || throw(ArgumentError("eigsolve_krylovdim must be at least 2"))
+    eigsolve_maxiter > 0 || throw(ArgumentError("eigsolve_maxiter must be positive"))
+    if psi0 === nothing
+        psi = initial_mps(sites; seed, linkdim=initial_linkdim)
+    else
+        length(psi0) == sector.N || throw(ArgumentError("initial MPS has incorrect length"))
+        all(i -> siteind(psi0, i) == sites[i], eachindex(sites)) ||
+            throw(ArgumentError("initial MPS site indices do not match"))
+        flux(psi0) == QN("Sz", sector.Q) ||
+            throw(ArgumentError("initial MPS must have total integer charge N/9"))
+        psi = complex(deepcopy(psi0))
+    end
+    H = twisted_exchange_mpo(sites, lattice, theta; gauge, hz)
+    obs = _SweepDiagnostics()
+    local_energy, psi = dmrg(H, psi; nsweeps, maxdim=dims, cutoff, noise,
+                            eigsolve_tol, eigsolve_krylovdim, eigsolve_maxiter,
+                            observer=obs, outputlevel, ishermitian=true)
+    normalize!(psi)
+    flux(psi) == QN("Sz", sector.Q) || error("DMRG changed the total charge")
+    energy_complex = inner(psi', H, psi)
+    abs(imag(energy_complex)) < 1e-10 * max(1, abs(real(energy_complex))) ||
+        error("energy has an unexpectedly large imaginary part")
+    energy = real(energy_complex)
+    variance = measure_variance ? real(inner(H, psi, H, psi)) - energy^2 : nothing
+    settings = (; seed=Int(seed), initial_linkdim=Int(initial_linkdim),
+                 nsweeps=Int(nsweeps), maxdim=dims, cutoff=Float64(cutoff),
+                 noise=Float64(noise), eigsolve_tol=Float64(eigsolve_tol),
+                 eigsolve_krylovdim=Int(eigsolve_krylovdim),
+                 eigsolve_maxiter=Int(eigsolve_maxiter), measure_variance,
+                 initialization=psi0 === nothing ? "random_fixed_charge" : "provided_mps")
+    return (; psi, H, sites, theta=Float64(theta), gauge, Q=sector.Q, energy,
+             local_energy=real(local_energy), variance, sz=sz_profile(psi),
+             sweep_energies=obs.energies,
+             max_truncation_errors=obs.max_truncation_errors, settings)
+end

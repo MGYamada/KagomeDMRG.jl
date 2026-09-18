@@ -2,6 +2,9 @@
 
 作成日: 2026-09-19。[ロードマップ](../ROADMAP.md)の仕様詳細。
 以下の設定値は検証を始めるための提案であり、計算結果や収束保証ではない。
+P0 と P1 の小系基準計算は実装済みで、実測結果は
+[検証記録](research/p0_reference_validation.md)に分けて記載する。
+continuation・checkpoint・Schmidt charge・既知 CSL・相同定は引き続き設計段階である。
 
 ## 1. 測定する U(1) 応答
 
@@ -83,9 +86,12 @@ M_{\rm sat}=N/2,\quad M=N/18,\quad Q=2M=N/9,
 初期実装では `x=0,…,Lx−1` を開境界、`y=0,…,Ly−1` を周期境界とする。
 `a1=(1,0)`, `a2=(1/2,√3/2)`、副格子座標 `A=0, B=a1/2, C=a2/2`、
 `N=3LxLy` を採用する。Ly は原始単位胞数であり、文献の YC 表記とは自動的に同一視しない。
-wrap vector、端の切り方、MPS の site ordering を明示して比較する。
+wrap vector は `Ly*a2`。MPS の順序は x、次に y、最後に A,B,C で、
+`index=3(x Ly+y)+s`（s=1,2,3）とする。端は範囲外の x へ出る結合だけを除く。
+幾何学的 cut c は完全な単位胞列の間に置き、右領域を `x>=c` とする。
+これは Cartesian の水平座標だけで分類する切断ではない。
 
-最近接ボンドの候補テンプレートは各 `(x,y)` に対し
+実装した最近接ボンドのテンプレートは各 `(x,y)` に対し
 `A-B`, `A-C`, `B-C` の胞内 3 本と、
 `A(x,y)-B(x−1,y)`, `A(x,y)-C(x,y−1)`,
 `B(x,y)-C(x+1,y−1)` の 3 本。
@@ -106,7 +112,9 @@ seam gauge では `A_b(θ)=wy*θ`。これを初期実装の既定とする。
 - 局所回転 `U=exp(i Σi χi Szi)` に対し、
   `U H(A) U† = H(Aij+χi−χj)`。
   uniform gauge との行列・スペクトル照合を小系で行う。
-- uniform gauge は円周方向の並進を扱う次段階で使用する。
+- uniform gauge は `ηi=yi+δsublattice,C/2`、`χi=−θηi/Ly` とし、
+  `Auniform=wy θ+χi−χj` を実装して seam gauge との行列照合に使う。
+  円周方向の並進・運動量を使う診断は次段階とする。
   2π 後の比較には大きなゲージ変換が必要で、未変換の MPS overlap を比較しない。
 - 長距離結合や多体項を追加する場合も、同じゲージ規則から twist を導出する。
   chirality seed を残す場合にはその境界項も含める。
@@ -116,7 +124,9 @@ seam gauge では `A_b(θ)=wy*θ`。これを初期実装の既定とする。
 現在の API では `using ITensors, ITensorMPS` を用いる。
 `siteinds("S=1/2",N; conserve_qns=true)` を一度作り、全 θ で再利用する。
 対象 sector の Up/Dn 個数を満たす初期状態を複数用意し、複素 MPS を扱う。
-以下は設計用の抜粋であり、完成した実行例ではない。
+以下は項の規約を示す設計用の抜粋。
+公開 API は `twisted_exchange_mpo(sites,lattice,theta; gauge=:seam,hz=nothing)` であり、
+実行可能な最小例は [`examples/validate_small_system.jl`](../examples/validate_small_system.jl)。
 
 ```julia
 using ITensors, ITensorMPS
@@ -137,11 +147,20 @@ end
 一般の θ では必ず複素 Hermitian Hamiltonian として扱う。
 API は [OpSum/MPO](https://docs.itensor.org/ITensorMPS/stable/OpSum.html)、
 [MPS](https://docs.itensor.org/ITensorMPS/stable/MPSandMPO.html)に基づく。
-使用する Julia・依存パッケージの具体的な互換バージョンは P0 で解決して固定する。
+P0 で Julia 1.12.7、ITensors 0.9.31、ITensorMPS 0.4.1 を使って照合し、
+解決した依存関係を `Manifest.toml` に保存した。
 
 初期は各 θ の MPO を構築し直し、`dmrg(H, psi_previous; ...)` で最適化する。
 実際の切断誤差、energy/variance、各観測量の収束を測り、`cutoff` の設定値だけを
 誤差として報告しない。Krylov solver の収束も確認する。
+現実装の `run_dmrg` は単一点を最適化し、両 half-sweep の実測切断誤差の最大値、
+再計算した最終エネルギー、`⟨H†H⟩−⟨H⟩²` を返す。
+noise が非零なら切断誤差は摂動した密度行列のものであり、波動関数の捨てた確率と同一視しない。
+upstream API が局所 Krylov の convergence info を公開しないため、それを確認済みとはしない。
+小系では独立した全系 residual も検証する。warm start の入力はコピーし、site indices と Q を照合する。
+検証した upstream backend では、等しい Schmidt 重みを異なる QN sector で切る境界に
+空状態と誤った切断誤差を返す事例がある。正準中心の norm がゼロ・非有限なら observer が停止するが、
+一般的な縮退境界の校正は P1 の残課題である。再現条件は[検証記録](research/p0_reference_validation.md)を参照。
 必要なら固定 3 成分の MPO 和を使う最適化を比較する。
 ITensorMPS は MPO の配列による和を受け取れるが、速度向上は実測で判断する。
 [DMRG API](https://docs.itensor.org/ITensorMPS/stable/DMRG.html)。
@@ -215,6 +234,12 @@ P_c(\theta)=\sum_{i\in R_c}
 | 正の対照 | 既知の kagome CSL における 2π 当たり ±1/2 の移送と sector flow |
 | 収束 | bond dimension、刻み、sweeps、長さ、円周、端の処理、初期状態を変えた誤差評価 |
 | 保存・再開 | 同一 checkpoint からの再開と連続走行で、受理した θ 列と物理量が一致 |
+
+実装した N=9、Q=1 の sector は 126 次元で、θ=0 の最近接模型では基底状態が二重縮退する。
+DMRG 状態の ED 基底空間への射影と全系 residual を確認し、射影後の同じ状態の密度・相関を比較する。
+θ=0.37 では一意な基底状態との比較も行う。この有限系の縮退をトポロジカル縮退とは解釈しない。
+N=18、Q=2 は `binomial(18,10)=43758` 次元であり、現在は疎行列構築と Hermiticity の確認まで。
+9 サイト系には内部軸方向 cut がなく、その照合から軸方向 pump の検証はできない。
 
 正の対照には Gong–Zhu–Sheng の拡張 kagome Heisenberg 模型を用いる。
 論文は `J′=0.5`、`3×24×4` cylinder の U(1) DMRG で 2π 当たり 1/2 の移送を報告している。

@@ -1,0 +1,33 @@
+schema_version = 1
+status = "failed"
+scope = "validation_recording_failure"
+stage = "provenance_collection_after_numerics"
+exception_type = "MethodError"
+cause = "Cmd(Vector; dir=...) is not a supported constructor"
+recovery = "Use Cmd(Cmd(Vector); dir=...), snapshot before/after, and retain provenance errors"
+record_origin = "reconstructed_from_captured_tool_output_after_the_initial_writer_failed"
+original_script_sha256 = "df729e5578068dbdfca55a2b0f75de716bf6c11371f305d013b04960f234e2ba"
+git_revision = "1e1a13fbdf05b64392be06a8d1685390662f3eb9"
+worktree_dirty = true
+full_diagnostics_saved = false
+
+[[points]]
+theta = 0.0
+seed = 11
+numerical_status = "passed"
+energy_error_per_site = 9.868649107779169e-17
+max_sz_error = 5.051514762044462e-15
+
+[[points]]
+theta = 0.37
+seed = 11
+numerical_status = "passed"
+energy_error_per_site = 6.908054375445419e-16
+max_sz_error = 4.571343303894082e-14
+
+[[points]]
+theta = 0.37
+seed = 29
+numerical_status = "passed"
+energy_error_per_site = 1.9737298215558337e-16
+max_sz_error = 4.057865155004947e-14

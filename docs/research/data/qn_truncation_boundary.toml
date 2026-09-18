@@ -1,0 +1,39 @@
+schema_version = 1
+status = "upstream_failure_reproduced"
+record_origin = "independent_two_site_diagnostic_and_source_review"
+julia = "1.12.7"
+ITensors = "0.9.31"
+ITensorMPS = "0.4.1"
+NDTensors = "0.4.31"
+model = "two_spin_half_isotropic_heisenberg_dimer"
+integer_charge = 0
+tensor_type = "ComplexF64_with_U1_QNs"
+nsweeps = 1
+maxdim = 1
+cutoff = 0.0
+noise = 0.0
+initial_state = ["Up", "Dn"]
+initial_norm = 1.0
+exact_schmidt_probabilities = [0.5, 0.5]
+local_energy = -0.75
+first_half_sweep_norm = 0.0
+reported_truncation_error = 0.5
+direct_svd_retained_link_dimension = 0
+unguarded_failure = "ArgumentError: initial vector should not have norm zero"
+mitigation = "Reject empty/nonfinite factorized states in the observer; retain sufficient maxdim"
+general_degenerate_truncation_validated = false
+
+[maxdim_two_control]
+maxdim = 2
+retained_norm_approximately = 1.0
+energy_approximately = -0.75
+reported_truncation_error = 0.0
+
+[nondegenerate_field_control]
+hamiltonian = "S1.S2 -(3/8)Sz1 +(3/8)Sz2"
+maxdim = 1
+exact_schmidt_probabilities = [0.8, 0.2]
+local_energy = -0.875
+retained_norm = 1.0
+final_energy = -0.625
+reported_truncation_error = 0.2
