@@ -1,0 +1,200 @@
+ground_state_comparison = "project_DMRG_vector_into_full_ED_ground_space"
+phase_identification = "not_attempted"
+point_mode = "independent_single_points_not_flux_continuation"
+pump_quantization = "not_tested"
+recorded_at_utc = "2026-09-18T16:13:42.515"
+schema_version = 1
+scope = "finite_size_reference_backend_validation"
+status = "passed"
+
+[acceptance_limits]
+absolute_variance = 1.0e-10
+energy_error_per_site = 1.0e-8
+ground_space_leakage = 2.0e-6
+max_pm_error = 1.0e-6
+max_sz_error = 1.0e-6
+max_zz_error = 1.0e-6
+residual_norm = 2.0e-6
+state_norm_error = 1.0e-12
+total_sz_error = 1.0e-12
+
+[code]
+status = "verified"
+
+    [code.after]
+    errors = []
+    git_revision = "1e1a13fbdf05b64392be06a8d1685390662f3eb9"
+    worktree_dirty = true
+
+        [code.after.source_sha256]
+        "Manifest.toml" = "a55672bd9a522611e4aeced0499760f025ae79fe13fd65535c09b6caa099beea"
+        "Project.toml" = "574e0e78692cc00789ded5bea7467b9659d592e43bf3ee6eefb21e02b0526518"
+        "examples/validate_small_system.jl" = "eeeeca8c25253d2fd68162752cac65c3f5afe96080c013f45e94b2a4bd2d0f76"
+        "src/KagomeDMRG.jl" = "4bab005400f5539f89786b7966bd7a10bb0a2d46e1c1500f41d6c5151bac6647"
+        "src/dmrg.jl" = "6ee17c8cc437e7f7b755e2add8fab31c69eb5d7377d48ac80a1fad831737fb5a"
+        "src/lattice.jl" = "7c152e09dd731775cdef8101a6256f754615763f5abd5ff086042a4be5ee87d8"
+        "src/model.jl" = "ec57b01141fd90a4938fc22d2833bd7a3ddfa107a107fb083753a4a39e91f58b"
+        "src/observables.jl" = "6ebe76e51e64af4bbb9021cb892af267a77161ef159123a031d50066e421c41c"
+        "test/itensor_helpers.jl" = "68cc6e13292bea25757783b165aa387c85a4906cbe7cd63323c8ad56ef88290f"
+        "test/reference_ed.jl" = "63ac49ce5e783aafcbcf6f55c3edb63fe93748afb0279827b225eb35c21367c3"
+
+    [code.before]
+    errors = []
+    git_revision = "1e1a13fbdf05b64392be06a8d1685390662f3eb9"
+    worktree_dirty = true
+
+        [code.before.source_sha256]
+        "Manifest.toml" = "a55672bd9a522611e4aeced0499760f025ae79fe13fd65535c09b6caa099beea"
+        "Project.toml" = "574e0e78692cc00789ded5bea7467b9659d592e43bf3ee6eefb21e02b0526518"
+        "examples/validate_small_system.jl" = "eeeeca8c25253d2fd68162752cac65c3f5afe96080c013f45e94b2a4bd2d0f76"
+        "src/KagomeDMRG.jl" = "4bab005400f5539f89786b7966bd7a10bb0a2d46e1c1500f41d6c5151bac6647"
+        "src/dmrg.jl" = "6ee17c8cc437e7f7b755e2add8fab31c69eb5d7377d48ac80a1fad831737fb5a"
+        "src/lattice.jl" = "7c152e09dd731775cdef8101a6256f754615763f5abd5ff086042a4be5ee87d8"
+        "src/model.jl" = "ec57b01141fd90a4938fc22d2833bd7a3ddfa107a107fb083753a4a39e91f58b"
+        "src/observables.jl" = "6ebe76e51e64af4bbb9021cb892af267a77161ef159123a031d50066e421c41c"
+        "test/itensor_helpers.jl" = "68cc6e13292bea25757783b165aa387c85a4906cbe7cd63323c8ad56ef88290f"
+        "test/reference_ed.jl" = "63ac49ce5e783aafcbcf6f55c3edb63fe93748afb0279827b225eb35c21367c3"
+
+[geometry]
+Lx = 1
+Ly = 3
+N = 9
+a1 = [1.0, 0.0]
+a2 = [0.5, 0.8660254037844386]
+axis_boundary = "open"
+bond_count = 12
+circumference_boundary = "periodic"
+exchange_phase = "S+_i_S-_j_has_exp(+im*wy*theta)"
+gauge = "seam"
+ordering = "x_then_y_then_A_B_C"
+termination = "complete_cells_with_outgoing_open_axis_bonds_removed"
+wrap = [1.5, 2.598076211353316]
+
+[model]
+Jxy = 1.0
+Jz = 1.0
+chirality_seed = 0.0
+longitudinal_field = 0.0
+name = "nearest_neighbor_kagome_heisenberg"
+
+[[points]]
+dmrg_energy = -3.5619675607265853
+ed_energy = -3.561967560726586
+energy_error_per_site = 9.868649107779169e-17
+final_sweep_truncation_error = 0.0
+gap_above_ground_space = 0.416357921997625
+ground_degeneracy = 2
+ground_space_leakage = 1.3372975549833022e-14
+max_pm_error = 4.996054144274915e-15
+max_sz_error = 5.051514762044462e-15
+max_zz_error = 1.7139220452562852e-15
+maximum_truncation_error = 0.0
+measured_truncation_errors = [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+residual_norm = 2.6206785129766238e-14
+seed = 11
+state_norm_error = 0.0
+status = "passed"
+sweep_energies = [-3.4790123316434807, -3.561967560726589, -3.5619675607265835, -3.5619675607265875, -3.561967560726588, -3.5619675607265897, -3.5619675607265853, -3.5619675607265853]
+sz_profile = [-0.11117244798709455, 0.3824015479913938, -0.07976574641390348, 0.12634711701413223, 0.05050909277577206, -0.018049284006312564, 0.039242002046739215, -0.041743982914712, 0.1522317014939851]
+theta = 0.0
+total_sz = 0.4999999999999998
+variance = 1.7763568394002505e-15
+
+    [points.solver]
+    cutoff = 1.0e-12
+    eigsolve_krylovdim = 20
+    eigsolve_maxiter = 10
+    eigsolve_tol = 1.0e-12
+    initial_linkdim = 4
+    initialization = "random_fixed_charge"
+    maxdim = [16, 32, 64]
+    measure_variance = true
+    noise = 0.0
+    nsweeps = 8
+    seed = 11
+[[points]]
+dmrg_energy = -3.569278674796582
+ed_energy = -3.5692786747965757
+energy_error_per_site = 6.908054375445419e-16
+final_sweep_truncation_error = 0.0
+gap_above_ground_space = 0.016137196453223535
+ground_degeneracy = 1
+ground_space_leakage = 1.0591262205629716e-13
+max_pm_error = 4.5186079940803934e-14
+max_sz_error = 4.571343303894082e-14
+max_zz_error = 1.4849233011862477e-14
+maximum_truncation_error = 0.0
+measured_truncation_errors = [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+residual_norm = 1.174134143001853e-13
+seed = 11
+state_norm_error = 1.1102230246251565e-15
+status = "passed"
+sweep_energies = [-3.475860926275647, -3.569278674796577, -3.569278674796578, -3.5692786747965775, -3.569278674796577, -3.5692786747965757, -3.5692786747965815, -3.569278674796583]
+sz_profile = [0.02060691647450813, 0.12545283371762786, 0.020606916474536267, 0.020606916474537405, 0.125452833717606, 0.020606916474514046, 0.0206069164745536, 0.12545283371755417, 0.020606916474562864]
+theta = 0.37
+total_sz = 0.5000000000000003
+variance = -2.3092638912203256e-14
+
+    [points.solver]
+    cutoff = 1.0e-12
+    eigsolve_krylovdim = 20
+    eigsolve_maxiter = 10
+    eigsolve_tol = 1.0e-12
+    initial_linkdim = 4
+    initialization = "random_fixed_charge"
+    maxdim = [16, 32, 64]
+    measure_variance = true
+    noise = 0.0
+    nsweeps = 8
+    seed = 11
+[[points]]
+dmrg_energy = -3.569278674796574
+ed_energy = -3.5692786747965757
+energy_error_per_site = 1.9737298215558337e-16
+final_sweep_truncation_error = 0.0
+gap_above_ground_space = 0.016137196453223535
+ground_degeneracy = 1
+ground_space_leakage = 1.410399822031124e-13
+max_pm_error = 4.04121180963557e-14
+max_sz_error = 4.057865155004947e-14
+max_zz_error = 1.643823996228753e-14
+maximum_truncation_error = 0.0
+measured_truncation_errors = [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+residual_norm = 2.3014964686767723e-13
+seed = 29
+state_norm_error = 2.220446049250313e-16
+status = "passed"
+sweep_energies = [-3.569278674796576, -3.569278674796578, -3.5692786747965752, -3.5692786747965815, -3.5692786747965752, -3.569278674796578, -3.569278674796578, -3.569278674796574]
+sz_profile = [0.02060691647450716, 0.1254528337176376, 0.020606916474531837, 0.020606916474544015, 0.12545283371756683, 0.020606916474543973, 0.02060691647452359, 0.12545283371758048, 0.02060691647456442]
+theta = 0.37
+total_sz = 0.4999999999999999
+variance = 5.329070518200751e-15
+
+    [points.solver]
+    cutoff = 1.0e-12
+    eigsolve_krylovdim = 20
+    eigsolve_maxiter = 10
+    eigsolve_tol = 1.0e-12
+    initial_linkdim = 4
+    initialization = "random_fixed_charge"
+    maxdim = [16, 32, 64]
+    measure_variance = true
+    noise = 0.0
+    nsweeps = 8
+    seed = 29
+
+[runtime]
+ITensorMPS = "0.4.1"
+ITensors = "0.9.31"
+KrylovKit = "0.10.4"
+NDTensors = "0.4.31"
+blas_threads = 1
+julia = "1.12.7"
+julia_threads = 1
+
+[sector]
+Ndown = 4
+Nup = 5
+Q = 1
+charge_convention = "q=2Sz"
+physical_M = 0.5
