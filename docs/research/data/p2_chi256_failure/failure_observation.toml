@@ -1,0 +1,36 @@
+schema_version = 1
+status = "unresolved_factorization_guard"
+source = "bounded_single_process_stdout_and_saved_validation_record"
+source_validation_record = "validation.toml"
+sources_unchanged = true
+checkpoint_saved = false
+final_state_available = false
+continuation_acceptance_attempted = false
+run_was_retried = false
+interpretation = "The caller_assigned_status field in validation.toml describes the intended completed-point label; this run failed and produced no completed point. Its actual status field is error."
+reason = "DMRG truncation spectrum does not match the retained bond dimension"
+sweep = 4
+half_sweep = 1
+bond = 9
+completed_sweep_local_energies = [-7.110173603060763, -7.425443866336171, -7.442033219253956]
+completed_sweep_maxlinkdims = [16, 64, 256]
+completed_sweep_reported_max_truncation_errors = [0.0, 0.0, 0.0]
+completed_sweep_reported_seconds = [8.288, 2.658, 13.829]
+diagnostics_unavailable = ["final_energy", "final_variance", "ED_residual", "ED_ground_subspace_weight", "max_Sz_error"]
+limitation = "The completed-sweep local energies are intermediate console observations, not final-state energy estimates or checkpoint data."
+
+[attempted_settings]
+theta = 0.0
+seed = 11
+initial_linkdim = 4
+nsweeps = 6
+maxdim = [256]
+cutoff = 0.0
+noise = 0.0
+eigsolve_tol = 1.0e-11
+eigsolve_krylovdim = 40
+eigsolve_maxiter = 20
+measure_variance = true
+initialization = "random_fixed_charge"
+gauge = "seam"
+outputlevel = 1

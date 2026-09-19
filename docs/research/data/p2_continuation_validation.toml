@@ -1,0 +1,2126 @@
+positive_CSL_control = "not_implemented"
+pump_quantization = "not_tested"
+recorded_at_utc = "2026-09-18T23:34:40.207"
+schema_version = 1
+scope = "adaptive_continuation_controls_not_phase_identification"
+status = "passed"
+
+[code]
+status = "verified"
+
+    [code.after]
+    "Manifest-v1.13.toml" = "e535c3e1d11655cd2d346a7493ab17238ebb794b50b1ded9bc310c8ddfab9eb1"
+    "Manifest.toml" = "213da764f083d02ade4298600a514e1f899c6acd7a8ceee256b36fe6768dc2c1"
+    "Project.toml" = "b224143940bd73891e2dbef110ec4acefe9a10c08906b416fcfddb6c4cdb2665"
+    "examples/validate_continuation.jl" = "60e1813b493e2b61935ae9be021bd297aabf6f1ac981c3500f68b64560da52ef"
+    "src/KagomeDMRG.jl" = "9bab7201c61d6c78f551190372cec85477bc2de90ea2aa184c3d4f19bacb0e11"
+    "src/checkpoint.jl" = "0ba3b24728c9c9a60f4ebc93c1d9de5715007109ad3fe79c40ea688f668cc89f"
+    "src/continuation.jl" = "2a1d6eb2a7a49e6a6e65f69522b6d014d118695ffb70dac13fc985aa8d578412"
+    "src/dmrg.jl" = "03be2d256aa2db579ed4fadb3c7a5486cb4073ed0a9530531a7c58684eab6524"
+    "src/lattice.jl" = "7c152e09dd731775cdef8101a6256f754615763f5abd5ff086042a4be5ee87d8"
+    "src/model.jl" = "ec57b01141fd90a4938fc22d2833bd7a3ddfa107a107fb083753a4a39e91f58b"
+    "src/observables.jl" = "6ebe76e51e64af4bbb9021cb892af267a77161ef159123a031d50066e421c41c"
+    "src/schmidt.jl" = "13517078685ce1e1ca43b6200cbc61ff7aa6113757fa61ed9fcee4dfee3cbd0a"
+    "test/itensor_helpers.jl" = "68cc6e13292bea25757783b165aa387c85a4906cbe7cd63323c8ad56ef88290f"
+    "test/reference_ed.jl" = "63ac49ce5e783aafcbcf6f55c3edb63fe93748afb0279827b225eb35c21367c3"
+
+    [code.before]
+    "Manifest-v1.13.toml" = "e535c3e1d11655cd2d346a7493ab17238ebb794b50b1ded9bc310c8ddfab9eb1"
+    "Manifest.toml" = "213da764f083d02ade4298600a514e1f899c6acd7a8ceee256b36fe6768dc2c1"
+    "Project.toml" = "b224143940bd73891e2dbef110ec4acefe9a10c08906b416fcfddb6c4cdb2665"
+    "examples/validate_continuation.jl" = "60e1813b493e2b61935ae9be021bd297aabf6f1ac981c3500f68b64560da52ef"
+    "src/KagomeDMRG.jl" = "9bab7201c61d6c78f551190372cec85477bc2de90ea2aa184c3d4f19bacb0e11"
+    "src/checkpoint.jl" = "0ba3b24728c9c9a60f4ebc93c1d9de5715007109ad3fe79c40ea688f668cc89f"
+    "src/continuation.jl" = "2a1d6eb2a7a49e6a6e65f69522b6d014d118695ffb70dac13fc985aa8d578412"
+    "src/dmrg.jl" = "03be2d256aa2db579ed4fadb3c7a5486cb4073ed0a9530531a7c58684eab6524"
+    "src/lattice.jl" = "7c152e09dd731775cdef8101a6256f754615763f5abd5ff086042a4be5ee87d8"
+    "src/model.jl" = "ec57b01141fd90a4938fc22d2833bd7a3ddfa107a107fb083753a4a39e91f58b"
+    "src/observables.jl" = "6ebe76e51e64af4bbb9021cb892af267a77161ef159123a031d50066e421c41c"
+    "src/schmidt.jl" = "13517078685ce1e1ca43b6200cbc61ff7aa6113757fa61ed9fcee4dfee3cbd0a"
+    "test/itensor_helpers.jl" = "68cc6e13292bea25757783b165aa387c85a4906cbe7cd63323c8ad56ef88290f"
+    "test/reference_ed.jl" = "63ac49ce5e783aafcbcf6f55c3edb63fe93748afb0279827b225eb35c21367c3"
+
+    [code.provenance]
+    git_revision = "d56799268dd922a0e382f59e1a7c2d2a5ca80dd0"
+    manifest = "Manifest-v1.13.toml"
+    worktree_dirty = true
+
+        [code.provenance.source_sha256]
+        "Manifest-v1.13.toml" = "e535c3e1d11655cd2d346a7493ab17238ebb794b50b1ded9bc310c8ddfab9eb1"
+        "Project.toml" = "b224143940bd73891e2dbef110ec4acefe9a10c08906b416fcfddb6c4cdb2665"
+        "src/KagomeDMRG.jl" = "9bab7201c61d6c78f551190372cec85477bc2de90ea2aa184c3d4f19bacb0e11"
+        "src/checkpoint.jl" = "0ba3b24728c9c9a60f4ebc93c1d9de5715007109ad3fe79c40ea688f668cc89f"
+        "src/continuation.jl" = "2a1d6eb2a7a49e6a6e65f69522b6d014d118695ffb70dac13fc985aa8d578412"
+        "src/dmrg.jl" = "03be2d256aa2db579ed4fadb3c7a5486cb4073ed0a9530531a7c58684eab6524"
+        "src/lattice.jl" = "7c152e09dd731775cdef8101a6256f754615763f5abd5ff086042a4be5ee87d8"
+        "src/model.jl" = "ec57b01141fd90a4938fc22d2833bd7a3ddfa107a107fb083753a4a39e91f58b"
+        "src/observables.jl" = "6ebe76e51e64af4bbb9021cb892af267a77161ef159123a031d50066e421c41c"
+        "src/schmidt.jl" = "13517078685ce1e1ca43b6200cbc61ff7aa6113757fa61ed9fcee4dfee3cbd0a"
+
+[runs.degenerate_initial_state]
+axial_cut_coverage = false
+bulk_sites = [1, 2, 3, 4, 5, 6, 7, 8, 9]
+cuts = []
+diagnostic_bonds = [4]
+initial_step = 0.01
+interpretation = "Real zero-flux ground state in a twofold degenerate space cannot meet the positive-flux overlap limit by step refinement alone. Valid rejected states are retained; this is not topological evidence."
+journal = "trajectory-sngSLg/trajectory.toml"
+min_step = 0.0025
+reason = "min_step"
+status = "unresolved"
+status_check = true
+theta_path = [0.0]
+
+    [runs.degenerate_initial_state.configuration]
+    Lx = 1
+    Ly = 3
+    N = 9
+    Q = 1
+    axis_boundary = "open"
+    charge_convention = "q=2Sz"
+    circumference_boundary = "periodic"
+    exchange_phase = "S+_i_S-_j_has_exp(+im*bond_phase)"
+    gauge = "seam"
+    hz = [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+    ordering = "x_then_y_then_A_B_C"
+    termination = "complete_cells_with_outgoing_open_axis_bonds_removed"
+    wrap = [1.5, 2.598076211353316]
+
+        [[runs.degenerate_initial_state.configuration.bonds]]
+        Jxy = 1.0
+        Jz = 1.0
+        i = 1
+        j = 2
+        wy = 0
+        [[runs.degenerate_initial_state.configuration.bonds]]
+        Jxy = 1.0
+        Jz = 1.0
+        i = 1
+        j = 3
+        wy = 0
+        [[runs.degenerate_initial_state.configuration.bonds]]
+        Jxy = 1.0
+        Jz = 1.0
+        i = 2
+        j = 3
+        wy = 0
+        [[runs.degenerate_initial_state.configuration.bonds]]
+        Jxy = 1.0
+        Jz = 1.0
+        i = 1
+        j = 9
+        wy = -1
+        [[runs.degenerate_initial_state.configuration.bonds]]
+        Jxy = 1.0
+        Jz = 1.0
+        i = 4
+        j = 5
+        wy = 0
+        [[runs.degenerate_initial_state.configuration.bonds]]
+        Jxy = 1.0
+        Jz = 1.0
+        i = 4
+        j = 6
+        wy = 0
+        [[runs.degenerate_initial_state.configuration.bonds]]
+        Jxy = 1.0
+        Jz = 1.0
+        i = 5
+        j = 6
+        wy = 0
+        [[runs.degenerate_initial_state.configuration.bonds]]
+        Jxy = 1.0
+        Jz = 1.0
+        i = 4
+        j = 3
+        wy = 0
+        [[runs.degenerate_initial_state.configuration.bonds]]
+        Jxy = 1.0
+        Jz = 1.0
+        i = 7
+        j = 8
+        wy = 0
+        [[runs.degenerate_initial_state.configuration.bonds]]
+        Jxy = 1.0
+        Jz = 1.0
+        i = 7
+        j = 9
+        wy = 0
+        [[runs.degenerate_initial_state.configuration.bonds]]
+        Jxy = 1.0
+        Jz = 1.0
+        i = 8
+        j = 9
+        wy = 0
+        [[runs.degenerate_initial_state.configuration.bonds]]
+        Jxy = 1.0
+        Jz = 1.0
+        i = 7
+        j = 6
+        wy = 0
+
+        [[runs.degenerate_initial_state.configuration.sites]]
+        index = 1
+        position = [0.0, 0.0]
+        sublattice = "A"
+        x = 0
+        y = 0
+        [[runs.degenerate_initial_state.configuration.sites]]
+        index = 2
+        position = [0.5, 0.0]
+        sublattice = "B"
+        x = 0
+        y = 0
+        [[runs.degenerate_initial_state.configuration.sites]]
+        index = 3
+        position = [0.25, 0.4330127018922193]
+        sublattice = "C"
+        x = 0
+        y = 0
+        [[runs.degenerate_initial_state.configuration.sites]]
+        index = 4
+        position = [0.5, 0.8660254037844386]
+        sublattice = "A"
+        x = 0
+        y = 1
+        [[runs.degenerate_initial_state.configuration.sites]]
+        index = 5
+        position = [1.0, 0.8660254037844386]
+        sublattice = "B"
+        x = 0
+        y = 1
+        [[runs.degenerate_initial_state.configuration.sites]]
+        index = 6
+        position = [0.75, 1.299038105676658]
+        sublattice = "C"
+        x = 0
+        y = 1
+        [[runs.degenerate_initial_state.configuration.sites]]
+        index = 7
+        position = [1.0, 1.7320508075688772]
+        sublattice = "A"
+        x = 0
+        y = 2
+        [[runs.degenerate_initial_state.configuration.sites]]
+        index = 8
+        position = [1.5, 1.7320508075688772]
+        sublattice = "B"
+        x = 0
+        y = 2
+        [[runs.degenerate_initial_state.configuration.sites]]
+        index = 9
+        position = [1.25, 2.1650635094610964]
+        sublattice = "C"
+        x = 0
+        y = 2
+
+    [[runs.degenerate_initial_state.ed_points]]
+    energy_error_per_site = 4.9343245538895844e-17
+    ground_degeneracy = 2
+    ground_space_leakage = 9.471030063752164e-15
+    max_sz_error = 3.1780134079895106e-15
+    residual_norm = 1.7952042573402573e-14
+    theta = 0.0
+    [[runs.degenerate_initial_state.ed_points]]
+    energy_error_per_site = 4.9343245538895844e-17
+    ground_degeneracy = 1
+    ground_space_leakage = 4.7386191482954794e-12
+    max_sz_error = 2.237349194800231e-12
+    residual_norm = 1.851344556172244e-14
+    theta = 0.01
+    [[runs.degenerate_initial_state.ed_points]]
+    energy_error_per_site = 2.4671622769447924e-16
+    ground_degeneracy = 1
+    ground_space_leakage = 9.339358048142061e-12
+    max_sz_error = 4.637790151917898e-12
+    residual_norm = 2.069901699350442e-14
+    theta = 0.005
+    [[runs.degenerate_initial_state.ed_points]]
+    energy_error_per_site = 3.4540271877227093e-16
+    ground_degeneracy = 1
+    ground_space_leakage = 2.7401465719566466e-11
+    max_sz_error = 1.4098888723168557e-11
+    residual_norm = 2.1691561775777464e-14
+    theta = 0.0025
+
+    [runs.degenerate_initial_state.initial_diagnostics]
+    cut_spread = 0.0
+    energy = -3.5619675607265866
+    final_truncation_error = 0.0
+    max_charge_error = 3.3306690738754696e-16
+    max_density_change = 0.0
+    max_entropy_change = 0.0
+    max_schmidt_change = 0.0
+    max_schmidt_consistency_error = 4.718447854656915e-16
+    measured_truncation_errors = [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+    negative_variance_tolerance = 2.8172159946368035e-13
+    overlap = 1.0
+    sweep_energies = [-3.5619675607265844, -3.5619675607265857, -3.5619675607265866, -3.5619675607265853, -3.561967560726583, -3.5619675607265817, -3.561967560726583, -3.5619675607265866]
+    sweep_energy_change = 3.552713678800501e-15
+    sz_profile = [0.11410140693380644, -0.12177331099143185, 0.14952717037262858, -0.1176820099659891, 0.3084992563959199, -0.0066254798018764455, 0.05799727410595213, 0.20444071244796758, -0.08848501949697696]
+    transfers = []
+    variance = 1.7763568394002505e-15
+
+        [[runs.degenerate_initial_state.initial_diagnostics.schmidt]]
+        bond = 4
+        entropy = 1.198452412583054
+        left_q = [0, 2, -2, 0, 0, 2, 0, -2, 2, -2, 4, 0, 2, 0, -4, -2]
+        mean_left_sz = 0.0241732563490136
+        probabilities = [0.6401163984673771, 0.12596307858501565, 0.11478156334722163, 0.07549607172295256, 0.014240360692101736, 0.013383855076133561, 0.007914826285883216, 0.0032480237864747756, 0.002234574819935219, 0.0008196063949612479, 0.0007231518552607005, 0.0007162283016321853, 0.00017051246212412764, 7.632151950521264e-5, 6.0448092637651925e-5, 5.4978590783405454e-5]
+        variance_left_sz = 0.2632062465317279
+
+    [runs.degenerate_initial_state.policy]
+    consistency_tol = 1.0e-9
+    max_cut_spread = 1.0e-9
+    max_density_change = 1.0
+    max_entropy_change = 10.0
+    max_schmidt_change = 9.0
+    max_sweep_energy_change = 1.0e-9
+    max_truncation_error = 1.0e-10
+    max_variance = 1.0e-9
+    min_overlap = 0.95
+
+    [runs.degenerate_initial_state.solver]
+    cutoff = 1.0e-12
+    eigsolve_krylovdim = 20
+    eigsolve_maxiter = 10
+    eigsolve_tol = 1.0e-12
+    initial_linkdim = 4
+    initialization = "provided_mps"
+    maxdim = [16, 32, 64]
+    measure_variance = true
+    noise = 0.0
+    nsweeps = 8
+    seed = 11
+
+    [[runs.degenerate_initial_state.trials]]
+    from_theta = 0.0
+    reasons = ["low_overlap"]
+    status = "rejected"
+    step = 0.01
+    theta = 0.01
+
+        [runs.degenerate_initial_state.trials.diagnostics]
+        cut_spread = 0.0
+        energy = -3.5621845579075835
+        final_truncation_error = 0.0
+        max_charge_error = 1.1102230246251565e-16
+        max_density_change = 0.2520294456968129
+        max_entropy_change = 0.08580467225888189
+        max_schmidt_change = 0.16069867629535461
+        max_schmidt_consistency_error = 8.326672684688674e-17
+        measured_truncation_errors = [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+        negative_variance_tolerance = 2.8175592580382263e-13
+        overlap = 0.7070306005877924
+        sweep_energies = [-3.562184557907584, -3.562184557907586, -3.562184557907586, -3.5621845579075857, -3.5621845579075893, -3.562184557907584, -3.562184557907582, -3.5621845579075835]
+        sweep_energy_change = 1.3322676295501878e-15
+        sz_profile = [0.018205265980211716, 0.13025613470538105, 0.018205265980827178, 0.018205265977948196, 0.1302561347100152, 0.018205265978912522, 0.018205265980033813, 0.1302561347082129, 0.018205265978457508]
+        transfers = []
+        variance = -3.552713678800501e-15
+
+            [[runs.degenerate_initial_state.trials.diagnostics.schmidt]]
+            bond = 4
+            entropy = 1.284257084841936
+            left_q = [0, 2, 0, -2, 2, 0, 0, 2, -2, 0, 4, -2, 2, 0, -2, -4]
+            mean_left_sz = 0.18487193264436821
+            probabilities = [0.5475930888569184, 0.23066460621866086, 0.11926010951113811, 0.06372337294715638, 0.01668552475431725, 0.010753661303836133, 0.004411905723969878, 0.002138530915563931, 0.0019636934483187344, 0.001180648130522159, 0.0006546291319368875, 0.00042097490865648595, 0.0002997366820194701, 0.00016212768561645464, 5.7096676802336366e-5, 3.0293104566559522e-5]
+            variance_left_sz = 0.2845155940178453
+    [[runs.degenerate_initial_state.trials]]
+    from_theta = 0.0
+    reasons = ["low_overlap"]
+    status = "rejected"
+    step = 0.005
+    theta = 0.005
+
+        [runs.degenerate_initial_state.trials.diagnostics]
+        cut_spread = 0.0
+        energy = -3.5620761975957693
+        final_truncation_error = 0.0
+        max_charge_error = 3.3306690738754696e-16
+        max_density_change = 0.2520958295168587
+        max_entropy_change = 0.08587022260285115
+        max_schmidt_change = 0.16066548439367623
+        max_schmidt_consistency_error = 2.7755575615628914e-16
+        measured_truncation_errors = [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+        negative_variance_tolerance = 2.8173878424638445e-13
+        overlap = 0.7070698490270269
+        sweep_energies = [-3.5620761975957684, -3.5620761975957644, -3.5620761975957644, -3.5620761975957675, -3.562076197595767, -3.562076197595769, -3.5620761975957653, -3.5620761975957684]
+        sweep_energy_change = 3.1086244689504383e-15
+        sz_profile = [0.018172074071297978, 0.1303225185254269, 0.018172074070402115, 0.01817207407556313, 0.13032251851711793, 0.01817207407362476, 0.01817207407199905, 0.13032251851974486, 0.018172074074823602]
+        transfers = []
+        variance = -1.0658141036401503e-14
+
+            [[runs.degenerate_initial_state.trials.diagnostics.schmidt]]
+            bond = 4
+            entropy = 1.2843226351859052
+            left_q = [0, 2, 0, -2, 2, 0, 0, 2, -2, 0, 4, -2, 2, 0, -2, -4]
+            mean_left_sz = 0.18483874074268983
+            probabilities = [0.5475823691622895, 0.23064971417309943, 0.11925501526461209, 0.06374724521229157, 0.016686678726580625, 0.010755241083661878, 0.004413376810439439, 0.0021395958072994103, 0.0019629558011854138, 0.0011810526677793686, 0.0006557894882429378, 0.00042117469029328083, 0.0003001758804334604, 0.00016226144403735492, 5.7080458070103965e-5, 3.0273329684311253e-5]
+            variance_left_sz = 0.28454351194161903
+    [[runs.degenerate_initial_state.trials]]
+    from_theta = 0.0
+    reasons = ["low_overlap"]
+    status = "rejected"
+    step = 0.0025
+    theta = 0.0025
+
+        [runs.degenerate_initial_state.trials.diagnostics]
+        cut_spread = 0.0
+        energy = -3.56202191374864
+        final_truncation_error = 0.0
+        max_charge_error = 2.220446049250313e-16
+        max_density_change = 0.25212901530603465
+        max_entropy_change = 0.08590299424054404
+        max_schmidt_change = 0.16064889150887496
+        max_schmidt_consistency_error = 2.7755575615628914e-17
+        measured_truncation_errors = [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+        negative_variance_tolerance = 2.8173019726075497e-13
+        overlap = 0.7070886048244756
+        sweep_energies = [-3.5620219137486426, -3.56202191374864, -3.5620219137486386, -3.5620219137486338, -3.5620219137486417, -3.562021913748638, -3.5620219137486377, -3.5620219137486386]
+        sweep_energy_change = 1.3322676295501878e-15
+        sz_profile = [0.018155481177145355, 0.1303557043146028, 0.018155481176270014, 0.018155481189870426, 0.13035570429270438, 0.01815548118328885, 0.018155481181693307, 0.13035570429527743, 0.01815548118914767]
+        transfers = []
+        variance = -1.4210854715202004e-14
+
+            [[runs.degenerate_initial_state.trials.diagnostics.schmidt]]
+            bond = 4
+            entropy = 1.284355406823598
+            left_q = [0, 2, 0, -2, 2, 0, 0, 2, -2, 0, 4, -2, 2, 0, -2, -4]
+            mean_left_sz = 0.18482214785788856
+            probabilities = [0.5475770157675551, 0.23064226323431825, 0.11925245649756686, 0.06375918435394963, 0.016687262767809966, 0.010756033175199676, 0.004414115519647781, 0.0021401274199980584, 0.0019625845037424014, 0.0011812525744465715, 0.0006563702835809228, 0.00042127401071882813, 0.00030039579708952775, 0.00016232842412265927, 5.707228042960295e-5, 3.0263389824306886e-5]
+            variance_left_sz = 0.28455747272287396
+
+[runs.longitudinal_zero_control]
+axial_cut_coverage = true
+bulk_sites = [10, 11, 12, 13, 14, 15, 16, 17, 18]
+cuts = [1, 2]
+diagnostic_bonds = [9, 18]
+expected_energy = -13.5
+initial_step = 6.283185307179586
+journal = "trajectory-0XjyHl/trajectory.toml"
+max_abs_transfer = 0.0
+max_cut_spread = 0.0
+max_energy_error = 0.0
+min_step = 0.09817477042468103
+reason = "targets_reached"
+status = "completed"
+status_check = true
+theta_path = [0.0, 6.283185307179586, 12.566370614359172, 18.84955592153876, 12.566370614359172, 6.283185307179586, 0.0]
+
+    [runs.longitudinal_zero_control.configuration]
+    Lx = 3
+    Ly = 3
+    N = 27
+    Q = 3
+    axis_boundary = "open"
+    charge_convention = "q=2Sz"
+    circumference_boundary = "periodic"
+    exchange_phase = "S+_i_S-_j_has_exp(+im*bond_phase)"
+    gauge = "seam"
+    hz = [1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, -1.0, -1.0, -1.0, -1.0, -1.0, -1.0, -1.0, -1.0, -1.0, -1.0, -1.0, -1.0]
+    ordering = "x_then_y_then_A_B_C"
+    termination = "complete_cells_with_outgoing_open_axis_bonds_removed"
+    wrap = [1.5, 2.598076211353316]
+
+        [[runs.longitudinal_zero_control.configuration.bonds]]
+        Jxy = 0.0
+        Jz = 0.0
+        i = 1
+        j = 2
+        wy = 0
+        [[runs.longitudinal_zero_control.configuration.bonds]]
+        Jxy = 0.0
+        Jz = 0.0
+        i = 1
+        j = 3
+        wy = 0
+        [[runs.longitudinal_zero_control.configuration.bonds]]
+        Jxy = 0.0
+        Jz = 0.0
+        i = 2
+        j = 3
+        wy = 0
+        [[runs.longitudinal_zero_control.configuration.bonds]]
+        Jxy = 0.0
+        Jz = 0.0
+        i = 1
+        j = 9
+        wy = -1
+        [[runs.longitudinal_zero_control.configuration.bonds]]
+        Jxy = 0.0
+        Jz = 0.0
+        i = 2
+        j = 18
+        wy = -1
+        [[runs.longitudinal_zero_control.configuration.bonds]]
+        Jxy = 0.0
+        Jz = 0.0
+        i = 4
+        j = 5
+        wy = 0
+        [[runs.longitudinal_zero_control.configuration.bonds]]
+        Jxy = 0.0
+        Jz = 0.0
+        i = 4
+        j = 6
+        wy = 0
+        [[runs.longitudinal_zero_control.configuration.bonds]]
+        Jxy = 0.0
+        Jz = 0.0
+        i = 5
+        j = 6
+        wy = 0
+        [[runs.longitudinal_zero_control.configuration.bonds]]
+        Jxy = 0.0
+        Jz = 0.0
+        i = 4
+        j = 3
+        wy = 0
+        [[runs.longitudinal_zero_control.configuration.bonds]]
+        Jxy = 0.0
+        Jz = 0.0
+        i = 5
+        j = 12
+        wy = 0
+        [[runs.longitudinal_zero_control.configuration.bonds]]
+        Jxy = 0.0
+        Jz = 0.0
+        i = 7
+        j = 8
+        wy = 0
+        [[runs.longitudinal_zero_control.configuration.bonds]]
+        Jxy = 0.0
+        Jz = 0.0
+        i = 7
+        j = 9
+        wy = 0
+        [[runs.longitudinal_zero_control.configuration.bonds]]
+        Jxy = 0.0
+        Jz = 0.0
+        i = 8
+        j = 9
+        wy = 0
+        [[runs.longitudinal_zero_control.configuration.bonds]]
+        Jxy = 0.0
+        Jz = 0.0
+        i = 7
+        j = 6
+        wy = 0
+        [[runs.longitudinal_zero_control.configuration.bonds]]
+        Jxy = 0.0
+        Jz = 0.0
+        i = 8
+        j = 15
+        wy = 0
+        [[runs.longitudinal_zero_control.configuration.bonds]]
+        Jxy = 0.0
+        Jz = 0.0
+        i = 10
+        j = 11
+        wy = 0
+        [[runs.longitudinal_zero_control.configuration.bonds]]
+        Jxy = 0.0
+        Jz = 0.0
+        i = 10
+        j = 12
+        wy = 0
+        [[runs.longitudinal_zero_control.configuration.bonds]]
+        Jxy = 0.0
+        Jz = 0.0
+        i = 11
+        j = 12
+        wy = 0
+        [[runs.longitudinal_zero_control.configuration.bonds]]
+        Jxy = 0.0
+        Jz = 0.0
+        i = 10
+        j = 2
+        wy = 0
+        [[runs.longitudinal_zero_control.configuration.bonds]]
+        Jxy = 0.0
+        Jz = 0.0
+        i = 10
+        j = 18
+        wy = -1
+        [[runs.longitudinal_zero_control.configuration.bonds]]
+        Jxy = 0.0
+        Jz = 0.0
+        i = 11
+        j = 27
+        wy = -1
+        [[runs.longitudinal_zero_control.configuration.bonds]]
+        Jxy = 0.0
+        Jz = 0.0
+        i = 13
+        j = 14
+        wy = 0
+        [[runs.longitudinal_zero_control.configuration.bonds]]
+        Jxy = 0.0
+        Jz = 0.0
+        i = 13
+        j = 15
+        wy = 0
+        [[runs.longitudinal_zero_control.configuration.bonds]]
+        Jxy = 0.0
+        Jz = 0.0
+        i = 14
+        j = 15
+        wy = 0
+        [[runs.longitudinal_zero_control.configuration.bonds]]
+        Jxy = 0.0
+        Jz = 0.0
+        i = 13
+        j = 5
+        wy = 0
+        [[runs.longitudinal_zero_control.configuration.bonds]]
+        Jxy = 0.0
+        Jz = 0.0
+        i = 13
+        j = 12
+        wy = 0
+        [[runs.longitudinal_zero_control.configuration.bonds]]
+        Jxy = 0.0
+        Jz = 0.0
+        i = 14
+        j = 21
+        wy = 0
+        [[runs.longitudinal_zero_control.configuration.bonds]]
+        Jxy = 0.0
+        Jz = 0.0
+        i = 16
+        j = 17
+        wy = 0
+        [[runs.longitudinal_zero_control.configuration.bonds]]
+        Jxy = 0.0
+        Jz = 0.0
+        i = 16
+        j = 18
+        wy = 0
+        [[runs.longitudinal_zero_control.configuration.bonds]]
+        Jxy = 0.0
+        Jz = 0.0
+        i = 17
+        j = 18
+        wy = 0
+        [[runs.longitudinal_zero_control.configuration.bonds]]
+        Jxy = 0.0
+        Jz = 0.0
+        i = 16
+        j = 8
+        wy = 0
+        [[runs.longitudinal_zero_control.configuration.bonds]]
+        Jxy = 0.0
+        Jz = 0.0
+        i = 16
+        j = 15
+        wy = 0
+        [[runs.longitudinal_zero_control.configuration.bonds]]
+        Jxy = 0.0
+        Jz = 0.0
+        i = 17
+        j = 24
+        wy = 0
+        [[runs.longitudinal_zero_control.configuration.bonds]]
+        Jxy = 0.0
+        Jz = 0.0
+        i = 19
+        j = 20
+        wy = 0
+        [[runs.longitudinal_zero_control.configuration.bonds]]
+        Jxy = 0.0
+        Jz = 0.0
+        i = 19
+        j = 21
+        wy = 0
+        [[runs.longitudinal_zero_control.configuration.bonds]]
+        Jxy = 0.0
+        Jz = 0.0
+        i = 20
+        j = 21
+        wy = 0
+        [[runs.longitudinal_zero_control.configuration.bonds]]
+        Jxy = 0.0
+        Jz = 0.0
+        i = 19
+        j = 11
+        wy = 0
+        [[runs.longitudinal_zero_control.configuration.bonds]]
+        Jxy = 0.0
+        Jz = 0.0
+        i = 19
+        j = 27
+        wy = -1
+        [[runs.longitudinal_zero_control.configuration.bonds]]
+        Jxy = 0.0
+        Jz = 0.0
+        i = 22
+        j = 23
+        wy = 0
+        [[runs.longitudinal_zero_control.configuration.bonds]]
+        Jxy = 0.0
+        Jz = 0.0
+        i = 22
+        j = 24
+        wy = 0
+        [[runs.longitudinal_zero_control.configuration.bonds]]
+        Jxy = 0.0
+        Jz = 0.0
+        i = 23
+        j = 24
+        wy = 0
+        [[runs.longitudinal_zero_control.configuration.bonds]]
+        Jxy = 0.0
+        Jz = 0.0
+        i = 22
+        j = 14
+        wy = 0
+        [[runs.longitudinal_zero_control.configuration.bonds]]
+        Jxy = 0.0
+        Jz = 0.0
+        i = 22
+        j = 21
+        wy = 0
+        [[runs.longitudinal_zero_control.configuration.bonds]]
+        Jxy = 0.0
+        Jz = 0.0
+        i = 25
+        j = 26
+        wy = 0
+        [[runs.longitudinal_zero_control.configuration.bonds]]
+        Jxy = 0.0
+        Jz = 0.0
+        i = 25
+        j = 27
+        wy = 0
+        [[runs.longitudinal_zero_control.configuration.bonds]]
+        Jxy = 0.0
+        Jz = 0.0
+        i = 26
+        j = 27
+        wy = 0
+        [[runs.longitudinal_zero_control.configuration.bonds]]
+        Jxy = 0.0
+        Jz = 0.0
+        i = 25
+        j = 17
+        wy = 0
+        [[runs.longitudinal_zero_control.configuration.bonds]]
+        Jxy = 0.0
+        Jz = 0.0
+        i = 25
+        j = 24
+        wy = 0
+
+        [[runs.longitudinal_zero_control.configuration.sites]]
+        index = 1
+        position = [0.0, 0.0]
+        sublattice = "A"
+        x = 0
+        y = 0
+        [[runs.longitudinal_zero_control.configuration.sites]]
+        index = 2
+        position = [0.5, 0.0]
+        sublattice = "B"
+        x = 0
+        y = 0
+        [[runs.longitudinal_zero_control.configuration.sites]]
+        index = 3
+        position = [0.25, 0.4330127018922193]
+        sublattice = "C"
+        x = 0
+        y = 0
+        [[runs.longitudinal_zero_control.configuration.sites]]
+        index = 4
+        position = [0.5, 0.8660254037844386]
+        sublattice = "A"
+        x = 0
+        y = 1
+        [[runs.longitudinal_zero_control.configuration.sites]]
+        index = 5
+        position = [1.0, 0.8660254037844386]
+        sublattice = "B"
+        x = 0
+        y = 1
+        [[runs.longitudinal_zero_control.configuration.sites]]
+        index = 6
+        position = [0.75, 1.299038105676658]
+        sublattice = "C"
+        x = 0
+        y = 1
+        [[runs.longitudinal_zero_control.configuration.sites]]
+        index = 7
+        position = [1.0, 1.7320508075688772]
+        sublattice = "A"
+        x = 0
+        y = 2
+        [[runs.longitudinal_zero_control.configuration.sites]]
+        index = 8
+        position = [1.5, 1.7320508075688772]
+        sublattice = "B"
+        x = 0
+        y = 2
+        [[runs.longitudinal_zero_control.configuration.sites]]
+        index = 9
+        position = [1.25, 2.1650635094610964]
+        sublattice = "C"
+        x = 0
+        y = 2
+        [[runs.longitudinal_zero_control.configuration.sites]]
+        index = 10
+        position = [1.0, 0.0]
+        sublattice = "A"
+        x = 1
+        y = 0
+        [[runs.longitudinal_zero_control.configuration.sites]]
+        index = 11
+        position = [1.5, 0.0]
+        sublattice = "B"
+        x = 1
+        y = 0
+        [[runs.longitudinal_zero_control.configuration.sites]]
+        index = 12
+        position = [1.25, 0.4330127018922193]
+        sublattice = "C"
+        x = 1
+        y = 0
+        [[runs.longitudinal_zero_control.configuration.sites]]
+        index = 13
+        position = [1.5, 0.8660254037844386]
+        sublattice = "A"
+        x = 1
+        y = 1
+        [[runs.longitudinal_zero_control.configuration.sites]]
+        index = 14
+        position = [2.0, 0.8660254037844386]
+        sublattice = "B"
+        x = 1
+        y = 1
+        [[runs.longitudinal_zero_control.configuration.sites]]
+        index = 15
+        position = [1.75, 1.299038105676658]
+        sublattice = "C"
+        x = 1
+        y = 1
+        [[runs.longitudinal_zero_control.configuration.sites]]
+        index = 16
+        position = [2.0, 1.7320508075688772]
+        sublattice = "A"
+        x = 1
+        y = 2
+        [[runs.longitudinal_zero_control.configuration.sites]]
+        index = 17
+        position = [2.5, 1.7320508075688772]
+        sublattice = "B"
+        x = 1
+        y = 2
+        [[runs.longitudinal_zero_control.configuration.sites]]
+        index = 18
+        position = [2.25, 2.1650635094610964]
+        sublattice = "C"
+        x = 1
+        y = 2
+        [[runs.longitudinal_zero_control.configuration.sites]]
+        index = 19
+        position = [2.0, 0.0]
+        sublattice = "A"
+        x = 2
+        y = 0
+        [[runs.longitudinal_zero_control.configuration.sites]]
+        index = 20
+        position = [2.5, 0.0]
+        sublattice = "B"
+        x = 2
+        y = 0
+        [[runs.longitudinal_zero_control.configuration.sites]]
+        index = 21
+        position = [2.25, 0.4330127018922193]
+        sublattice = "C"
+        x = 2
+        y = 0
+        [[runs.longitudinal_zero_control.configuration.sites]]
+        index = 22
+        position = [2.5, 0.8660254037844386]
+        sublattice = "A"
+        x = 2
+        y = 1
+        [[runs.longitudinal_zero_control.configuration.sites]]
+        index = 23
+        position = [3.0, 0.8660254037844386]
+        sublattice = "B"
+        x = 2
+        y = 1
+        [[runs.longitudinal_zero_control.configuration.sites]]
+        index = 24
+        position = [2.75, 1.299038105676658]
+        sublattice = "C"
+        x = 2
+        y = 1
+        [[runs.longitudinal_zero_control.configuration.sites]]
+        index = 25
+        position = [3.0, 1.7320508075688772]
+        sublattice = "A"
+        x = 2
+        y = 2
+        [[runs.longitudinal_zero_control.configuration.sites]]
+        index = 26
+        position = [3.5, 1.7320508075688772]
+        sublattice = "B"
+        x = 2
+        y = 2
+        [[runs.longitudinal_zero_control.configuration.sites]]
+        index = 27
+        position = [3.25, 2.1650635094610964]
+        sublattice = "C"
+        x = 2
+        y = 2
+
+    [runs.longitudinal_zero_control.first_leg]
+    axial_cut_coverage = true
+    bulk_sites = [10, 11, 12, 13, 14, 15, 16, 17, 18]
+    cuts = [1, 2]
+    diagnostic_bonds = [9, 18]
+    initial_step = 6.283185307179586
+    journal = "trajectory-o3kSzr/trajectory.toml"
+    min_step = 0.09817477042468103
+    reason = "targets_reached"
+    status = "completed"
+    theta_path = [0.0, 6.283185307179586]
+
+        [runs.longitudinal_zero_control.first_leg.configuration]
+        Lx = 3
+        Ly = 3
+        N = 27
+        Q = 3
+        axis_boundary = "open"
+        charge_convention = "q=2Sz"
+        circumference_boundary = "periodic"
+        exchange_phase = "S+_i_S-_j_has_exp(+im*bond_phase)"
+        gauge = "seam"
+        hz = [1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, -1.0, -1.0, -1.0, -1.0, -1.0, -1.0, -1.0, -1.0, -1.0, -1.0, -1.0, -1.0]
+        ordering = "x_then_y_then_A_B_C"
+        termination = "complete_cells_with_outgoing_open_axis_bonds_removed"
+        wrap = [1.5, 2.598076211353316]
+
+            [[runs.longitudinal_zero_control.first_leg.configuration.bonds]]
+            Jxy = 0.0
+            Jz = 0.0
+            i = 1
+            j = 2
+            wy = 0
+            [[runs.longitudinal_zero_control.first_leg.configuration.bonds]]
+            Jxy = 0.0
+            Jz = 0.0
+            i = 1
+            j = 3
+            wy = 0
+            [[runs.longitudinal_zero_control.first_leg.configuration.bonds]]
+            Jxy = 0.0
+            Jz = 0.0
+            i = 2
+            j = 3
+            wy = 0
+            [[runs.longitudinal_zero_control.first_leg.configuration.bonds]]
+            Jxy = 0.0
+            Jz = 0.0
+            i = 1
+            j = 9
+            wy = -1
+            [[runs.longitudinal_zero_control.first_leg.configuration.bonds]]
+            Jxy = 0.0
+            Jz = 0.0
+            i = 2
+            j = 18
+            wy = -1
+            [[runs.longitudinal_zero_control.first_leg.configuration.bonds]]
+            Jxy = 0.0
+            Jz = 0.0
+            i = 4
+            j = 5
+            wy = 0
+            [[runs.longitudinal_zero_control.first_leg.configuration.bonds]]
+            Jxy = 0.0
+            Jz = 0.0
+            i = 4
+            j = 6
+            wy = 0
+            [[runs.longitudinal_zero_control.first_leg.configuration.bonds]]
+            Jxy = 0.0
+            Jz = 0.0
+            i = 5
+            j = 6
+            wy = 0
+            [[runs.longitudinal_zero_control.first_leg.configuration.bonds]]
+            Jxy = 0.0
+            Jz = 0.0
+            i = 4
+            j = 3
+            wy = 0
+            [[runs.longitudinal_zero_control.first_leg.configuration.bonds]]
+            Jxy = 0.0
+            Jz = 0.0
+            i = 5
+            j = 12
+            wy = 0
+            [[runs.longitudinal_zero_control.first_leg.configuration.bonds]]
+            Jxy = 0.0
+            Jz = 0.0
+            i = 7
+            j = 8
+            wy = 0
+            [[runs.longitudinal_zero_control.first_leg.configuration.bonds]]
+            Jxy = 0.0
+            Jz = 0.0
+            i = 7
+            j = 9
+            wy = 0
+            [[runs.longitudinal_zero_control.first_leg.configuration.bonds]]
+            Jxy = 0.0
+            Jz = 0.0
+            i = 8
+            j = 9
+            wy = 0
+            [[runs.longitudinal_zero_control.first_leg.configuration.bonds]]
+            Jxy = 0.0
+            Jz = 0.0
+            i = 7
+            j = 6
+            wy = 0
+            [[runs.longitudinal_zero_control.first_leg.configuration.bonds]]
+            Jxy = 0.0
+            Jz = 0.0
+            i = 8
+            j = 15
+            wy = 0
+            [[runs.longitudinal_zero_control.first_leg.configuration.bonds]]
+            Jxy = 0.0
+            Jz = 0.0
+            i = 10
+            j = 11
+            wy = 0
+            [[runs.longitudinal_zero_control.first_leg.configuration.bonds]]
+            Jxy = 0.0
+            Jz = 0.0
+            i = 10
+            j = 12
+            wy = 0
+            [[runs.longitudinal_zero_control.first_leg.configuration.bonds]]
+            Jxy = 0.0
+            Jz = 0.0
+            i = 11
+            j = 12
+            wy = 0
+            [[runs.longitudinal_zero_control.first_leg.configuration.bonds]]
+            Jxy = 0.0
+            Jz = 0.0
+            i = 10
+            j = 2
+            wy = 0
+            [[runs.longitudinal_zero_control.first_leg.configuration.bonds]]
+            Jxy = 0.0
+            Jz = 0.0
+            i = 10
+            j = 18
+            wy = -1
+            [[runs.longitudinal_zero_control.first_leg.configuration.bonds]]
+            Jxy = 0.0
+            Jz = 0.0
+            i = 11
+            j = 27
+            wy = -1
+            [[runs.longitudinal_zero_control.first_leg.configuration.bonds]]
+            Jxy = 0.0
+            Jz = 0.0
+            i = 13
+            j = 14
+            wy = 0
+            [[runs.longitudinal_zero_control.first_leg.configuration.bonds]]
+            Jxy = 0.0
+            Jz = 0.0
+            i = 13
+            j = 15
+            wy = 0
+            [[runs.longitudinal_zero_control.first_leg.configuration.bonds]]
+            Jxy = 0.0
+            Jz = 0.0
+            i = 14
+            j = 15
+            wy = 0
+            [[runs.longitudinal_zero_control.first_leg.configuration.bonds]]
+            Jxy = 0.0
+            Jz = 0.0
+            i = 13
+            j = 5
+            wy = 0
+            [[runs.longitudinal_zero_control.first_leg.configuration.bonds]]
+            Jxy = 0.0
+            Jz = 0.0
+            i = 13
+            j = 12
+            wy = 0
+            [[runs.longitudinal_zero_control.first_leg.configuration.bonds]]
+            Jxy = 0.0
+            Jz = 0.0
+            i = 14
+            j = 21
+            wy = 0
+            [[runs.longitudinal_zero_control.first_leg.configuration.bonds]]
+            Jxy = 0.0
+            Jz = 0.0
+            i = 16
+            j = 17
+            wy = 0
+            [[runs.longitudinal_zero_control.first_leg.configuration.bonds]]
+            Jxy = 0.0
+            Jz = 0.0
+            i = 16
+            j = 18
+            wy = 0
+            [[runs.longitudinal_zero_control.first_leg.configuration.bonds]]
+            Jxy = 0.0
+            Jz = 0.0
+            i = 17
+            j = 18
+            wy = 0
+            [[runs.longitudinal_zero_control.first_leg.configuration.bonds]]
+            Jxy = 0.0
+            Jz = 0.0
+            i = 16
+            j = 8
+            wy = 0
+            [[runs.longitudinal_zero_control.first_leg.configuration.bonds]]
+            Jxy = 0.0
+            Jz = 0.0
+            i = 16
+            j = 15
+            wy = 0
+            [[runs.longitudinal_zero_control.first_leg.configuration.bonds]]
+            Jxy = 0.0
+            Jz = 0.0
+            i = 17
+            j = 24
+            wy = 0
+            [[runs.longitudinal_zero_control.first_leg.configuration.bonds]]
+            Jxy = 0.0
+            Jz = 0.0
+            i = 19
+            j = 20
+            wy = 0
+            [[runs.longitudinal_zero_control.first_leg.configuration.bonds]]
+            Jxy = 0.0
+            Jz = 0.0
+            i = 19
+            j = 21
+            wy = 0
+            [[runs.longitudinal_zero_control.first_leg.configuration.bonds]]
+            Jxy = 0.0
+            Jz = 0.0
+            i = 20
+            j = 21
+            wy = 0
+            [[runs.longitudinal_zero_control.first_leg.configuration.bonds]]
+            Jxy = 0.0
+            Jz = 0.0
+            i = 19
+            j = 11
+            wy = 0
+            [[runs.longitudinal_zero_control.first_leg.configuration.bonds]]
+            Jxy = 0.0
+            Jz = 0.0
+            i = 19
+            j = 27
+            wy = -1
+            [[runs.longitudinal_zero_control.first_leg.configuration.bonds]]
+            Jxy = 0.0
+            Jz = 0.0
+            i = 22
+            j = 23
+            wy = 0
+            [[runs.longitudinal_zero_control.first_leg.configuration.bonds]]
+            Jxy = 0.0
+            Jz = 0.0
+            i = 22
+            j = 24
+            wy = 0
+            [[runs.longitudinal_zero_control.first_leg.configuration.bonds]]
+            Jxy = 0.0
+            Jz = 0.0
+            i = 23
+            j = 24
+            wy = 0
+            [[runs.longitudinal_zero_control.first_leg.configuration.bonds]]
+            Jxy = 0.0
+            Jz = 0.0
+            i = 22
+            j = 14
+            wy = 0
+            [[runs.longitudinal_zero_control.first_leg.configuration.bonds]]
+            Jxy = 0.0
+            Jz = 0.0
+            i = 22
+            j = 21
+            wy = 0
+            [[runs.longitudinal_zero_control.first_leg.configuration.bonds]]
+            Jxy = 0.0
+            Jz = 0.0
+            i = 25
+            j = 26
+            wy = 0
+            [[runs.longitudinal_zero_control.first_leg.configuration.bonds]]
+            Jxy = 0.0
+            Jz = 0.0
+            i = 25
+            j = 27
+            wy = 0
+            [[runs.longitudinal_zero_control.first_leg.configuration.bonds]]
+            Jxy = 0.0
+            Jz = 0.0
+            i = 26
+            j = 27
+            wy = 0
+            [[runs.longitudinal_zero_control.first_leg.configuration.bonds]]
+            Jxy = 0.0
+            Jz = 0.0
+            i = 25
+            j = 17
+            wy = 0
+            [[runs.longitudinal_zero_control.first_leg.configuration.bonds]]
+            Jxy = 0.0
+            Jz = 0.0
+            i = 25
+            j = 24
+            wy = 0
+
+            [[runs.longitudinal_zero_control.first_leg.configuration.sites]]
+            index = 1
+            position = [0.0, 0.0]
+            sublattice = "A"
+            x = 0
+            y = 0
+            [[runs.longitudinal_zero_control.first_leg.configuration.sites]]
+            index = 2
+            position = [0.5, 0.0]
+            sublattice = "B"
+            x = 0
+            y = 0
+            [[runs.longitudinal_zero_control.first_leg.configuration.sites]]
+            index = 3
+            position = [0.25, 0.4330127018922193]
+            sublattice = "C"
+            x = 0
+            y = 0
+            [[runs.longitudinal_zero_control.first_leg.configuration.sites]]
+            index = 4
+            position = [0.5, 0.8660254037844386]
+            sublattice = "A"
+            x = 0
+            y = 1
+            [[runs.longitudinal_zero_control.first_leg.configuration.sites]]
+            index = 5
+            position = [1.0, 0.8660254037844386]
+            sublattice = "B"
+            x = 0
+            y = 1
+            [[runs.longitudinal_zero_control.first_leg.configuration.sites]]
+            index = 6
+            position = [0.75, 1.299038105676658]
+            sublattice = "C"
+            x = 0
+            y = 1
+            [[runs.longitudinal_zero_control.first_leg.configuration.sites]]
+            index = 7
+            position = [1.0, 1.7320508075688772]
+            sublattice = "A"
+            x = 0
+            y = 2
+            [[runs.longitudinal_zero_control.first_leg.configuration.sites]]
+            index = 8
+            position = [1.5, 1.7320508075688772]
+            sublattice = "B"
+            x = 0
+            y = 2
+            [[runs.longitudinal_zero_control.first_leg.configuration.sites]]
+            index = 9
+            position = [1.25, 2.1650635094610964]
+            sublattice = "C"
+            x = 0
+            y = 2
+            [[runs.longitudinal_zero_control.first_leg.configuration.sites]]
+            index = 10
+            position = [1.0, 0.0]
+            sublattice = "A"
+            x = 1
+            y = 0
+            [[runs.longitudinal_zero_control.first_leg.configuration.sites]]
+            index = 11
+            position = [1.5, 0.0]
+            sublattice = "B"
+            x = 1
+            y = 0
+            [[runs.longitudinal_zero_control.first_leg.configuration.sites]]
+            index = 12
+            position = [1.25, 0.4330127018922193]
+            sublattice = "C"
+            x = 1
+            y = 0
+            [[runs.longitudinal_zero_control.first_leg.configuration.sites]]
+            index = 13
+            position = [1.5, 0.8660254037844386]
+            sublattice = "A"
+            x = 1
+            y = 1
+            [[runs.longitudinal_zero_control.first_leg.configuration.sites]]
+            index = 14
+            position = [2.0, 0.8660254037844386]
+            sublattice = "B"
+            x = 1
+            y = 1
+            [[runs.longitudinal_zero_control.first_leg.configuration.sites]]
+            index = 15
+            position = [1.75, 1.299038105676658]
+            sublattice = "C"
+            x = 1
+            y = 1
+            [[runs.longitudinal_zero_control.first_leg.configuration.sites]]
+            index = 16
+            position = [2.0, 1.7320508075688772]
+            sublattice = "A"
+            x = 1
+            y = 2
+            [[runs.longitudinal_zero_control.first_leg.configuration.sites]]
+            index = 17
+            position = [2.5, 1.7320508075688772]
+            sublattice = "B"
+            x = 1
+            y = 2
+            [[runs.longitudinal_zero_control.first_leg.configuration.sites]]
+            index = 18
+            position = [2.25, 2.1650635094610964]
+            sublattice = "C"
+            x = 1
+            y = 2
+            [[runs.longitudinal_zero_control.first_leg.configuration.sites]]
+            index = 19
+            position = [2.0, 0.0]
+            sublattice = "A"
+            x = 2
+            y = 0
+            [[runs.longitudinal_zero_control.first_leg.configuration.sites]]
+            index = 20
+            position = [2.5, 0.0]
+            sublattice = "B"
+            x = 2
+            y = 0
+            [[runs.longitudinal_zero_control.first_leg.configuration.sites]]
+            index = 21
+            position = [2.25, 0.4330127018922193]
+            sublattice = "C"
+            x = 2
+            y = 0
+            [[runs.longitudinal_zero_control.first_leg.configuration.sites]]
+            index = 22
+            position = [2.5, 0.8660254037844386]
+            sublattice = "A"
+            x = 2
+            y = 1
+            [[runs.longitudinal_zero_control.first_leg.configuration.sites]]
+            index = 23
+            position = [3.0, 0.8660254037844386]
+            sublattice = "B"
+            x = 2
+            y = 1
+            [[runs.longitudinal_zero_control.first_leg.configuration.sites]]
+            index = 24
+            position = [2.75, 1.299038105676658]
+            sublattice = "C"
+            x = 2
+            y = 1
+            [[runs.longitudinal_zero_control.first_leg.configuration.sites]]
+            index = 25
+            position = [3.0, 1.7320508075688772]
+            sublattice = "A"
+            x = 2
+            y = 2
+            [[runs.longitudinal_zero_control.first_leg.configuration.sites]]
+            index = 26
+            position = [3.5, 1.7320508075688772]
+            sublattice = "B"
+            x = 2
+            y = 2
+            [[runs.longitudinal_zero_control.first_leg.configuration.sites]]
+            index = 27
+            position = [3.25, 2.1650635094610964]
+            sublattice = "C"
+            x = 2
+            y = 2
+
+        [runs.longitudinal_zero_control.first_leg.initial_diagnostics]
+        cut_spread = 0.0
+        energy = -13.5
+        final_truncation_error = 0.0
+        max_charge_error = 0.0
+        max_density_change = 0.0
+        max_entropy_change = 0.0
+        max_schmidt_change = 0.0
+        max_schmidt_consistency_error = 0.0
+        measured_truncation_errors = [0.0, 0.0]
+        negative_variance_tolerance = 4.0467629247586956e-12
+        overlap = 1.0
+        sweep_energies = [-13.5, -13.5]
+        sweep_energy_change = 0.0
+        sz_profile = [0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, -0.5, -0.5, -0.5, -0.5, -0.5, -0.5, -0.5, -0.5, -0.5, -0.5, -0.5, -0.5]
+        variance = 0.0
+
+            [[runs.longitudinal_zero_control.first_leg.initial_diagnostics.schmidt]]
+            bond = 9
+            entropy = -0.0
+            left_q = [9]
+            mean_left_sz = 4.5
+            probabilities = [1.0]
+            variance_left_sz = 0.0
+            [[runs.longitudinal_zero_control.first_leg.initial_diagnostics.schmidt]]
+            bond = 18
+            entropy = -0.0
+            left_q = [12]
+            mean_left_sz = 6.0
+            probabilities = [1.0]
+            variance_left_sz = 0.0
+
+            [[runs.longitudinal_zero_control.first_leg.initial_diagnostics.transfers]]
+            cut = 1
+            left = 0.0
+            right = 0.0
+            schmidt_left = 0.0
+            schmidt_right = -0.0
+            total = 0.0
+            [[runs.longitudinal_zero_control.first_leg.initial_diagnostics.transfers]]
+            cut = 2
+            left = 0.0
+            right = 0.0
+            schmidt_left = 0.0
+            schmidt_right = -0.0
+            total = 0.0
+
+        [runs.longitudinal_zero_control.first_leg.policy]
+        consistency_tol = 1.0e-9
+        max_cut_spread = 1.0e-9
+        max_density_change = 1.0e-10
+        max_entropy_change = 1.0e-10
+        max_schmidt_change = 1.0e-10
+        max_sweep_energy_change = 1.0e-9
+        max_truncation_error = 1.0e-10
+        max_variance = 1.0e-9
+        min_overlap = 0.9999999999
+
+        [runs.longitudinal_zero_control.first_leg.solver]
+        cutoff = 0.0
+        eigsolve_krylovdim = 20
+        eigsolve_maxiter = 10
+        eigsolve_tol = 1.0e-12
+        initial_linkdim = 4
+        initialization = "provided_mps"
+        maxdim = [2]
+        measure_variance = true
+        noise = 0.0
+        nsweeps = 2
+        seed = 0
+
+        [[runs.longitudinal_zero_control.first_leg.trials]]
+        from_theta = 0.0
+        reasons = []
+        status = "accepted"
+        step = 6.283185307179586
+        theta = 6.283185307179586
+
+            [runs.longitudinal_zero_control.first_leg.trials.diagnostics]
+            cut_spread = 0.0
+            energy = -13.5
+            final_truncation_error = 0.0
+            max_charge_error = 0.0
+            max_density_change = 0.0
+            max_entropy_change = 0.0
+            max_schmidt_change = 0.0
+            max_schmidt_consistency_error = 0.0
+            measured_truncation_errors = [0.0, 0.0]
+            negative_variance_tolerance = 4.0467629247586956e-12
+            overlap = 1.0
+            sweep_energies = [-13.5, -13.5]
+            sweep_energy_change = 0.0
+            sz_profile = [0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, -0.5, -0.5, -0.5, -0.5, -0.5, -0.5, -0.5, -0.5, -0.5, -0.5, -0.5, -0.5]
+            variance = 0.0
+
+                [[runs.longitudinal_zero_control.first_leg.trials.diagnostics.schmidt]]
+                bond = 9
+                entropy = -0.0
+                left_q = [9]
+                mean_left_sz = 4.5
+                probabilities = [1.0]
+                variance_left_sz = 0.0
+                [[runs.longitudinal_zero_control.first_leg.trials.diagnostics.schmidt]]
+                bond = 18
+                entropy = -0.0
+                left_q = [12]
+                mean_left_sz = 6.0
+                probabilities = [1.0]
+                variance_left_sz = 0.0
+
+                [[runs.longitudinal_zero_control.first_leg.trials.diagnostics.transfers]]
+                cut = 1
+                left = 0.0
+                right = 0.0
+                schmidt_left = 0.0
+                schmidt_right = -0.0
+                total = 0.0
+                [[runs.longitudinal_zero_control.first_leg.trials.diagnostics.transfers]]
+                cut = 2
+                left = 0.0
+                right = 0.0
+                schmidt_left = 0.0
+                schmidt_right = -0.0
+                total = 0.0
+
+    [runs.longitudinal_zero_control.initial_diagnostics]
+    cut_spread = 0.0
+    energy = -13.5
+    final_truncation_error = 0.0
+    max_charge_error = 0.0
+    max_density_change = 0.0
+    max_entropy_change = 0.0
+    max_schmidt_change = 0.0
+    max_schmidt_consistency_error = 0.0
+    measured_truncation_errors = [0.0, 0.0]
+    negative_variance_tolerance = 4.0467629247586956e-12
+    overlap = 1.0
+    sweep_energies = [-13.5, -13.5]
+    sweep_energy_change = 0.0
+    sz_profile = [0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, -0.5, -0.5, -0.5, -0.5, -0.5, -0.5, -0.5, -0.5, -0.5, -0.5, -0.5, -0.5]
+    variance = 0.0
+
+        [[runs.longitudinal_zero_control.initial_diagnostics.schmidt]]
+        bond = 9
+        entropy = -0.0
+        left_q = [9]
+        mean_left_sz = 4.5
+        probabilities = [1.0]
+        variance_left_sz = 0.0
+        [[runs.longitudinal_zero_control.initial_diagnostics.schmidt]]
+        bond = 18
+        entropy = -0.0
+        left_q = [12]
+        mean_left_sz = 6.0
+        probabilities = [1.0]
+        variance_left_sz = 0.0
+
+        [[runs.longitudinal_zero_control.initial_diagnostics.transfers]]
+        cut = 1
+        left = 0.0
+        right = 0.0
+        schmidt_left = 0.0
+        schmidt_right = -0.0
+        total = 0.0
+        [[runs.longitudinal_zero_control.initial_diagnostics.transfers]]
+        cut = 2
+        left = 0.0
+        right = 0.0
+        schmidt_left = 0.0
+        schmidt_right = -0.0
+        total = 0.0
+
+    [runs.longitudinal_zero_control.policy]
+    consistency_tol = 1.0e-9
+    max_cut_spread = 1.0e-9
+    max_density_change = 1.0e-10
+    max_entropy_change = 1.0e-10
+    max_schmidt_change = 1.0e-10
+    max_sweep_energy_change = 1.0e-9
+    max_truncation_error = 1.0e-10
+    max_variance = 1.0e-9
+    min_overlap = 0.9999999999
+
+    [runs.longitudinal_zero_control.solver]
+    cutoff = 0.0
+    eigsolve_krylovdim = 20
+    eigsolve_maxiter = 10
+    eigsolve_tol = 1.0e-12
+    initial_linkdim = 4
+    initialization = "provided_mps"
+    maxdim = [2]
+    measure_variance = true
+    noise = 0.0
+    nsweeps = 2
+    seed = 0
+
+    [[runs.longitudinal_zero_control.trials]]
+    from_theta = 6.283185307179586
+    reasons = []
+    status = "accepted"
+    step = 6.283185307179586
+    theta = 12.566370614359172
+
+        [runs.longitudinal_zero_control.trials.diagnostics]
+        cut_spread = 0.0
+        energy = -13.5
+        final_truncation_error = 0.0
+        max_charge_error = 0.0
+        max_density_change = 0.0
+        max_entropy_change = 0.0
+        max_schmidt_change = 0.0
+        max_schmidt_consistency_error = 0.0
+        measured_truncation_errors = [0.0, 0.0]
+        negative_variance_tolerance = 4.0467629247586956e-12
+        overlap = 1.0
+        sweep_energies = [-13.5, -13.5]
+        sweep_energy_change = 0.0
+        sz_profile = [0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, -0.5, -0.5, -0.5, -0.5, -0.5, -0.5, -0.5, -0.5, -0.5, -0.5, -0.5, -0.5]
+        variance = 0.0
+
+            [[runs.longitudinal_zero_control.trials.diagnostics.schmidt]]
+            bond = 9
+            entropy = -0.0
+            left_q = [9]
+            mean_left_sz = 4.5
+            probabilities = [1.0]
+            variance_left_sz = 0.0
+            [[runs.longitudinal_zero_control.trials.diagnostics.schmidt]]
+            bond = 18
+            entropy = -0.0
+            left_q = [12]
+            mean_left_sz = 6.0
+            probabilities = [1.0]
+            variance_left_sz = 0.0
+
+            [[runs.longitudinal_zero_control.trials.diagnostics.transfers]]
+            cut = 1
+            left = 0.0
+            right = 0.0
+            schmidt_left = 0.0
+            schmidt_right = -0.0
+            total = 0.0
+            [[runs.longitudinal_zero_control.trials.diagnostics.transfers]]
+            cut = 2
+            left = 0.0
+            right = 0.0
+            schmidt_left = 0.0
+            schmidt_right = -0.0
+            total = 0.0
+    [[runs.longitudinal_zero_control.trials]]
+    from_theta = 12.566370614359172
+    reasons = []
+    status = "accepted"
+    step = 6.283185307179586
+    theta = 18.84955592153876
+
+        [runs.longitudinal_zero_control.trials.diagnostics]
+        cut_spread = 0.0
+        energy = -13.5
+        final_truncation_error = 0.0
+        max_charge_error = 0.0
+        max_density_change = 0.0
+        max_entropy_change = 0.0
+        max_schmidt_change = 0.0
+        max_schmidt_consistency_error = 0.0
+        measured_truncation_errors = [0.0, 0.0]
+        negative_variance_tolerance = 4.0467629247586956e-12
+        overlap = 1.0
+        sweep_energies = [-13.5, -13.5]
+        sweep_energy_change = 0.0
+        sz_profile = [0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, -0.5, -0.5, -0.5, -0.5, -0.5, -0.5, -0.5, -0.5, -0.5, -0.5, -0.5, -0.5]
+        variance = 0.0
+
+            [[runs.longitudinal_zero_control.trials.diagnostics.schmidt]]
+            bond = 9
+            entropy = -0.0
+            left_q = [9]
+            mean_left_sz = 4.5
+            probabilities = [1.0]
+            variance_left_sz = 0.0
+            [[runs.longitudinal_zero_control.trials.diagnostics.schmidt]]
+            bond = 18
+            entropy = -0.0
+            left_q = [12]
+            mean_left_sz = 6.0
+            probabilities = [1.0]
+            variance_left_sz = 0.0
+
+            [[runs.longitudinal_zero_control.trials.diagnostics.transfers]]
+            cut = 1
+            left = 0.0
+            right = 0.0
+            schmidt_left = 0.0
+            schmidt_right = -0.0
+            total = 0.0
+            [[runs.longitudinal_zero_control.trials.diagnostics.transfers]]
+            cut = 2
+            left = 0.0
+            right = 0.0
+            schmidt_left = 0.0
+            schmidt_right = -0.0
+            total = 0.0
+    [[runs.longitudinal_zero_control.trials]]
+    from_theta = 18.84955592153876
+    reasons = []
+    status = "accepted"
+    step = -6.283185307179586
+    theta = 12.566370614359172
+
+        [runs.longitudinal_zero_control.trials.diagnostics]
+        cut_spread = 0.0
+        energy = -13.5
+        final_truncation_error = 0.0
+        max_charge_error = 0.0
+        max_density_change = 0.0
+        max_entropy_change = 0.0
+        max_schmidt_change = 0.0
+        max_schmidt_consistency_error = 0.0
+        measured_truncation_errors = [0.0, 0.0]
+        negative_variance_tolerance = 4.0467629247586956e-12
+        overlap = 1.0
+        sweep_energies = [-13.5, -13.5]
+        sweep_energy_change = 0.0
+        sz_profile = [0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, -0.5, -0.5, -0.5, -0.5, -0.5, -0.5, -0.5, -0.5, -0.5, -0.5, -0.5, -0.5]
+        variance = 0.0
+
+            [[runs.longitudinal_zero_control.trials.diagnostics.schmidt]]
+            bond = 9
+            entropy = -0.0
+            left_q = [9]
+            mean_left_sz = 4.5
+            probabilities = [1.0]
+            variance_left_sz = 0.0
+            [[runs.longitudinal_zero_control.trials.diagnostics.schmidt]]
+            bond = 18
+            entropy = -0.0
+            left_q = [12]
+            mean_left_sz = 6.0
+            probabilities = [1.0]
+            variance_left_sz = 0.0
+
+            [[runs.longitudinal_zero_control.trials.diagnostics.transfers]]
+            cut = 1
+            left = 0.0
+            right = 0.0
+            schmidt_left = 0.0
+            schmidt_right = -0.0
+            total = 0.0
+            [[runs.longitudinal_zero_control.trials.diagnostics.transfers]]
+            cut = 2
+            left = 0.0
+            right = 0.0
+            schmidt_left = 0.0
+            schmidt_right = -0.0
+            total = 0.0
+    [[runs.longitudinal_zero_control.trials]]
+    from_theta = 12.566370614359172
+    reasons = []
+    status = "accepted"
+    step = -6.283185307179586
+    theta = 6.283185307179586
+
+        [runs.longitudinal_zero_control.trials.diagnostics]
+        cut_spread = 0.0
+        energy = -13.5
+        final_truncation_error = 0.0
+        max_charge_error = 0.0
+        max_density_change = 0.0
+        max_entropy_change = 0.0
+        max_schmidt_change = 0.0
+        max_schmidt_consistency_error = 0.0
+        measured_truncation_errors = [0.0, 0.0]
+        negative_variance_tolerance = 4.0467629247586956e-12
+        overlap = 1.0
+        sweep_energies = [-13.5, -13.5]
+        sweep_energy_change = 0.0
+        sz_profile = [0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, -0.5, -0.5, -0.5, -0.5, -0.5, -0.5, -0.5, -0.5, -0.5, -0.5, -0.5, -0.5]
+        variance = 0.0
+
+            [[runs.longitudinal_zero_control.trials.diagnostics.schmidt]]
+            bond = 9
+            entropy = -0.0
+            left_q = [9]
+            mean_left_sz = 4.5
+            probabilities = [1.0]
+            variance_left_sz = 0.0
+            [[runs.longitudinal_zero_control.trials.diagnostics.schmidt]]
+            bond = 18
+            entropy = -0.0
+            left_q = [12]
+            mean_left_sz = 6.0
+            probabilities = [1.0]
+            variance_left_sz = 0.0
+
+            [[runs.longitudinal_zero_control.trials.diagnostics.transfers]]
+            cut = 1
+            left = 0.0
+            right = 0.0
+            schmidt_left = 0.0
+            schmidt_right = -0.0
+            total = 0.0
+            [[runs.longitudinal_zero_control.trials.diagnostics.transfers]]
+            cut = 2
+            left = 0.0
+            right = 0.0
+            schmidt_left = 0.0
+            schmidt_right = -0.0
+            total = 0.0
+    [[runs.longitudinal_zero_control.trials]]
+    from_theta = 6.283185307179586
+    reasons = []
+    status = "accepted"
+    step = -6.283185307179586
+    theta = 0.0
+
+        [runs.longitudinal_zero_control.trials.diagnostics]
+        cut_spread = 0.0
+        energy = -13.5
+        final_truncation_error = 0.0
+        max_charge_error = 0.0
+        max_density_change = 0.0
+        max_entropy_change = 0.0
+        max_schmidt_change = 0.0
+        max_schmidt_consistency_error = 0.0
+        measured_truncation_errors = [0.0, 0.0]
+        negative_variance_tolerance = 4.0467629247586956e-12
+        overlap = 1.0
+        sweep_energies = [-13.5, -13.5]
+        sweep_energy_change = 0.0
+        sz_profile = [0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, -0.5, -0.5, -0.5, -0.5, -0.5, -0.5, -0.5, -0.5, -0.5, -0.5, -0.5, -0.5]
+        variance = 0.0
+
+            [[runs.longitudinal_zero_control.trials.diagnostics.schmidt]]
+            bond = 9
+            entropy = -0.0
+            left_q = [9]
+            mean_left_sz = 4.5
+            probabilities = [1.0]
+            variance_left_sz = 0.0
+            [[runs.longitudinal_zero_control.trials.diagnostics.schmidt]]
+            bond = 18
+            entropy = -0.0
+            left_q = [12]
+            mean_left_sz = 6.0
+            probabilities = [1.0]
+            variance_left_sz = 0.0
+
+            [[runs.longitudinal_zero_control.trials.diagnostics.transfers]]
+            cut = 1
+            left = 0.0
+            right = 0.0
+            schmidt_left = 0.0
+            schmidt_right = -0.0
+            total = 0.0
+            [[runs.longitudinal_zero_control.trials.diagnostics.transfers]]
+            cut = 2
+            left = 0.0
+            right = 0.0
+            schmidt_left = 0.0
+            schmidt_right = -0.0
+            total = 0.0
+
+[runs.nine_site_ed]
+axial_cut_coverage = false
+bulk_sites = [1, 2, 3, 4, 5, 6, 7, 8, 9]
+cuts = []
+diagnostic_bonds = [4]
+initial_step = 0.2
+interpretation = "Permissive overlap validates driver algebra and ED agreement only; no axial cut or adiabatic branch claim."
+journal = "trajectory-xAQQqo/trajectory.toml"
+min_step = 0.0125
+reason = "targets_reached"
+status = "completed"
+status_check = true
+theta_path = [0.0, 0.17, 0.37]
+
+    [runs.nine_site_ed.configuration]
+    Lx = 1
+    Ly = 3
+    N = 9
+    Q = 1
+    axis_boundary = "open"
+    charge_convention = "q=2Sz"
+    circumference_boundary = "periodic"
+    exchange_phase = "S+_i_S-_j_has_exp(+im*bond_phase)"
+    gauge = "seam"
+    hz = [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+    ordering = "x_then_y_then_A_B_C"
+    termination = "complete_cells_with_outgoing_open_axis_bonds_removed"
+    wrap = [1.5, 2.598076211353316]
+
+        [[runs.nine_site_ed.configuration.bonds]]
+        Jxy = 1.0
+        Jz = 1.0
+        i = 1
+        j = 2
+        wy = 0
+        [[runs.nine_site_ed.configuration.bonds]]
+        Jxy = 1.0
+        Jz = 1.0
+        i = 1
+        j = 3
+        wy = 0
+        [[runs.nine_site_ed.configuration.bonds]]
+        Jxy = 1.0
+        Jz = 1.0
+        i = 2
+        j = 3
+        wy = 0
+        [[runs.nine_site_ed.configuration.bonds]]
+        Jxy = 1.0
+        Jz = 1.0
+        i = 1
+        j = 9
+        wy = -1
+        [[runs.nine_site_ed.configuration.bonds]]
+        Jxy = 1.0
+        Jz = 1.0
+        i = 4
+        j = 5
+        wy = 0
+        [[runs.nine_site_ed.configuration.bonds]]
+        Jxy = 1.0
+        Jz = 1.0
+        i = 4
+        j = 6
+        wy = 0
+        [[runs.nine_site_ed.configuration.bonds]]
+        Jxy = 1.0
+        Jz = 1.0
+        i = 5
+        j = 6
+        wy = 0
+        [[runs.nine_site_ed.configuration.bonds]]
+        Jxy = 1.0
+        Jz = 1.0
+        i = 4
+        j = 3
+        wy = 0
+        [[runs.nine_site_ed.configuration.bonds]]
+        Jxy = 1.0
+        Jz = 1.0
+        i = 7
+        j = 8
+        wy = 0
+        [[runs.nine_site_ed.configuration.bonds]]
+        Jxy = 1.0
+        Jz = 1.0
+        i = 7
+        j = 9
+        wy = 0
+        [[runs.nine_site_ed.configuration.bonds]]
+        Jxy = 1.0
+        Jz = 1.0
+        i = 8
+        j = 9
+        wy = 0
+        [[runs.nine_site_ed.configuration.bonds]]
+        Jxy = 1.0
+        Jz = 1.0
+        i = 7
+        j = 6
+        wy = 0
+
+        [[runs.nine_site_ed.configuration.sites]]
+        index = 1
+        position = [0.0, 0.0]
+        sublattice = "A"
+        x = 0
+        y = 0
+        [[runs.nine_site_ed.configuration.sites]]
+        index = 2
+        position = [0.5, 0.0]
+        sublattice = "B"
+        x = 0
+        y = 0
+        [[runs.nine_site_ed.configuration.sites]]
+        index = 3
+        position = [0.25, 0.4330127018922193]
+        sublattice = "C"
+        x = 0
+        y = 0
+        [[runs.nine_site_ed.configuration.sites]]
+        index = 4
+        position = [0.5, 0.8660254037844386]
+        sublattice = "A"
+        x = 0
+        y = 1
+        [[runs.nine_site_ed.configuration.sites]]
+        index = 5
+        position = [1.0, 0.8660254037844386]
+        sublattice = "B"
+        x = 0
+        y = 1
+        [[runs.nine_site_ed.configuration.sites]]
+        index = 6
+        position = [0.75, 1.299038105676658]
+        sublattice = "C"
+        x = 0
+        y = 1
+        [[runs.nine_site_ed.configuration.sites]]
+        index = 7
+        position = [1.0, 1.7320508075688772]
+        sublattice = "A"
+        x = 0
+        y = 2
+        [[runs.nine_site_ed.configuration.sites]]
+        index = 8
+        position = [1.5, 1.7320508075688772]
+        sublattice = "B"
+        x = 0
+        y = 2
+        [[runs.nine_site_ed.configuration.sites]]
+        index = 9
+        position = [1.25, 2.1650635094610964]
+        sublattice = "C"
+        x = 0
+        y = 2
+
+    [[runs.nine_site_ed.ed_points]]
+    energy_error_per_site = 1.4802973661668753e-16
+    ground_degeneracy = 2
+    ground_space_leakage = 5.19379659917022e-14
+    max_sz_error = 7.244205235679146e-15
+    residual_norm = 1.05418494420677e-13
+    theta = 0.0
+    [[runs.nine_site_ed.ed_points]]
+    energy_error_per_site = 9.868649107779169e-17
+    ground_degeneracy = 1
+    ground_space_leakage = 3.613325794787198e-13
+    max_sz_error = 1.829647544582258e-13
+    residual_norm = 2.4191049962988365e-14
+    theta = 0.17
+    [[runs.nine_site_ed.ed_points]]
+    energy_error_per_site = 9.868649107779169e-17
+    ground_degeneracy = 1
+    ground_space_leakage = 1.1941628841298262e-14
+    max_sz_error = 4.829470157119431e-15
+    residual_norm = 1.716160489324048e-14
+    theta = 0.37
+
+    [runs.nine_site_ed.initial_diagnostics]
+    cut_spread = 0.0
+    energy = -3.5619675607265875
+    final_truncation_error = 0.0
+    max_charge_error = 1.1102230246251565e-16
+    max_density_change = 0.0
+    max_entropy_change = 0.0
+    max_schmidt_change = 0.0
+    max_schmidt_consistency_error = 1.5265566588595902e-16
+    measured_truncation_errors = [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+    negative_variance_tolerance = 2.817215994636805e-13
+    overlap = 1.0
+    sweep_energies = [-3.4966720546608143, -3.561967560726588, -3.5619675607265924, -3.5619675607265906, -3.5619675607265924, -3.5619675607265946, -3.561967560726594, -3.561967560726589]
+    sweep_energy_change = 5.329070518200751e-15
+    sz_profile = [0.15674145536974818, -0.1017971056724627, 0.08887646749603982, -0.0655140394608893, 0.14680962155302613, 0.08698679640617202, -0.03681074483507922, 0.3461541419718946, -0.12144659282844938]
+    transfers = []
+    variance = -1.0658141036401503e-14
+
+        [[runs.nine_site_ed.initial_diagnostics.schmidt]]
+        bond = 4
+        entropy = 1.2920247220568806
+        left_q = [0, 2, -2, 0, 0, 2, 0, -2, 2, -2, 0, 4, 2, 0, -4, -2]
+        mean_left_sz = 0.07830677773243584
+        probabilities = [0.5439318140561326, 0.19660505238210574, 0.12365379471500217, 0.10902582463292308, 0.011530381005895466, 0.006298015574944414, 0.0034544489708625173, 0.002182980831333554, 0.001066337892655445, 0.0007510380498049467, 0.000632809150378812, 0.00041718258230768345, 0.00023705184977668858, 0.00011928734294291075, 5.2250572586941866e-5, 4.173039034727559e-5]
+        variance_left_sz = 0.3265817828667117
+
+    [runs.nine_site_ed.policy]
+    consistency_tol = 1.0e-9
+    max_cut_spread = 1.0e-9
+    max_density_change = 1.0
+    max_entropy_change = 10.0
+    max_schmidt_change = 9.0
+    max_sweep_energy_change = 1.0e-9
+    max_truncation_error = 1.0e-10
+    max_variance = 1.0e-9
+    min_overlap = 0.0
+
+    [runs.nine_site_ed.solver]
+    cutoff = 1.0e-12
+    eigsolve_krylovdim = 20
+    eigsolve_maxiter = 10
+    eigsolve_tol = 1.0e-12
+    initial_linkdim = 4
+    initialization = "random_fixed_charge"
+    maxdim = [16, 32, 64]
+    measure_variance = true
+    noise = 0.0
+    nsweeps = 8
+    seed = 11
+
+    [[runs.nine_site_ed.trials]]
+    from_theta = 0.0
+    reasons = []
+    status = "accepted"
+    step = 0.17
+    theta = 0.17
+
+        [runs.nine_site_ed.trials.diagnostics]
+        cut_spread = 0.0
+        energy = -3.565507790016905
+        final_truncation_error = 0.0
+        max_charge_error = 7.216449660063518e-16
+        max_density_change = 0.22992202229648362
+        max_entropy_change = 0.009869267929225156
+        max_schmidt_change = 0.10763076395536429
+        max_schmidt_consistency_error = 3.608224830031759e-16
+        measured_truncation_errors = [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+        negative_variance_tolerance = 2.8228188232828876e-13
+        overlap = 0.7137589685421444
+        sweep_energies = [-3.5655077900169037, -3.5655077900169077, -3.565507790016909, -3.565507790016905, -3.5655077900169068, -3.565507790016907, -3.565507790016902, -3.5655077900169045]
+        sweep_energy_change = 2.6645352591003757e-15
+        sz_profile = [0.019270875021324713, 0.12812491662402092, 0.019270875021303424, 0.019270875021150706, 0.12812491662426778, 0.019270875021254623, 0.019270875021216306, 0.1281249166243304, 0.01927087502113034]
+        transfers = []
+        variance = 3.552713678800501e-15
+
+            [[runs.nine_site_ed.trials.diagnostics.schmidt]]
+            bond = 4
+            entropy = 1.2821554541276554
+            left_q = [0, 2, 0, -2, 2, 0, 0, 2, -2, 0, 4, -2, 2, 0, -2, -4]
+            mean_left_sz = 0.18593754168780013
+            probabilities = [0.5479449344896992, 0.23113389286544814, 0.1194070026337239, 0.06296408758704226, 0.016658319170636423, 0.010706342501173041, 0.004369388050147604, 0.0021033343245693632, 0.001983766525413426, 0.0011642492728372853, 0.0006183797517056479, 0.0004138159137096062, 0.00028612359608317566, 0.00015799645499759603, 5.751597944395547e-5, 3.085088336950086e-5]
+            variance_left_sz = 0.28362500909374455
+    [[runs.nine_site_ed.trials]]
+    from_theta = 0.17
+    reasons = []
+    status = "accepted"
+    step = 0.19999999999999998
+    theta = 0.37
+
+        [runs.nine_site_ed.trials.diagnostics]
+        cut_spread = 0.0
+        energy = -3.5692786747965766
+        final_truncation_error = 0.0
+        max_charge_error = 1.1102230246251565e-16
+        max_density_change = 0.0026720829067323204
+        max_entropy_change = 0.002631824173538355
+        max_schmidt_change = 0.00133604145340116
+        max_schmidt_consistency_error = 2.498001805406602e-16
+        measured_truncation_errors = [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+        negative_variance_tolerance = 2.82879281296058e-13
+        overlap = 0.9966777177157483
+        sweep_energies = [-3.5692786747965757, -3.5692786747965806, -3.5692786747965792, -3.569278674796574, -3.569278674796575, -3.5692786747965757, -3.569278674796578, -3.5692786747965752]
+        sweep_energy_change = 2.6645352591003757e-15
+        sz_profile = [0.02060691647453164, 0.12545283371760188, 0.02060691647453072, 0.020606916474536805, 0.12545283371759652, 0.020606916474531816, 0.020606916474536274, 0.12545283371759808, 0.020606916474536413]
+        transfers = []
+        variance = -3.552713678800501e-15
+
+            [[runs.nine_site_ed.trials.diagnostics.schmidt]]
+            bond = 4
+            entropy = 1.279523629954117
+            left_q = [0, 2, 0, -2, 2, 0, 0, 2, -2, 0, 4, -2, 2, 0, -2, -4]
+            mean_left_sz = 0.1872735831412013
+            probabilities = [0.5484069816465598, 0.23169877680012435, 0.11954835158095882, 0.06203007716169571, 0.01664938489734832, 0.01065677209079514, 0.004328987853870652, 0.002056627631898058, 0.001999060448142144, 0.0011337968530111527, 0.000575542036944816, 0.00040300354523294536, 0.0002702766206729085, 0.00015327381485100242, 5.774830812720665e-5, 3.133870976699544e-5]
+            variance_left_sz = 0.28252108345754445
+
+[runtime]
+ITensorMPS = "0.4.1"
+ITensors = "0.9.31"
+KrylovKit = "0.10.4"
+LinearAlgebra = "1.13.0"
+NDTensors = "0.4.31"
+SHA = "1.0.0"
+Serialization = "1.11.0"
+TOML = "1.0.3"
+arch = "aarch64"
+blas_threads = 1
+julia = "1.13.0"
+julia_threads = 1
+kernel = "Darwin"
+word_size = 64

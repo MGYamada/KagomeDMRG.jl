@@ -1,0 +1,422 @@
+blas_threads = 1
+julia_threads = 1
+julia_version = "1.13.0"
+
+[[dmrg_probes]]
+field = 0.375
+local_energy = -0.875
+maxdim = 1
+noise = 0.0
+norm = 1.0
+sites = 2
+
+    [[dmrg_probes.updates]]
+    actual_rank = 1
+    bond = 1
+    center_norm = 1.0
+    half_sweep = 1
+    reported_discarded_weight = 0.2
+    reported_rank = 1
+    sweep = 1
+    [[dmrg_probes.updates]]
+    actual_rank = 1
+    bond = 1
+    center_norm = 1.0
+    half_sweep = 2
+    reported_discarded_weight = 0.2
+    reported_rank = 1
+    sweep = 1
+    [[dmrg_probes.updates]]
+    actual_rank = 1
+    bond = 1
+    center_norm = 1.0
+    half_sweep = 1
+    reported_discarded_weight = 0.2
+    reported_rank = 1
+    sweep = 2
+    [[dmrg_probes.updates]]
+    actual_rank = 1
+    bond = 1
+    center_norm = 1.0
+    half_sweep = 2
+    reported_discarded_weight = 0.2
+    reported_rank = 1
+    sweep = 2
+[[dmrg_probes]]
+field = 0.0
+local_energy = -1.6160254037844353
+maxdim = 4
+noise = 0.0
+norm = 1.0
+sites = 4
+
+    [[dmrg_probes.updates]]
+    actual_rank = 2
+    bond = 1
+    center_norm = 1.0
+    half_sweep = 1
+    reported_discarded_weight = 0.0
+    reported_rank = 2
+    sweep = 1
+    [[dmrg_probes.updates]]
+    actual_rank = 2
+    bond = 2
+    center_norm = 1.0
+    half_sweep = 1
+    reported_discarded_weight = 0.0
+    reported_rank = 2
+    sweep = 1
+    [[dmrg_probes.updates]]
+    actual_rank = 2
+    bond = 3
+    center_norm = 1.0
+    half_sweep = 1
+    reported_discarded_weight = 0.0
+    reported_rank = 2
+    sweep = 1
+    [[dmrg_probes.updates]]
+    actual_rank = 2
+    bond = 3
+    center_norm = 1.0
+    half_sweep = 2
+    reported_discarded_weight = 0.0
+    reported_rank = 2
+    sweep = 1
+    [[dmrg_probes.updates]]
+    actual_rank = 4
+    bond = 2
+    center_norm = 1.0
+    half_sweep = 2
+    reported_discarded_weight = 0.0
+    reported_rank = 4
+    sweep = 1
+    [[dmrg_probes.updates]]
+    actual_rank = 2
+    bond = 1
+    center_norm = 1.0
+    half_sweep = 2
+    reported_discarded_weight = 0.0
+    reported_rank = 2
+    sweep = 1
+    [[dmrg_probes.updates]]
+    actual_rank = 2
+    bond = 1
+    center_norm = 1.0
+    half_sweep = 1
+    reported_discarded_weight = 0.0
+    reported_rank = 2
+    sweep = 2
+    [[dmrg_probes.updates]]
+    actual_rank = 4
+    bond = 2
+    center_norm = 1.0
+    half_sweep = 1
+    reported_discarded_weight = 0.0
+    reported_rank = 4
+    sweep = 2
+    [[dmrg_probes.updates]]
+    actual_rank = 2
+    bond = 3
+    center_norm = 1.0
+    half_sweep = 1
+    reported_discarded_weight = 0.0
+    reported_rank = 2
+    sweep = 2
+    [[dmrg_probes.updates]]
+    actual_rank = 2
+    bond = 3
+    center_norm = 1.0
+    half_sweep = 2
+    reported_discarded_weight = 0.0
+    reported_rank = 2
+    sweep = 2
+    [[dmrg_probes.updates]]
+    actual_rank = 4
+    bond = 2
+    center_norm = 1.0
+    half_sweep = 2
+    reported_discarded_weight = 0.0
+    reported_rank = 4
+    sweep = 2
+    [[dmrg_probes.updates]]
+    actual_rank = 2
+    bond = 1
+    center_norm = 1.0
+    half_sweep = 2
+    reported_discarded_weight = 0.0
+    reported_rank = 2
+    sweep = 2
+[[dmrg_probes]]
+field = 0.375
+local_energy = -0.875
+maxdim = 1
+noise = 1.0e-5
+norm = 1.0
+sites = 2
+
+    [[dmrg_probes.updates]]
+    actual_rank = 1
+    bond = 1
+    center_norm = 1.0
+    half_sweep = 1
+    reported_discarded_weight = 0.20000149997697303
+    reported_rank = 1
+    sweep = 1
+    [[dmrg_probes.updates]]
+    actual_rank = 1
+    bond = 1
+    center_norm = 1.0
+    half_sweep = 2
+    reported_discarded_weight = 0.2000059998628938
+    reported_rank = 1
+    sweep = 1
+    [[dmrg_probes.updates]]
+    actual_rank = 1
+    bond = 1
+    center_norm = 1.0
+    half_sweep = 1
+    reported_discarded_weight = 0.20000149997697303
+    reported_rank = 1
+    sweep = 2
+    [[dmrg_probes.updates]]
+    actual_rank = 1
+    bond = 1
+    center_norm = 1.0
+    half_sweep = 2
+    reported_discarded_weight = 0.2000059998628938
+    reported_rank = 1
+    sweep = 2
+[[dmrg_probes]]
+field = 0.0
+local_energy = -1.6160254037844384
+maxdim = 4
+noise = 1.0e-5
+norm = 0.9999999999999999
+sites = 4
+
+    [[dmrg_probes.updates]]
+    actual_rank = 2
+    bond = 1
+    center_norm = 1.0
+    half_sweep = 1
+    reported_discarded_weight = 0.0
+    reported_rank = 2
+    sweep = 1
+    [[dmrg_probes.updates]]
+    actual_rank = 4
+    bond = 2
+    center_norm = 1.0
+    half_sweep = 1
+    reported_discarded_weight = 0.0
+    reported_rank = 4
+    sweep = 1
+    [[dmrg_probes.updates]]
+    actual_rank = 4
+    bond = 3
+    center_norm = 1.0
+    half_sweep = 1
+    reported_discarded_weight = 3.5515059955950275e-7
+    reported_rank = 4
+    sweep = 1
+    [[dmrg_probes.updates]]
+    actual_rank = 2
+    bond = 3
+    center_norm = 1.0
+    half_sweep = 2
+    reported_discarded_weight = 0.0
+    reported_rank = 2
+    sweep = 1
+    [[dmrg_probes.updates]]
+    actual_rank = 4
+    bond = 2
+    center_norm = 1.0
+    half_sweep = 2
+    reported_discarded_weight = 0.0
+    reported_rank = 4
+    sweep = 1
+    [[dmrg_probes.updates]]
+    actual_rank = 4
+    bond = 1
+    center_norm = 1.0000000000000002
+    half_sweep = 2
+    reported_discarded_weight = 7.203986349523782e-7
+    reported_rank = 4
+    sweep = 1
+    [[dmrg_probes.updates]]
+    actual_rank = 2
+    bond = 1
+    center_norm = 1.0
+    half_sweep = 1
+    reported_discarded_weight = 0.0
+    reported_rank = 2
+    sweep = 2
+    [[dmrg_probes.updates]]
+    actual_rank = 4
+    bond = 2
+    center_norm = 1.0
+    half_sweep = 1
+    reported_discarded_weight = 0.0
+    reported_rank = 4
+    sweep = 2
+    [[dmrg_probes.updates]]
+    actual_rank = 4
+    bond = 3
+    center_norm = 0.9999999999999999
+    half_sweep = 1
+    reported_discarded_weight = 2.874254326113896e-7
+    reported_rank = 4
+    sweep = 2
+    [[dmrg_probes.updates]]
+    actual_rank = 2
+    bond = 3
+    center_norm = 1.0
+    half_sweep = 2
+    reported_discarded_weight = 0.0
+    reported_rank = 2
+    sweep = 2
+    [[dmrg_probes.updates]]
+    actual_rank = 4
+    bond = 2
+    center_norm = 1.0
+    half_sweep = 2
+    reported_discarded_weight = 0.0
+    reported_rank = 4
+    sweep = 2
+    [[dmrg_probes.updates]]
+    actual_rank = 4
+    bond = 1
+    center_norm = 0.9999999999999999
+    half_sweep = 2
+    reported_discarded_weight = 7.205148420463964e-7
+    reported_rank = 4
+    sweep = 2
+
+[[factorization_probes]]
+actual_discarded_weight = 1.0
+actual_rank = 0
+decomposition = "svd"
+maxdim = 1
+name = "empty_singlet"
+probabilities = [0.5, 0.5]
+reported_discarded_weight = 0.5
+reported_rank = 1
+retained_norm_squared = 0.0
+[[factorization_probes]]
+actual_discarded_weight = 0.39999999999999997
+actual_rank = 1
+decomposition = "svd"
+maxdim = 2
+name = "nonempty_exact_boundary"
+probabilities = [0.6, 0.2, 0.2]
+reported_discarded_weight = 0.19999999999999998
+reported_rank = 2
+retained_norm_squared = 0.6000000000000001
+[[factorization_probes]]
+actual_discarded_weight = 0.39999999999999986
+actual_rank = 1
+decomposition = "svd"
+maxdim = 2
+name = "nonempty_near_boundary"
+probabilities = [0.6, 0.2001, 0.1999]
+reported_discarded_weight = 0.1999
+reported_rank = 2
+retained_norm_squared = 0.6000000000000001
+[[factorization_probes]]
+actual_discarded_weight = 0.18999999999999997
+actual_rank = 2
+decomposition = "svd"
+maxdim = 2
+name = "resolved_boundary"
+probabilities = [0.6, 0.21, 0.19]
+reported_discarded_weight = 0.18999999999999997
+reported_rank = 2
+retained_norm_squared = 0.81
+[[factorization_probes]]
+actual_discarded_weight = 3.851859888774473e-33
+actual_rank = 3
+decomposition = "svd"
+maxdim = 3
+name = "untruncated_degeneracy"
+probabilities = [0.6, 0.2, 0.2]
+reported_discarded_weight = 0.0
+reported_rank = 3
+retained_norm_squared = 0.9999999999999998
+[[factorization_probes]]
+actual_discarded_weight = 0.20000000000000004
+actual_rank = 1
+decomposition = "svd"
+maxdim = 1
+name = "nondegenerate_field"
+probabilities = [0.8, 0.2]
+reported_discarded_weight = 0.20000000000000007
+reported_rank = 1
+retained_norm_squared = 0.7999999999999996
+[[factorization_probes]]
+actual_discarded_weight = 1.0
+actual_rank = 0
+decomposition = "eigen"
+maxdim = 1
+name = "empty_singlet"
+probabilities = [0.5, 0.5]
+reported_discarded_weight = 0.5
+reported_rank = 1
+retained_norm_squared = 0.0
+[[factorization_probes]]
+actual_discarded_weight = 0.39999999999999997
+actual_rank = 1
+decomposition = "eigen"
+maxdim = 2
+name = "nonempty_exact_boundary"
+probabilities = [0.6, 0.2, 0.2]
+reported_discarded_weight = 0.19999999999999998
+reported_rank = 2
+retained_norm_squared = 0.6000000000000001
+[[factorization_probes]]
+actual_discarded_weight = 0.39999999999999986
+actual_rank = 1
+decomposition = "eigen"
+maxdim = 2
+name = "nonempty_near_boundary"
+probabilities = [0.6, 0.2001, 0.1999]
+reported_discarded_weight = 0.19989999999999994
+reported_rank = 2
+retained_norm_squared = 0.6000000000000001
+[[factorization_probes]]
+actual_discarded_weight = 0.18999999999999997
+actual_rank = 2
+decomposition = "eigen"
+maxdim = 2
+name = "resolved_boundary"
+probabilities = [0.6, 0.21, 0.19]
+reported_discarded_weight = 0.18999999999999997
+reported_rank = 2
+retained_norm_squared = 0.81
+[[factorization_probes]]
+actual_discarded_weight = 0.0
+actual_rank = 3
+decomposition = "eigen"
+maxdim = 3
+name = "untruncated_degeneracy"
+probabilities = [0.6, 0.2, 0.2]
+reported_discarded_weight = 0.0
+reported_rank = 3
+retained_norm_squared = 0.9999999999999998
+[[factorization_probes]]
+actual_discarded_weight = 0.20000000000000004
+actual_rank = 1
+decomposition = "eigen"
+maxdim = 1
+name = "nondegenerate_field"
+probabilities = [0.8, 0.2]
+reported_discarded_weight = 0.20000000000000004
+reported_rank = 1
+retained_norm_squared = 0.7999999999999997
+
+[ndtensors_source_sha256]
+"src/blocksparse/linearalgebra.jl" = "6e8a9d2a3437d70b0f3cde6a8596d65612e265df4420c772234d13b949a011d9"
+"src/truncate.jl" = "29526042ddab5a0a99f185ff422654642c552bc654f7a871593022c3aff1ded3"
+
+[versions]
+ITensorMPS = "0.4.1"
+ITensors = "0.9.31"
+NDTensors = "0.4.31"

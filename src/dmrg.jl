@@ -36,6 +36,14 @@ function ITensorMPS.measure!(obs::_SweepDiagnostics; sweep, half_sweep, bond,
         "DMRG factorization produced a zero or nonfinite state at sweep $sweep, " *
         "half-sweep $half_sweep, bond $bond. Increase maxdim and check the " *
         "upstream QN truncation boundary before continuing.")
+    # Equal or nearly equal weights at a cross-sector cutoff may cause the
+    # backend to retain fewer states than its Spectrum reports. A nonzero
+    # norm alone does not detect that underreported discarded probability.
+    spectrum = eigs(spec)
+    spectrum !== nothing && length(spectrum) == dim(linkind(psi, bond)) || error(
+        "DMRG truncation spectrum does not match the retained bond dimension " *
+        "at sweep $sweep, half-sweep $half_sweep, bond $bond. Increase maxdim " *
+        "to retain the degenerate boundary before continuing.")
     while length(obs.max_truncation_errors) < sweep
         push!(obs.max_truncation_errors, 0.0)
     end
@@ -65,7 +73,9 @@ they must not be interpreted as exact discarded wavefunction probabilities.
 An empty or nonfinite state after factorization raises an error immediately.
 The tested upstream backend has a known failure when `maxdim` splits exactly
 degenerate Schmidt values across QN sectors; this guard detects total loss,
-but does not constitute general validation of every degenerate truncation.
+and mismatches between its reported spectrum and retained bond dimension are
+also rejected. These guards do not repair the upstream allocation or establish
+general correctness of every degenerate truncation.
 """
 function run_dmrg(lattice::KagomeCylinder, theta::Real;
                   sites=spin_sites(lattice), psi0=nothing, seed::Integer=0,
@@ -94,7 +104,11 @@ function run_dmrg(lattice::KagomeCylinder, theta::Real;
             throw(ArgumentError("initial MPS must have total integer charge N/9"))
         psi = complex(deepcopy(psi0))
     end
-    H = twisted_exchange_mpo(sites, lattice, theta; gauge, hz)
+    # Keep the model attached to the result for checkpoint validation. A
+    # caller mutating its lattice or field vector later must not relabel it.
+    saved_lattice = deepcopy(lattice)
+    fields = hz === nothing ? zeros(sector.N) : Float64.(hz)
+    H = twisted_exchange_mpo(sites, saved_lattice, theta; gauge, hz=fields)
     obs = _SweepDiagnostics()
     local_energy, psi = dmrg(H, psi; nsweeps, maxdim=dims, cutoff, noise,
                             eigsolve_tol, eigsolve_krylovdim, eigsolve_maxiter,
@@ -112,7 +126,8 @@ function run_dmrg(lattice::KagomeCylinder, theta::Real;
                  eigsolve_krylovdim=Int(eigsolve_krylovdim),
                  eigsolve_maxiter=Int(eigsolve_maxiter), measure_variance,
                  initialization=psi0 === nothing ? "random_fixed_charge" : "provided_mps")
-    return (; psi, H, sites, theta=Float64(theta), gauge, Q=sector.Q, energy,
+    return (; psi, H, sites, lattice=saved_lattice, hz=copy(fields),
+             theta=Float64(theta), gauge, Q=sector.Q, energy,
              local_energy=real(local_energy), variance, sz=sz_profile(psi),
              sweep_energies=obs.energies,
              max_truncation_errors=obs.max_truncation_errors, settings)

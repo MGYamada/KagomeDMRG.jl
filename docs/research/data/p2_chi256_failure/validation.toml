@@ -1,0 +1,89 @@
+caller_assigned_status = "completed_single_point_not_continuation_accepted"
+code_revision = "d56799268dd922a0e382f59e1a7c2d2a5ca80dd0"
+command = "julia --project=. --startup-file=no --threads=1 outputs/p2-chi256-zyFRC0/probe.jl"
+exception_type = "ErrorException"
+phase_identification = "not_attempted"
+pump_quantization = "not_tested"
+recorded_at_utc = "2026-09-18T23:55:34.600"
+schema_version = 1
+scope = "fixed_six_sweep_bond_dimension_comparison"
+sources_unchanged = true
+status = "error"
+truncation_guard_fired = true
+worktree_dirty = true
+
+[code_hashes_after]
+"Manifest-v1.13.toml" = "e535c3e1d11655cd2d346a7493ab17238ebb794b50b1ded9bc310c8ddfab9eb1"
+"Project.toml" = "b224143940bd73891e2dbef110ec4acefe9a10c08906b416fcfddb6c4cdb2665"
+"outputs/p2-chi256-zyFRC0/probe.jl" = "d370a41291923b334b942e681902fbbda1ce235f69a6fe8947ab82f8d2ffe274"
+"src/KagomeDMRG.jl" = "9bab7201c61d6c78f551190372cec85477bc2de90ea2aa184c3d4f19bacb0e11"
+"src/checkpoint.jl" = "0ba3b24728c9c9a60f4ebc93c1d9de5715007109ad3fe79c40ea688f668cc89f"
+"src/continuation.jl" = "2a1d6eb2a7a49e6a6e65f69522b6d014d118695ffb70dac13fc985aa8d578412"
+"src/dmrg.jl" = "03be2d256aa2db579ed4fadb3c7a5486cb4073ed0a9530531a7c58684eab6524"
+"src/lattice.jl" = "7c152e09dd731775cdef8101a6256f754615763f5abd5ff086042a4be5ee87d8"
+"src/model.jl" = "ec57b01141fd90a4938fc22d2833bd7a3ddfa107a107fb083753a4a39e91f58b"
+"src/observables.jl" = "6ebe76e51e64af4bbb9021cb892af267a77161ef159123a031d50066e421c41c"
+"src/schmidt.jl" = "13517078685ce1e1ca43b6200cbc61ff7aa6113757fa61ed9fcee4dfee3cbd0a"
+"test/itensor_helpers.jl" = "68cc6e13292bea25757783b165aa387c85a4906cbe7cd63323c8ad56ef88290f"
+"test/reference_ed.jl" = "63ac49ce5e783aafcbcf6f55c3edb63fe93748afb0279827b225eb35c21367c3"
+"test/reference_eigensolve.jl" = "37e7a9c6c05475196e75163d33c9ebf6684701ed00cd498a2cdb6b26dbea745b"
+
+[code_hashes_before]
+"Manifest-v1.13.toml" = "e535c3e1d11655cd2d346a7493ab17238ebb794b50b1ded9bc310c8ddfab9eb1"
+"Project.toml" = "b224143940bd73891e2dbef110ec4acefe9a10c08906b416fcfddb6c4cdb2665"
+"outputs/p2-chi256-zyFRC0/probe.jl" = "d370a41291923b334b942e681902fbbda1ce235f69a6fe8947ab82f8d2ffe274"
+"src/KagomeDMRG.jl" = "9bab7201c61d6c78f551190372cec85477bc2de90ea2aa184c3d4f19bacb0e11"
+"src/checkpoint.jl" = "0ba3b24728c9c9a60f4ebc93c1d9de5715007109ad3fe79c40ea688f668cc89f"
+"src/continuation.jl" = "2a1d6eb2a7a49e6a6e65f69522b6d014d118695ffb70dac13fc985aa8d578412"
+"src/dmrg.jl" = "03be2d256aa2db579ed4fadb3c7a5486cb4073ed0a9530531a7c58684eab6524"
+"src/lattice.jl" = "7c152e09dd731775cdef8101a6256f754615763f5abd5ff086042a4be5ee87d8"
+"src/model.jl" = "ec57b01141fd90a4938fc22d2833bd7a3ddfa107a107fb083753a4a39e91f58b"
+"src/observables.jl" = "6ebe76e51e64af4bbb9021cb892af267a77161ef159123a031d50066e421c41c"
+"src/schmidt.jl" = "13517078685ce1e1ca43b6200cbc61ff7aa6113757fa61ed9fcee4dfee3cbd0a"
+"test/itensor_helpers.jl" = "68cc6e13292bea25757783b165aa387c85a4906cbe7cd63323c8ad56ef88290f"
+"test/reference_ed.jl" = "63ac49ce5e783aafcbcf6f55c3edb63fe93748afb0279827b225eb35c21367c3"
+"test/reference_eigensolve.jl" = "37e7a9c6c05475196e75163d33c9ebf6684701ed00cd498a2cdb6b26dbea745b"
+
+[ed_reference]
+limitation = "Partial spectrum does not prove completeness of the ground eigenspace."
+payload = "outputs/p2-ed18-GqGhyF/point_1.jls"
+payload_sha256 = "72351ea0aad064b9bce1a334cb47991de00526e53b01f5bff1efcc2303d58e42"
+residual_norms = [1.1802429261761623e-12, 3.1409589181157685e-12, 2.6611137158913148e-12]
+values = [-7.4423397444704085, -7.440475069440705, -7.440475069440694]
+
+    [ed_reference.settings]
+    blocksize = 3
+    krylovdim = 80
+    maxiter = 200
+    nev = 3
+    orthogonality_tolerance = 1.4901161193847656e-8
+    seed = 1234
+    tol = 1.0e-11
+
+[geometry]
+Lx = 2
+Ly = 3
+N = 18
+axis_boundary = "open"
+circumference_boundary = "periodic"
+ordering = "x,y,A/B/C"
+wrap_vector = "3*a2"
+
+[model]
+Jxy = 1.0
+Jz = 1.0
+Nup = 10
+Q = 2
+gauge = "seam"
+hz = [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+name = "nearest_neighbor_kagome_heisenberg"
+theta = 0.0
+
+[runtime]
+ITensorMPS = "0.4.1"
+ITensors = "0.9.31"
+KrylovKit = "0.10.4"
+NDTensors = "0.4.31"
+blas_threads = 1
+julia = "1.13.0"
+julia_threads = 1

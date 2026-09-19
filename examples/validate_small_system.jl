@@ -8,8 +8,11 @@ using Dates
 const ROOT = normpath(joinpath(@__DIR__, ".."))
 # Take the source snapshot before loading project code, and compare it again
 # after numerics. Never attribute a running calculation to later edits.
-const SOURCES = ["Project.toml", "Manifest.toml", "src/KagomeDMRG.jl", "src/lattice.jl",
-    "src/model.jl", "src/dmrg.jl", "src/observables.jl", "test/reference_ed.jl",
+# Include both supported dependency baselines, including Julia 1.13's lockfile.
+const SOURCES = ["Project.toml", "Manifest.toml", "Manifest-v1.13.toml",
+    "src/KagomeDMRG.jl", "src/lattice.jl",
+    "src/model.jl", "src/dmrg.jl", "src/observables.jl", "src/checkpoint.jl",
+    "src/schmidt.jl", "src/continuation.jl", "test/reference_ed.jl",
     "test/itensor_helpers.jl", "examples/validate_small_system.jl"]
 function provenance_snapshot()
     hashes = Dict{String,String}()

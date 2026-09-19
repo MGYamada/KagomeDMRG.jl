@@ -5,19 +5,29 @@ nearest-neighbor antiferromagnetic Heisenberg model at `M/Msat = 1/9` as its
 primary target. It currently provides lattice and gauge construction, a
 complex U(1) two-site DMRG reference solver using ITensors.jl and ITensorMPS.jl,
 and basic observables. The package test suite passes on the dependency
-baseline recorded below; larger research systems have not been validated.
+baselines recorded below; larger research systems have not been validated.
 
 ## Run a small system
 
-Run these commands from the repository root. The Julia compatibility range
-is specified in `Project.toml`; `Manifest.toml` records the resolved dependency
-baseline.
+Run these commands from the repository root with Juliaup installed. The
+directory override selects Julia 1.13 for this checkout; the explicit
+`+1.13` commands also work without an override.
 
 ```sh
-julia --project=. --startup-file=no -e 'using Pkg; Pkg.instantiate()'
-julia --project=. --startup-file=no -e 'using Pkg; Pkg.test()'
-julia --project=. --startup-file=no --threads=1
+juliaup add 1.13
+juliaup override set 1.13
+julia +1.13 --project=. --startup-file=no -e 'using Pkg; Pkg.instantiate(); Pkg.precompile()'
+julia +1.13 --project=. --startup-file=no -e 'using Pkg; Pkg.test()'
+julia +1.13 --project=. --startup-file=no --threads=1
 ```
+
+`Manifest-v1.13.toml` records the Julia 1.13 dependency environment. Julia
+automatically selects the manifest matching its major and minor version,
+as described in the [Pkg documentation](https://julialang.github.io/Pkg.jl/v1/toml-files/#Different-Manifests-for-Different-Julia-versions).
+`Manifest.toml` preserves the Julia 1.12.7 validation baseline.
+The compatibility ranges in `Project.toml` already allow Julia 1.13.
+To reproduce that historical baseline, run `juliaup add 1.12.7` and use
+`julia +1.12.7` in the Julia commands instead.
 
 At the Julia prompt:
 
@@ -48,7 +58,7 @@ The [validation example](../examples/validate_small_system.jl) repeats the
 small-system ED comparisons and saves selected metadata and numerical metrics:
 
 ```sh
-julia --project=. --startup-file=no examples/validate_small_system.jl
+julia +1.13 --project=. --startup-file=no examples/validate_small_system.jl
 ```
 
 An optional positional argument selects a new output TOML file. Use a distinct
@@ -97,8 +107,11 @@ left and right regions of each cut. Supply the measured zero-flux profile as
 | Bond orientation and gauge | `reverse_bond`, `bond_phase`, `gauge_angles` |
 | U(1) reference backend | `spin_sites`, `initial_mps`, `twisted_exchange_mpo`, `run_dmrg` |
 | Observables | `sz_profile`, `spin_correlations`, `spin_transfer` |
+| Schmidt probabilities and absolute left charge | `schmidt_diagnostics` |
+| Local snapshots and completed-point restart | `save_checkpoint`, `load_checkpoint`, `resume_dmrg` |
+| Diagnostic-gated adaptive continuation | `FluxPolicy`, `continue_flux` |
 
-The exported data types are `Bond`, `KagomeSite`, and `KagomeCylinder`.
+The exported data types are `Bond`, `KagomeSite`, `KagomeCylinder`, and `FluxPolicy`.
 Use Julia help, for example `?run_dmrg`, for arguments and result fields.
 `spin_correlations` returns `zz=<Sz_i Sz_j>` and `pm=<S+_i S-_j>`; transverse
 correlations can be complex. `run_dmrg` returns the MPS and MPO as `psi` and
@@ -111,7 +124,175 @@ An optional `psi0` must use those exact indices and the target total charge;
 the solver copies it before optimization. A warm start does not establish
 that a physical branch was followed.
 
+## Checkpoint restart and Schmidt diagnostics
+
+The checkpoint API saves a completed optimization point together with its
+measured zero-flux baseline. For example, with the nine-site `lattice` above:
+
+```julia
+baseline = run_dmrg(lattice, 0.0; seed=11)
+point = run_dmrg(lattice, 0.37; sites=baseline.sites, psi0=baseline.psi, seed=11)
+snapshot = save_checkpoint("outputs/restart-demo", point;
+    baseline, theta_path=[0.0, 0.37], status=:accepted)
+restored = load_checkpoint(snapshot, lattice;
+    expected_theta=0.37, expected_settings=point.settings)
+next_point = resume_dmrg(snapshot, lattice, 0.71;
+    expected_settings=point.settings)
+schmidt = schmidt_diagnostics(next_point.psi, 4)
+@show schmidt.entropy schmidt.mean_left_sz
+```
+
+`save_checkpoint` defaults to `status=:trial`. Trial and accepted snapshots
+occupy separate directories, and each save creates a new immutable directory.
+The caller supplies the path and acceptance status; saving an accepted snapshot
+does not establish convergence or branch continuity. `resume_dmrg` accepts only
+accepted snapshots and starts a new sweep batch using their settings and exact
+site indices, rebuilding the Hamiltonian at the requested unwrapped flux.
+It does not resume inside an unfinished sweep or advance an adaptive trajectory.
+
+Each snapshot contains the current and zero-flux MPS, allowlisted TOML metadata,
+and byte lengths and SHA-256 checksums. Loading checks the model, full geometry,
+bonds, field, gauge, charge, site identity, solver settings, baseline, state
+normalization, and energy. Julia, package versions, architecture, source hashes,
+and the selected dependency manifest must match. The primitive metadata and
+integrity envelope are checked before the Julia payload is deserialized.
+Use these snapshots only from trusted local runs. They are deliberately bound
+to the same environment, not a portable archival format; see the
+[Julia Serialization contract](https://docs.julialang.org/en/v1/stdlib/Serialization/).
+Publishing a fully written directory uses a same-parent rename. This provides
+atomic visibility, not a guarantee against power loss. Saving the baseline MPS
+in every snapshot costs additional storage; production-scale I/O is unprofiled.
+
+`schmidt_diagnostics(psi, b)` measures the MPS prefix `1:b`, preserves its input,
+and performs a block-sparse decomposition without truncation. It returns
+probabilities, one absolute integer `left_q=2Sz_left` per Schmidt state,
+natural-log entropy, mean and variance of physical left `Sz`, and input norm².
+The charge origin and sign come from tensor flux conservation, independently
+of the density profile. For a geometric cylinder cut `c`, use `b=3lattice.Ly*c`.
+The nine-site example has no interior geometric cut: bond 4 is an MPS cut only.
+
+The separate-process restart and independent ED checks can be reproduced with:
+
+```sh
+julia +1.13 --project=. --startup-file=no --threads=1 examples/validate_restart.jl
+```
+
+This writes snapshots and an allowlisted numerical report to a new
+`outputs/p1-restart-*` directory. The manually selected flux points test restart
+semantics, not an adiabatic flux trajectory. The caller may supply a new output
+directory as the only positional argument.
+
+## Adaptive flux continuation
+
+`continue_flux` advances through an ordered list of unwrapped target angles.
+It reloads the last accepted checkpoint before every trial, rebuilds the MPO,
+and halves the step after a failed continuity or convergence check. A reduced
+step persists after acceptance; the driver does not raise bond dimension or
+sweep count automatically. All thresholds in `FluxPolicy` must be supplied
+explicitly except `consistency_tol`. They must be appropriate to the system
+size, monitored region and solver accuracy; no expected pump value is used.
+
+This executable control has a unique, flux-independent product ground state.
+It changes the Hamiltonian to longitudinal fields only and tests the pipeline,
+not the phase of the Heisenberg model:
+
+```julia
+using KagomeDMRG, ITensors, ITensorMPS, LinearAlgebra
+BLAS.set_num_threads(1)
+ITensors.disable_threaded_blocksparse()
+control = kagome_cylinder(3, 3; Jxy=0, Jz=0)
+sites = spin_sites(control)
+labels = [fill("Up", 15); fill("Dn", 12)]
+hz = [fill(1.0, 15); fill(-1.0, 12)]
+start = run_dmrg(control, 0.0; sites, psi0=MPS(ComplexF64, sites, labels),
+    hz, nsweeps=2, maxdim=2, cutoff=0.0)
+policy = FluxPolicy(min_overlap=1-1e-10, max_density_change=1e-10,
+    max_entropy_change=1e-10, max_schmidt_change=1e-10,
+    max_variance=1e-9, max_truncation_error=1e-10,
+    max_sweep_energy_change=1e-9, max_cut_spread=1e-9)
+trajectory = continue_flux(control, [2pi, 4pi, 6pi, 0.0]; start,
+    output_root="outputs/zero-control", policy, initial_step=2pi, min_step=pi/32,
+    hz, cuts=[1,2], diagnostic_bonds=[9,18], bulk_sites=10:18)
+@show trajectory.status trajectory.theta_path trajectory.output_path
+```
+
+The first version requires seam gauge, zero DMRG noise, measured variance at
+every point, and at least two sweeps. `min_overlap` refers to overlap amplitude,
+not squared fidelity. Other successive-point checks compare monitored-site
+density, entropy and mean left Schmidt spin. Quality checks use the last
+sweep's measured truncation error, variance, the difference of the last two
+local sweep energies, and their difference from the measured final energy.
+Negative variance must lie within `100eps(Float64)*max(1,E^2)` and the explicit
+variance limit. Every sweep's raw diagnostics remain in the record.
+
+Transfer is always measured against the original zero-flux state. The driver
+checks left/right cancellation and agreement with calibrated Schmidt changes,
+and records the full transfer and its spread across selected cuts. A cut-spread
+failure can be physical bulk rearrangement and does not imply a software error.
+Every geometric cut is added to the diagnostic Schmidt bonds. `bulk_sites`
+defaults to all sites; choose and record actual interior sites for a larger
+cylinder. An auxiliary Schmidt bond on the nine-site cylinder does not create
+an axial geometric cut.
+
+A run creates a unique directory with an atomically updated `trajectory.toml`
+journal, explicit policy and selections, separate trial and accepted snapshots,
+and rejection reasons. `status == :completed` means the finite diagnostic
+limits passed at the targets. It is not a certificate of a physical branch,
+quantization or phase identity. `:unresolved` records minimum-step or trial-budget
+exhaustion, invalid diagnostics or other solver errors. Valid rejected states
+remain under `trial/`; invalid states cannot be promoted. Interrupts, resource
+exhaustion or an I/O failure may leave a journal marked `running`, while already
+published checkpoints remain available.
+
+To restart, pass an accepted checkpoint path as `start`, together with the
+same lattice, `hz` and gauge and explicit new targets, policy and step settings.
+The solver settings, original baseline and accepted path are preserved, and a
+new journal is created. This is a restart at a completed point, not restoration
+of an interrupted driver instruction. On an initial quality failure,
+`last_checkpoint === nothing` and no point is newly accepted.
+
+The bounded reproduction includes a restart, forward/reverse zero control,
+independent nine-site ED, and a degenerate initial state that stays unresolved:
+
+```sh
+julia +1.13 --project=. --startup-file=no --threads=1 examples/validate_continuation.jl
+```
+
+See the [P2 validation report](research/p2_continuation_validation.md). The known
+CSL positive control and convergence studies on longer interacting cylinders
+remain pending.
+
 ## Validation and present limits
+
+For a bounded interacting-cylinder study with an axial cut, run:
+
+```sh
+julia +1.13 --project=. --startup-file=no --threads=1 examples/validate_interacting18.jl
+```
+
+This fixes the nearest-neighbor Heisenberg model in the `N=18,Q=2` sector and
+compares a lower-rank initial state with a state retaining the full fixed-charge
+rank. It compares steps `0.185` and `0.0925`, seeds 11 and 29, forward/return
+paths through `theta=0.37`, and negative flux. Every saved point is checked
+against an independent sparse BlockLanczos reference; low-accuracy and rejected
+outcomes remain in the report. The partial ED spectrum is calibrated against
+dense nine-site results, including degenerate eigenspaces. Its convergence count
+and full-matrix residuals are checked explicitly.
+
+There is only one geometric cut at bond 9 and no interior bulk column in this
+two-column system. The study does not establish a magnetization plateau, bulk
+gap, quantized pump, or microscopic phase. All eigensolver settings and finite
+diagnostic limits are saved with the selected source hashes.
+
+The [18-site report](research/p2_interacting18_validation.md) records four
+completed chi=512 paths and 24 saved-point comparisons, including reused initial
+states. Every point passed the independent ED limits; halving the preset step or
+changing the seed changed the measured transfer by at most `4.21e-13`.
+Chi=128 failed the initial accuracy gates. A separate chi=256 run stopped at the
+truncation-spectrum guard before producing a final state; this failure is also
+preserved. No chi=512 trial was rejected, so these paths did not exercise adaptive
+step refinement. The literature audit and implementation requirements for the
+known CSL control are in the [P3 design](research/p3_csl_control_design.md).
 
 On 2026-09-19, the standard `Pkg.test()` command passed 2,205 assertions with
 Julia 1.12.7, ITensors 0.9.31, ITensorMPS 0.4.1, and KrylovKit 0.10.4.
@@ -121,6 +302,37 @@ compatibility ranges. For `theta=0` with seed 11 and `theta=0.37` with seeds
 local Sz error was `5.25e-14`, and the maximum ED residual norm was `2.31e-13`.
 See the [validation report](research/p0_reference_validation.md) for the scope
 of these results.
+
+On the same date, Julia 1.13.0 also passed all 2,205 assertions using
+`Manifest-v1.13.toml`, with ITensors 0.9.31, ITensorMPS 0.4.1, and KrylovKit
+0.10.4. Dependency resolution, instantiation, and precompilation completed
+successfully. The numerical error values above belong to the earlier
+Julia 1.12.7 run. The small-system validation example also passed all three
+independent points on Julia 1.13.0 and saved matching pre-run and post-run
+SHA-256 hashes for `Manifest-v1.13.toml`.
+
+After adding checkpoint and Schmidt diagnostics, Julia 1.13.0 passed all
+3,782 assertions: the original 2,205, plus 1,477 Schmidt checks and 100
+checkpoint checks. The Julia 1.12.7 manifest was re-resolved only to add
+direct standard-library dependencies; the expanded suite has not been run
+on Julia 1.12.7. See the [restart and Schmidt report](research/p1_restart_schmidt_validation.md).
+The separate-process restart reproduced the direct continuation energy and
+local Sz profile exactly in this run; the overlap magnitude error was
+`4.44e-16`. The maximum independent ED residual over the recorded small-system
+checks was below `1.06e-13`. These are completed-point restart checks, not
+evidence of an adiabatic branch or quantized pumping.
+
+After adding adaptive continuation and the truncation rank guard, the Julia
+1.13.0 integrated `Pkg.test()` run passed all **4,283 assertions**: the previous
+3,782 plus 417 continuation checks and 84 truncation checks. The standalone P2
+reproduction passed with matching source hashes, including the expected
+`unresolved` outcome for a degenerate initial state. See the
+[P2 report](research/p2_continuation_validation.md) for numerical values and scope.
+
+Adding the sparse-reference tests brought the Julia 1.13.0 integrated suite to
+**4,348 passing assertions** (4,283 previous checks plus 65 independent
+eigensolver, degeneracy and nonconvergence checks). The 18-site study is an
+explicit research example, separate from the routinely bounded package tests.
 
 Tests compare geometry and signed periodic images with a Cartesian distance
 oracle and compare the MPO with an independent spin-basis Hamiltonian at
@@ -132,10 +344,11 @@ and compares observables in that matched state; comparing with an arbitrary
 single degenerate eigenvector would be inappropriate. This small-system
 degeneracy is not a claim about topological degeneracy.
 
-P1 checkpoint/resume support is still pending. Adaptive flux continuation,
-rollback, Schmidt-charge calibration, and reproduction of a known chiral
-spin-liquid pump are not implemented. A longitudinal-field product-state
-control tests zero-response readout for an explicitly altered Hamiltonian.
+Completed-point checkpoint/restart, Schmidt-charge diagnostics, and adaptive
+flux acceptance/refinement/rollback are implemented and tested on bounded
+controls. Reproduction of a known chiral spin-liquid pump is not implemented.
+A longitudinal-field product-state control tests zero response and its
+forward/reverse continuation for an explicitly altered Hamiltonian.
 It does not identify the phase of the nearest-neighbor model. No plateau,
 quantized pump, or microscopic phase identification is claimed. SU(3)₁ and
 Hall-active or Hall-inactive D(Z₃) remain candidate theories alongside
@@ -144,9 +357,13 @@ competing ordered or gapless explanations.
 An analytic two-spin control checks a known nonzero truncation error and the
 difference between the local eigensolver energy and the final MPS energy.
 The tested upstream QN backend can discard every state when `maxdim` splits
-exactly degenerate Schmidt weights across sectors. The observer rejects zero
-or nonfinite states immediately. This is a failure guard, not an upstream
-kernel fix; general degenerate-boundary truncation errors remain unvalidated.
+equal or nearly equal Schmidt weights across sectors. It can also retain a
+nonzero normalized state while underreporting its discarded probability:
+weights `[0.6,0.2,0.2]` and `maxdim=2` retain only rank one, reporting 0.2 loss
+instead of 0.4. The observer rejects zero/nonfinite states and inconsistent
+reported-spectrum versus retained-link dimensions. Analytic four-spin SVD and
+eigen fixtures check this failure and the healthy cases. This is a failure guard,
+not an upstream kernel fix or a general guarantee of truncation accuracy.
 The nine-site reference runs use enough bond dimension to avoid truncation.
 See the [recorded boundary case](research/data/qn_truncation_boundary.toml).
 

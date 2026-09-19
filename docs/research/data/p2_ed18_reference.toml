@@ -1,0 +1,123 @@
+blas_threads = 1
+code_revision = "d56799268dd922a0e382f59e1a7c2d2a5ca80dd0"
+date = "2026-09-19"
+julia_threads = 1
+julia_version = "1.13.0"
+krylovkit_version = "0.10.4"
+limitations = ["Partial block Lanczos spectrum does not certify completeness or uniqueness.", "Finite-cluster level spacings do not establish a bulk gap or a phase."]
+sources_unchanged = true
+status = "partial_spectrum_reference"
+
+[code_hashes]
+"Manifest-v1.13.toml" = "e535c3e1d11655cd2d346a7493ab17238ebb794b50b1ded9bc310c8ddfab9eb1"
+"Project.toml" = "b224143940bd73891e2dbef110ec4acefe9a10c08906b416fcfddb6c4cdb2665"
+"test/reference_ed.jl" = "63ac49ce5e783aafcbcf6f55c3edb63fe93748afb0279827b225eb35c21367c3"
+"test/reference_eigensolve.jl" = "37e7a9c6c05475196e75163d33c9ebf6684701ed00cd498a2cdb6b26dbea745b"
+
+[geometry]
+Lx = 2
+Ly = 3
+N = 18
+ordering = "x,y,A/B/C"
+wrap_vector = "3*a2"
+
+[model]
+Jxy = 1.0
+Jz = 1.0
+Nup = 10
+Q = 2
+gauge = "seam"
+
+[[points]]
+cluster_tolerance = 1.0e-8
+converged = true
+dimension = 43758
+energy_values = [-7.4423397444704085, -7.440475069440705, -7.440475069440694]
+ground_cluster_count_at_1e-8 = 1
+orthogonality_error = 2.7092146069247463e-14
+payload = "point_1.jls"
+payload_sha256 = "72351ea0aad064b9bce1a334cb47991de00526e53b01f5bff1efcc2303d58e42"
+residual_norms = [1.1802429261761623e-12, 3.1409589181157685e-12, 2.6611137158913148e-12]
+seconds = 1.907164
+spacings_from_lowest = [0.0, 0.0018646750297035553, 0.0018646750297142134]
+theta = 0.0
+
+    [points.settings]
+    blocksize = 3
+    krylovdim = 80
+    maxiter = 200
+    nev = 3
+    orthogonality_tolerance = 1.4901161193847656e-8
+    seed = 1234
+    tol = 1.0e-11
+
+    [points.solver_info]
+    algorithm = "KrylovKit.BlockLanczos"
+    num_converged = 3
+    numiter = 10
+    numops = 379
+    reported_residual_norms = [1.179613647926865e-12, 3.139680186212338e-12, 2.660114884952955e-12]
+    returned_count = 3
+    version = "0.10.4"
+[[points]]
+cluster_tolerance = 1.0e-8
+converged = true
+dimension = 43758
+energy_values = [-7.442134635417066, -7.4410924690984155, -7.4394751059212005]
+ground_cluster_count_at_1e-8 = 1
+orthogonality_error = 3.1456272269537906e-15
+payload = "point_2.jls"
+payload_sha256 = "ad142d9b5edac5e46825716db4fe46a4bb121c1341d0b9b5c0d3732d73394504"
+residual_norms = [8.129589883447071e-13, 1.7820502889574909e-12, 5.025439434952174e-12]
+seconds = 1.882355583
+spacings_from_lowest = [0.0, 0.0010421663186503949, 0.0026595294958653426]
+theta = 0.185
+
+    [points.settings]
+    blocksize = 3
+    krylovdim = 80
+    maxiter = 200
+    nev = 3
+    orthogonality_tolerance = 1.4901161193847656e-8
+    seed = 1234
+    tol = 1.0e-11
+
+    [points.solver_info]
+    algorithm = "KrylovKit.BlockLanczos"
+    num_converged = 3
+    numiter = 10
+    numops = 379
+    reported_residual_norms = [8.114901224083681e-13, 1.7816229009327248e-12, 5.027276121537223e-12]
+    returned_count = 3
+    version = "0.10.4"
+[[points]]
+cluster_tolerance = 1.0e-8
+converged = true
+dimension = 43758
+energy_values = [-7.4415230095921245, -7.441347271670591, -7.438083838710666]
+ground_cluster_count_at_1e-8 = 1
+orthogonality_error = 3.688620862760611e-15
+payload = "point_3.jls"
+payload_sha256 = "dd90c4037b24cbd62de36dc41ae73dcef643a977fa357ab103b76764293ac309"
+residual_norms = [8.814225618087618e-13, 1.999478979203031e-12, 7.37820544630642e-12]
+seconds = 1.870325125
+spacings_from_lowest = [0.0, 0.00017573792153324774, 0.0034391708814585087]
+theta = 0.37
+
+    [points.settings]
+    blocksize = 3
+    krylovdim = 80
+    maxiter = 200
+    nev = 3
+    orthogonality_tolerance = 1.4901161193847656e-8
+    seed = 1234
+    tol = 1.0e-11
+
+    [points.solver_info]
+    algorithm = "KrylovKit.BlockLanczos"
+    num_converged = 3
+    numiter = 10
+    numops = 379
+    reported_residual_norms = [8.812664527444151e-13, 1.9979735315477293e-12, 7.381694902328075e-12]
+    returned_count = 3
+    version = "0.10.4"

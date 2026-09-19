@@ -1,0 +1,279 @@
+axial_pump = "not_testable_without_internal_geometric_cut_on_Lx_1"
+phase_identification = "not_attempted"
+pump_quantization = "not_tested"
+recorded_at_utc = "2026-09-18T23:05:46.949"
+schema_version = 1
+scope = "finite_size_checkpoint_and_schmidt_validation"
+status = "passed"
+theta_path = [0.0, 0.37, 6.993185307179586]
+trajectory_status = "manual_fixture_not_adiabatic_branch_certification"
+
+[acceptance_limits]
+absolute_variance = 1.0e-10
+energy_error_per_site = 1.0e-8
+ground_space_leakage = 2.0e-6
+max_sz_error = 1.0e-6
+residual_norm = 2.0e-6
+schmidt_left_sz_error = 2.0e-12
+schmidt_probability_error = 2.0e-12
+state_norm_error = 2.0e-12
+total_sz_error = 2.0e-12
+
+[code]
+status = "verified"
+
+    [code.after]
+    errors = []
+    git_revision = "d56799268dd922a0e382f59e1a7c2d2a5ca80dd0"
+    worktree_dirty = true
+
+        [code.after.source_sha256]
+        "Manifest-v1.13.toml" = "e535c3e1d11655cd2d346a7493ab17238ebb794b50b1ded9bc310c8ddfab9eb1"
+        "Manifest.toml" = "213da764f083d02ade4298600a514e1f899c6acd7a8ceee256b36fe6768dc2c1"
+        "Project.toml" = "b224143940bd73891e2dbef110ec4acefe9a10c08906b416fcfddb6c4cdb2665"
+        "examples/validate_restart.jl" = "59181dcd38ef3f095cdccde7eacaab8e4274aaf1ea554a42405dd1ec6ae5b52c"
+        "src/KagomeDMRG.jl" = "5f413746715dbd823a371a3c375e534e990789e0acb9758ad273049e9cd3fcb6"
+        "src/checkpoint.jl" = "0c4f1d310ae3699f21e219c794e66119903ad78db039f29296c5b5fe2d6cb87d"
+        "src/dmrg.jl" = "ccd54f795a4a36bcf6b886f9f4385e07bd29243ca6bd8a798f67e2ea58732d19"
+        "src/lattice.jl" = "7c152e09dd731775cdef8101a6256f754615763f5abd5ff086042a4be5ee87d8"
+        "src/model.jl" = "ec57b01141fd90a4938fc22d2833bd7a3ddfa107a107fb083753a4a39e91f58b"
+        "src/observables.jl" = "6ebe76e51e64af4bbb9021cb892af267a77161ef159123a031d50066e421c41c"
+        "src/schmidt.jl" = "13517078685ce1e1ca43b6200cbc61ff7aa6113757fa61ed9fcee4dfee3cbd0a"
+        "test/itensor_helpers.jl" = "68cc6e13292bea25757783b165aa387c85a4906cbe7cd63323c8ad56ef88290f"
+        "test/reference_ed.jl" = "63ac49ce5e783aafcbcf6f55c3edb63fe93748afb0279827b225eb35c21367c3"
+
+    [code.before]
+    errors = []
+    git_revision = "d56799268dd922a0e382f59e1a7c2d2a5ca80dd0"
+    worktree_dirty = true
+
+        [code.before.source_sha256]
+        "Manifest-v1.13.toml" = "e535c3e1d11655cd2d346a7493ab17238ebb794b50b1ded9bc310c8ddfab9eb1"
+        "Manifest.toml" = "213da764f083d02ade4298600a514e1f899c6acd7a8ceee256b36fe6768dc2c1"
+        "Project.toml" = "b224143940bd73891e2dbef110ec4acefe9a10c08906b416fcfddb6c4cdb2665"
+        "examples/validate_restart.jl" = "59181dcd38ef3f095cdccde7eacaab8e4274aaf1ea554a42405dd1ec6ae5b52c"
+        "src/KagomeDMRG.jl" = "5f413746715dbd823a371a3c375e534e990789e0acb9758ad273049e9cd3fcb6"
+        "src/checkpoint.jl" = "0c4f1d310ae3699f21e219c794e66119903ad78db039f29296c5b5fe2d6cb87d"
+        "src/dmrg.jl" = "ccd54f795a4a36bcf6b886f9f4385e07bd29243ca6bd8a798f67e2ea58732d19"
+        "src/lattice.jl" = "7c152e09dd731775cdef8101a6256f754615763f5abd5ff086042a4be5ee87d8"
+        "src/model.jl" = "ec57b01141fd90a4938fc22d2833bd7a3ddfa107a107fb083753a4a39e91f58b"
+        "src/observables.jl" = "6ebe76e51e64af4bbb9021cb892af267a77161ef159123a031d50066e421c41c"
+        "src/schmidt.jl" = "13517078685ce1e1ca43b6200cbc61ff7aa6113757fa61ed9fcee4dfee3cbd0a"
+        "test/itensor_helpers.jl" = "68cc6e13292bea25757783b165aa387c85a4906cbe7cd63323c8ad56ef88290f"
+        "test/reference_ed.jl" = "63ac49ce5e783aafcbcf6f55c3edb63fe93748afb0279827b225eb35c21367c3"
+
+[conventions]
+Ndown = 4
+Nup = 5
+Q = 1
+charge = "q=2Sz"
+exchange_phase = "S+_i_S-_j_has_exp(+im*wy*theta)"
+gauge = "seam"
+physical_M = 0.5
+
+[geometry]
+Lx = 1
+Ly = 3
+N = 9
+axis_boundary = "open"
+bond_count = 12
+circumference_boundary = "periodic"
+ordering = "x_then_y_then_A_B_C"
+termination = "complete_cells_with_outgoing_open_axis_bonds_removed"
+wrap = [1.5, 2.598076211353316]
+
+[model]
+Jxy = 1.0
+Jz = 1.0
+chirality_seed = 0.0
+longitudinal_field = 0.0
+name = "nearest_neighbor_kagome_heisenberg"
+
+[[points]]
+absolute_variance = 1.0658141036401503e-14
+ed_energy = -3.561967560726586
+energy = -3.5619675607265875
+energy_error_per_site = 1.4802973661668753e-16
+ground_space_leakage = 5.19379659917022e-14
+label = "baseline"
+max_sz_error = 7.244205235679146e-15
+measured_truncation_errors = [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+residual_norm = 1.05418494420677e-13
+schmidt_left_sz_error = 1.5265566588595902e-16
+schmidt_probability_error = 2.220446049250313e-16
+state_norm_error = 2.220446049250313e-16
+status = "passed"
+sweep_energies = [-3.4966720546608143, -3.561967560726588, -3.5619675607265924, -3.5619675607265906, -3.5619675607265924, -3.5619675607265946, -3.561967560726594, -3.561967560726589]
+sz_profile = [0.15674145536974818, -0.1017971056724627, 0.08887646749603982, -0.0655140394608893, 0.14680962155302613, 0.08698679640617202, -0.03681074483507922, 0.3461541419718946, -0.12144659282844938]
+theta = 0.0
+total_sz_error = 1.1102230246251565e-16
+
+    [points.schmidt]
+    bond = 4
+    entropy = 1.2920247220568806
+    left_q = [0, 2, -2, 0, 0, 2, 0, -2, 2, -2, 0, 4, 2, 0, -4, -2]
+    mean_left_sz = 0.07830677773243584
+    probabilities = [0.5439318140561326, 0.19660505238210574, 0.12365379471500217, 0.10902582463292308, 0.011530381005895466, 0.006298015574944414, 0.0034544489708625173, 0.002182980831333554, 0.001066337892655445, 0.0007510380498049467, 0.000632809150378812, 0.00041718258230768345, 0.00023705184977668858, 0.00011928734294291075, 5.2250572586941866e-5, 4.173039034727559e-5]
+    region = "MPS_prefix_not_geometric_axis_cut"
+
+    [points.solver]
+    cutoff = 1.0e-12
+    eigsolve_krylovdim = 20
+    eigsolve_maxiter = 10
+    eigsolve_tol = 1.0e-12
+    initial_linkdim = 4
+    initialization = "random_fixed_charge"
+    maxdim = [16, 32, 64]
+    measure_variance = true
+    noise = 0.0
+    nsweeps = 8
+    seed = 11
+[[points]]
+absolute_variance = 8.881784197001252e-15
+ed_energy = -3.5692786747965757
+energy = -3.5692786747965766
+energy_error_per_site = 9.868649107779169e-17
+ground_space_leakage = 1.191905213665554e-13
+label = "saved_point"
+max_sz_error = 5.2763349245310565e-14
+measured_truncation_errors = [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+residual_norm = 2.6410688102818695e-14
+schmidt_left_sz_error = 2.498001805406602e-16
+schmidt_probability_error = 2.220446049250313e-16
+state_norm_error = 0.0
+status = "passed"
+sweep_energies = [-3.569278674796577, -3.5692786747965806, -3.56927867479658, -3.569278674796577, -3.5692786747965797, -3.569278674796577, -3.5692786747965743, -3.5692786747965766]
+sz_profile = [0.020606916474507936, 0.1254528337176498, 0.0206069164745177, 0.020606916474553236, 0.12545283371759836, 0.02060691647451484, 0.020606916474549986, 0.12545283371754756, 0.020606916474560588]
+theta = 0.37
+total_sz_error = 0.0
+
+    [points.schmidt]
+    bond = 4
+    entropy = 1.2795236299540664
+    left_q = [0, 2, 0, -2, 2, 0, 0, 2, -2, 0, 4, -2, 2, 0, -2, -4]
+    mean_left_sz = 0.1872735831412289
+    probabilities = [0.548406981646581, 0.2316987768001355, 0.11954835158094132, 0.06203007716168097, 0.016649384897349646, 0.010656772090794396, 0.0043289878538701095, 0.002056627631898201, 0.001999060448142039, 0.0011337968530111433, 0.0005755420369448467, 0.00040300354523287597, 0.00027027662067293114, 0.00015327381485100882, 5.774830812720425e-5, 3.1338709766989184e-5]
+    region = "MPS_prefix_not_geometric_axis_cut"
+
+    [points.solver]
+    cutoff = 1.0e-12
+    eigsolve_krylovdim = 20
+    eigsolve_maxiter = 10
+    eigsolve_tol = 1.0e-12
+    initial_linkdim = 4
+    initialization = "provided_mps"
+    maxdim = [16, 32, 64]
+    measure_variance = true
+    noise = 0.0
+    nsweeps = 8
+    seed = 11
+[[points]]
+absolute_variance = 5.329070518200751e-15
+ed_energy = -3.574765738973111
+energy = -3.574765738973109
+energy_error_per_site = 1.9737298215558337e-16
+ground_space_leakage = 3.0064670772072265e-14
+label = "direct"
+max_sz_error = 1.5210055437364645e-14
+measured_truncation_errors = [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+residual_norm = 1.768776890002139e-14
+schmidt_left_sz_error = 3.0531133177191805e-16
+schmidt_probability_error = 2.220446049250313e-16
+state_norm_error = 1.1102230246251565e-16
+status = "passed"
+sweep_energies = [-3.5747657389731105, -3.574765738973113, -3.5747657389731136, -3.5747657389731113, -3.574765738973111, -3.574765738973114, -3.5747657389731113, -3.574765738973111]
+sz_profile = [0.022858423141724565, 0.12094982038321182, 0.022858423141729728, 0.02285842314173754, 0.12094982038319553, 0.0228584231417353, 0.022858423141732052, 0.12094982038319134, 0.022858423141741524]
+theta = 6.993185307179586
+total_sz_error = 6.106226635438361e-16
+
+    [points.schmidt]
+    bond = 4
+    entropy = 1.275073251579727
+    left_q = [0, 2, 0, -2, 2, 0, 0, -2, 2, 0, 4, -2, 2, 0, -2, -4]
+    mean_left_sz = 0.18952508980840396
+    probabilities = [0.5492381808939517, 0.23259494698712332, 0.11969017544973976, 0.06049441833991507, 0.016689615946273488, 0.010600087073391216, 0.004291739015889717, 0.002000404984555995, 0.001972216083176536, 0.0010563146442037644, 0.0005092836434103609, 0.00038100984730610416, 0.00024615930698981814, 0.00014649861685739148, 5.73157042290737e-5, 3.1633462986845836e-5]
+    region = "MPS_prefix_not_geometric_axis_cut"
+
+    [points.solver]
+    cutoff = 1.0e-12
+    eigsolve_krylovdim = 20
+    eigsolve_maxiter = 10
+    eigsolve_tol = 1.0e-12
+    initial_linkdim = 4
+    initialization = "provided_mps"
+    maxdim = [16, 32, 64]
+    measure_variance = true
+    noise = 0.0
+    nsweeps = 8
+    seed = 11
+[[points]]
+absolute_variance = 5.329070518200751e-15
+ed_energy = -3.574765738973111
+energy = -3.574765738973109
+energy_error_per_site = 1.9737298215558337e-16
+ground_space_leakage = 3.0064670772072265e-14
+label = "separate_process_restart"
+max_sz_error = 1.5210055437364645e-14
+measured_truncation_errors = [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+residual_norm = 1.768776890002139e-14
+schmidt_left_sz_error = 3.0531133177191805e-16
+schmidt_probability_error = 2.220446049250313e-16
+state_norm_error = 1.1102230246251565e-16
+status = "passed"
+sweep_energies = [-3.5747657389731105, -3.574765738973113, -3.5747657389731136, -3.5747657389731113, -3.574765738973111, -3.574765738973114, -3.5747657389731113, -3.574765738973111]
+sz_profile = [0.022858423141724565, 0.12094982038321182, 0.022858423141729728, 0.02285842314173754, 0.12094982038319553, 0.0228584231417353, 0.022858423141732052, 0.12094982038319134, 0.022858423141741524]
+theta = 6.993185307179586
+total_sz_error = 6.106226635438361e-16
+
+    [points.schmidt]
+    bond = 4
+    entropy = 1.275073251579727
+    left_q = [0, 2, 0, -2, 2, 0, 0, -2, 2, 0, 4, -2, 2, 0, -2, -4]
+    mean_left_sz = 0.18952508980840396
+    probabilities = [0.5492381808939517, 0.23259494698712332, 0.11969017544973976, 0.06049441833991507, 0.016689615946273488, 0.010600087073391216, 0.004291739015889717, 0.002000404984555995, 0.001972216083176536, 0.0010563146442037644, 0.0005092836434103609, 0.00038100984730610416, 0.00024615930698981814, 0.00014649861685739148, 5.73157042290737e-5, 3.1633462986845836e-5]
+    region = "MPS_prefix_not_geometric_axis_cut"
+
+    [points.solver]
+    cutoff = 1.0e-12
+    eigsolve_krylovdim = 20
+    eigsolve_maxiter = 10
+    eigsolve_tol = 1.0e-12
+    initial_linkdim = 4
+    initialization = "provided_mps"
+    maxdim = [16, 32, 64]
+    measure_variance = true
+    noise = 0.0
+    nsweeps = 8
+    seed = 11
+
+[restart]
+accepted_snapshot_unchanged = true
+baseline_overlap_magnitude_error = 4.440892098500626e-16
+baseline_preserved = true
+charge_preserved = true
+energy_difference = 0.0
+max_sz_difference = 0.0
+overlap_magnitude_error = 4.440892098500626e-16
+schmidt_mean_left_sz_difference = 0.0
+separate_process = true
+sites_preserved = true
+status = "passed"
+theta_path_preserved = true
+worker_blas_threads = 1
+worker_julia_threads = 1
+
+[restart_limits]
+baseline_overlap_magnitude_error = 2.0e-12
+energy_difference = 1.0e-10
+max_sz_difference = 1.0e-7
+overlap_magnitude_error = 1.0e-10
+schmidt_mean_left_sz_difference = 1.0e-7
+
+[runtime]
+ITensorMPS = "0.4.1"
+ITensors = "0.9.31"
+KrylovKit = "0.10.4"
+NDTensors = "0.4.31"
+blas_threads = 1
+julia = "1.13.0"
+julia_threads = 1

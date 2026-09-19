@@ -4,7 +4,9 @@
 以下の設定値は検証を始めるための提案であり、計算結果や収束保証ではない。
 P0 と P1 の小系基準計算は実装済みで、実測結果は
 [検証記録](research/p0_reference_validation.md)に分けて記載する。
-continuation・checkpoint・Schmidt charge・既知 CSL・相同定は引き続き設計段階である。
+完了点の checkpoint と Schmidt charge 診断を追加した。
+continuation の受理・棄却・刻み半減・復元を追加し、対照系で初期検証した。
+既知 CSL のポンプ・研究サイズの枝追跡・相同定は引き続き研究計画である。
 
 ## 1. 測定する U(1) 応答
 
@@ -114,7 +116,9 @@ seam gauge では `A_b(θ)=wy*θ`。これを初期実装の既定とする。
   uniform gauge との行列・スペクトル照合を小系で行う。
 - uniform gauge は `ηi=yi+δsublattice,C/2`、`χi=−θηi/Ly` とし、
   `Auniform=wy θ+χi−χj` を実装して seam gauge との行列照合に使う。
-  円周方向の並進・運動量を使う診断は次段階とする。
+  θ=0 の 18 サイト ED では円周並進と低準位の運動量を照合した
+  （[監査記録](research/data/p2_ed18_translation.toml)）。
+  一般の θ でのゲージ補正を含む並進と MPS の運動量診断は未実装である。
   2π 後の比較には大きなゲージ変換が必要で、未変換の MPS overlap を比較しない。
 - 長距離結合や多体項を追加する場合も、同じゲージ規則から twist を導出する。
   chirality seed を残す場合にはその境界項も含める。
@@ -149,6 +153,7 @@ API は [OpSum/MPO](https://docs.itensor.org/ITensorMPS/stable/OpSum.html)、
 [MPS](https://docs.itensor.org/ITensorMPS/stable/MPSandMPO.html)に基づく。
 P0 で Julia 1.12.7、ITensors 0.9.31、ITensorMPS 0.4.1 を使って照合し、
 解決した依存関係を `Manifest.toml` に保存した。
+現在の Julia 1.13 用環境は `Manifest-v1.13.toml` に分離して保持する。
 
 初期は各 θ の MPO を構築し直し、`dmrg(H, psi_previous; ...)` で最適化する。
 実際の切断誤差、energy/variance、各観測量の収束を測り、`cutoff` の設定値だけを
@@ -159,8 +164,11 @@ noise が非零なら切断誤差は摂動した密度行列のものであり�
 upstream API が局所 Krylov の convergence info を公開しないため、それを確認済みとはしない。
 小系では独立した全系 residual も検証する。warm start の入力はコピーし、site indices と Q を照合する。
 検証した upstream backend では、等しい Schmidt 重みを異なる QN sector で切る境界に
-空状態と誤った切断誤差を返す事例がある。正準中心の norm がゼロ・非有限なら observer が停止するが、
-一般的な縮退境界の校正は P1 の残課題である。再現条件は[検証記録](research/p0_reference_validation.md)を参照。
+空状態と誤った切断誤差を返す事例がある。近接した重みでも、非零状態を残しつつ
+切断誤差を過小報告する条件を四サイトの解析状態で確認した。observer は正準中心の
+norm がゼロ・非有限の場合と、報告 spectrum の長さが保持 bond 次元と異なる場合に停止する。
+一般的な縮退境界の修正・校正は P1 の残課題である。
+再現条件は [P2 の監査記録](research/p2_continuation_validation.md)を参照。
 必要なら固定 3 成分の MPO 和を使う最適化を比較する。
 ITensorMPS は MPO の配列による和を受け取れるが、速度向上は実測で判断する。
 [DMRG API](https://docs.itensor.org/ITensorMPS/stable/DMRG.html)。
@@ -187,6 +195,26 @@ avoided crossing をどう通過したかを区別する。
    逆走の不一致は履歴依存・枝飛びの診断であり、反対 chirality の枝への切替とは区別する。
 6. 適応刻み以外に `δθ/2` の全走行も比較する。
    期待する 2/3 に近づくことを収束条件や枝の選択基準に使わない。
+
+現在の `continue_flux` は上記の一部を実装する。seam gauge、noise=0、全点の variance、
+少なくとも二 sweep を必須とし、`FluxPolicy` に有限の閾値を明示する。
+初期状態を含め、overlap の絶対値（振幅）、指定サイトの密度変化、Schmidt entropy・
+左 Sz 平均の変化、最後の sweep の実測切断誤差、variance、最後の二 sweep の energy 差と
+最終期待値との差を判定する。負の variance は `100eps(Float64)*max(1,E²)` の
+丸め範囲と明示した variance 閾値の両方を満たす必要がある。
+累積移送の左右和、Schmidt 電荷との一致、指定 cut 間の差も記録・照合する。
+全サイズに共通の overlap 閾値や期待 pump 値は内蔵していない。
+
+各試行は最後の受理 checkpoint を読み直して始め、棄却時は刻みを半減する。
+最小刻み・試行数制限まで解消しなければ `unresolved` として記録する。
+数値的に有効な棄却状態は trial snapshot に残す。不正な診断・状態は受理せず、
+型と分類した理由だけを保存する。`completed` は指定した有限の診断を通過した意味であり、
+物理的な断熱性・相の同定を意味しない。零 flux の縮退では、正しい基底状態でも
+刻みを減らして overlap が 1 に近づくとは限らない。小系の実例と制限は
+[検証記録](research/p2_continuation_validation.md)に示す。
+18 サイト相互作用系では、半分の刻みをあらかじめ設定した別走行との比較を行った。
+bond dimension や sweeps の自動増加、uniform gauge で共通規約に変換した overlap、
+研究サイズでの刻み・サイズ収束の比較は今後の課題である。
 
 本模型は h≠0 でも θ=0 の Sz 基底で Hamiltonian が実数なので、複素共役に関する
 対称性が残る。実数演算だけでは複素の枝を探索できない。
@@ -219,6 +247,15 @@ P_c(\theta)=\sum_{i\in R_c}
 - `⟨H²⟩−⟨H⟩²` は可能なサイズ・代表点で評価する。
   全 θ で高価なら頻度を制御するが、energy の安定だけを正しさの根拠にしない。
 
+`schmidt_diagnostics(psi,b)` はこのうち MPS prefix `1:b` の確率・絶対電荷・
+entropy・左物理 Sz の平均と分散を実装した。幾何学 cut `c` は `b=3Ly*c` に対応する。
+MPS のコピーを正準化して切断なし SVD を行い、左テンソル群の flux の和から
+境界 link の向き付き QN を引いて整数 `q_left` を得る。最後に 2 で割って物理 Sz にする。
+実空間密度を使って offset を合わせることはしない。
+積状態、非零全電荷の独立スピン基底、link QN の定数 shift・arrow 反転、
+27 サイトの合成状態での複数 cut の左右移送により校正した。
+これは読み出しの校正であり、Hamiltonian の flux 応答の検証ではない。
+
 静的 DMRG の各点で得た平衡電流を、架空の時間刻みで積分して pump としない。
 特に `∂E/∂θ` は円周方向の twist に共役な応答であり、軸方向の移送量そのものではない。
 時間積分による検証をするなら、実時間発展と切断を横切る電流演算子を別途実装する。
@@ -238,25 +275,49 @@ P_c(\theta)=\sum_{i\in R_c}
 実装した N=9、Q=1 の sector は 126 次元で、θ=0 の最近接模型では基底状態が二重縮退する。
 DMRG 状態の ED 基底空間への射影と全系 residual を確認し、射影後の同じ状態の密度・相関を比較する。
 θ=0.37 では一意な基底状態との比較も行う。この有限系の縮退をトポロジカル縮退とは解釈しない。
-N=18、Q=2 は `binomial(18,10)=43758` 次元であり、現在は疎行列構築と Hermiticity の確認まで。
+N=18、Q=2 は `binomial(18,10)=43758` 次元である。
+独立な sparse BlockLanczos 参照を追加し、複素初期 block、収束情報、全行列 residual、
+直交性を確認する。9 サイトの dense 対角化で縮退空間も照合した。
+18 サイトの θ=0,0.185,0.37 で低い三準位を計算した
+（[数値記録](research/data/p2_ed18_reference.toml)）。有限個の Ritz 対の収束だけでは
+全基底空間の完全性や bulk gap を保証しない。
 9 サイト系には内部軸方向 cut がなく、その照合から軸方向 pump の検証はできない。
+
+18 サイトでは χ=512 の `0→±0.37→0` を、事前に決めた二種類の刻みと二つの seed で
+比較した。四経路の延べ 24 保存点は独立 ED と一致し、実空間と Schmidt 移送も整合した。
+χ=128 の初期点は棄却され、χ=256 は零 flux の sweep 中に切断 guard が停止した。
+この幾何には cut が一つしかなく内部 bulk column はない。
+[相互作用系の検証記録](research/p2_interacting18_validation.md)に、有限区間の応答、
+失敗と検証の限界を保存した。2π pump や magnetization plateau の成立は未検証である。
 
 正の対照には Gong–Zhu–Sheng の拡張 kagome Heisenberg 模型を用いる。
 論文は `J′=0.5`、`3×24×4` cylinder の U(1) DMRG で 2π 当たり 1/2 の移送を報告している。
 最近接模型の 1/9 plateau とは異なる検証用モデルであり、元論文の結合図と
 端・円周の定義を確認して再現する。距離だけで J2/J3 を一括定義しない。
 [原論文と flux insertion 手法](https://www.nature.com/articles/srep06317)。
+本文・補足の模型、幾何、flux 規約を照合した
+[CSL 対照の実装前監査](research/p3_csl_control_design.md)では、J3 を六角形の対向頂点に
+限定したテンプレート案と Q=0 対応の変更点を整理した。
+原著の全 site 列・整数 QN 入力・pinning・内部刻み履歴は未取得であり、
+提案した Q=0 と端の切り方を原著入力そのものとは扱わない。
 
 小系では一意な基底状態が 2π で戻ることが正常であり、ED の最小固有値追跡に
 2/3 のポンプを要求しない。ED はまず Hamiltonian と観測量の独立した検証に使う。
 
-試行サイズは `Lx=12,Ly=3,N=108`、次に `Lx=18 or 24,Ly=6,N=324 or 432` を候補とする。
-メモリと収束に応じて調整し、文献の YC 幅と比較するときは格子図を照合する。
+今後の実行順序は [ロードマップ](../ROADMAP.md)を正本とする。
+まず QN 切断の修正・独立校正と 18 サイトの有限 χ 比較を行う。
+NN 相互作用系は `Lx=3,Ly=3,N=27` の初期点・短区間から始め、実測後に
+`Lx=6,Ly=3,N=54` 等で端の分離と複数 cut を調べる。
+既知 CSL は Q=0 の 12・18 サイトで拡張模型を照合した後、
+`Lx=3,Ly=4,N=36` で状態準備と資源量を測定し、長さを増やす。
+
+`Lx=12,Ly=3,N=108` や `Lx=18 or 24,Ly=6,N=324 or 432` はその先の候補であり、
+現段階で着手サイズや所要時間を確約しない。文献の YC 幅と比較するときは格子図を照合する。
 9-site 以上の秩序単位胞と両立する cylinder を含める。
 非整合な円周だけで VBC を排除しない。長さは相関長・端の侵入長より十分大きく取る。
 
-初期の bond dimension は例えば 256→512→1024 と段階的に増やす。
-これで量子化が決まるとは想定せず、実測で 2048,4096,… が必要か判断する。
+切断校正後の初期点で χ=128,256,512 を比較し、未収束なら sweep 数と χ の影響を分ける。
+その結果と時間・メモリを見て 1024,2048,… が必要か判断する。
 小系の初期照合目標は `|ED−DMRG|/N < 10⁻⁸ J`、局所 Sz の差 `<10⁻⁶`。
 研究用 pump の暫定精度目標は `<10⁻²` とし、少なくとも刻み・bond dimension・長さの
 変更による差を個別に提示する。設定 cutoff からこの精度を推定しない。
@@ -316,6 +377,23 @@ flux の規格化も照合する。今回比較する応答はユーザー指定
 各受理点にはエネルギー、可能なら variance、実測切断誤差、各 cut の pump、
 Sz profile、chirality、EE、charge spectrum、前段 overlap、枝の診断結果を対応させる。
 checkpoint は最後の受理点を原子的に保存し、再開時に格子・site indices・Q・設定を照合する。
+
+現実装の `save_checkpoint` は完了した DMRG 点と零 flux の基準 MPS を保存する。
+受理済み／試行を別ディレクトリに置き、新しい snapshot を一時ディレクトリから
+同じ親への rename で公開する。既存 snapshot の上書きは行わない。
+TOML metadata と payload のサイズ・SHA-256 を確認し、同一 Julia・依存バージョン・
+ソース・manifest を要求してから Serialization payload を読む。
+復元後は電荷・site identity・norm・密度・基準状態を照合し、保存した模型の
+Hamiltonian を再構築して energy を確認する。`resume_dmrg` は受理済み状態の
+solver 設定で新しい DMRG batch を開始し、Hamiltonian 環境は再構築する。
+保存された path と受理ラベルは呼出側が指定するもので、自動の枝判定ではない。
+`continue_flux` から保存する場合は明示的な診断 policy に基づく受理ラベルとなり、
+試行・理由・全 unwrapped path は同じ走行の `trajectory.toml` に原子的に更新される。
+受理点から再開する際も初期零 flux の基準を引き継ぐ。新しい policy・目標列・刻みを
+指定した別 journal を作る方式であり、driver 内部の途中命令を復元するものではない。
+同一環境の信頼済みローカル snapshot 用で、長期交換形式・途中 sweep の再開・
+電源断に対する耐久性は保証していない。
+[実測検証と再現手順](research/p1_restart_schmidt_validation.md)を参照。
 
 最初の研究レポートは、`ΔSz_right(θ)` と誤差、列ごとの密度変化、
 flux に対する entanglement/charge flow、収束比較、候補の判定範囲から構成する。
