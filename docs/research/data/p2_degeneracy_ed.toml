@@ -1,0 +1,46 @@
+Jxy = 1.0
+Jz = 1.0
+Lx = 1
+Ly = 3
+N = 9
+Q = 1
+blas_threads = 1
+gauge = "seam"
+interpretation = "A valid degenerate initial ground state may have fidelity near 0.5 with the unique positive-flux ground state even as the step tends to zero. Step refinement alone need not resolve a global-overlap rejection."
+julia = "1.13.0"
+julia_threads = 1
+limitations = "N=9 has no geometric axial cut. This is not pumping evidence, a topological degeneracy claim, or a prescription to weaken branch acceptance."
+state_convention = "Fidelity is squared normalized overlap; zero eigenvector is one LAPACK-selected vector within the two-dimensional zero-flux ground space."
+status = "independent_ed_observation"
+theta_units = "radians"
+zero_gap_above_groundspace = 0.416357921997625
+zero_ground_pair_splitting = 4.440892098500626e-16
+
+[[points]]
+chosen_zero_basis_fidelity = 0.4998922701628825
+opposite_flux_groundstate_fidelity = 8.093694022531554e-8
+positive_flux_gap = 0.000435101728966103
+theta = 0.01
+zero_groundspace_weight = 0.9999834706190861
+[[points]]
+chosen_zero_basis_fidelity = 0.49998981631754286
+opposite_flux_groundstate_fidelity = 8.615484330616842e-10
+positive_flux_gap = 4.351009784819837e-5
+theta = 0.001
+zero_groundspace_weight = 0.9999998347256516
+[[points]]
+chosen_zero_basis_fidelity = 0.4999989876006619
+opposite_flux_groundstate_fidelity = 8.66752853910464e-12
+positive_flux_gap = 4.3510097089694e-6
+theta = 0.0001
+zero_groundspace_weight = 0.9999999983472776
+[[points]]
+chosen_zero_basis_fidelity = 0.4999998990086283
+opposite_flux_groundstate_fidelity = 8.655235777902965e-14
+positive_flux_gap = 4.3510097080812216e-7
+theta = 1.0e-5
+zero_groundspace_weight = 0.999999999983473
+
+[source_sha256]
+"degeneracy_probe.jl" = "13075d0bc7a2fc9882dee839dea4ca154a38739bdf952fcd0113e01cbf3205b3"
+"test/reference_ed.jl" = "63ac49ce5e783aafcbcf6f55c3edb63fe93748afb0279827b225eb35c21367c3"

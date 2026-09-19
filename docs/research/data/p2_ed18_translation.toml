@@ -1,0 +1,33 @@
+blas_threads = 1
+input = "outputs/p2-ed18-GqGhyF/point_1.jls"
+input_sha256 = "72351ea0aad064b9bce1a334cb47991de00526e53b01f5bff1efcc2303d58e42"
+julia = "1.13.0"
+scope = "independent_spinbasis_circumference_symmetry_audit"
+threads = 1
+
+[zero_flux]
+basis_dimension = 43758
+energy_levels = [-7.4423397444704085, -7.440475069440705, -7.440475069440694]
+ground_count_within_computed_vectors = 1
+ground_space_translation_leakage = 3.637763839202538e-12
+ground_threshold = 1.0e-9
+ground_vector_residuals = [1.1802429261761623e-12]
+hamiltonian_symmetry_error = 0.0
+interpretation = "Finite18site circumference symmetry only; no bulk gap or topological degeneracy claim"
+partial_spectrum = true
+theta = 0.0
+translation = "T sends physical site(x,y,s) to (x,(y+1) mod3,s)"
+translation_cubed_is_identity = true
+translation_eigenphases_over_pi = [1.1332659160568445e-19]
+translation_eigenvalues_imag = [3.5602598764478866e-19]
+translation_eigenvalues_real = [0.9999999999999991]
+translation_unitarity_error = 1.7763568394002505e-15
+
+    [zero_flux.first_excited_pair]
+    count = 2
+    energy = -7.440475069440705
+    translation_eigenphases_over_pi = [0.6666666666666667, -0.6666666666666667]
+    translation_eigenvalues_imag = [0.8660254037844457, -0.8660254037844273]
+    translation_eigenvalues_real = [-0.5000000000000043, -0.4999999999999938]
+    translation_leakage = 4.691419403118432e-12
+    translation_unitarity_error = 3.778289063045465e-14
