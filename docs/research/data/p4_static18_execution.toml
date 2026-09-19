@@ -1,0 +1,12 @@
+schema_version = 1
+status = "exited"
+command = ["julia", "--project=.", "--startup-file=no", "--threads=1", "examples/validate_static18.jl", "/Users/masa/git/KagomeDMRG.jl/outputs/p4-static18-20260919-run2"]
+wall_limit_seconds = 600.0
+termination_grace_seconds = 2.0
+termination_grace_included_in_wall_limit = true
+julia_threads = 1
+blas_threads = 1
+worker_exit_confirmed = true
+worker_validation_status = "not_interpreted"
+worker_exit_code = 0
+wall_elapsed_seconds = 225.61988491700322

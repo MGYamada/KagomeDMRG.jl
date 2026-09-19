@@ -20,11 +20,20 @@ end
 
 # Collect measured factorization truncation errors on both halves of each sweep.
 # The configured cutoff is kept separately in the returned settings.
-mutable struct _SweepDiagnostics <: AbstractObserver
+mutable struct _SweepDiagnostics{F} <: AbstractObserver
     energies::Vector{Float64}
     max_truncation_errors::Vector{Float64}
+    progress_callback::F
+    started_ns::UInt64
 end
-_SweepDiagnostics() = _SweepDiagnostics(Float64[], Float64[])
+_SweepDiagnostics(callback=nothing, started_ns::UInt64=time_ns()) =
+    _SweepDiagnostics(Float64[], Float64[], callback, started_ns)
+
+function _dmrg_progress(callback, started_ns; event...)
+    callback === nothing && return nothing
+    callback((; event..., elapsed_seconds=Float64(time_ns() - started_ns) * 1e-9))
+    return nothing
+end
 
 function ITensorMPS.measure!(obs::_SweepDiagnostics; sweep, half_sweep, bond,
                             energy, spec, psi, kwargs...)
@@ -50,8 +59,17 @@ function ITensorMPS.measure!(obs::_SweepDiagnostics; sweep, half_sweep, bond,
     end
     obs.max_truncation_errors[sweep] =
         max(obs.max_truncation_errors[sweep], truncerror(spec))
+    obs.progress_callback === nothing || _dmrg_progress(
+        obs.progress_callback, obs.started_ns; kind=:bond,
+        sweep=Int(sweep), half_sweep=Int(half_sweep), bond=Int(bond),
+        energy=Float64(real(energy)), truncation_error=Float64(truncerror(spec)),
+        retained_dimension=dim(linkind(psi, bond)))
     if half_sweep == 2 && bond == 1
         push!(obs.energies, real(energy))
+        obs.progress_callback === nothing || _dmrg_progress(
+            obs.progress_callback, obs.started_ns; kind=:sweep, sweep=Int(sweep),
+            energy=Float64(real(energy)),
+            max_truncation_error=obs.max_truncation_errors[sweep], maxlinkdim=maxlinkdim(psi))
     end
     return nothing
 end
@@ -79,6 +97,14 @@ selection, including ties across QN sectors. A hard `maxdim` can split a tied
 subspace; equal weights use block-coordinate then local-index order. Guards
 still reject zero states and reported-spectrum/retained-dimension mismatches.
 The calibrated truncation loss is not an error bound on physical observables.
+
+`progress_callback(event)` optionally receives scalar-only NamedTuples with
+`kind=:phase` (initialization, mpo, sweeps, energy, variance, sz; started/completed),
+`:bond` (after each guarded local update), or `:sweep` (after each full sweep).
+`elapsed_seconds` is cumulative wall time since entry to this function, including
+callback time. Bond/sweep energies are local Ritz values, not final expectations.
+Skipped variance has no phase events. Callback exceptions propagate; callbacks
+receive no solver state and are absent from returned settings and checkpoints.
 """
 function run_dmrg(lattice::KagomeCylinder, theta::Real;
                   Q=nothing, sites=spin_sites(lattice), psi0=nothing, seed::Integer=0,
@@ -86,7 +112,12 @@ function run_dmrg(lattice::KagomeCylinder, theta::Real;
                   maxdim=[16, 32, 64], cutoff::Real=1e-12, noise::Real=0.0,
                   eigsolve_tol::Real=1e-12, eigsolve_krylovdim::Integer=20,
                   eigsolve_maxiter::Integer=10, gauge::Symbol=:seam, hz=nothing,
-                  outputlevel::Integer=0, measure_variance::Bool=true)
+                  outputlevel::Integer=0, measure_variance::Bool=true,
+                  progress_callback=nothing)
+    started_ns = time_ns()
+    phase(name, status) = _dmrg_progress(progress_callback, started_ns;
+        kind=:phase, phase=name, status)
+    phase(:initialization, :started)
     execution_identity = _execution_identity()
     sector = target_sector(nsites(lattice); Q)
     _check_sites(sites, sector.N)
@@ -112,18 +143,33 @@ function run_dmrg(lattice::KagomeCylinder, theta::Real;
     # caller mutating its lattice or field vector later must not relabel it.
     saved_lattice = deepcopy(lattice)
     fields = hz === nothing ? zeros(sector.N) : Float64.(hz)
+    phase(:initialization, :completed)
+    phase(:mpo, :started)
     H = twisted_exchange_mpo(sites, saved_lattice, theta; gauge, hz=fields)
-    obs = _SweepDiagnostics()
+    phase(:mpo, :completed)
+    obs = _SweepDiagnostics(progress_callback, started_ns)
+    phase(:sweeps, :started)
     local_energy, psi = dmrg(H, psi; nsweeps, maxdim=dims, cutoff, noise,
                             eigsolve_tol, eigsolve_krylovdim, eigsolve_maxiter,
                             observer=obs, outputlevel, ishermitian=true)
     normalize!(psi)
     flux(psi) == QN("Sz", sector.Q) || error("DMRG changed the total charge")
+    phase(:sweeps, :completed)
+    phase(:energy, :started)
     energy_complex = inner(psi', H, psi)
     abs(imag(energy_complex)) < 1e-10 * max(1, abs(real(energy_complex))) ||
         error("energy has an unexpectedly large imaginary part")
     energy = real(energy_complex)
-    variance = measure_variance ? real(inner(H, psi, H, psi)) - energy^2 : nothing
+    phase(:energy, :completed)
+    variance = nothing
+    if measure_variance
+        phase(:variance, :started)
+        variance = real(inner(H, psi, H, psi)) - energy^2
+        phase(:variance, :completed)
+    end
+    phase(:sz, :started)
+    sz = sz_profile(psi)
+    phase(:sz, :completed)
     settings = (; seed=Int(seed), initial_linkdim=Int(initial_linkdim),
                  nsweeps=Int(nsweeps), maxdim=dims, cutoff=Float64(cutoff),
                  noise=Float64(noise), eigsolve_tol=Float64(eigsolve_tol),
@@ -134,7 +180,7 @@ function run_dmrg(lattice::KagomeCylinder, theta::Real;
         error("implementation changed during DMRG")
     return (; psi, H, sites, lattice=saved_lattice, hz=copy(fields),
              theta=Float64(theta), gauge, Q=sector.Q, energy,
-             local_energy=real(local_energy), variance, sz=sz_profile(psi),
+             local_energy=real(local_energy), variance, sz,
              sweep_energies=obs.energies,
              max_truncation_errors=obs.max_truncation_errors, settings,
              execution_identity)
