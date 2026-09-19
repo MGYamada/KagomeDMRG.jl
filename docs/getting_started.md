@@ -4,8 +4,17 @@ KagomeDMRG.jl is a research package for spin-1/2 kagome cylinders, with the
 nearest-neighbor antiferromagnetic Heisenberg model at `M/Msat = 1/9` as its
 primary target. It currently provides lattice and gauge construction, a
 complex U(1) two-site DMRG reference solver using ITensors.jl and ITensorMPS.jl,
-and basic observables. The package test suite passes on the dependency
-baselines recorded below; larger research systems have not been validated.
+and basic observables. Completed validation and its dependency baselines are
+recorded below; larger research systems have not been validated.
+
+The current priority is static nearest-neighbor 1/9 research: compare total
+exchange energies across charge sectors and examine competing order patterns.
+The published `h/J ≈ 0.35–0.42` interval is a reference, not a convergence target.
+A uniform field shifts a fixed-Q energy by `-h*Q/2`, so an h grid does not require
+repeated optimization within that sector. The known-CSL pump calibration proceeds
+alongside this work and is required before interpreting the 1/9 pump. See the
+[research strategy and bounded next steps](research/p4_static_plateau_strategy.md)
+and the [roadmap](../ROADMAP.md). These are plans, not new numerical results.
 
 ## Run a small system
 
@@ -24,10 +33,17 @@ julia +1.13 --project=. --startup-file=no --threads=1
 `Manifest-v1.13.toml` records the Julia 1.13 dependency environment. Julia
 automatically selects the manifest matching its major and minor version,
 as described in the [Pkg documentation](https://julialang.github.io/Pkg.jl/v1/toml-files/#Different-Manifests-for-Different-Julia-versions).
-`Manifest.toml` preserves the Julia 1.12.7 validation baseline.
+`Manifest.toml` records the Julia 1.12.7 dependency environment.
+Both manifests now select the local NDTensors correction. Historical validation
+reports record their original source and manifest hashes; reproducing those
+older results requires the corresponding historical checkout.
 The compatibility ranges in `Project.toml` already allow Julia 1.13.
-To reproduce that historical baseline, run `juliaup add 1.12.7` and use
+To select Julia 1.12.7, run `juliaup add 1.12.7` and use
 `julia +1.12.7` in the Julia commands instead.
+
+`Pkg.test()` runs the regression suite with redundant cases removed. Use
+`Pkg.test(; test_args=["truncation", "checkpoint"])` to select groups.
+See the [test guide](../test/README.md) for the available groups and coverage.
 
 At the Julia prompt:
 
@@ -84,6 +100,25 @@ is `q=2Sz`, so the target sector requires `N % 9 == 0` and uses
 `Q=N/9`, `M=N/18`, `Nup=5N/9`, and `Ndown=4N/9`. The nine-site example thus
 has physical total `Sz=1/2`, not `Sz=1`.
 
+For a different fixed sector, pass an integer `Q` to `target_sector`,
+`initial_mps`, or `run_dmrg`, for example
+`run_dmrg(kagome_cylinder(1, 4), 0.37; Q=0, seed=11)`.
+Require `-N <= Q <= N` and matching parity of `N` and `Q`; the up-spin count
+is `(N+Q)/2`. Omitting `Q` still selects 1/9, even with a supplied `psi0`:
+a warm start with another charge must name that charge explicitly.
+
+The bounded [charge-sector study](research/p3_explicit_charge_validation.md)
+compares twelve-site `Q=0` and nine-site neighboring sectors against independent
+ED, outside the regression suite:
+
+```sh
+julia --project=. --startup-file=no --threads=1 examples/validate_charge_sectors.jl outputs/new-charge-study
+```
+
+Choose a new output directory. The study records all five points and their
+accuracy, with a 300-second budget checked between points. It does not measure
+an axial pump or establish a plateau.
+
 Each physical bond is stored once as `(i,j,Jxy,Jz,wy)`, with `wy` the signed
 periodic image of endpoint `j` relative to `i`. Reversing the bond reverses
 `wy`. The coefficient of `S+_i S-_j` is `(Jxy/2)*cis(A_b)`, its reverse is the
@@ -104,15 +139,46 @@ left and right regions of each cut. Supply the measured zero-flux profile as
 | Purpose | Functions |
 | --- | --- |
 | Geometry and sectors | `kagome_cylinder`, `nsites`, `site_index`, `target_sector`, `right_region` |
+| Extended isotropic exchange | `kagome_j1j2j3_cylinder`, `bond_families` |
 | Bond orientation and gauge | `reverse_bond`, `bond_phase`, `gauge_angles` |
 | U(1) reference backend | `spin_sites`, `initial_mps`, `twisted_exchange_mpo`, `run_dmrg` |
-| Observables | `sz_profile`, `spin_correlations`, `spin_transfer` |
+| Observables | `sz_profile`, `spin_correlations`, `spin_transfer`, `bond_energies` |
 | Schmidt probabilities and absolute left charge | `schmidt_diagnostics` |
 | Local snapshots and completed-point restart | `save_checkpoint`, `load_checkpoint`, `resume_dmrg` |
 | Diagnostic-gated adaptive continuation | `FluxPolicy`, `continue_flux` |
 
 The exported data types are `Bond`, `KagomeSite`, `KagomeCylinder`, and `FluxPolicy`.
 Use Julia help, for example `?run_dmrg`, for arguments and result fields.
+
+`kagome_j1j2j3_cylinder(Lx,Ly; J1=1.0,J2=0.5,J3=0.5)` constructs the
+separate extended model used to prepare a CSL control. J3 includes only
+opposite hexagon vertices. A bond remains when both endpoints survive the
+open boundary, even if the rest of its hexagon does not; zero-coupling bonds
+also remain explicitly. The NN builder's defaults are unchanged.
+`bond_families(lattice)` classifies actual bonds as `:J1`, `:J2`, `:J3`, or
+`:other` from their geometry and winding; checkpoints save and validate these
+families together with every exchange coefficient.
+
+`bond_energies(psi,lattice,theta; gauge=:seam)` returns exchange-energy
+expectations in bond order. Fields are excluded: subtract
+`dot(hz,sz_profile(psi))` from their sum to obtain the full energy.
+This implementation uses the full correlation matrices and has O(N²) output
+storage; large-cylinder cost has not been profiled.
+See the [extended-model study](research/p3_extended_model_validation.md) for
+the independent small-system validation scope.
+
+```julia
+control = kagome_j1j2j3_cylinder(1, 4; J1=1.0, J2=0.5, J3=0.5)
+point = run_dmrg(control, 0.37; Q=0, seed=11)
+exchange = bond_energies(point.psi, control, point.theta)
+```
+
+Reproduce the bounded two-point study with a new output directory:
+
+```sh
+julia --project=. --startup-file=no --threads=1 examples/validate_extended_model.jl outputs/new-extended-study
+```
+
 `spin_correlations` returns `zz=<Sz_i Sz_j>` and `pm=<S+_i S-_j>`; transverse
 correlations can be complex. `run_dmrg` returns the MPS and MPO as `psi` and
 `H`, the site indices, flux, gauge, integer charge, observables, per-sweep
@@ -149,6 +215,12 @@ does not establish convergence or branch continuity. `resume_dmrg` accepts only
 accepted snapshots and starts a new sweep batch using their settings and exact
 site indices, rebuilding the Hamiltonian at the requested unwrapped flux.
 It does not resume inside an unfinished sweep or advance an adaptive trajectory.
+`load_checkpoint`, `resume_dmrg`, and `continue_flux` inherit the saved or
+starting state's validated `Q` when it is omitted. An explicit `Q` is an
+expectation and must match; these functions never change the charge mid-run.
+Schema 1 already stores the charge in model and state metadata, so the schema
+is unchanged. Snapshots from older source versions remain incompatible under
+the strict source-identity check; there is no automatic migration.
 
 Each snapshot contains the current and zero-flux MPS, allowlisted TOML metadata,
 and byte lengths and SHA-256 checksums. Loading checks the model, full geometry,
@@ -156,6 +228,12 @@ bonds, field, gauge, charge, site identity, solver settings, baseline, state
 normalization, and energy. Julia, package versions, architecture, source hashes,
 and the selected dependency manifest must match. The primitive metadata and
 integrity envelope are checked before the Julia payload is deserialized.
+The result and baseline carry an immutable identity captured when the package
+and vendored backend were loaded. Editing their sources or the selected
+manifest invalidates subsequent runs, saves, loads, and continuation in that
+process; restart Julia after such edits. Saving never relabels an older
+in-memory result with newly edited source hashes. Precompile dependencies
+include the hashed files and source-directory membership.
 Use these snapshots only from trusted local runs. They are deliberately bound
 to the same environment, not a portable archival format; see the
 [Julia Serialization contract](https://docs.julialang.org/en/v1/stdlib/Serialization/).
@@ -333,6 +411,15 @@ Adding the sparse-reference tests brought the Julia 1.13.0 integrated suite to
 **4,348 passing assertions** (4,283 previous checks plus 65 independent
 eigensolver, degeneracy and nonconvergence checks). The 18-site study is an
 explicit research example, separate from the routinely bounded package tests.
+That is a historical full-suite result. For the local truncation correction,
+3,783 independent calibration assertions and 346 backend regressions passed.
+After the final provenance representation change, 109 atomic-checkpoint and
+20 focused source-drift/restart assertions passed. The expanded full-suite run
+was deliberately interrupted during compilation; it is not reported as a full
+pass. See the [validation scope of that change](research/p1_qn_truncation_calibration.md#テスト実行の範囲).
+Redundant cases and combinations were subsequently removed. Current commands,
+coverage, and run results are in the
+[test guide](../test/README.md).
 
 Tests compare geometry and signed periodic images with a Cartesian distance
 oracle and compare the MPO with an independent spin-basis Hamiltonian at
@@ -346,7 +433,7 @@ degeneracy is not a claim about topological degeneracy.
 
 Completed-point checkpoint/restart, Schmidt-charge diagnostics, and adaptive
 flux acceptance/refinement/rollback are implemented and tested on bounded
-controls. Reproduction of a known chiral spin-liquid pump is not implemented.
+controls. Reproduction of a known chiral spin-liquid pump remains unverified.
 A longitudinal-field product-state control tests zero response and its
 forward/reverse continuation for an explicitly altered Hamiltonian.
 It does not identify the phase of the nearest-neighbor model. No plateau,
@@ -356,16 +443,29 @@ competing ordered or gapless explanations.
 
 An analytic two-spin control checks a known nonzero truncation error and the
 difference between the local eigensolver energy and the final MPS energy.
-The tested upstream QN backend can discard every state when `maxdim` splits
+The previously tested upstream NDTensors 0.4.31 can discard every state when `maxdim` splits
 equal or nearly equal Schmidt weights across sectors. It can also retain a
 nonzero normalized state while underreporting its discarded probability:
 weights `[0.6,0.2,0.2]` and `maxdim=2` retain only rank one, reporting 0.2 loss
 instead of 0.4. The observer rejects zero/nonfinite states and inconsistent
-reported-spectrum versus retained-link dimensions. Analytic four-spin SVD and
-eigen fixtures check this failure and the healthy cases. This is a failure guard,
-not an upstream kernel fix or a general guarantee of truncation accuracy.
+reported-spectrum versus retained-link dimensions. The pinned local NDTensors
+`0.4.31+1` now uses the same globally selected entries for the actual block ranks
+and reported spectrum. `maxdim` is a hard cap; exact ties use block-coordinate,
+then within-block-index order and may split a degenerate subspace. Positive
+`min_blockdim` constraints consume that same global cap and incompatible
+constraints throw an error. General non-Hermitian eigen retains the upstream
+path. See the [vendor contract](../vendor/README.md).
+Independent complex two/four-spin dense references check SVD, Hermitian eigen,
+both factorization directions, norm scaling and cutoff conventions. With
+noise, perturbed-density trace loss and original-wavefunction loss are checked
+separately. Correct local truncation loss does not bound physical-observable
+errors or establish convergence of a finite-bond-dimension optimization.
 The nine-site reference runs use enough bond dimension to avoid truncation.
 See the [recorded boundary case](research/data/qn_truncation_boundary.toml).
+The [correction and finite-chi study](research/p1_qn_truncation_calibration.md)
+records the captured 18-site failure and its replay. Both manifests select the
+local backend; loading an unrelated registry NDTensors is rejected. When using
+KagomeDMRG from another project, that project must select the same local source.
 
 Current discussion and research plans may remain in Japanese. Public API
 names, docstrings, and machine-readable result keys use English. This guide

@@ -64,24 +64,45 @@ J_b^z S_i^z S_j^z+
 XXZ、遠距離結合、chirality 項は既知相の対照実験や追加研究として区別する。
 一つの物理ボンドは一度だけ列挙し、その中で共役な 2 項を作る。
 
+この規約で [Fang et al.のEq.(1), Fig.1](https://arxiv.org/pdf/2306.09563)は
+`0.35<h/J<0.42` に1/9 plateauを報告している。`h/J=0.38` を比較用の代表点にするが、
+有限円筒の磁場境界をこの値に合わせない。まずθ=0の静的NN研究を優先し、
+既知CSLのポンプ校正を並行する。文献の競合候補・予算・段階別の判定は
+[静的研究方針](research/p4_static_plateau_strategy.md)に記載する。
+
 \[
 M_{\rm sat}=N/2,\quad M=N/18,\quad Q=2M=N/9,
 \quad N_\uparrow=5N/9,\quad N_\downarrow=4N/9.
 \]
 
-- `N % 9 == 0` を要求する。N が偶数なら M は整数、奇数なら半整数でよい。
+- 既定の 1/9 では `N % 9 == 0` を要求する。N が偶数なら M は整数、奇数なら半整数でよい。
 - ITensor の spin QN `Sz` の整数ラベルは物理的な `2Sz`。
   目標値は `QN("Sz",N÷9)` であり、物理 Sz=N/9 と取り違えない。
   これはゼロ磁化の交互 Up/Dn 初期状態からは到達しない。
   [公式 QN DMRG チュートリアル](https://docs.itensor.org/ITensorMPS/stable/tutorials/QN_DMRG.html)。
 - 固定 M では `-hM` は定数なので、flux 走行中の h 調整は不要。
   plateau 自体の確認は別の磁化 sector も用いる。
-- 隣接 sector の交換エネルギー `E0(M)` から得る
+- 隣接 sector の全交換エネルギー `E0(M)` から得る
   `h−=E0(M)−E0(M−1)`, `h+=E0(M+1)−E0(M)` は最初の目安。
   より遠い sector を含めた凸包、端の磁化、サイズ依存を調べて plateau を確認する。
   磁化 plateau があっても、同じ M 内の中性励起まで gapped とは限らない。
   有限 cylinder の最小励起が端に局在する可能性もあるため、励起の空間分布を確認し、
   端の gap をそのまま bulk gap としない。
+
+Q表記では差分をQ0±2で取る。遠方Qも比較した場合は
+`max_{Q<Q0} 2[E0(Q0)−E0(Q)]/(Q0−Q)` と
+`min_{Q>Q0} 2[E0(Q)−E0(Q0)]/(Q−Q0)` が、比較したsector内での下限・上限となる。
+変分エネルギーの差は厳密な境界の誤差限界ではなく、χ・初期状態等による変動を併記する。
+未探索sectorによる飛び越しは未判定とし、追加磁化の端への局在とbulkの応答を分ける。
+
+共通 API は `target_sector(N; Q=...)`、`initial_mps(...; Q=...)`、
+`run_dmrg(...; Q=...)` で別の固定 sector を明示できる。
+整数 `Q` の範囲 `−N≤Q≤N` と N との偶奇一致を要求し、`Nup=(N+Q)/2` とする。
+省略時は warm start があっても 1/9 のままで、入力 MPS の Q 不一致を拒否する。
+保存・再開・continuation は検証済みの保存状態または始点の Q を継承し、
+任意に渡した Q は一致を要求する。途中で Q を変える操作ではない。
+既存の schema 1 の model/state 電荷欄を使い、baseline・MPS・電荷欄を照合する。
+旧ソースの snapshot は従来どおり source identity 不一致で拒否し、自動移行しない。
 
 ## 3. Cylinder とゲージ
 
@@ -93,6 +114,11 @@ wrap vector は `Ly*a2`。MPS の順序は x、次に y、最後に A,B,C で、
 幾何学的 cut c は完全な単位胞列の間に置き、右領域を `x>=c` とする。
 これは Cartesian の水平座標だけで分類する切断ではない。
 
+競合する√3×√3と3×3 VBCを許す比較には `Ly%3=0` を用いる。
+前者の周期基底を `a1+a2,−a1+2a2` と取ると和は `3a2`、後者は `3a1,3a2` である。
+Lxは開境界なので3の倍数を必須としないが、同じ端の `Lx=3→6` を長さ比較の候補にする。
+N27は3×3の一周期であり、周期整合性だけで十分なbulkがあるとはみなさない。
+
 実装した最近接ボンドのテンプレートは各 `(x,y)` に対し
 `A-B`, `A-C`, `B-C` の胞内 3 本と、
 `A(x,y)-B(x−1,y)`, `A(x,y)-C(x,y−1)`,
@@ -100,6 +126,12 @@ wrap vector は `Ly*a2`。MPS の順序は x、次に y、最後に A,B,C で、
 x が範囲外のボンドを除き、y を wrap する前の winding を保存する。
 この切り方で Ly≥3 のとき bond 数は `(6Lx−2)Ly`、バルク配位数は 4。
 Ly=1,2 の特殊な周期同定は初期の研究対象から外す。
+
+別名の `kagome_j1j2j3_cylinder` は六角形内のJ2と対向頂点間のJ3を加える。
+第三近接距離だけでJ3を選ばず、直線鎖上の同距離結合を除く。
+端は無限格子で定義した各bondの両端だけで切り、全六角形が残ることは要求しない。
+全familyに同じ位相規約を適用し、零結合も配列には残す。
+独立幾何・EDの構成と照合は[拡張模型の検証](research/p3_extended_model_validation.md)に分ける。
 
 ボンドは少なくとも `(i,j,Jxy,Jz,wy)` を保持する。
 `wy` は i から j への向きで周期境界を跨ぐ符号付き巻き数で、向きを反転すると符号も反転する。
@@ -163,12 +195,17 @@ P0 で Julia 1.12.7、ITensors 0.9.31、ITensorMPS 0.4.1 を使って照合し�
 noise が非零なら切断誤差は摂動した密度行列のものであり、波動関数の捨てた確率と同一視しない。
 upstream API が局所 Krylov の convergence info を公開しないため、それを確認済みとはしない。
 小系では独立した全系 residual も検証する。warm start の入力はコピーし、site indices と Q を照合する。
-検証した upstream backend では、等しい Schmidt 重みを異なる QN sector で切る境界に
+従来の upstream NDTensors 0.4.31 では、等しい Schmidt 重みを異なる QN sector で切る境界に
 空状態と誤った切断誤差を返す事例がある。近接した重みでも、非零状態を残しつつ
 切断誤差を過小報告する条件を四サイトの解析状態で確認した。observer は正準中心の
 norm がゼロ・非有限の場合と、報告 spectrum の長さが保持 bond 次元と異なる場合に停止する。
-一般的な縮退境界の修正・校正は P1 の残課題である。
-再現条件は [P2 の監査記録](research/p2_continuation_validation.md)を参照。
+現環境は局所版 NDTensors `0.4.31+1` を固定し、全 sector の保持状態を一度選んで
+block rank と spectrum に共用する。`maxdim` は上限であり、同値の重みは block 座標・
+block 内 index の順に選ぶため縮退空間全体を保持するとは限らない。
+正の `min_blockdim` も全体の上限に算入し、両立しない制約は例外とする。
+SVD と Hermitian density の経路を修正し、一般非 Hermitian eigen の経路は従来通りとする。
+再現条件は [P2 の監査記録](research/p2_continuation_validation.md)、
+修正・独立校正は [P1 切断検証](research/p1_qn_truncation_calibration.md)を参照。
 必要なら固定 3 成分の MPO 和を使う最適化を比較する。
 ITensorMPS は MPO の配列による和を受け取れるが、速度向上は実測で判断する。
 [DMRG API](https://docs.itensor.org/ITensorMPS/stable/DMRG.html)。
@@ -247,6 +284,13 @@ P_c(\theta)=\sum_{i\in R_c}
 - `⟨H²⟩−⟨H⟩²` は可能なサイズ・代表点で評価する。
   全 θ で高価なら頻度を制御するが、energy の安定だけを正しさの根拠にしない。
 
+`bond_energies(psi,lattice,theta;gauge)` は各bondの交換エネルギーを同じ位相規約で返す。
+和に `−dot(hz,sz_profile(psi))` を加えると全エネルギーとなる。
+この初版は全相関行列を再利用するためO(N²)の保存量を使い、大系での費用は未計測。
+方向付きscalar chiralityは未実装であり、三spinの独立校正をCSL・秩序比較に共通の後続単位とする。
+静的なSz・bond patternの比較は先に進められる。固定Qでは横磁化の一体期待値がゼロなので、
+磁気秩序の検討には縦相関と `⟨S+i S−j⟩` も使い、端で誘起された変調の長さ依存を調べる。
+
 `schmidt_diagnostics(psi,b)` はこのうち MPS prefix `1:b` の確率・絶対電荷・
 entropy・左物理 Sz の平均と分散を実装した。幾何学 cut `c` は `b=3Ly*c` に対応する。
 MPS のコピーを正準化して切断なし SVD を行い、左テンソル群の flux の和から
@@ -286,6 +330,10 @@ N=18、Q=2 は `binomial(18,10)=43758` 次元である。
 18 サイトでは χ=512 の `0→±0.37→0` を、事前に決めた二種類の刻みと二つの seed で
 比較した。四経路の延べ 24 保存点は独立 ED と一致し、実空間と Schmidt 移送も整合した。
 χ=128 の初期点は棄却され、χ=256 は零 flux の sweep 中に切断 guard が停止した。
+その後の局所版による [有限 χ 校正](research/p1_qn_truncation_calibration.md)では、
+χ=256 の停止は解消した。θ=0,0.37 の 10 trial 点を比較し、χ=512 は ED 基準内、
+χ=128,256 は 12 sweep でも精度不足だった。中央 bond の 168 更新で実保持 rank と
+報告損失を独立に照合した。この比較は新しい受理済み continuation 経路ではない。
 この幾何には cut が一つしかなく内部 bulk column はない。
 [相互作用系の検証記録](research/p2_interacting18_validation.md)に、有限区間の応答、
 失敗と検証の限界を保存した。2π pump や magnetization plateau の成立は未検証である。
@@ -305,19 +353,23 @@ N=18、Q=2 は `binomial(18,10)=43758` 次元である。
 2/3 のポンプを要求しない。ED はまず Hamiltonian と観測量の独立した検証に使う。
 
 今後の実行順序は [ロードマップ](../ROADMAP.md)を正本とする。
-まず QN 切断の修正・独立校正と 18 サイトの有限 χ 比較を行う。
-NN 相互作用系は `Lx=3,Ly=3,N=27` の初期点・短区間から始め、実測後に
-`Lx=6,Ly=3,N=54` 等で端の分離と複数 cut を調べる。
-既知 CSL は Q=0 の 12・18 サイトで拡張模型を照合した後、
-`Lx=3,Ly=4,N=36` で状態準備と資源量を測定し、長さを増やす。
+QN 切断の修正・独立校正と 18 サイトの有限 χ 比較を終え、
+明示Q、拡張結合、bond energyとN12Q0の小系照合も完了した。
+次はNNの `N18,θ=0,Q=0,2,4` で静的な磁化境界を調べる。
+その後 `Lx=3,Ly=3,N=27,Q=3` の代表点で資源量を測り、必要な隣接Q・χ・seedを追加する。
+初期状態の精度を満たした場合に短区間追跡へ進み、実測後に
+`Lx=6,Ly=3,N=54` 等で端の分離と複数cutを調べる。
+既知CSL側ではchiralityと拡張模型N18Q0の照合を行い、その後
+`Lx=3,Ly=4,N=36` で状態準備と資源量を測る。この流れはNN静的研究を待たせない。
 
 `Lx=12,Ly=3,N=108` や `Lx=18 or 24,Ly=6,N=324 or 432` はその先の候補であり、
 現段階で着手サイズや所要時間を確約しない。文献の YC 幅と比較するときは格子図を照合する。
-9-site 以上の秩序単位胞と両立する cylinder を含める。
+9-siteと27-siteの競合する秩序単位胞と両立するcylinderを含める。
 非整合な円周だけで VBC を排除しない。長さは相関長・端の侵入長より十分大きく取る。
 
-切断校正後の初期点で χ=128,256,512 を比較し、未収束なら sweep 数と χ の影響を分ける。
-その結果と時間・メモリを見て 1024,2048,… が必要か判断する。
+代表点の費用を測ってから、判断を変え得るχ・seedの比較を選ぶ。
+全χ×全seedを必須にせず、未収束ならsweep数とχの影響を分ける。
+その結果と時間・メモリを見て1024,2048,…が必要か判断する。
 小系の初期照合目標は `|ED−DMRG|/N < 10⁻⁸ J`、局所 Sz の差 `<10⁻⁶`。
 研究用 pump の暫定精度目標は `<10⁻²` とし、少なくとも刻み・bond dimension・長さの
 変更による差を個別に提示する。設定 cutoff からこの精度を推定しない。
@@ -365,7 +417,11 @@ modular データを検討する。これらには並進対称性・ゲージ・
 1/9 plateau には異なる提案が存在する。
 [2023 年の iPEPS/PESS 研究](https://arxiv.org/abs/2306.09563)は VBC と gapless な性質を報告し、
 [2024 年の VMC 研究](https://arxiv.org/abs/2407.20629)は chiral Z₃ 候補を提案している。
-後者の spinon Chern number と、ここで指定した K,t の物理的な Sz 応答は自動的には同じではない。
+さらに[Cheng–Li, PRB 113, 085136 (2026)](https://journals.aps.org/prb/abstract/10.1103/5tvd-253q)は
+3×3 windmill VBCを提案している。[2025年の著者稿](https://arxiv.org/abs/2512.11670v1)には
+gaplessなchiral spin density waveの提案もあるが、今回査読誌出版と定量的な規約対応は未確認。
+各手法の主張と本研究の観測を区別し、密度の一様性やchiralityだけで候補を絞らない。
+2024年VMCのspinon Chern numberと、ここで指定したK,tの物理的なSz応答は自動的には同じではない。
 spinon に ±Θ の境界位相を与える場合、`S+=f†up fdown` の物理的 twist の大きさは 2Θ になるため、
 flux の規格化も照合する。今回比較する応答はユーザー指定の K,t に基づき、
 数値収束の判定は期待する応答値とは独立に行う。

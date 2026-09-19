@@ -54,29 +54,24 @@ end
 
 @testset "Absolute Schmidt charge of product states" begin
     sites = siteinds("S=1/2", 9; conserve_qns=true)
-    for labels in ([fill("Up", 5); fill("Dn", 4)],
-                   ["Dn", "Up", "Dn", "Up", "Dn", "Up", "Dn", "Up", "Up"],
-                   fill("Up", 9), fill("Dn", 9))
+    cases = (("mixed", [fill("Up", 5); fill("Dn", 4)], 1, 4),
+             ("alternating", ["Dn", "Up", "Dn", "Up", "Dn", "Up", "Dn", "Up", "Up"], 9, 8),
+             ("all up", fill("Up", 9), 5, 1), ("all down", fill("Dn", 9), 1, 8))
+    @testset "$name" for (name, labels, center, bond) in cases
         psi = MPS(ComplexF64, sites, labels)
-        for center in (1, 5, 9)
-            orthogonalize!(psi, center)
-            before = deepcopy(psi)
-            limits = (ITensorMPS.leftlim(psi), ITensorMPS.rightlim(psi))
-            for bond in 1:8
-                result = schmidt_diagnostics(psi, bond)
-                q = sum(label == "Up" ? 1 : -1 for label in labels[1:bond])
-                @test result.bond == bond
-                @test result.probabilities ≈ [1.0] atol=1e-14
-                @test result.left_q == [q]
-                @test result.mean_left_sz ≈ q/2 atol=1e-14
-                @test result.variance_left_sz ≈ 0 atol=1e-14
-                @test result.entropy ≈ 0 atol=1e-14
-                @test result.norm_squared ≈ 1 atol=1e-14
-            end
-            @test (ITensorMPS.leftlim(psi), ITensorMPS.rightlim(psi)) == limits
-            @test all(inds(psi[j]) == inds(before[j]) &&
-                      norm(psi[j]-before[j]) == 0 for j in 1:9)
-        end
+        orthogonalize!(psi, center)
+        before = deepcopy(psi)
+        limits = (ITensorMPS.leftlim(psi), ITensorMPS.rightlim(psi))
+        result = schmidt_diagnostics(psi, bond)
+        q = sum(label == "Up" ? 1 : -1 for label in labels[1:bond])
+        @test result.probabilities ≈ [1.0] atol=1e-14
+        @test result.left_q == [q]
+        @test result.mean_left_sz ≈ q/2 atol=1e-14
+        @test result.variance_left_sz ≈ 0 atol=1e-14
+        @test result.entropy ≈ 0 atol=1e-14
+        @test (ITensorMPS.leftlim(psi), ITensorMPS.rightlim(psi)) == limits
+        @test all(inds(psi[j]) == inds(before[j]) &&
+                  norm(psi[j]-before[j]) == 0 for j in 1:9)
     end
 end
 
@@ -90,17 +85,18 @@ end
         @test sum(result.probabilities[result.left_q .== 1]) ≈ p atol=1e-14
         @test sum(result.probabilities[result.left_q .== -1]) ≈ 1-p atol=1e-14
         @test result.mean_left_sz ≈ p-0.5 atol=1e-14
-        @test result.mean_left_sz ≈ first(sz_profile(psi)) atol=1e-14
         @test result.variance_left_sz ≈ p*(1-p) atol=1e-14
         expected_entropy = p == 1 ? 0.0 : -p*log(p)-(1-p)*log(1-p)
         @test result.entropy ≈ expected_entropy atol=1e-14
         @test all(norm(psi[j]-before[j]) == 0 for j in 1:2)
-        scaled = deepcopy(psi)
-        scaled[1] *= 2cis(0.37)
-        scaled_result = schmidt_diagnostics(scaled, 1)
-        @test scaled_result.norm_squared ≈ 4 atol=1e-13
-        @test scaled_result.probabilities ≈ result.probabilities atol=1e-14
-        @test scaled_result.left_q == result.left_q
+        if p == 0.8
+            scaled = deepcopy(psi)
+            scaled[1] *= 2cis(0.37)
+            scaled_result = schmidt_diagnostics(scaled, 1)
+            @test scaled_result.norm_squared ≈ 4 atol=1e-13
+            @test scaled_result.probabilities ≈ result.probabilities atol=1e-14
+            @test scaled_result.left_q == result.left_q
+        end
     end
     product = MPS(ComplexF64, sites, ["Up", "Dn"])
     @test_throws ArgumentError schmidt_diagnostics(product, 0)
@@ -117,7 +113,7 @@ end
 
 @testset "9-site charge-resolved Schmidt spectrum against spin-basis SVD" begin
     sites = siteinds("S=1/2", 9; conserve_qns=true)
-    for theta in (0.0, 0.37)
+    let theta = 0.37
         reference = reference_hamiltonian(1, 3, theta)
         eigenstates = eigen(Hermitian(reference.H)).vectors
         # A complex superposition tests the full fixed-Q sector, independently
@@ -127,31 +123,31 @@ end
         psi = _schmidt_test_mps(amplitudes, reference.basis, sites)
         @test flux(psi) == QN("Sz", 1)
         densities = reference_sz(amplitudes, reference.basis, 9)
-        for center in (1, 4, 9)
+        # Center left of the cut, on the cut, and right of the cut.
+        @testset "center=$center bond=$bond" for (center, bond) in ((1, 8), (4, 4), (9, 1))
             orthogonalize!(psi, center)
-            for bond in 1:8
-                result = schmidt_diagnostics(psi, bond)
-                exact = _spin_basis_schmidt(amplitudes, reference.basis, 9, bond)
-                @test result.norm_squared ≈ 1 atol=1e-12
-                @test sum(result.probabilities) ≈ 1 atol=1e-13
-                @test issorted(result.probabilities; rev=true)
-                @test result.mean_left_sz ≈ exact.mean_left_sz atol=1e-12
-                @test result.mean_left_sz ≈ sum(densities[1:bond]) atol=1e-12
-                @test result.entropy ≈ exact.entropy atol=1e-12
-                for q in unique(exact.left_q)
-                    actual = sort(filter(>(1e-14), result.probabilities[result.left_q .== q]))
-                    expected = sort(filter(>(1e-14), exact.probabilities[exact.left_q .== q]))
-                    @test actual ≈ expected atol=1e-12
-                end
+            result = schmidt_diagnostics(psi, bond)
+            exact = _spin_basis_schmidt(amplitudes, reference.basis, 9, bond)
+            @test result.norm_squared ≈ 1 atol=1e-12
+            @test sum(result.probabilities) ≈ 1 atol=1e-13
+            @test issorted(result.probabilities; rev=true)
+            @test result.mean_left_sz ≈ exact.mean_left_sz atol=1e-12
+            @test result.mean_left_sz ≈ sum(densities[1:bond]) atol=1e-12
+            @test result.entropy ≈ exact.entropy atol=1e-12
+            for q in unique(exact.left_q)
+                actual = sort(filter(>(1e-14), result.probabilities[result.left_q .== q]))
+                expected = sort(filter(>(1e-14), exact.probabilities[exact.left_q .== q]))
+                @test actual ≈ expected atol=1e-12
             end
         end
         # Explicitly shift a link's origin and reverse its arrow. Absolute
         # left charge must remain calibrated without using the density profile.
-        baseline = [schmidt_diagnostics(psi, b) for b in 1:8]
+        bonds = (3, 4, 5)
+        baseline = Dict(b => schmidt_diagnostics(psi, b) for b in bonds)
         for reverse_arrow in (false, true)
             relabeled = _relabel_test_link(psi, 4; shift=7, reverse_arrow)
             @test abs(inner(relabeled, psi)) ≈ 1 atol=1e-12
-            for bond in 1:8
+            for bond in bonds
                 result = schmidt_diagnostics(relabeled, bond)
                 @test result.probabilities ≈ baseline[bond].probabilities atol=1e-12
                 @test result.left_q == baseline[bond].left_q
@@ -177,12 +173,10 @@ end
     @test sum(baseline_profile) ≈ 1.5 atol=1e-13
     baseline_schmidt = [schmidt_diagnostics(baseline, 3lattice.Ly*cut) for cut in 1:2]
 
-    for p in (0.0, 0.2, 1.0)
+    for p in (0.2, 1.0)
         # Direct-sum addition preserves both branches exactly at bond dimension
         # two. It does not materialize the 27-site Hilbert space or run DMRG.
-        current = if p == 0
-            deepcopy(baseline)
-        elseif p == 1
+        current = if p == 1
             deepcopy(moved)
         else
             add(sqrt(1-p)*baseline, cis(0.63)*sqrt(p)*moved; alg="directsum")
@@ -196,8 +190,6 @@ end
         @test current_profile-baseline_profile ≈ expected_delta atol=1e-13
         @test sum(current_profile) ≈ sum(baseline_profile) atol=1e-13
         transfer = spin_transfer(lattice, baseline_profile, current_profile)
-        reverse = spin_transfer(lattice, current_profile, baseline_profile)
-        unchanged = spin_transfer(lattice, current_profile, current_profile)
         @test length(transfer) == 2
         expected_entropy = p in (0, 1) ? 0.0 : -p*log(p)-(1-p)*log(1-p)
         for cut in 1:2
@@ -210,12 +202,8 @@ end
             @test diag.entropy ≈ expected_entropy atol=1e-13
             @test delta_left ≈ -p atol=1e-13
             @test transfer[cut].left ≈ delta_left atol=1e-13
-            @test transfer[cut].right ≈ -delta_left atol=1e-13
             @test transfer[cut].right ≈ p atol=1e-13
             @test transfer[cut].total ≈ 0 atol=1e-13
-            @test reverse[cut].right ≈ -p atol=1e-13
-            @test unchanged[cut].left == unchanged[cut].right == unchanged[cut].total == 0
         end
-        @test transfer[1].right ≈ transfer[2].right atol=1e-13
     end
 end

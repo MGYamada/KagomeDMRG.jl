@@ -41,6 +41,7 @@ end
     @test norm(Diagonal(total_q) * full.H - full.H * Diagonal(total_q)) < 1e-14
     sector_indices = Int.(basis) .+ 1
     @test full.H[sector_indices, sector_indices] == H
+    @test reference_hamiltonian(1, 3, theta; Q=1).H == H
 
     uniform = reference_hamiltonian(1, 3, theta; gauge=:uniform)
     U = Diagonal(reference_gauge_diagonal(basis, 1, 3, theta))
@@ -58,6 +59,28 @@ end
     @test_throws ArgumentError reference_hamiltonian(1, 3; gauge=:invalid)
     @test_throws ArgumentError reference_hamiltonian(1, 3; nup=10)
     @test_throws ArgumentError reference_hamiltonian(2, 3)
+end
+
+@testset "Independent explicit integer charge contract" begin
+    @test _reference_basis(9; Q=-1) == _reference_basis(9, 4)
+    @test _reference_sector(12; Q=0) == (; nup=6, dimension=924)
+    zero_charge_basis = _reference_basis(18; Q=0)
+    @test length(zero_charge_basis) == 48620
+    @test all(count_ones(state) == 9 for state in zero_charge_basis)
+    @test _reference_basis(9; Q=9) == [UInt64(511)]
+    saturated = reference_hamiltonian(1, 3; Q=-9)
+    @test saturated.basis == [UInt64(0)]
+    @test saturated.H == fill(3.0 + 0.0im, 1, 1)
+
+    @test_throws ArgumentError reference_hamiltonian(1, 3; Q=0) # parity
+    @test_throws ArgumentError reference_hamiltonian(1, 3; Q=11) # range
+    @test_throws ArgumentError reference_hamiltonian(1, 3; Q=1.0)
+    @test_throws ArgumentError reference_hamiltonian(1, 3; Q=true)
+    @test_throws ArgumentError reference_hamiltonian(1, 3; Q=1, nup=5)
+    @test_throws ArgumentError reference_hamiltonian(1, 3; Q=1, nup=:all)
+    @test_throws ArgumentError reference_hamiltonian(1, 4) # omitted Q keeps 1/9
+    @test_throws ArgumentError reference_hamiltonian(2, 3; Q=0) # dense bound
+    @test_throws ArgumentError reference_hamiltonian(typemax(Int), 3; Q=0)
 end
 
 @testset "Reference observables and sparse construction" begin

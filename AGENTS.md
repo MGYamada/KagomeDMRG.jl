@@ -21,6 +21,26 @@ These instructions apply throughout this repository, including delegated work.
   results, preprints, research reports, and our own inferences; match model,
   geometry, charge, and flux conventions before comparing results.
 
+## Current Research Priority
+
+- Prioritize static nearest-neighbor 1/9 research: compare exchange energies
+  across magnetization sectors, resolve finite-size field intervals, and compare
+  competing density and bond-order patterns. Use the published `h/J ≈ 0.35–0.42`
+  interval as a starting reference, not an acceptance criterion. At fixed Q,
+  a uniform Zeeman field only shifts energy by `-h*Q/2`; do not repeat DMRG over
+  an h grid within the same sector.
+- Advance the known-CSL measurement control alongside this static work.
+  Its nonzero-pump calibration is required before interpreting the 1/9 pump,
+  but does not block static nearest-neighbor calculations or bounded numerical
+  continuation checks. Keep the control's `J2=J3=0.5,Q=0` results distinct.
+- Include geometries compatible with both nine-site and 27-site competing
+  order patterns. Treat edge charge rearrangements, finite-cluster field
+  intervals, bulk plateaus, and neutral gaps as separate findings.
+- Use the bounded stages and decision criteria in
+  [the static research strategy](docs/research/p4_static_plateau_strategy.md).
+  Add cases when they resolve an uncertainty; do not require every combination
+  of size, charge, seed, and bond dimension in every study.
+
 ## Active Use of Sub-agents
 
 - **Actively deploy sub-agents for nontrivial research and development work.**
@@ -95,7 +115,7 @@ These instructions apply throughout this repository, including delegated work.
   construction independent enough to expose shared bond/phase errors; do not
   merely call the production MPO builder from the reference test.
 - Validate the measurement pipeline with a known CSL pump and a controlled
-  zero-response case before making claims about the 1/9 plateau. Do not demand
+  zero-response case before interpreting the 1/9 spin pump or Hall response. Do not demand
   fractional pumping from a small system with a unique periodic ground state.
 - Warm starts and low energy do not guarantee branch continuity. Combine
   overlaps, bulk density, entanglement/Schmidt charge, residuals or variance,
@@ -139,6 +159,32 @@ These instructions apply throughout this repository, including delegated work.
 - Do not launch large DMRG scans or set up an accelerator environment merely
   to validate a documentation-only change. Report checks actually performed,
   failures, and remaining limitations without claiming unrun tests passed.
+
+### Practical Test-Time Budget
+
+- **Keep routine testing fast enough for daily research work.** With dependencies
+  installed, aim for focused checks within about 60 seconds. Keep the complete
+  package suite within about 3 minutes when practical; 5 minutes is a trigger to
+  investigate and reduce cost, not a reason to silently omit failures. Record
+  Julia startup/precompilation separately when it dominates elapsed time.
+- Select affected groups with `Pkg.test(; test_args=["dmrg", "checkpoint"])`
+  or the corresponding groups listed in `test/README.md`. Run the complete suite
+  at most once for an integrated change that warrants it. Repeat only checks
+  affected by a subsequent fix; do not repeat passed numerical work after edits
+  to prose, labels, or reports.
+- Prefer a small set of cases that expose distinct failures. Delete redundant
+  cases and Cartesian products rather than retaining them in an exhaustive
+  mode. Keep known-bug regressions and independent numerical references, and
+  never relax physical tolerances merely to meet a time budget.
+- If validation exceeds the budget, identify the expensive case or compilation
+  step, reuse bounded fixtures, and narrow further runs. Record checks omitted
+  and the reason; do not add more test infrastructure or tests just to increase
+  assertion counts. Count reduction alone does not establish a speedup.
+- Keep research scans, convergence studies, and repeated fresh-process checks
+  outside the routine edit/test loop. Before running them, set an explicit
+  question, cases, CPU/thread allocation, and computation bound. Save their
+  outcomes as research evidence rather than turning every point into a package
+  regression. Necessary checkpoint/provenance regressions remain in the suite.
 
 ## Reproducibility and Saved Results
 

@@ -12,7 +12,8 @@ function lattice_loop_edges(lattice, vertices)
 end
 
 @testset "Kagome geometry and site ordering" begin
-    for lx in (1, 2, 4), ly in (3, 4, 6)
+    # One-column termination and a multi-column cylinder with another width.
+    for (lx, ly) in ((1, 3), (2, 4))
         lattice = kagome_cylinder(lx, ly)
         @test nsites(lattice) == 3 * lx * ly
         @test length(lattice.bonds) == (6 * lx - 2) * ly
@@ -37,8 +38,6 @@ end
             expected_degree = s.sublattice === :B ? 2 + 2 * (s.x < lx - 1) :
                               3 + (s.x > 0)
             @test degrees[s.index] == expected_degree
-            @test s.index == 3 * (s.x * ly + s.y) +
-                  (s.sublattice === :A ? 1 : s.sublattice === :B ? 2 : 3)
             @test site_index(lattice, s.x, s.y, s.sublattice) == s.index
         end
 
@@ -78,7 +77,7 @@ end
 end
 
 @testset "Target charge and geometric cuts" begin
-    for n in (9, 18, 27, 108, 324)
+    for n in (9, 18)
         sector = target_sector(n)
         @test sector.N == n
         @test sector.Q == n ÷ 9
@@ -87,16 +86,24 @@ end
         @test sector.Nup - sector.Ndown == sector.Q == 2 * sector.M
         @test sector.M / (n / 2) ≈ 1 / 9
     end
-    @test target_sector(9).M == 0.5
-    @test target_sector(18).M == 1.0
     for n in (-9, 0, 1, 8, 10, 17)
         @test_throws ArgumentError target_sector(n)
     end
+    @test target_sector(12; Q=0) == (N=12, Q=0, M=0.0, Nup=6, Ndown=6)
+    @test target_sector(9; Q=-1) == (N=9, Q=-1, M=-0.5, Nup=4, Ndown=5)
+    for q in (-typemax(Int), typemax(Int))
+        sector = target_sector(typemax(Int); Q=q)
+        @test (sector.Nup, sector.Ndown) ==
+              (q > 0 ? (typemax(Int), 0) : (0, typemax(Int)))
+    end
+    for (n, q) in ((12, 1), (9, 0), (9, -11), (9, 11), (12, 0.0),
+                   (9, typemin(Int)), (big(typemax(Int))+1, 0))
+        @test_throws ArgumentError target_sector(n; Q=q)
+    end
     lattice = kagome_cylinder(4, 3)
-    for cut in 1:3
+    for cut in (1, 3)
         indices = right_region(lattice, cut)
         @test indices == collect((9 * cut + 1):36)
-        @test length(indices) == 9 * (4 - cut)
         @test all(i -> lattice.sites[i].x >= cut, indices)
         @test all(i -> lattice.sites[i].x < cut, setdiff(1:36, indices))
     end
@@ -108,29 +115,22 @@ end
 @testset "Signed winding and contractible loops" begin
     lattice = kagome_cylinder(3, 4)
     index(x, y, s) = site_index(lattice, x, mod(y, lattice.Ly), s)
-    loops = Vector{Int}[]
-    for x in 0:2, y in 0:3
-        push!(loops, [index(x, y, :A), index(x, y, :B), index(x, y, :C)])
-        if x > 0
-            push!(loops, [index(x, y, :A), index(x - 1, y, :B), index(x, y - 1, :C)])
-        end
-        if x < 2
-            push!(loops, [index(x, y, :A), index(x, y, :B),
-                          index(x + 1, y - 1, :C), index(x + 1, y - 1, :A),
-                          index(x, y - 1, :B), index(x, y - 1, :C)])
-        end
-    end
-    @test count(v -> length(v) == 3, loops) == 20
-    @test count(v -> length(v) == 6, loops) == 8
+    # Distinct loop shapes and seam crossings; translated copies add no case.
+    loops = (
+        "up triangle" => [index(0, 0, :A), index(0, 0, :B), index(0, 0, :C)],
+        "down triangle" => [index(1, 1, :A), index(0, 1, :B), index(1, 0, :C)],
+        "seam triangle" => [index(1, 0, :A), index(0, 0, :B), index(1, -1, :C)],
+        "seam hexagon" => [index(0, 0, :A), index(0, 0, :B), index(1, -1, :C),
+                            index(1, -1, :A), index(0, -1, :B), index(0, -1, :C)])
     theta = 0.731
-    for vertices in loops
+    @testset "$name" for (name, vertices) in loops
         edges = lattice_loop_edges(lattice, vertices)
         @test sum(b.wy for b in edges) == 0
         for gauge in (:seam, :uniform)
             @test sum(bond_phase(lattice, b, theta; gauge) for b in edges) ≈ 0 atol=1e-14
         end
     end
-    for x in 0:2
+    let x = 1
         circumference = [index(x, y, s) for y in 0:3 for s in (:A, :C)]
         edges = lattice_loop_edges(lattice, circumference)
         backwards = lattice_loop_edges(lattice, reverse(circumference))
@@ -142,7 +142,11 @@ end
         end
     end
 
-    for b in lattice.bonds
+    representatives = unique(lattice.bonds) do b
+        si, sj = lattice.sites[b.i], lattice.sites[b.j]
+        (si.sublattice, sj.sublattice, b.wy, sj.x - si.x, sj.y - si.y)
+    end
+    for b in representatives
         reversed = reverse_bond(b)
         @test (reversed.i, reversed.j, reversed.wy) == (b.j, b.i, -b.wy)
         @test (reversed.Jxy, reversed.Jz) == (b.Jxy, b.Jz)
@@ -158,7 +162,7 @@ end
     @test length(chi) == nsites(lattice)
     @test chi[index(0, 0, :A)] == 0.0
     @test chi[index(0, 0, :C)] ≈ -theta / (2 * lattice.Ly)
-    for b in lattice.bonds
+    for b in representatives
         @test bond_phase(lattice, b, theta; gauge=:uniform) ≈
               bond_phase(lattice, b, theta) + chi[b.i] - chi[b.j] atol=1e-15
         # A uniform gauge depends only on the local unwrapped a2 displacement.

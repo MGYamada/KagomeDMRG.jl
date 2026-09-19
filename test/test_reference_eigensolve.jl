@@ -3,9 +3,12 @@ using LinearAlgebra
 using Random
 
 @testset "Independent sparse eigensolver and exact multiplicity" begin
-    for theta in (0.0, 0.37)
-        sparse_ref = reference_eigensystem(1, 3, theta; nev=4, blocksize=4)
-        dense_ref = eigen(Hermitian(reference_hamiltonian(1, 3, theta).H))
+    # Preserve the zero-flux default/multiplicity check; the generic-flux
+    # point exercises explicit negative Q without adding another eigensolve.
+    for (theta, Q) in ((0.0, nothing), (0.37, -1))
+        sparse_ref = reference_eigensystem(1, 3, theta; Q, nev=4, blocksize=4)
+        dense_ref = eigen(Hermitian(reference_hamiltonian(1, 3, theta; Q).H))
+        @test all(count_ones(state) == (isnothing(Q) ? 5 : 4) for state in sparse_ref.basis)
         @test sparse_ref.H isa SparseMatrixCSC
         @test sparse_ref.converged
         @test sparse_ref.solver_info.num_converged >= 4
@@ -62,6 +65,12 @@ end
     @test_throws ArgumentError reference_eigensystem(typemax(Int), 3)
     @test_throws ArgumentError reference_eigensystem(1, 3, Inf)
     @test_throws ArgumentError reference_eigensystem(1, 3, NaN)
+    @test_throws ArgumentError reference_eigensystem(1, 3; Q=9, nev=1)
+    @test_throws ArgumentError reference_eigensystem(1, 3; Q=1, nup=5)
+    @test_throws ArgumentError reference_eigensystem(2, 3; nup=:all)
+    # Check the new cap without constructing or diagonalizing a large matrix.
+    @test _reference_eigensolver_settings(48620).nev == 3
+    @test_throws ArgumentError _reference_eigensolver_settings(48621)
     for kwargs in ((; nev=0), (; nev=126), (; tol=0.0), (; tol=Inf), (; tol=NaN),
                    (; krylovdim=3), (; maxiter=0), (; seed=-1), (; blocksize=0),
                    (; blocksize=64))

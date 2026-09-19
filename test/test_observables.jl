@@ -19,3 +19,22 @@
     @test_throws ArgumentError spin_transfer(lattice, baseline, current; cuts=[0])
     @test isempty(spin_transfer(kagome_cylinder(1, 3), zeros(9), zeros(9)))
 end
+
+@testset "Bond energies include phases, anisotropy, and normalization" begin
+    lattice = kagome_cylinder(1, 3; Jxy=0.7, Jz=1.3)
+    sites = spin_sites(lattice)
+    psi = initial_mps(sites; seed=43)
+    before = deepcopy(psi)
+    theta = 0.37
+    energies = bond_energies(psi, lattice, theta)
+    hz = collect(range(-0.2, 0.3; length=9))
+    H = twisted_exchange_mpo(sites, lattice, theta; hz)
+    @test sum(energies)-dot(hz, sz_profile(psi)) ≈ real(inner(psi', H, psi)) atol=1e-12
+    reversed = KagomeCylinder(lattice.Lx, lattice.Ly, lattice.sites, reverse_bond.(lattice.bonds))
+    @test bond_energies(psi, reversed, theta) ≈ energies atol=1e-12
+    @test abs(inner(before, psi)) ≈ 1 atol=1e-12
+    psi[1] *= 2
+    @test bond_energies(psi, lattice, theta) ≈ energies atol=1e-12
+    @test_throws ArgumentError bond_energies(psi, lattice, NaN)
+    @test_throws ArgumentError bond_energies(psi, lattice, theta; gauge=:invalid)
+end
