@@ -155,7 +155,7 @@ def main():
     if os.name != "posix":
         parser.error("this launcher requires POSIX process groups")
     output = args.output.resolve()
-    command = ["julia", "--project=.", "--startup-file=no", "--threads=1",
+    command = ["julia", "--project=research", "--startup-file=no", "--threads=1",
                "examples/validate_static18.jl", str(output)]
     environment = os.environ.copy()
     for key in ("JULIA_NUM_THREADS", "JULIA_NUM_GC_THREADS", "JULIA_NUM_PRECOMPILE_TASKS",

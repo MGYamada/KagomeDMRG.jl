@@ -32,7 +32,7 @@ export save_checkpoint, load_checkpoint, resume_dmrg
 export FluxPolicy, continue_flux
 
 function __init__()
-    _execution_identity()
+    _initialize_execution_identity!()
     return nothing
 end
 

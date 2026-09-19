@@ -1,14 +1,32 @@
 #!/usr/bin/env julia
 # Bounded interacting-cylinder accuracy study; no phase or plateau claim.
-# julia --project=. --startup-file=no --threads=1 examples/validate_interacting18.jl
+# julia --project=research --startup-file=no --threads=1 examples/validate_interacting18.jl
 using SHA, TOML, Dates
 const ROOT = normpath(joinpath(@__DIR__, ".."))
-const SOURCES = ["Project.toml", "Manifest.toml", "Manifest-v1.13.toml",
+function active_environment_snapshot()
+    project = Base.active_project()
+    project === nothing && error("an explicit active project is required")
+    project = abspath(project)
+    manifest = Base.project_file_manifest_path(project)
+    manifest !== nothing && isfile(project) && isfile(manifest) ||
+        error("the active project needs an instantiated dependency manifest")
+    manifest = abspath(manifest)
+    return Dict{String,Any}("manifest"=>basename(manifest),
+        "environment_sha256"=>Dict(
+            "project:" * basename(project)=>bytes2hex(sha256(read(project))),
+            "manifest:" * basename(manifest)=>bytes2hex(sha256(read(manifest)))))
+end
+
+const SOURCES = ["Project.toml", "research/Project.toml", "research/Manifest.toml",
+    "research/Manifest-v1.13.toml",
     "src/KagomeDMRG.jl", "src/lattice.jl", "src/model.jl", "src/dmrg.jl",
     "src/observables.jl", "src/schmidt.jl", "src/checkpoint.jl", "src/continuation.jl",
     "test/reference_ed.jl", "test/reference_eigensolve.jl", "test/itensor_helpers.jl",
     "examples/validate_interacting18.jl"]
-source_hashes() = Dict(path=>bytes2hex(sha256(read(joinpath(ROOT,path)))) for path in SOURCES)
+function source_hashes()
+    hashes = Dict(path=>bytes2hex(sha256(read(joinpath(ROOT, path)))) for path in SOURCES)
+    return merge(Dict("source_sha256"=>hashes), active_environment_snapshot())
+end
 const SOURCE_BEFORE = source_hashes()
 
 using KagomeDMRG, ITensors, ITensorMPS, LinearAlgebra, Serialization

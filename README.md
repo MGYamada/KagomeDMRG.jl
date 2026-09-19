@@ -62,18 +62,23 @@ Juliaup を使い、リポジトリのルートで Julia 1.13 の環境を準備
 ```sh
 juliaup add 1.13
 juliaup override set 1.13
-julia +1.13 --project=. --startup-file=no -e 'using Pkg; Pkg.instantiate(); Pkg.precompile()'
-julia +1.13 --project=. --startup-file=no -e 'using Pkg; Pkg.test()'
-julia +1.13 --project=. --startup-file=no --threads=1
+julia +1.13 --project=research --startup-file=no -e 'using Pkg; Pkg.instantiate(); Pkg.precompile()'
+julia +1.13 --project=research --startup-file=no -e 'using Pkg; Pkg.test("KagomeDMRG")'
+julia +1.13 --project=research --startup-file=no --threads=1
 ```
 
-Julia 1.13 用の依存関係は `Manifest-v1.13.toml` に保存しています。
-`Manifest.toml` は Julia 1.12.7 用です。両 manifest は局所版 NDTensors を指定します。
+研究用環境は `research/Project.toml` です。`research/Manifest-v1.13.toml` は Julia 1.13、
+`research/Manifest.toml` は Julia 1.12.7 用で、両者は本checkoutと局所版 NDTensors を
+相対pathで指定します。研究スクリプトは `--project=research` で実行してください。
 過去の検証を再現する場合は、記録に対応する過去の checkout と依存環境を使います。
 `Project.toml` の互換範囲は Julia 1.13 も含みます。
 
-`Pkg.test()` は重複を削減した全回帰テストを実行します。分野指定には
-`Pkg.test(; test_args=["truncation", "checkpoint"])` を使います。
+研究用環境では `Pkg.test("KagomeDMRG")` で全回帰テストを実行します。分野指定には
+`Pkg.test("KagomeDMRG"; test_args=["truncation", "checkpoint"])` を使います。
+ライブラリ開発ではrootの `Project.toml` も使えます。
+`julia --project=. --startup-file=no -e 'using Pkg; Pkg.instantiate(); Pkg.test()'`
+は互換範囲からローカル環境を解決します。rootに生成する `Manifest*.toml` はGit管理外で、
+固定した研究用依存関係は `research/` のmanifestを参照します。
 [テストの構成と実行方法](test/README.md)を参照してください。
 
 Julia のプロンプトで、9 サイトの小系を計算します。`theta` はラジアンです。
@@ -96,7 +101,7 @@ result = run_dmrg(lattice, 0.37; seed=11)
 独立 ED と照合し、選択したメタデータと数値を保存する再現用スクリプトもあります。
 
 ```sh
-julia +1.13 --project=. --startup-file=no examples/validate_small_system.jl
+julia +1.13 --project=research --startup-file=no examples/validate_small_system.jl
 ```
 
 別 Julia process での再開と独立 ED・Schmidt 診断の照合は次で実行できます。
@@ -104,14 +109,14 @@ julia +1.13 --project=. --startup-file=no examples/validate_small_system.jl
 同一 Julia・依存関係・ソースの信頼済みローカル計算用で、途中 sweep の再開ではありません。
 
 ```sh
-julia +1.13 --project=. --startup-file=no --threads=1 examples/validate_restart.jl
+julia +1.13 --project=research --startup-file=no --threads=1 examples/validate_restart.jl
 ```
 
 適応的追跡の零応答・往復・再開、および縮退した初期状態による追跡停止は次で再現できます。
 採否の閾値は実験ごとに明示し、`completed` はその診断を通過したという意味です。
 
 ```sh
-julia +1.13 --project=. --startup-file=no --threads=1 examples/validate_continuation.jl
+julia +1.13 --project=research --startup-file=no --threads=1 examples/validate_continuation.jl
 ```
 
 18 サイトの相互作用系で、bond dimension・刻み・初期状態・正負 flux と独立 ED を
@@ -119,7 +124,7 @@ julia +1.13 --project=. --startup-file=no --threads=1 examples/validate_continua
 plateau の成立や量子化の検証ではありません。
 
 ```sh
-julia +1.13 --project=. --startup-file=no --threads=1 examples/validate_interacting18.jl
+julia +1.13 --project=research --startup-file=no --threads=1 examples/validate_interacting18.jl
 ```
 
 既知 CSL の正応答対照については、[原論文・補足の監査と実装条件](docs/research/p3_csl_control_design.md)を参照してください。

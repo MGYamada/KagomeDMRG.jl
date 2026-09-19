@@ -25,24 +25,32 @@ directory override selects Julia 1.13 for this checkout; the explicit
 ```sh
 juliaup add 1.13
 juliaup override set 1.13
-julia +1.13 --project=. --startup-file=no -e 'using Pkg; Pkg.instantiate(); Pkg.precompile()'
-julia +1.13 --project=. --startup-file=no -e 'using Pkg; Pkg.test()'
-julia +1.13 --project=. --startup-file=no --threads=1
+julia +1.13 --project=research --startup-file=no -e 'using Pkg; Pkg.instantiate(); Pkg.precompile()'
+julia +1.13 --project=research --startup-file=no -e 'using Pkg; Pkg.test("KagomeDMRG")'
+julia +1.13 --project=research --startup-file=no --threads=1
 ```
 
-`Manifest-v1.13.toml` records the Julia 1.13 dependency environment. Julia
+`research/Project.toml` is the dedicated research environment.
+`research/Manifest-v1.13.toml` records its Julia 1.13 dependencies. Julia
 automatically selects the manifest matching its major and minor version,
 as described in the [Pkg documentation](https://julialang.github.io/Pkg.jl/v1/toml-files/#Different-Manifests-for-Different-Julia-versions).
-`Manifest.toml` records the Julia 1.12.7 dependency environment.
-Both manifests now select the local NDTensors correction. Historical validation
+`research/Manifest.toml` records its Julia 1.12.7 dependencies.
+Both manifests select this checkout and the local NDTensors correction by relative
+paths. Use `--project=research` for the research examples. Historical validation
 reports record their original source and manifest hashes; reproducing those
 older results requires the corresponding historical checkout.
 The compatibility ranges in `Project.toml` already allow Julia 1.13.
 To select Julia 1.12.7, run `juliaup add 1.12.7` and use
 `julia +1.12.7` in the Julia commands instead.
 
-`Pkg.test()` runs the regression suite with redundant cases removed. Use
-`Pkg.test(; test_args=["truncation", "checkpoint"])` to select groups.
+In the research environment, `Pkg.test("KagomeDMRG")` runs the regression suite.
+Use `Pkg.test("KagomeDMRG"; test_args=["truncation", "checkpoint"])` to select groups.
+The library root remains a separate development workflow:
+`julia --project=. --startup-file=no -e 'using Pkg; Pkg.instantiate(); Pkg.test()'`.
+It resolves the root project's compatibility ranges and may create an untracked
+root `Manifest*.toml`; use the manifests in `research/` for the committed research
+baseline. Existing checkpoints retain their original source/environment identity
+and require the corresponding historical checkout for restart.
 See the [test guide](../test/README.md) for the available groups and coverage.
 
 At the Julia prompt:
@@ -74,7 +82,7 @@ The [validation example](../examples/validate_small_system.jl) repeats the
 small-system ED comparisons and saves selected metadata and numerical metrics:
 
 ```sh
-julia +1.13 --project=. --startup-file=no examples/validate_small_system.jl
+julia +1.13 --project=research --startup-file=no examples/validate_small_system.jl
 ```
 
 An optional positional argument selects a new output TOML file. Use a distinct
@@ -112,7 +120,7 @@ compares twelve-site `Q=0` and nine-site neighboring sectors against independent
 ED, outside the regression suite:
 
 ```sh
-julia --project=. --startup-file=no --threads=1 examples/validate_charge_sectors.jl outputs/new-charge-study
+julia --project=research --startup-file=no --threads=1 examples/validate_charge_sectors.jl outputs/new-charge-study
 ```
 
 Choose a new output directory. The study records all five points and their
@@ -176,7 +184,7 @@ exchange = bond_energies(point.psi, control, point.theta)
 Reproduce the bounded two-point study with a new output directory:
 
 ```sh
-julia --project=. --startup-file=no --threads=1 examples/validate_extended_model.jl outputs/new-extended-study
+julia --project=research --startup-file=no --threads=1 examples/validate_extended_model.jl outputs/new-extended-study
 ```
 
 `spin_correlations` returns `zz=<Sz_i Sz_j>` and `pm=<S+_i S-_j>`; transverse
@@ -226,14 +234,16 @@ Each snapshot contains the current and zero-flux MPS, allowlisted TOML metadata,
 and byte lengths and SHA-256 checksums. Loading checks the model, full geometry,
 bonds, field, gauge, charge, site identity, solver settings, baseline, state
 normalization, and energy. Julia, package versions, architecture, source hashes,
-and the selected dependency manifest must match. The primitive metadata and
-integrity envelope are checked before the Julia payload is deserialized.
-The result and baseline carry an immutable identity captured when the package
-and vendored backend were loaded. Editing their sources or the selected
-manifest invalidates subsequent runs, saves, loads, and continuation in that
-process; restart Julia after such edits. Saving never relabels an older
-in-memory result with newly edited source hashes. Precompile dependencies
-include the hashed files and source-directory membership.
+and the active Project plus Julia's selected dependency manifest must match.
+The primitive metadata and integrity envelope are checked before the Julia
+payload is deserialized. Package and vendored source hashes are captured when
+modules are evaluated and remain precompile dependencies. The active environment
+and runtime are captured afresh in `__init__`, even when compiled code is reused.
+The result and baseline carry that immutable execution identity. Editing source,
+Project, or Manifest files, or switching the active project, invalidates later
+runs, saves, loads, and continuation in that process; restart Julia after such
+changes. Saved environment hashes use role-prefixed filenames, without absolute
+paths. Saving never relabels an older in-memory result with a new identity.
 Use these snapshots only from trusted local runs. They are deliberately bound
 to the same environment, not a portable archival format; see the
 [Julia Serialization contract](https://docs.julialang.org/en/v1/stdlib/Serialization/).
@@ -252,7 +262,7 @@ The nine-site example has no interior geometric cut: bond 4 is an MPS cut only.
 The separate-process restart and independent ED checks can be reproduced with:
 
 ```sh
-julia +1.13 --project=. --startup-file=no --threads=1 examples/validate_restart.jl
+julia +1.13 --project=research --startup-file=no --threads=1 examples/validate_restart.jl
 ```
 
 This writes snapshots and an allowlisted numerical report to a new
@@ -333,7 +343,7 @@ The bounded reproduction includes a restart, forward/reverse zero control,
 independent nine-site ED, and a degenerate initial state that stays unresolved:
 
 ```sh
-julia +1.13 --project=. --startup-file=no --threads=1 examples/validate_continuation.jl
+julia +1.13 --project=research --startup-file=no --threads=1 examples/validate_continuation.jl
 ```
 
 See the [P2 validation report](research/p2_continuation_validation.md). The known
@@ -345,7 +355,7 @@ remain pending.
 For a bounded interacting-cylinder study with an axial cut, run:
 
 ```sh
-julia +1.13 --project=. --startup-file=no --threads=1 examples/validate_interacting18.jl
+julia +1.13 --project=research --startup-file=no --threads=1 examples/validate_interacting18.jl
 ```
 
 This fixes the nearest-neighbor Heisenberg model in the `N=18,Q=2` sector and
@@ -371,6 +381,10 @@ truncation-spectrum guard before producing a final state; this failure is also
 preserved. No chi=512 trial was rejected, so these paths did not exercise adaptive
 step refinement. The literature audit and implementation requirements for the
 known CSL control are in the [P3 design](research/p3_csl_control_design.md).
+
+The following numerical results predate the research-environment relocation.
+Their original root manifest paths, hashes, and commands remain historical records;
+moving the current environment does not revalidate or relabel those results.
 
 On 2026-09-19, the standard `Pkg.test()` command passed 2,205 assertions with
 Julia 1.12.7, ITensors 0.9.31, ITensorMPS 0.4.1, and KrylovKit 0.10.4.
@@ -463,7 +477,7 @@ errors or establish convergence of a finite-bond-dimension optimization.
 The nine-site reference runs use enough bond dimension to avoid truncation.
 See the [recorded boundary case](research/data/qn_truncation_boundary.toml).
 The [correction and finite-chi study](research/p1_qn_truncation_calibration.md)
-records the captured 18-site failure and its replay. Both manifests select the
+records the captured 18-site failure and its replay. Both research manifests select the
 local backend; loading an unrelated registry NDTensors is rejected. When using
 KagomeDMRG from another project, that project must select the same local source.
 

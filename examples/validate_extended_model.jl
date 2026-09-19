@@ -1,6 +1,6 @@
 #!/usr/bin/env julia
 # Two bounded single-point optimizations, not a CSL phase or pump experiment.
-# julia --project=. --startup-file=no --threads=1 examples/validate_extended_model.jl NEW_OUTPUT
+# julia --project=research --startup-file=no --threads=1 examples/validate_extended_model.jl NEW_OUTPUT
 using KagomeDMRG, ITensors, ITensorMPS, LinearAlgebra, SHA, TOML, Dates
 BLAS.set_num_threads(1)
 ITensors.disable_threaded_blocksparse()

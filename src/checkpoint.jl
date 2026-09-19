@@ -258,7 +258,9 @@ function _load_checkpoint(path, lattice; gauge, hz, Q, sites, expected_theta,
     _checkpoint_require(metadata["runtime"] == Dict(execution_identity.runtime), "checkpoint runtime mismatch")
     _checkpoint_require(metadata["provenance"]["source_sha256"] ==
         Dict(execution_identity.source_sha256) &&
-        metadata["provenance"]["manifest"] == execution_identity.manifest,
+        metadata["provenance"]["manifest"] == execution_identity.manifest &&
+        get(metadata["provenance"], "environment_sha256", nothing) ==
+            Dict(execution_identity.environment_sha256),
         "checkpoint source or dependency manifest mismatch")
     charge = _checkpoint_charge(nsites(lattice), metadata["configuration"]["Q"]; Q)
     config = _checkpoint_configuration(lattice, gauge, hz; Q=charge)

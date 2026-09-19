@@ -59,6 +59,45 @@ source = joinpath(pkgdir(KagomeDMRG), "src", "dmrg.jl")
         @test loaded.baseline.execution_identity == result.execution_identity
         @test Dict(result.execution_identity.source_sha256) ==
             loaded.metadata["provenance"]["source_sha256"]
+        @test Dict(result.execution_identity.environment_sha256) ==
+            loaded.metadata["provenance"]["environment_sha256"]
+        @test !isfile(joinpath(pkgdir(KagomeDMRG), "Manifest.toml"))
+        @test !isfile(joinpath(pkgdir(KagomeDMRG), "Manifest-v1.13.toml"))
+        # A mutable environment is checked independently of immutable loaded
+        # source. Reuse the completed point without another numerical solve.
+        paths = KagomeDMRG._checkpoint_environment_paths()
+        for environment_file in (paths.project, paths.manifest)
+            provenance_worker_edit(environment_file) do
+                for action in (
+                    () -> _checkpoint_fixed_field_result(),
+                    () -> save_checkpoint(output_root, result; baseline=result,
+                        theta_path=[0.0], status=:accepted),
+                    () -> load_checkpoint(checkpoint, result.lattice; hz=result.hz),
+                    () -> resume_dmrg(checkpoint, result.lattice, 0.1; hz=result.hz),
+                    () -> continue_flux(result.lattice, [0.1]; start=result,
+                        output_root, policy=_checkpoint_test_policy(),
+                        initial_step=0.1, min_step=0.01, hz=result.hz))
+                    _checkpoint_test_rejection(action, "active environment changed")
+                end
+            end
+            @test KagomeDMRG._execution_identity() == result.execution_identity
+        end
+        # Equal bytes at a different active location must not relabel already
+        # loaded code. Absolute paths remain private and never enter metadata.
+        mktempdir() do alternate
+            alternate_project = joinpath(alternate, basename(paths.project))
+            cp(paths.project, alternate_project)
+            cp(paths.manifest, joinpath(alternate, basename(paths.manifest)))
+            try
+                Base.set_active_project(alternate_project)
+                _checkpoint_test_rejection("active environment changed") do
+                    KagomeDMRG._execution_identity()
+                end
+            finally
+                Base.set_active_project(paths.project)
+            end
+        end
+        @test KagomeDMRG._execution_identity() == result.execution_identity
         provenance_worker_edit(source) do
             for (label, action) in (
                 ("save", () -> save_checkpoint(output_root, result; baseline=result,
@@ -92,12 +131,15 @@ source = joinpath(pkgdir(KagomeDMRG), "src", "dmrg.jl")
         @test load_checkpoint(trajectory.last_checkpoint, lattice; hz).execution_identity ==
             loaded.execution_identity
     elseif mode == "new_manifest"
-        # The parent changed only a non-included input after compiling the
-        # package. include_dependency must invalidate that precompile cache.
+        # The parent changed the environment after the package was compiled.
+        # __init__ must capture the current files even with a reusable cache.
         result = _checkpoint_fixed_field_result()
         identity = result.execution_identity
-        @test Dict(identity.source_sha256)[identity.manifest] ==
-            bytes2hex(sha256(read(joinpath(pkgdir(KagomeDMRG), identity.manifest))))
+        paths = KagomeDMRG._checkpoint_environment_paths()
+        @test Dict(identity.environment_sha256)["manifest:" * identity.manifest] ==
+            bytes2hex(sha256(read(paths.manifest)))
+        @test Dict(identity.environment_sha256)["project:" * basename(paths.project)] ==
+            bytes2hex(sha256(read(paths.project)))
         _checkpoint_test_rejection("checkpoint source or dependency manifest mismatch") do
             load_checkpoint(read(checkpoint_record, String), result.lattice; hz=result.hz)
         end
