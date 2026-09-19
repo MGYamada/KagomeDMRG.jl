@@ -4,10 +4,12 @@
 最近接模型の `M/Msat=1/9` とは別の、零磁化・拡張交換模型を正応答対照にする。
 ここでの正応答対照は非零応答の検証を意味し、応答の符号は固定しない。
 この設計に続く[明示Qの検証](p3_explicit_charge_validation.md)と
-[拡張交換模型の実装・小系照合](p3_extended_model_validation.md)は別記録とする。
+[拡張交換模型の実装・小系照合](p3_extended_model_validation.md)、
+[chirality演算子の実装・独立校正](p3_chirality_validation.md)は別記録とする。
 
-研究全体では、[最近接1/9の静的研究](p4_static_plateau_strategy.md)を最優先で進め、
-この対照の残る校正を並行する。本書のN18Q0・chirality・非零ポンプの段階は
+研究全体では、[最近接1/9の静的研究](p4_static_plateau_strategy.md)を主対象に保ち、
+この対照の残る校正を並行する。直近はN27の追加収束を保留し、本対照の
+chirality校正を完了し、次に拡張模型N18Q0の照合へ進む。本書の各段階は
 CSL側の条件であり、最近接模型の磁化境界・競合秩序の計算を待たせない。
 既知非零応答の再現は、1/9の輸送を物理的なポンプとして解釈する前に必要とする。
 
@@ -91,7 +93,7 @@ J2 の `3/4`、J3 の `1`、画像を含む bond 一意性を確認した。
 | 保存 | 実際の全bond・family・Qを保存し再計算で照合 | source一致が必要。旧ソースの自動移行は未実装 |
 | continuation | 始点・保存状態のQを全点で継承 | 初期零flux profileを保持。拡張模型の枝追跡は後続 |
 | ED | NN距離参照に加え、平面六角形探索による拡張参照を追加 | productionのbondテンプレート・MPOを参照しない。N18Q0の拡張模型照合は後続 |
-| 観測 | Sz、Schmidt、overlap、variance、bond energy | 方向付き三角形のscalar chiralityは未実装。三spin行列で符号を校正する |
+| 観測 | Sz、Schmidt、overlap、variance、bond energy、方向付きscalar chirality | 三spin行列・合成chiral状態で符号・ゲージを校正済み。実CSL状態の診断・ポンプは後続 |
 
 現在の checkpoint はソース・manifest 一致を要求する。
 新規ソースを provenance allowlist に加え、旧 schema との互換性を明記する。

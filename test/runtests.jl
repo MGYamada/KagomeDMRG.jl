@@ -2,7 +2,7 @@ const TEST_GROUPS = [
     "lattice" => ["test_lattice.jl", "test_extended_model.jl"],
     "ed" => ["test_reference_ed.jl", "test_reference_eigensolve.jl", "test_extended_reference.jl"],
     "dmrg" => ["test_itensor.jl"],
-    "observables" => ["test_observables.jl", "test_schmidt.jl"],
+    "observables" => ["test_observables.jl", "test_schmidt.jl", "test_chirality.jl"],
     "checkpoint" => ["test_checkpoint.jl"],
     "truncation" => [joinpath("..", "vendor", "NDTensors", "test",
                              "test_truncation_selection.jl"),

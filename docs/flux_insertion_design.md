@@ -95,6 +95,20 @@ Q表記では差分をQ0±2で取る。遠方Qも比較した場合は
 変分エネルギーの差は厳密な境界の誤差限界ではなく、χ・初期状態等による変動を併記する。
 未探索sectorによる飛び越しは未判定とし、追加磁化の端への局在とbulkの応答を分ける。
 
+この静的比較の最初の実例として、NNのN18・θ=0・Q=0,2,4を独立ED/DMRGで照合した。
+比較したsector内の区間は `0.2585201582<h/J<0.4869821958`。
+二列で内部bulkはなく、遠方Qは未探索なのでbulk plateauの検証ではない。
+数値・列磁化・精度・10分の外側時間監視は[段階Aの研究記録](research/p4_static18_validation.md)に分ける。
+続くN27・Q3・χ256の代表試行は時間上限で停止し、完了状態・観測量は未取得。
+資源量のみを[N27の停止記録](research/p4_static27_pilot.md)に保存し、新しい磁場区間や
+有限χの精度結果としては扱わない。
+その後の2-sweep試行は進行・保存・別計時診断を完了したが、設定上限256に対し実保持次元64、
+variance 0.31546 J²の初期状態である。[新しい研究記録](research/p4_static27_progress.md)と分け、
+この完了状態も磁化境界・bulk収束の証拠とはしない。
+同じtrialから累積4 sweepsへ進めると、実保持次元256、variance 0.008498 J²となり、
+列磁化も大きく変わった。[固定χのsweep比較](research/p4_static27_refine.md)として保存し、
+まだ収束した秩序や磁場区間とは解釈しない。
+
 共通 API は `target_sector(N; Q=...)`、`initial_mps(...; Q=...)`、
 `run_dmrg(...; Q=...)` で別の固定 sector を明示できる。
 整数 `Q` の範囲 `−N≤Q≤N` と N との偶奇一致を要求し、`Nup=(N+Q)/2` とする。
@@ -195,6 +209,13 @@ P0 で Julia 1.12.7、ITensors 0.9.31、ITensorMPS 0.4.1 を使って照合し�
 noise が非零なら切断誤差は摂動した密度行列のものであり、波動関数の捨てた確率と同一視しない。
 upstream API が局所 Krylov の convergence info を公開しないため、それを確認済みとはしない。
 小系では独立した全系 residual も検証する。warm start の入力はコピーし、site indices と Q を照合する。
+任意の `progress_callback(event)` は工程の開始・終了、guard通過後のbond更新、sweep完了を
+scalar-onlyのNamedTupleで通知する。callbackへMPS/MPOは渡さず、設定やcheckpointにも保存しない。
+局所・sweep末のenergyはsolver報告値であり、最終MPO期待値と区別する。
+通知の経過時間はcallback処理も含む。varianceを省略した場合、その工程の通知は出さない。
+静的な資源測定では `measure_variance=false` の完了trialを先に保存し、varianceを別診断として
+計測できる。これは全点varianceを要求するcontinuationの受理条件を緩める変更ではない。
+実装の小系照合と研究走行は[N27の進行記録](research/p4_static27_progress.md)に分ける。
 従来の upstream NDTensors 0.4.31 では、等しい Schmidt 重みを異なる QN sector で切る境界に
 空状態と誤った切断誤差を返す事例がある。近接した重みでも、非零状態を残しつつ
 切断誤差を過小報告する条件を四サイトの解析状態で確認した。observer は正準中心の
@@ -287,7 +308,14 @@ P_c(\theta)=\sum_{i\in R_c}
 `bond_energies(psi,lattice,theta;gauge)` は各bondの交換エネルギーを同じ位相規約で返す。
 和に `−dot(hz,sz_profile(psi))` を加えると全エネルギーとなる。
 この初版は全相関行列を再利用するためO(N²)の保存量を使い、大系での費用は未計測。
-方向付きscalar chiralityは未実装であり、三spinの独立校正をCSL・秩序比較に共通の後続単位とする。
+`oriented_triangles(lattice)` は周期画像を持つCCWの基本三角形を返し、
+`triangle_chiralities(psi,lattice,theta;gauge)` はその順に正規化期待値を返す。
+`theta=0` では `Si·(Sj×Sk)`、非零fluxでは局所移送で定義したdressed演算子とする。
+各頂点の画像をmとしてseamの角は `alpha=−m*theta`、uniformでは既存の
+`gauge_angles`を加える。三角形辺の位相と一致し、状態と観測演算子を共に変換する。
+非零fluxで継ぎ目を跨ぐ裸の三スピン積とは異なる。
+向き・符号・独立三spin対照は[chiralityの仕様・校正記録](research/p3_chirality_validation.md)にまとめる。
+初版は三角形ごとにMPOを収縮し、大系での測定費用は未計測。
 静的なSz・bond patternの比較は先に進められる。固定Qでは横磁化の一体期待値がゼロなので、
 磁気秩序の検討には縦相関と `⟨S+i S−j⟩` も使い、端で誘起された変調の長さ依存を調べる。
 
@@ -355,11 +383,16 @@ N=18、Q=2 は `binomial(18,10)=43758` 次元である。
 今後の実行順序は [ロードマップ](../ROADMAP.md)を正本とする。
 QN 切断の修正・独立校正と 18 サイトの有限 χ 比較を終え、
 明示Q、拡張結合、bond energyとN12Q0の小系照合も完了した。
-次はNNの `N18,θ=0,Q=0,2,4` で静的な磁化境界を調べる。
-その後 `Lx=3,Ly=3,N=27,Q=3` の代表点で資源量を測り、必要な隣接Q・χ・seedを追加する。
+NNの `N18,θ=0,Q=0,2,4` の静的比較を完了した。
+`Lx=3,Ly=3,N=27,Q=3` のχ256・8-sweep試行は時間上限で完了状態を得られず、
+続く2-sweep試行で進行記録とcheckpoint先行保存、varianceの別計時を完了した。
+同χ上限のtrialから累積4 sweepsへ進め、実保持次元256の状態と全診断を取得した。
+energy・密度の変動は残るが、追加収束は保留し、P3aの独立した観測量・小系校正へ進む。
+N27の再着手時に、必要なsweep・隣接Q・χ・seedの比較を選ぶ。
 初期状態の精度を満たした場合に短区間追跡へ進み、実測後に
 `Lx=6,Ly=3,N=54` 等で端の分離と複数cutを調べる。
-既知CSL側ではchiralityと拡張模型N18Q0の照合を行い、その後
+既知CSL側ではchiralityの独立三spin・合成状態による校正を完了した。
+次に拡張模型N18Q0を照合し、その後
 `Lx=3,Ly=4,N=36` で状態準備と資源量を測る。この流れはNN静的研究を待たせない。
 
 `Lx=12,Ly=3,N=108` や `Lx=18 or 24,Ly=6,N=324 or 432` はその先の候補であり、

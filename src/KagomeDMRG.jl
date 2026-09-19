@@ -16,6 +16,7 @@ include("extended_model.jl")
 include("model.jl")
 include("dmrg.jl")
 include("observables.jl")
+include("chirality.jl")
 include("schmidt.jl")
 include("checkpoint.jl")
 include("continuation.jl")
@@ -25,6 +26,7 @@ export kagome_j1j2j3_cylinder, bond_families
 export target_sector, right_region, reverse_bond, bond_phase, gauge_angles
 export spin_sites, initial_mps, twisted_exchange_mpo, run_dmrg
 export sz_profile, spin_correlations, spin_transfer, bond_energies
+export KagomeTriangle, oriented_triangles, scalar_chirality_mpo, triangle_chiralities
 export schmidt_diagnostics
 export save_checkpoint, load_checkpoint, resume_dmrg
 export FluxPolicy, continue_flux
