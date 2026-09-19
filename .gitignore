@@ -2,3 +2,7 @@
 *.jl.cov
 *.jl.mem
 /outputs/
+
+# Local package development environments; research/ lockfiles stay tracked.
+/Manifest*.toml
+/JuliaManifest*.toml

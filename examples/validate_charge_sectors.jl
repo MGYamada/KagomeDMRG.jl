@@ -1,6 +1,6 @@
 #!/usr/bin/env julia
 # Bounded NN-sector API study, separate from the package regression suite.
-# julia --project=. --startup-file=no --threads=1 examples/validate_charge_sectors.jl NEW_OUTPUT
+# julia --project=research --startup-file=no --threads=1 examples/validate_charge_sectors.jl NEW_OUTPUT
 using KagomeDMRG, ITensors, ITensorMPS, LinearAlgebra, SHA, TOML, Dates
 BLAS.set_num_threads(1)
 ITensors.disable_threaded_blocksparse()

@@ -1,6 +1,7 @@
-# This identity is evaluated with the module, including when it is precompiled.
-# Never replace it with hashes first collected at save time: files on disk may
-# already differ from the implementation that produced an in-memory result.
+# Source identity is captured when the module is evaluated (including precompile).
+# The active environment is captured separately in __init__, since one compiled
+# package may be loaded by different projects. Never relabel an in-memory result
+# using source or environment files first hashed at checkpoint-save time.
 const _CHECKPOINT_SOURCES = ("Project.toml", "src/KagomeDMRG.jl",
     "src/provenance.jl", "src/lattice.jl", "src/extended_model.jl", "src/model.jl", "src/dmrg.jl",
     "src/observables.jl", "src/chirality.jl", "src/checkpoint.jl", "src/schmidt.jl",
@@ -26,12 +27,10 @@ end
 
 function _checkpoint_source_identity(; register_dependencies=false)
     root = dirname(@__DIR__)
-    versioned = "Manifest-v$(VERSION.major).$(VERSION.minor).toml"
-    manifest = isfile(joinpath(root, versioned)) ? versioned : "Manifest.toml"
-    paths = [_checkpoint_source_files(root); manifest]
+    paths = _checkpoint_source_files(root)
     if register_dependencies
-        # Directory dependencies also invalidate a cache when a version-specific
-        # manifest or a new vendored source file is added or removed.
+        # Directory dependencies also invalidate the cache when vendored source
+        # files are added or removed. Environment files are not precompile inputs.
         directories = Set([root])
         for name in ("src", "ext")
             directory = joinpath(root, "vendor", "NDTensors", name)
@@ -55,8 +54,26 @@ function _checkpoint_source_identity(; register_dependencies=false)
             Base.include_dependency(directory; track_content=true)
         end
     end
-    return (; manifest, source_sha256=Tuple(path => _file_sha256(joinpath(root, path))
-                                           for path in paths))
+    return Tuple(path => _file_sha256(joinpath(root, path)) for path in paths)
+end
+
+function _checkpoint_environment_paths()
+    project = Base.active_project()
+    project !== nothing && isfile(project) ||
+        throw(ArgumentError("an instantiated active project is required"))
+    # Use Julia's loader selection, including version-specific names, explicit
+    # manifest paths, and workspace manifests. Never fall back to this package.
+    manifest = Base.project_file_manifest_path(project)
+    manifest !== nothing && isfile(manifest) ||
+        throw(ArgumentError("the active project needs a manifest; run Pkg.instantiate() first"))
+    return (; project=abspath(project), manifest=abspath(manifest))
+end
+
+function _checkpoint_environment_identity(paths)
+    # Roles prevent collisions when a custom manifest is also named Project.toml.
+    hashes = ["project:" * basename(paths.project) => _file_sha256(paths.project),
+              "manifest:" * basename(paths.manifest) => _file_sha256(paths.manifest)]
+    return (; manifest=basename(paths.manifest), environment_sha256=Tuple(sort!(hashes)))
 end
 
 function _checkpoint_runtime_identity()
@@ -76,16 +93,28 @@ struct _ExecutionIdentity
     manifest::String
     source_sha256::Tuple
     runtime::Tuple
+    environment_sha256::Tuple
 end
 
 function Base.:(==)(left::_ExecutionIdentity, right::_ExecutionIdentity)
     return left.manifest == right.manifest &&
-           left.source_sha256 == right.source_sha256 && left.runtime == right.runtime
+           left.source_sha256 == right.source_sha256 && left.runtime == right.runtime &&
+           left.environment_sha256 == right.environment_sha256
 end
 
-const _LOADED_EXECUTION_IDENTITY = let
-    source = _checkpoint_source_identity(; register_dependencies=true)
-    _ExecutionIdentity(source.manifest, source.source_sha256, _checkpoint_runtime_identity())
+const _LOADED_SOURCE_IDENTITY = _checkpoint_source_identity(; register_dependencies=true)
+const _LOADED_EXECUTION_IDENTITY = Ref{_ExecutionIdentity}()
+# Absolute locations are only in-memory guards, never saved as environment metadata.
+const _LOADED_ENVIRONMENT_PATHS = Ref{NamedTuple{(:project, :manifest),Tuple{String,String}}}()
+
+function _initialize_execution_identity!()
+    paths = _checkpoint_environment_paths()
+    environment = _checkpoint_environment_identity(paths)
+    _LOADED_ENVIRONMENT_PATHS[] = paths
+    _LOADED_EXECUTION_IDENTITY[] = _ExecutionIdentity(environment.manifest,
+        _LOADED_SOURCE_IDENTITY, _checkpoint_runtime_identity(), environment.environment_sha256)
+    _execution_identity()
+    return nothing
 end
 
 function _execution_identity()
@@ -98,21 +127,32 @@ function _execution_identity()
         _checkpoint_source_identity()
     catch exception
         exception isa InterruptException && rethrow()
-        throw(ArgumentError("loaded source or dependency manifest is no longer readable"))
+        throw(ArgumentError("loaded source is no longer readable"))
     end
-    source.manifest == _LOADED_EXECUTION_IDENTITY.manifest &&
-        source.source_sha256 == _LOADED_EXECUTION_IDENTITY.source_sha256 ||
-        throw(ArgumentError("source or dependency manifest changed after KagomeDMRG was loaded; restart Julia"))
+    identity = _LOADED_EXECUTION_IDENTITY[]
+    source == identity.source_sha256 ||
+        throw(ArgumentError("source changed after KagomeDMRG was loaded; restart Julia"))
+    paths, environment = try
+        current = _checkpoint_environment_paths()
+        (current, _checkpoint_environment_identity(current))
+    catch exception
+        exception isa InterruptException && rethrow()
+        throw(ArgumentError("active environment is no longer readable; restart Julia"))
+    end
+    paths == _LOADED_ENVIRONMENT_PATHS[] &&
+        environment.manifest == identity.manifest &&
+        environment.environment_sha256 == identity.environment_sha256 ||
+        throw(ArgumentError("active environment changed after KagomeDMRG was loaded; restart Julia"))
     isdefined(ITensors.NDTensors, :_KAGOME_LOADED_SOURCE_SHA256) ||
         throw(ArgumentError("loaded vendored NDTensors has no source identity; restart Julia"))
     vendor_prefix = joinpath("vendor", "NDTensors")
     vendor_sources = Tuple(relpath(path, vendor_prefix) => hash
-        for (path, hash) in source.source_sha256 if startswith(path, vendor_prefix))
+        for (path, hash) in source if startswith(path, vendor_prefix))
     vendor_sources == ITensors.NDTensors._KAGOME_LOADED_SOURCE_SHA256 ||
         throw(ArgumentError("vendored NDTensors source changed after its module was loaded; restart Julia"))
-    _checkpoint_runtime_identity() == _LOADED_EXECUTION_IDENTITY.runtime ||
+    _checkpoint_runtime_identity() == identity.runtime ||
         throw(ArgumentError("runtime changed after KagomeDMRG was loaded; restart Julia"))
-    return _LOADED_EXECUTION_IDENTITY
+    return identity
 end
 
 function _require_execution_identity(point, identity=_execution_identity())
@@ -138,6 +178,7 @@ function _checkpoint_provenance(identity=_execution_identity())
         "unavailable"
     end
     return Dict("source_sha256" => Dict(identity.source_sha256),
+                "environment_sha256" => Dict(identity.environment_sha256),
                 "manifest" => identity.manifest,
                 "git_revision" => revision, "worktree_dirty" => dirty)
 end

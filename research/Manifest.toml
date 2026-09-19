@@ -482,7 +482,7 @@ version = "1.12.0"
 
 [[deps.KagomeDMRG]]
 deps = ["ITensorMPS", "ITensors", "KrylovKit", "LinearAlgebra", "NDTensors", "OMEinsum", "Random", "SHA", "Serialization", "TOML"]
-path = "."
+path = ".."
 uuid = "d652b1c8-bad6-4b4b-b7b8-15a1fd22c5bc"
 version = "0.1.0-DEV"
 
@@ -583,7 +583,7 @@ version = "2025.11.4"
 
 [[deps.NDTensors]]
 deps = ["Accessors", "Adapt", "ArrayLayouts", "BlockArrays", "Compat", "Dictionaries", "EllipsisNotation", "FillArrays", "Folds", "Functors", "HalfIntegers", "LinearAlgebra", "MacroTools", "Random", "SHA", "SimpleTraits", "SparseArrays", "SplitApplyCombine", "StaticArrays", "Strided", "StridedViews", "TimerOutputs", "TupleTools", "TypeParameterAccessors", "VectorInterface"]
-path = "vendor/NDTensors"
+path = "../vendor/NDTensors"
 uuid = "23ae76d9-e61a-49c4-8f12-3f1a16adf9cf"
 version = "0.4.31+1"
 

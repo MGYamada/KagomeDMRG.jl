@@ -198,8 +198,12 @@ end
 API は [OpSum/MPO](https://docs.itensor.org/ITensorMPS/stable/OpSum.html)、
 [MPS](https://docs.itensor.org/ITensorMPS/stable/MPSandMPO.html)に基づく。
 P0 で Julia 1.12.7、ITensors 0.9.31、ITensorMPS 0.4.1 を使って照合し、
-解決した依存関係を `Manifest.toml` に保存した。
-現在の Julia 1.13 用環境は `Manifest-v1.13.toml` に分離して保持する。
+解決した依存関係を当時のroot `Manifest.toml` に保存した。
+現在の研究用環境は `research/Project.toml` に分離し、Julia 1.12用を
+`research/Manifest.toml`、1.13用を `research/Manifest-v1.13.toml` に保持する。
+研究例は `--project=research` で起動し、実際に選択された環境のhashも保存する。
+rootの `Project.toml` はライブラリ開発用にも使えるが、そのローカルmanifestはGit管理外とする。
+過去の数値・checkpoint・環境hashは当時の記録として保持し、新配置へ書き換えない。
 
 初期は各 θ の MPO を構築し直し、`dmrg(H, psi_previous; ...)` で最適化する。
 実際の切断誤差、energy/variance、各観測量の収束を測り、`cutoff` の設定値だけを
@@ -471,7 +475,9 @@ checkpoint は最後の受理点を原子的に保存し、再開時に格子・
 受理済み／試行を別ディレクトリに置き、新しい snapshot を一時ディレクトリから
 同じ親への rename で公開する。既存 snapshot の上書きは行わない。
 TOML metadata と payload のサイズ・SHA-256 を確認し、同一 Julia・依存バージョン・
-ソース・manifest を要求してから Serialization payload を読む。
+ソース・実際のactive Projectと選択manifestの一致を要求してから Serialization payload を読む。
+sourceはmodule評価時、環境・runtimeは`__init__`で捕捉し、precompile cacheを共有しても
+他の実行環境へ由来を付け替えない。ロード後のactive環境変更も拒否する。
 復元後は電荷・site identity・norm・密度・基準状態を照合し、保存した模型の
 Hamiltonian を再構築して energy を確認する。`resume_dmrg` は受理済み状態の
 solver 設定で新しい DMRG batch を開始し、Hamiltonian 環境は再構築する。

@@ -107,7 +107,8 @@
                     theta_path=[0.0, 0.37])
             end
             different_identity = KagomeDMRG._ExecutionIdentity("different.toml",
-                point.execution_identity.source_sha256, point.execution_identity.runtime)
+                point.execution_identity.source_sha256, point.execution_identity.runtime,
+                point.execution_identity.environment_sha256)
             _checkpoint_test_rejection("execution identity does not match") do
                 save_checkpoint(directory, merge(point, (; execution_identity=different_identity));
                     baseline, theta_path=[0.0, 0.37])

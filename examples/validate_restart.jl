@@ -1,12 +1,27 @@
 #!/usr/bin/env julia
 # Reproduce same-runtime checkpoint restart in a separate Julia process.
-# Run: julia --project=. --startup-file=no --threads=1 examples/validate_restart.jl
+# Run: julia --project=research --startup-file=no --threads=1 examples/validate_restart.jl
 using SHA
 using TOML
 using Dates
 
 const ROOT = normpath(joinpath(@__DIR__, ".."))
-const SOURCES = ["Project.toml", "Manifest.toml", "Manifest-v1.13.toml",
+function active_environment_snapshot()
+    project = Base.active_project()
+    project === nothing && error("an explicit active project is required")
+    project = abspath(project)
+    manifest = Base.project_file_manifest_path(project)
+    manifest !== nothing && isfile(project) && isfile(manifest) ||
+        error("the active project needs an instantiated dependency manifest")
+    manifest = abspath(manifest)
+    return Dict{String,Any}("manifest"=>basename(manifest),
+        "environment_sha256"=>Dict(
+            "project:" * basename(project)=>bytes2hex(sha256(read(project))),
+            "manifest:" * basename(manifest)=>bytes2hex(sha256(read(manifest)))))
+end
+
+const SOURCES = ["Project.toml", "research/Project.toml", "research/Manifest.toml",
+    "research/Manifest-v1.13.toml",
     "src/KagomeDMRG.jl", "src/lattice.jl", "src/model.jl", "src/dmrg.jl",
     "src/observables.jl", "src/checkpoint.jl", "src/schmidt.jl", "src/continuation.jl",
     "test/reference_ed.jl", "test/itensor_helpers.jl", "examples/validate_restart.jl"]
@@ -33,8 +48,8 @@ function source_snapshot()
         push!(errors, "git_status_unavailable")
         "unavailable"
     end
-    return Dict("git_revision"=>revision, "worktree_dirty"=>dirty,
-                "source_sha256"=>hashes, "errors"=>errors)
+    return merge(Dict("git_revision"=>revision, "worktree_dirty"=>dirty,
+                "source_sha256"=>hashes, "errors"=>errors), active_environment_snapshot())
 end
 const SOURCE_BEFORE = source_snapshot()
 
@@ -168,7 +183,7 @@ function validate(output_directory)
         child_directory = joinpath(output_directory, "child")
         # All theta points are sequential. The child uses the same executable,
         # project, saved indices, solver settings, and one CPU/BLAS thread.
-        command = `$(Base.julia_cmd()) --project=$ROOT --startup-file=no --threads=1 $(@__FILE__) --worker $accepted $child_directory $target`
+        command = `$(Base.julia_cmd()) --project=$(dirname(Base.active_project())) --startup-file=no --threads=1 $(@__FILE__) --worker $accepted $child_directory $target`
         run(command)
         worker_record = TOML.parsefile(joinpath(child_directory, "worker.toml"))
         restarted = load_checkpoint(joinpath(child_directory, worker_record["checkpoint"]),
@@ -222,6 +237,8 @@ function validate(output_directory)
     source_status = if !isempty(SOURCE_BEFORE["errors"]) || !isempty(source_after["errors"])
         "unavailable"
     elseif SOURCE_BEFORE["source_sha256"] != source_after["source_sha256"] ||
+           SOURCE_BEFORE["environment_sha256"] != source_after["environment_sha256"] ||
+           SOURCE_BEFORE["manifest"] != source_after["manifest"] ||
            SOURCE_BEFORE["git_revision"] != source_after["git_revision"]
         "source_changed"
     else

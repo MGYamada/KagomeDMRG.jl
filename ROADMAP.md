@@ -88,7 +88,11 @@ hごとのDMRGではなくsector間の全交換エネルギーを比較する。
 切り替えたため、新たな全体 suite 成功とは扱わない。[実行範囲](docs/research/p1_qn_truncation_calibration.md#テスト実行の範囲)。
 その後、重複したテストと組合せを削除した。現在の実行方法・確認結果は
 [テストガイド](test/README.md)に記載する。
-両 manifest は局所版を固定する。今回の検証は Julia 1.13.0 で実行し、
+研究用環境は `research/Project.toml` と、Julia 1.12用の `research/Manifest.toml`、
+1.13用の `research/Manifest-v1.13.toml` に分離した。両manifestは本checkoutと局所版を参照する。
+rootの `Project.toml` はライブラリ開発に使い、生成するroot manifestはGit管理外とする。
+配置変更前のsource hash・checkpointは当時のcheckoutに属し、新配置へ由来を付け替えない。
+上記の検証は Julia 1.13.0 で実行し、
 Julia 1.12.7 は依存再解決までとして、未実行の版へ成功を広げない。
 各結果の数値・設定・source hash はリンク先を正本とし、新しい計算で過去の記録を上書きしない。
 

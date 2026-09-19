@@ -1,7 +1,7 @@
 #!/usr/bin/env julia
 # Calibrate the patched factorization and compare finite-chi single-point
 # optimizations. These points are not accepted flux-continuation trajectories.
-# julia --project=. --startup-file=no --threads=1 examples/validate_finite_chi.jl NEW_OUTPUT [UPSTREAM_CAPTURE [CHI:SWEEPS,...]]
+# julia --project=research --startup-file=no --threads=1 examples/validate_finite_chi.jl NEW_OUTPUT [UPSTREAM_CAPTURE [CHI:SWEEPS,...]]
 using KagomeDMRG, ITensors, ITensorMPS, LinearAlgebra, Serialization, SHA, TOML, Dates
 BLAS.set_num_threads(1)
 ITensors.disable_threaded_blocksparse()

@@ -1,6 +1,6 @@
 #!/usr/bin/env julia
 # Reproduce the small-system numerical checks with an allowlisted TOML record.
-# Run from the repository: julia --project=. --startup-file=no examples/validate_small_system.jl
+# Run from the repository: julia --project=research --startup-file=no examples/validate_small_system.jl
 using SHA
 using TOML
 using Dates
@@ -8,8 +8,23 @@ using Dates
 const ROOT = normpath(joinpath(@__DIR__, ".."))
 # Take the source snapshot before loading project code, and compare it again
 # after numerics. Never attribute a running calculation to later edits.
-# Include both supported dependency baselines, including Julia 1.13's lockfile.
-const SOURCES = ["Project.toml", "Manifest.toml", "Manifest-v1.13.toml",
+# Track both research baselines; record the active environment separately.
+function active_environment_snapshot()
+    project = Base.active_project()
+    project === nothing && error("an explicit active project is required")
+    project = abspath(project)
+    manifest = Base.project_file_manifest_path(project)
+    manifest !== nothing && isfile(project) && isfile(manifest) ||
+        error("the active project needs an instantiated dependency manifest")
+    manifest = abspath(manifest)
+    return Dict{String,Any}("manifest"=>basename(manifest),
+        "environment_sha256"=>Dict(
+            "project:" * basename(project)=>bytes2hex(sha256(read(project))),
+            "manifest:" * basename(manifest)=>bytes2hex(sha256(read(manifest)))))
+end
+
+const SOURCES = ["Project.toml", "research/Project.toml", "research/Manifest.toml",
+    "research/Manifest-v1.13.toml",
     "src/KagomeDMRG.jl", "src/lattice.jl",
     "src/model.jl", "src/dmrg.jl", "src/observables.jl", "src/checkpoint.jl",
     "src/schmidt.jl", "src/continuation.jl", "test/reference_ed.jl",
@@ -36,8 +51,8 @@ function provenance_snapshot()
         push!(errors, "git_status_unavailable")
         "unavailable"
     end
-    return Dict("git_revision"=>revision, "worktree_dirty"=>dirty,
-                "source_sha256"=>hashes, "errors"=>errors)
+    return merge(Dict("git_revision"=>revision, "worktree_dirty"=>dirty,
+                "source_sha256"=>hashes, "errors"=>errors), active_environment_snapshot())
 end
 const SOURCE_BEFORE = provenance_snapshot()
 
@@ -105,6 +120,8 @@ source_after = provenance_snapshot()
 source_status = if !isempty(SOURCE_BEFORE["errors"]) || !isempty(source_after["errors"])
     "unavailable"
 elseif SOURCE_BEFORE["source_sha256"] != source_after["source_sha256"] ||
+       SOURCE_BEFORE["environment_sha256"] != source_after["environment_sha256"] ||
+       SOURCE_BEFORE["manifest"] != source_after["manifest"] ||
        SOURCE_BEFORE["git_revision"] != source_after["git_revision"]
     "source_changed"
 else

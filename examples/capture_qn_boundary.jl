@@ -1,7 +1,8 @@
 #!/usr/bin/env julia
 # Isolated diagnostic process for the unmodified NDTensors 0.4.31 backend.
 # Arguments: frozen KagomeDMRG source directory, new output directory.
-# Use the frozen source directory as --project as well. No dependency is edited.
+# Use the frozen checkout's original dependency environment (historically its
+# root --project), not the current research environment. No dependency is edited.
 using ITensors, ITensorMPS, LinearAlgebra, Serialization, SHA, TOML, Dates
 BLAS.set_num_threads(1)
 ITensors.disable_threaded_blocksparse()
@@ -14,14 +15,34 @@ mkpath(OUTPUT_ROOT)
 include(joinpath(SOURCE_ROOT, "src", "KagomeDMRG.jl"))
 using .KagomeDMRG
 
+function active_environment_snapshot()
+    project = Base.active_project()
+    project === nothing && error("an explicit active project is required")
+    project = abspath(project)
+    manifest = Base.project_file_manifest_path(project)
+    manifest !== nothing && isfile(project) && isfile(manifest) ||
+        error("the active project needs an instantiated dependency manifest")
+    manifest = abspath(manifest)
+    return Dict{String,Any}("manifest"=>basename(manifest),
+        "environment_sha256"=>Dict(
+            "project:" * basename(project)=>bytes2hex(sha256(read(project))),
+            "manifest:" * basename(manifest)=>bytes2hex(sha256(read(manifest)))))
+end
+
 function source_hashes(root)
-    files = ["Project.toml", "Manifest-v1.13.toml"]
+    files = ["Project.toml"]
+    # Preserve either historical root or dedicated research lockfile layouts.
+    append!(files, [path for path in ("Manifest.toml", "Manifest-v1.12.toml",
+        "Manifest-v1.13.toml", "research/Project.toml", "research/Manifest.toml",
+        "research/Manifest-v1.12.toml", "research/Manifest-v1.13.toml")
+        if isfile(joinpath(root, path))])
     append!(files, [relpath(joinpath(dir, file), root)
         for (dir, _, names) in walkdir(joinpath(root, "src")) for file in names])
     return Dict(name => bytes2hex(sha256(read(joinpath(root, name)))) for name in files)
 end
 
 const BEFORE = source_hashes(SOURCE_ROOT)
+const ENVIRONMENT_BEFORE = active_environment_snapshot()
 const BACKEND_FILES = ("src/blocksparse/linearalgebra.jl",
     "src/lib/RankFactorization/src/truncate_spectrum.jl")
 backend_hashes() = Dict(name => bytes2hex(sha256(read(joinpath(
@@ -32,6 +53,7 @@ const UPDATE = Ref(0)
 const REPORT = Dict{String,Any}("status"=>"running", "schema_version"=>1,
     "scope"=>"unmodified_backend_failure_input_capture", "recorded_at_utc"=>string(now(UTC)),
     "source_sha256"=>BEFORE, "backend_sha256"=>BACKEND_BEFORE,
+    "environment_before"=>ENVIRONMENT_BEFORE,
     "probe_sha256"=>bytes2hex(sha256(read(@__FILE__))),
     "runtime"=>Dict("julia"=>string(VERSION), "ITensors"=>string(pkgversion(ITensors)),
         "ITensorMPS"=>string(pkgversion(ITensorMPS)),
@@ -97,8 +119,9 @@ catch exception
     REPORT["status"] = CAPTURED[] ? "captured_guard_failure" : "uncaptured_failure"
     REPORT["exception_type"] = string(nameof(typeof(exception)))
 end
+REPORT["environment_after"] = active_environment_snapshot()
 REPORT["sources_unchanged"] = source_hashes(SOURCE_ROOT) == BEFORE &&
-    backend_hashes() == BACKEND_BEFORE
+    backend_hashes() == BACKEND_BEFORE && REPORT["environment_after"] == ENVIRONMENT_BEFORE
 open(joinpath(OUTPUT_ROOT, "capture.toml"), "w") do io
     TOML.print(io, REPORT; sorted=true)
 end

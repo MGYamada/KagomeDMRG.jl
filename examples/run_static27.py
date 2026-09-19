@@ -85,7 +85,7 @@ def main():
     if os.name != "posix" or not (sys.platform == "darwin" or sys.platform.startswith("linux")):
         parser.error("this launcher requires Darwin or Linux process/resource accounting")
     output = args.output.resolve()
-    command = ["julia", "--project=.", "--startup-file=no", "--threads=1",
+    command = ["julia", "--project=research", "--startup-file=no", "--threads=1",
                "examples/validate_static27.jl", str(output)]
     environment = os.environ.copy()
     for key in ("JULIA_NUM_THREADS", "JULIA_NUM_GC_THREADS", "JULIA_NUM_PRECOMPILE_TASKS",

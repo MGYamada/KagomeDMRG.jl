@@ -1,0 +1,29 @@
+[deps]
+KagomeDMRG = "d652b1c8-bad6-4b4b-b7b8-15a1fd22c5bc"
+ITensorMPS = "0d1a4710-d33b-49a5-8f18-73bdf49b47e2"
+ITensors = "9136182c-28ba-11e9-034c-db9fb085ebd5"
+KrylovKit = "0b1a1467-8014-51b9-945f-bf0ae24f4b77"
+LinearAlgebra = "37e2e46d-f89d-539d-b4ee-838fcccc9c8e"
+NDTensors = "23ae76d9-e61a-49c4-8f12-3f1a16adf9cf"
+OMEinsum = "ebe7aa44-baf0-506c-a96f-8464559b3922"
+Random = "9a3f8284-a2c9-5f02-9a11-845980a1fd5c"
+SHA = "ea8e919c-243c-51af-8825-aaa63cd721ce"
+Serialization = "9e88b42a-f829-5b0c-bbe9-9e923198166b"
+TOML = "fa267f1f-6049-4f14-aa54-33bafae1ed76"
+
+[sources]
+KagomeDMRG = {path = ".."}
+NDTensors = {path = "../vendor/NDTensors"}
+
+[compat]
+ITensorMPS = "0.4.1"
+ITensors = "0.9.30"
+KrylovKit = "0.10"
+LinearAlgebra = "1.12"
+NDTensors = "=0.4.31"
+OMEinsum = "0.9"
+Random = "1.11"
+SHA = "0.7, 1"
+Serialization = "1.11"
+TOML = "1"
+julia = "1.12"

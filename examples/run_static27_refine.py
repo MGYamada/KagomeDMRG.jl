@@ -20,7 +20,7 @@ def main():
         parser.error("--wall-seconds must be finite, positive, and at most 600")
     if os.name != "posix" or not (sys.platform == "darwin" or sys.platform.startswith("linux")):
         parser.error("this launcher requires Darwin or Linux process/resource accounting")
-    command = ["julia", "--project=.", "--startup-file=no", "--threads=1",
+    command = ["julia", "--project=research", "--startup-file=no", "--threads=1",
                "examples/validate_static27_refine.jl", str(args.output.resolve())]
     environment = os.environ.copy()
     for key in ("JULIA_NUM_THREADS", "JULIA_NUM_GC_THREADS", "JULIA_NUM_PRECOMPILE_TASKS",
