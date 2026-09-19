@@ -36,18 +36,40 @@ function reference_bonds(Lx::Integer, Ly::Integer; Jxy::Real=1.0, Jz::Real=1.0)
     return bonds
 end
 
-function _reference_basis(N::Integer, nup)
+function _reference_site_count(Lx::Integer, Ly::Integer)
+    Lx >= 1 && Ly >= 3 || throw(ArgumentError("require Lx >= 1 and Ly >= 3"))
+    # Check before multiplying dimensions or constructing sites and states.
+    Ly <= 6 && Lx <= 6 ÷ Ly || throw(ArgumentError("the reference supports at most 18 sites"))
+    return 3 * Int(Lx) * Int(Ly)
+end
+
+function _reference_sector(N::Integer; nup=nothing, Q=nothing)
     1 <= N <= 18 || throw(ArgumentError("this test reference supports 1 <= N <= 18"))
-    if isnothing(nup)
+    N = Int(N)
+    if !isnothing(Q)
+        isnothing(nup) || throw(ArgumentError("specify either Q or nup, not both"))
+        Q isa Integer && !(Q isa Bool) ||
+            throw(ArgumentError("Q must be an integer (not Bool) or nothing"))
+        -N <= Q <= N || throw(ArgumentError("Q must lie between -N and N"))
+        iseven(N + Q) || throw(ArgumentError("N and Q must have the same parity"))
+        nup = (N + Int(Q)) ÷ 2
+    elseif isnothing(nup)
         N % 9 == 0 || throw(ArgumentError("the 1/9 target requires N divisible by 9"))
         nup = 5 * (N ÷ 9)
     end
     if nup === :all
-        return collect(UInt64(0):((UInt64(1) << N) - 1))
+        return (; nup, dimension=1 << N)
     end
     nup isa Integer || throw(ArgumentError("nup must be an integer, :all, or nothing"))
     0 <= nup <= N || throw(ArgumentError("nup must lie between zero and N"))
-    return [state for state in UInt64(0):((UInt64(1) << N) - 1) if count_ones(state) == nup]
+    return (; nup=Int(nup), dimension=binomial(N, Int(nup)))
+end
+
+function _reference_basis(N::Integer, nup=nothing; Q=nothing)
+    sector = _reference_sector(N; nup, Q)
+    states = UInt64(0):((UInt64(1) << N) - 1)
+    sector.nup === :all && return collect(states)
+    return [state for state in states if count_ones(state) == sector.nup]
 end
 
 _reference_sz_bit(state::UInt64, i::Integer) = iszero(state & (UInt64(1) << (i - 1))) ? -0.5 : 0.5
@@ -59,25 +81,29 @@ end
 
 """
     reference_hamiltonian(Lx, Ly, theta=0.0;
-                          nup=nothing, Jxy=1.0, Jz=1.0,
+                          nup=nothing, Q=nothing, Jxy=1.0, Jz=1.0,
                           gauge=:seam, sparse_matrix=false)
 
 Return `(H, basis)` as a named tuple. Bit `i-1` is one for an Up spin at site
-`i`, and basis integers are increasing. `nup=nothing` selects the 1/9 target;
-`nup=:all` constructs all magnetization sectors for explicit U(1) checks.
+`i`, and basis integers are increasing. Omitted `nup` and `Q` select the 1/9
+target. Explicit integer `Q=2Sz` selects `nup=(N+Q)÷2`, requiring `-N≤Q≤N`
+and equal parity of `N` and `Q`. `nup=:all` constructs all magnetization
+sectors for explicit U(1) checks. Explicit `nup` and `Q` cannot be combined.
 This reference supports at most 18 sites and refuses dense matrices above
-dimension 4096. It performs no eigensolve.
+dimension 4096, checking these bounds before enumerating states. Saturated
+`Q=±N` sectors give a one-dimensional matrix. It performs no eigensolve.
 """
 function reference_hamiltonian(Lx::Integer, Ly::Integer, theta::Real=0.0;
-        nup=nothing, Jxy::Real=1.0, Jz::Real=1.0, gauge::Symbol=:seam,
+        nup=nothing, Q=nothing, Jxy::Real=1.0, Jz::Real=1.0, gauge::Symbol=:seam,
         sparse_matrix::Bool=false)
     gauge in (:seam, :uniform) || throw(ArgumentError("gauge must be :seam or :uniform"))
-    N = 3 * Lx * Ly
-    bonds = reference_bonds(Lx, Ly; Jxy, Jz)
-    basis = _reference_basis(N, nup)
-    dimension = length(basis)
+    N = _reference_site_count(Lx, Ly)
+    sector = _reference_sector(N; nup, Q)
+    dimension = sector.dimension
     !sparse_matrix && dimension > 4096 &&
         throw(ArgumentError("use sparse_matrix=true for a reference dimension above 4096"))
+    bonds = reference_bonds(Lx, Ly; Jxy, Jz)
+    basis = _reference_basis(N, sector.nup)
     lookup = Dict(state => k for (k, state) in enumerate(basis))
     chi = gauge === :uniform ? _reference_gauge_angles(Lx, Ly, theta) : zeros(N)
     rows, columns, values = Int[], Int[], ComplexF64[]

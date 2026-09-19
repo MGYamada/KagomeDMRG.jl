@@ -11,6 +11,36 @@ spin_correlations(psi::MPS) = (; zz=correlation_matrix(psi, "Sz", "Sz"),
                               pm=correlation_matrix(psi, "S+", "S-"))
 
 """
+    bond_energies(psi, lattice, theta=0.0; gauge=:seam)
+
+Return normalized exchange-energy expectations in `lattice.bonds` order.
+Each entry is `Jz*<Sz_i Sz_j> + Jxy*real(exp(im*A)*<S+_i S-_j>)` with the
+same signed bond phase as the Hamiltonian. Longitudinal fields are excluded:
+`sum(bond_energies(...)) - dot(hz, sz_profile(psi))` is the full energy.
+Use [`bond_families`](@ref) to group by geometric exchange family.
+
+The input MPS is preserved. This first implementation reuses both complete
+correlation matrices, with O(N²) output storage; large-system profiling and
+an implementation restricted to the selected bonds remain future work.
+"""
+function bond_energies(psi::MPS, lattice::KagomeCylinder, theta::Real=0.0;
+                       gauge::Symbol=:seam)
+    N = nsites(lattice)
+    length(psi) == N || throw(ArgumentError("MPS length does not match the lattice"))
+    _check_sites([siteind(psi, i) for i in 1:N], N)
+    value = _finite_theta(theta)
+    gauge in (:seam, :uniform) || throw(ArgumentError("unknown gauge: $gauge"))
+    state_norm = norm(psi)
+    isfinite(state_norm) && state_norm > 0 ||
+        throw(ArgumentError("MPS must have finite positive norm"))
+    phases = [bond_phase(lattice, b, value; gauge) for b in lattice.bonds]
+    correlations = spin_correlations(psi)
+    return [b.Jz * real(correlations.zz[b.i, b.j]) +
+            b.Jxy * real(cis(phases[k]) * correlations.pm[b.i, b.j])
+            for (k, b) in enumerate(lattice.bonds)]
+end
+
+"""
     spin_transfer(lattice, baseline, current; cuts=1:(lattice.Lx-1))
 
 Measure cumulative physical spin transfer relative to a measured zero-flux

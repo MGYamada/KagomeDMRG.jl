@@ -128,18 +128,27 @@ function kagome_cylinder(Lx::Integer, Ly::Integer; Jxy::Real=1.0, Jz::Real=1.0)
 end
 
 """
-    target_sector(N)
+    target_sector(N; Q=nothing)
 
-Return `(N, Q, M, Nup, Ndown)` for `M/Msat = 1/9`. Here `Q=2M` is the
-integer tensor charge and `M` is physical total `Sz`. Require a positive
-number of sites divisible by nine; odd `N` correctly gives half-integer `M`.
+Return `(N, Q, M, Nup, Ndown)`, where `Q=2M` is the integer tensor charge
+and `M` is physical total `Sz`. With no explicit `Q`, select `M/Msat=1/9`
+and require `N` divisible by nine. An explicit integer `Q` must lie in
+`-N:N` and have the same parity as `N`; then `Nup=(N+Q)/2`.
 """
-function target_sector(N::Integer)
-    N > 0 || throw(ArgumentError("the number of sites must be positive"))
-    N % 9 == 0 || throw(ArgumentError("the 1/9 magnetization target requires N divisible by 9"))
+function target_sector(N::Integer; Q=nothing)
+    0 < N <= typemax(Int) ||
+        throw(ArgumentError("the number of sites must be positive and fit in Int"))
     n = Int(N)
-    q = n ÷ 9
-    return (N=n, Q=q, M=q / 2, Nup=5q, Ndown=4q)
+    if Q === nothing
+        n % 9 == 0 || throw(ArgumentError("the 1/9 magnetization target requires N divisible by 9"))
+        Q = n ÷ 9
+    end
+    Q isa Integer && !(Q isa Bool) && -n <= Q <= n && isodd(Q) == isodd(n) ||
+        throw(ArgumentError("Q must be an integer in -N:N with the same parity as N"))
+    q = Int(Q)
+    # Split the sum to avoid overflow at valid, fully polarized Int limits.
+    nup = fld(n, 2) + fld(q, 2) + Int(isodd(n))
+    return (N=n, Q=q, M=q / 2, Nup=nup, Ndown=n-nup)
 end
 
 """

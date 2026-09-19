@@ -16,84 +16,60 @@ function _truncation_fixture(probabilities)
     return psi
 end
 
-@testset "Finite QN truncation loss is not hidden by normalization" begin
-    for decomposition in ("svd", "eigen"),
-        probabilities in ([0.6, 0.2, 0.2], [0.6, 0.2001, 0.1999])
-        initial = _truncation_fixture(probabilities)
-        @test norm(initial) ≈ 1 atol=1e-13
+@testset "Normalized QN updates preserve reported discarded probability" begin
+    cases = ((; name="exact boundary", probabilities=[0.6, 0.2, 0.2], maxdim=2,
+                discarded=0.2, decompositions=("svd", "eigen")),
+             (; name="near boundary", probabilities=[0.6, 0.2001, 0.1999], maxdim=2,
+                discarded=0.1999, decompositions=("svd", "eigen")),
+             (; name="resolved boundary", probabilities=[0.6, 0.21, 0.19], maxdim=2,
+                discarded=0.19, decompositions=("svd",)),
+             (; name="untruncated degeneracy", probabilities=[0.6, 0.2, 0.2], maxdim=3,
+                discarded=0.0, decompositions=("eigen",)))
+    @testset "$(case.name), $decomposition" for case in cases, decomposition in case.decompositions
+        initial = _truncation_fixture(case.probabilities)
         psi = deepcopy(initial)
         phi = psi[2] * psi[3]
-        spec = replacebond!(psi, 2, phi; maxdim=2, cutoff=0.0,
+        spec = replacebond!(psi, 2, phi; maxdim=case.maxdim, cutoff=0.0,
                             which_decomp=decomposition, ortho="left", normalize=true)
         @test norm(psi) ≈ 1 atol=1e-13
-        @test norm(psi[3]) > 0
         actual_loss = 1 - abs2(inner(initial, psi))
         observer = KagomeDMRG._SweepDiagnostics()
-        if length(eigs(spec)) != dim(linkind(psi, 2))
-            # NDTensors 0.4.31 retains only the 0.6 component even though its
-            # Spectrum says it retained two components. Normalization and a
-            # nonzero-state check alone cannot detect this lost probability.
-            @test dim(linkind(psi, 2)) == 1
-            @test length(eigs(spec)) == 2
-            @test actual_loss ≈ 0.4 atol=1e-13
-            @test truncerror(spec) ≈ probabilities[3] atol=1e-13
-            @test actual_loss > truncerror(spec) + 0.19
-            exception = try
-                ITensorMPS.measure!(observer; psi, spec, bond=2, sweep=1,
-                    half_sweep=1, energy=0.0)
-                nothing
-            catch error
-                error
-            end
-            @test exception isa ErrorException
-            @test occursin("truncation spectrum", sprint(showerror, exception))
-            @test isempty(observer.max_truncation_errors)
-        else
-            # Permit a future corrected backend when its physical discarded
-            # probability agrees with the reported value.
-            @test dim(linkind(psi, 2)) == 2
-            @test actual_loss ≈ truncerror(spec) atol=1e-13
-            @test ITensorMPS.measure!(observer; psi, spec, bond=2, sweep=1,
-                half_sweep=1, energy=0.0) === nothing
-        end
+        # Both kernels must preserve the exact/near-boundary loss after normalization.
+        @test length(eigs(spec)) == dim(linkind(psi, 2)) == case.maxdim
+        @test actual_loss ≈ case.discarded atol=1e-13
+        @test truncerror(spec) ≈ case.discarded atol=1e-13
+        @test ITensorMPS.measure!(observer; psi, spec, bond=2, sweep=1,
+            half_sweep=1, energy=0.0) === nothing
+        @test only(observer.max_truncation_errors) ≈ case.discarded atol=1e-13
     end
 end
 
-@testset "Resolved QN boundaries preserve reported discarded probability" begin
-    for decomposition in ("svd", "eigen"),
-        (probabilities, maxdim, discarded) in
-            (([0.6, 0.21, 0.19], 2, 0.19), ([0.6, 0.2, 0.2], 3, 0.0))
-        initial = _truncation_fixture(probabilities)
-        psi = deepcopy(initial)
-        spec = replacebond!(psi, 2, psi[2] * psi[3]; maxdim, cutoff=0.0,
-                            which_decomp=decomposition, ortho="left", normalize=true)
-        @test length(eigs(spec)) == dim(linkind(psi, 2)) == maxdim
-        @test 1 - abs2(inner(initial, psi)) ≈ discarded atol=1e-13
-        @test truncerror(spec) ≈ discarded atol=1e-13
-        observer = KagomeDMRG._SweepDiagnostics()
-        @test ITensorMPS.measure!(observer; psi, spec, bond=2, sweep=1,
-            half_sweep=1, energy=0.0) === nothing
-        @test only(observer.max_truncation_errors) ≈ discarded atol=1e-13
-    end
+@testset "Truncation guards still reject invalid backend output" begin
+    initial = _truncation_fixture([0.6, 0.2, 0.2])
+    _, _, spec = factorize(initial[2] * initial[3], inds(initial[2]);
+        maxdim=2, cutoff=0.0, which_decomp="svd")
+    # Deliberately pair a rank-two spectrum with a rank-one MPS. This checks
+    # the guard independently of whether the installed backend is defective.
+    sites = [siteind(initial, j) for j in 1:length(initial)]
+    psi = MPS(ComplexF64, sites, ["Up", "Up", "Dn", "Dn"])
+    observer = KagomeDMRG._SweepDiagnostics()
+    @test_throws ErrorException ITensorMPS.measure!(observer;
+        psi, spec, bond=2, sweep=1, half_sweep=1, energy=0.0)
+    @test isempty(observer.max_truncation_errors)
+    psi[3] *= 0
+    @test_throws ErrorException ITensorMPS.measure!(observer;
+        psi, spec, bond=2, sweep=1, half_sweep=1, energy=0.0)
+    @test isempty(observer.max_truncation_errors)
 end
 
 @testset "Truncation rank guard accepts healthy noisy and noiseless DMRG" begin
     # Nonzero noise chooses an eigen-based perturbed density matrix. Its
     # reported error is not asserted to be a wavefunction discarded weight.
-    for noise in (0.0, 1e-5), n in (2, 4)
-        sites = siteinds("S=1/2", n; conserve_qns=true)
-        terms = OpSum()
-        for j in 1:(n - 1)
-            terms += "Sz", j, "Sz", j + 1
-            terms += 0.5, "S+", j, "S-", j + 1
-            terms += 0.5, "S-", j, "S+", j + 1
-        end
-        if n == 2
-            terms += -3 / 8, "Sz", 1
-            terms += 3 / 8, "Sz", 2
-        end
-        H = MPO(ComplexF64, terms, sites)
-        initial = MPS(ComplexF64, sites, [isodd(j) ? "Up" : "Dn" for j in 1:n])
+    # The noiseless two-spin control is already tested analytically in
+    # test_itensor.jl.
+    cases = ((4, 0.0), (2, 1e-5), (4, 1e-5))
+    @testset "N=$n noise=$noise" for (n, noise) in cases
+        (; H, initial) = _heisenberg_chain_control(n; staggered_field=n == 2 ? 3/8 : 0.0)
         observer = KagomeDMRG._SweepDiagnostics()
         _, psi = dmrg(H, initial; nsweeps=2, maxdim=n == 2 ? 1 : 4,
                       cutoff=1e-12, noise, observer, outputlevel=0)

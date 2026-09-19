@@ -2,7 +2,7 @@
 
 julia_version = "1.13.0"
 manifest_format = "2.1"
-project_hash = "bf7da42ff5b173de967e0de58ab54c26688c005a"
+project_hash = "7d9ce5102f43c5144bded815bcbf084521e01d1a"
 
 [[deps.AbstractTrees]]
 git-tree-sha1 = "2d9c9a55f9c93e8887ad391fbae72f8ef55e1177"
@@ -527,7 +527,7 @@ uuid = "ac6e5ff7-fb65-4e79-a425-ec3bc9c03011"
 version = "1.12.0"
 
 [[deps.KagomeDMRG]]
-deps = ["ITensorMPS", "ITensors", "KrylovKit", "LinearAlgebra", "OMEinsum", "Random", "SHA", "Serialization", "TOML"]
+deps = ["ITensorMPS", "ITensors", "KrylovKit", "LinearAlgebra", "NDTensors", "OMEinsum", "Random", "SHA", "Serialization", "TOML"]
 path = "."
 uuid = "d652b1c8-bad6-4b4b-b7b8-15a1fd22c5bc"
 version = "0.1.0-DEV"
@@ -634,11 +634,10 @@ uuid = "14a3606d-f60d-562e-9121-12d972cd8159"
 version = "2026.8.13"
 
 [[deps.NDTensors]]
-deps = ["Accessors", "Adapt", "ArrayLayouts", "BlockArrays", "Compat", "Dictionaries", "EllipsisNotation", "FillArrays", "Folds", "Functors", "HalfIntegers", "LinearAlgebra", "MacroTools", "Random", "SimpleTraits", "SparseArrays", "SplitApplyCombine", "StaticArrays", "Strided", "StridedViews", "TimerOutputs", "TupleTools", "TypeParameterAccessors", "VectorInterface"]
-git-tree-sha1 = "311282faab99a123706a738fcceb9caba81225ae"
-registries = "General"
+deps = ["Accessors", "Adapt", "ArrayLayouts", "BlockArrays", "Compat", "Dictionaries", "EllipsisNotation", "FillArrays", "Folds", "Functors", "HalfIntegers", "LinearAlgebra", "MacroTools", "Random", "SHA", "SimpleTraits", "SparseArrays", "SplitApplyCombine", "StaticArrays", "Strided", "StridedViews", "TimerOutputs", "TupleTools", "TypeParameterAccessors", "VectorInterface"]
+path = "vendor/NDTensors"
 uuid = "23ae76d9-e61a-49c4-8f12-3f1a16adf9cf"
-version = "0.4.31"
+version = "0.4.31+1"
 
     [deps.NDTensors.extensions]
     NDTensorsAMDGPUExt = ["AMDGPU", "GPUArraysCore"]

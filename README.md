@@ -5,26 +5,39 @@ Kagome Heisenberg 模型の U(1) cylinder DMRG と flux insertion による
 主対象はスピン 1/2 の最近接反強磁性模型の `M/Msat = 1/9` です。
 
 - [実装ロードマップとバックエンドの比較](ROADMAP.md)
+- [1/9 plateau の研究方針・既知領域・次の限定計算](docs/research/p4_static_plateau_strategy.md)
 - [flux insertion の物理・数値設計](docs/flux_insertion_design.md)
 - [Getting started (English)](docs/getting_started.md)
+
+次の優先課題は、最近接等方模型 `J1=1,J2=J3=0` の静的な磁化境界と競合秩序です。
+文献の `h/J ≈ 0.35–0.42` を出発点に、固定Q間の交換エネルギーを比較します。
+既知CSLの校正は並行して進め、1/9ポンプを解釈する前の条件とします。
+この方針は研究計画であり、当リポジトリでbulk plateauを確認したという意味ではありません。
 
 ## 現在の実装
 
 格子・有向 bond と winding、固定磁化 sector、seam/uniform gauge、
 ITensors.jl + ITensorMPS.jl による複素 U(1) 二サイト DMRG を実装しています。
+整数電荷 `Q=2Sz_total` を明示でき、省略時は従来どおり 1/9 磁化です。
+例えば `run_dmrg(kagome_cylinder(1, 4), 0.37; Q=0)` は12サイトの零磁化を選びます。
+checkpoint と flux 継続は保存状態の Q を引き継ぎ、指定値との不一致を拒否します。
+NN模型のN12Q0・θ=0,0.37とN9Q=−1,1,3の5点を独立EDと照合しました。
+精度・時間・未検証範囲は[明示Qの研究記録](docs/research/p3_explicit_charge_validation.md)を参照してください。
+別名の `kagome_j1j2j3_cylinder` で六角形内のJ2/J3を追加し、`bond_energies` と
+結合種類の保存にも対応しました。`J1=1,J2=J3=.5` のN12Q0・零/非零fluxが独立EDと一致しました。
+[拡張模型の検証記録](docs/research/p3_extended_model_validation.md)に数値と範囲を記載しています。
 局所 Sz、相関、実空間の移送量、各 sweep の実測切断誤差を取得できます。
-独立したスピン基底 ED との小系照合を含む 2,205 件のテストが、Julia 1.12.7、
-ITensors 0.9.31、ITensorMPS 0.4.1、KrylovKit 0.10.4 で通過しました。
-Julia 1.13.0 でも同じ主要パッケージ版で全 2,205 件が通過しました。
-checkpoint と Schmidt 診断の追加時は全 3,782 件が通過しました。
-適応的 continuation と切断 guard の追加後は、Julia 1.13.0 で全 4,283 件が通過しています。
-独立 sparse ED の縮退・収束検査を追加後は、全 4,348 件が通過しました。
-これらは記録した依存関係での検証であり、互換範囲の全バージョンを検証したものではありません。
-[検証記録](docs/research/p0_reference_validation.md)に数値と限界を記載します。
-[保存・診断の検証](docs/research/p1_restart_schmidt_validation.md)も別途記録しています。
-縮退・近接した QN 切断境界に upstream の制限があり、空状態と
-報告スペクトル／保持次元の不整合を検出して停止します。
-この検出は上流カーネルの修正ではなく、一般的な切断誤差の校正は引き続き必要です。
+独立したスピン基底 ED と小系を照合しています。切断修正・保存履歴の修正時に
+行った独立校正と、実行範囲・中断を含む詳細は
+[検証記録](docs/research/p1_qn_truncation_calibration.md#テスト実行の範囲)を参照してください。
+Julia 1.13.0 の記録した依存関係での結果であり、互換範囲の全版を検証したものではありません。
+過去の [P0 小系照合](docs/research/p0_reference_validation.md)と
+[保存・診断の検証](docs/research/p1_restart_schmidt_validation.md)は、当時の環境の記録として保持します。
+縮退・近接した QN 切断境界の不整合に対し、局所版 NDTensors `0.4.31+1` を固定し、
+実際の保持状態と報告 spectrum を同じ選択規則に揃えました。
+空状態と報告 rank の不一致を検出する guard も維持しています。
+[切断の独立校正と有限 χ 比較](docs/research/p1_qn_truncation_calibration.md)に、
+修正範囲、残る精度制限、保存する実行履歴の修正を記録します。
 
 完了した DMRG 点の checkpoint 保存・再開と、Schmidt 電荷・エンタングルメント診断も
 実装しています。[保存・診断 API](docs/getting_started.md#checkpoint-restart-and-schmidt-diagnostics)を参照してください。
@@ -35,7 +48,9 @@ checkpoint と Schmidt 診断の追加時は全 3,782 件が通過しました�
 刻み・初期状態・正負 flux を変えた `0→±0.37→0` の四経路を完走しました。
 χ=128 の初期点棄却と χ=256 の切断 guard 停止も
 [相互作用系の検証記録](docs/research/p2_interacting18_validation.md)に残しています。
-既知 CSL のポンプ検証は未実装です。
+修正版では停止を解消し、18 サイトの χ=128,256,512、θ=0,0.37 を計 10 点比較しました。
+χ=512 は ED と一致し、χ=128,256 は sweep 数を増やしても精度不足が残りました。
+既知 CSL のポンプ再現は未検証です。
 単一 flux 点での最適化や移送量の読み出しだけでは、量子化や相の同定は
 主張しません。SU(3)₁、Hall 応答を持つ／持たない D(Z₃) は候補として扱います。
 
@@ -53,8 +68,13 @@ julia +1.13 --project=. --startup-file=no --threads=1
 ```
 
 Julia 1.13 用の依存関係は `Manifest-v1.13.toml` に保存しています。
-既存の `Manifest.toml` は Julia 1.12.7 の検証環境として保持します。
+`Manifest.toml` は Julia 1.12.7 用です。両 manifest は局所版 NDTensors を指定します。
+過去の検証を再現する場合は、記録に対応する過去の checkout と依存環境を使います。
 `Project.toml` の互換範囲は Julia 1.13 も含みます。
+
+`Pkg.test()` は重複を削減した全回帰テストを実行します。分野指定には
+`Pkg.test(; test_args=["truncation", "checkpoint"])` を使います。
+[テストの構成と実行方法](test/README.md)を参照してください。
 
 Julia のプロンプトで、9 サイトの小系を計算します。`theta` はラジアンです。
 

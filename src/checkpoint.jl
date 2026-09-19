@@ -1,45 +1,20 @@
 # Schema 1 is a trusted, local restart format, not a long-term interchange
 # format. Check primitive TOML metadata and checksums before deserializing.
 const _CHECKPOINT_FORMAT = "KagomeDMRG.local_checkpoint"
-const _CHECKPOINT_SOURCES = ("Project.toml", "src/KagomeDMRG.jl", "src/lattice.jl",
-    "src/model.jl", "src/dmrg.jl", "src/observables.jl", "src/checkpoint.jl",
-    "src/schmidt.jl", "src/continuation.jl")
 
 _checkpoint_require(condition, message) = condition || throw(ArgumentError(message))
-_file_sha256(path) = bytes2hex(open(sha256, path))
 
-function _checkpoint_runtime()
-    result = Dict{String,Any}("julia" => string(VERSION), "arch" => string(Sys.ARCH),
-        "kernel" => string(Sys.KERNEL), "word_size" => Sys.WORD_SIZE)
-    for mod in (ITensors, ITensorMPS, ITensors.NDTensors, KrylovKit,
-                LinearAlgebra, Serialization, SHA, TOML)
-        result[string(nameof(mod))] = string(Base.pkgversion(mod))
-    end
-    return result
+function _checkpoint_charge(N, stored_Q; Q=nothing)
+    _checkpoint_require(stored_Q isa Integer && !(stored_Q isa Bool),
+                        "checkpoint charge must be an integer")
+    charge = target_sector(N; Q=stored_Q).Q
+    Q === nothing || _checkpoint_require(target_sector(N; Q).Q == charge,
+                                         "requested charge does not match checkpoint")
+    return charge
 end
 
-function _checkpoint_provenance()
-    root = normpath(joinpath(@__DIR__, ".."))
-    versioned = "Manifest-v$(VERSION.major).$(VERSION.minor).toml"
-    manifest = isfile(joinpath(root, versioned)) ? versioned : "Manifest.toml"
-    hashes = Dict(path => _file_sha256(joinpath(root, path))
-                  for path in (_CHECKPOINT_SOURCES..., manifest))
-    revision = try
-        strip(read(Cmd(Cmd(["git", "rev-parse", "HEAD"]); dir=root), String))
-    catch
-        "unavailable"
-    end
-    dirty = try
-        !isempty(read(Cmd(Cmd(["git", "status", "--porcelain"]); dir=root), String))
-    catch
-        "unavailable"
-    end
-    return Dict("source_sha256" => hashes, "manifest" => manifest,
-                "git_revision" => revision, "worktree_dirty" => dirty)
-end
-
-function _checkpoint_configuration(lattice::KagomeCylinder, gauge, hz)
-    sector = target_sector(nsites(lattice))
+function _checkpoint_configuration(lattice::KagomeCylinder, gauge, hz; Q=nothing)
+    sector = target_sector(nsites(lattice); Q)
     _checkpoint_require(lattice.Lx >= 1 && lattice.Ly >= 3 &&
         sector.N == 3lattice.Lx*lattice.Ly, "invalid checkpoint geometry")
     _checkpoint_require(gauge in (:seam, :uniform), "unknown checkpoint gauge")
@@ -54,6 +29,7 @@ function _checkpoint_configuration(lattice::KagomeCylinder, gauge, hz)
     _checkpoint_require(all(1 <= b.i <= sector.N && 1 <= b.j <= sector.N &&
         b.i != b.j && isfinite(b.Jxy) && isfinite(b.Jz) for b in lattice.bonds),
         "invalid checkpoint bonds")
+    families = bond_families(lattice)
     return Dict{String,Any}(
         "Lx" => lattice.Lx, "Ly" => lattice.Ly, "N" => sector.N, "Q" => sector.Q,
         "charge_convention" => "q=2Sz", "ordering" => "x_then_y_then_A_B_C",
@@ -61,12 +37,14 @@ function _checkpoint_configuration(lattice::KagomeCylinder, gauge, hz)
         "termination" => "complete_cells_with_outgoing_open_axis_bonds_removed",
         "wrap" => [lattice.Ly/2, lattice.Ly*sqrt(3)/2],
         "exchange_phase" => "S+_i_S-_j_has_exp(+im*bond_phase)",
+        "bond_family_convention" => "J1_nn_J2_second_J3_hexagon_opposite_other_unclassified",
         "gauge" => string(gauge), "hz" => fields,
         "sites" => [Dict("index" => s.index, "x" => s.x, "y" => s.y,
             "sublattice" => string(s.sublattice), "position" => collect(s.position))
             for s in lattice.sites],
         "bonds" => [Dict("i" => b.i, "j" => b.j, "Jxy" => b.Jxy,
-            "Jz" => b.Jz, "wy" => b.wy) for b in lattice.bonds])
+            "Jz" => b.Jz, "wy" => b.wy, "family" => string(families[k]))
+            for (k, b) in enumerate(lattice.bonds)])
 end
 
 function _checkpoint_site_record(s)
@@ -171,7 +149,7 @@ end
 
 Save an immutable, completed-point MPS snapshot below `root/trial/` or
 `root/accepted/` and return its directory. `baseline` is a measured zero-flux
-`run_dmrg` result with the same model and site indices, or the `baseline`
+`run_dmrg` result with the same model, total charge and site indices, or the `baseline`
 returned by `load_checkpoint`. Its zero-flux MPS is also saved so the measured
 baseline can be checked again on load. `theta_path` starts at zero and ends at the
 unwrapped `result.theta`; it may reverse direction. The caller supplies the
@@ -187,9 +165,11 @@ saved. Restart begins a new DMRG batch from the completed MPS.
 function save_checkpoint(root::AbstractString, result; baseline, theta_path,
                          status::Symbol=:trial)
     _checkpoint_require(status in (:trial, :accepted), "unknown checkpoint status")
-    config = _checkpoint_configuration(result.lattice, result.gauge, result.hz)
+    execution_identity = _require_execution_identity(result)
+    _require_execution_identity(baseline, execution_identity)
+    charge = _checkpoint_charge(nsites(result.lattice), result.Q)
+    config = _checkpoint_configuration(result.lattice, result.gauge, result.hz; Q=charge)
     N, Q = config["N"], config["Q"]
-    _checkpoint_require(result.Q == Q, "checkpoint result charge mismatch")
     _checkpoint_state_check(result.psi, result.sites, Q)
     settings = _checkpoint_settings(result.settings)
     diagnostics = _checkpoint_diagnostics(result, settings, N, Q)
@@ -201,8 +181,9 @@ function save_checkpoint(root::AbstractString, result; baseline, theta_path,
     path = _checkpoint_flux_path(theta_path, theta)
     _checkpoint_require(hasproperty(baseline, :psi),
                         "baseline must include its measured zero-flux MPS")
-    _checkpoint_require(baseline.theta == 0 && baseline.Q == Q &&
-        _checkpoint_configuration(baseline.lattice, baseline.gauge, baseline.hz) == config &&
+    baseline_Q = _checkpoint_charge(nsites(baseline.lattice), baseline.Q)
+    _checkpoint_require(baseline.theta == 0 && baseline_Q == Q &&
+        _checkpoint_configuration(baseline.lattice, baseline.gauge, baseline.hz; Q=baseline_Q) == config &&
         _checkpoint_site_record.(baseline.sites) == _checkpoint_site_record.(result.sites),
         "zero-flux baseline configuration or site indices do not match")
     baseline_sz = _checkpoint_profile(baseline.sz, N, Q)
@@ -220,10 +201,10 @@ function save_checkpoint(root::AbstractString, result; baseline, theta_path,
         "sweep_energies" => diagnostics.sweep_energies,
         "max_truncation_errors" => diagnostics.max_truncation_errors)
     diagnostics.variance === nothing || (state["variance"] = diagnostics.variance)
-    provenance = _checkpoint_provenance()
+    provenance = _checkpoint_provenance(execution_identity)
     metadata = Dict{String,Any}("schema_version" => 1, "format" => _CHECKPOINT_FORMAT,
         "status" => string(status), "created_unix" => time(),
-        "runtime" => _checkpoint_runtime(), "provenance" => provenance,
+        "runtime" => Dict(execution_identity.runtime), "provenance" => provenance,
         "configuration" => config, "state" => state,
         "settings" => Dict(string(k) => v for (k,v) in pairs(settings)),
         "baseline" => Dict("theta" => 0.0, "sz" => baseline_sz), "theta_path" => path)
@@ -245,8 +226,8 @@ function save_checkpoint(root::AbstractString, result; baseline, theta_path,
         open(joinpath(temporary, "checksums.toml"), "w") do io
             TOML.print(io, checksums; sorted=true)
         end
-        _checkpoint_require(provenance["source_sha256"] ==
-            _checkpoint_provenance()["source_sha256"], "source changed while saving checkpoint")
+        _checkpoint_require(execution_identity == _execution_identity(),
+                            "source changed while saving checkpoint")
         _checkpoint_require(!ispath(destination), "checkpoint destination already exists")
         Base.Filesystem.rename(temporary, destination)
     finally
@@ -255,8 +236,9 @@ function save_checkpoint(root::AbstractString, result; baseline, theta_path,
     return destination
 end
 
-function _load_checkpoint(path, lattice; gauge, hz, sites, expected_theta,
+function _load_checkpoint(path, lattice; gauge, hz, Q, sites, expected_theta,
                           expected_settings, status)
+    execution_identity = _execution_identity()
     _checkpoint_require(status in (:trial, :accepted), "unknown checkpoint status")
     _checkpoint_require(startswith(basename(normpath(path)), "checkpoint-") &&
         basename(dirname(normpath(path))) == string(status),
@@ -273,14 +255,18 @@ function _load_checkpoint(path, lattice; gauge, hz, sites, expected_theta,
     _checkpoint_require(metadata["schema_version"] == 1 && metadata["format"] == _CHECKPOINT_FORMAT,
                         "unsupported checkpoint schema or format")
     _checkpoint_require(metadata["status"] == string(status), "checkpoint status mismatch")
-    _checkpoint_require(metadata["runtime"] == _checkpoint_runtime(), "checkpoint runtime mismatch")
+    _checkpoint_require(metadata["runtime"] == Dict(execution_identity.runtime), "checkpoint runtime mismatch")
     _checkpoint_require(metadata["provenance"]["source_sha256"] ==
-        _checkpoint_provenance()["source_sha256"], "checkpoint source or dependency manifest mismatch")
-    config = _checkpoint_configuration(lattice, gauge, hz)
+        Dict(execution_identity.source_sha256) &&
+        metadata["provenance"]["manifest"] == execution_identity.manifest,
+        "checkpoint source or dependency manifest mismatch")
+    charge = _checkpoint_charge(nsites(lattice), metadata["configuration"]["Q"]; Q)
+    config = _checkpoint_configuration(lattice, gauge, hz; Q=charge)
     _checkpoint_require(metadata["configuration"] == config, "checkpoint model or geometry mismatch")
     N, Q = config["N"], config["Q"]
     state = metadata["state"]
-    _checkpoint_require(state["Q"] == Q, "checkpoint charge metadata mismatch")
+    _checkpoint_require(_checkpoint_charge(N, state["Q"]) == Q,
+                        "checkpoint charge metadata mismatch")
     theta = _finite_theta(state["theta"])
     expected_theta === nothing || _checkpoint_require(theta == expected_theta,
                                                      "checkpoint flux mismatch")
@@ -312,14 +298,14 @@ function _load_checkpoint(path, lattice; gauge, hz, sites, expected_theta,
                         "baseline profile does not match the zero-flux MPS")
     baseline = (; psi=payload.baseline_psi, theta=0.0, sz=baseline_sz,
                  sites=payload.sites, lattice=deepcopy(lattice),
-                 hz=copy(config["hz"]), gauge, Q)
+                 hz=copy(config["hz"]), gauge, Q, execution_identity)
     return (; psi=payload.psi, sites=payload.sites, theta, gauge, Q,
              lattice=deepcopy(lattice), hz=copy(config["hz"]), settings,
-             baseline, theta_path, diagnostics, metadata)
+             baseline, theta_path, diagnostics, metadata, execution_identity)
 end
 
 """
-    load_checkpoint(path, lattice; gauge=:seam, hz=nothing, sites=nothing,
+    load_checkpoint(path, lattice; gauge=:seam, hz=nothing, Q=nothing, sites=nothing,
                     expected_theta=nothing, expected_settings=nothing, status=:accepted)
 
 Validate and load a trusted local snapshot. The requested lattice (including
@@ -328,16 +314,17 @@ also compare unwrapped flux, solver settings and site identities. Check schema,
 runtime, source/manifest hashes and file checksums before deserialization;
 validate state normalization, charge, site indices and profile afterward.
 Rebuild the stored Hamiltonian to verify energy, and check the saved zero-flux
-MPS against its baseline profile.
+MPS against its baseline profile. Omitted `Q` inherits the validated stored
+integer charge; an explicit `Q` must be valid for the lattice and match it.
 `status=:trial` permits explicit inspection of trials. Acceptance itself is
 caller-supplied and does not establish convergence or branch continuity.
 """
 function load_checkpoint(path::AbstractString, lattice::KagomeCylinder;
-                         gauge::Symbol=:seam, hz=nothing, sites=nothing,
+                         gauge::Symbol=:seam, hz=nothing, Q=nothing, sites=nothing,
                          expected_theta=nothing, expected_settings=nothing,
                          status::Symbol=:accepted)
     try
-        return _load_checkpoint(path, lattice; gauge, hz, sites, expected_theta,
+        return _load_checkpoint(path, lattice; gauge, hz, Q, sites, expected_theta,
                                 expected_settings, status)
     catch exception
         exception isa InterruptException && rethrow()
@@ -347,19 +334,21 @@ function load_checkpoint(path::AbstractString, lattice::KagomeCylinder;
 end
 
 """
-    resume_dmrg(path, lattice, theta; gauge=:seam, hz=nothing, expected_settings=nothing, outputlevel=0)
+    resume_dmrg(path, lattice, theta; gauge=:seam, hz=nothing, Q=nothing,
+                expected_settings=nothing, outputlevel=0)
 
 Start a fresh DMRG batch from an accepted checkpoint using its saved solver
-settings and exact site indices. Rebuild the Hamiltonian and environments at
+settings, validated charge and exact site indices. An explicit `Q` must match
+the checkpoint; omission inherits it. Rebuild the Hamiltonian and environments at
 the requested unwrapped `theta`. This is a restart helper, not a branch tracker
 or a continuation acceptance rule. It does not overwrite the checkpoint.
 """
 function resume_dmrg(path::AbstractString, lattice::KagomeCylinder, theta::Real;
-                     gauge::Symbol=:seam, hz=nothing, expected_settings=nothing,
+                     gauge::Symbol=:seam, hz=nothing, Q=nothing, expected_settings=nothing,
                      outputlevel::Integer=0)
-    saved = load_checkpoint(path, lattice; gauge, hz, expected_settings)
+    saved = load_checkpoint(path, lattice; gauge, hz, Q, expected_settings)
     s = saved.settings
-    return run_dmrg(lattice, theta; sites=saved.sites, psi0=saved.psi,
+    return run_dmrg(lattice, theta; sites=saved.sites, psi0=saved.psi, Q=saved.Q,
         seed=s.seed, initial_linkdim=s.initial_linkdim, nsweeps=s.nsweeps,
         maxdim=s.maxdim, cutoff=s.cutoff, noise=s.noise, eigsolve_tol=s.eigsolve_tol,
         eigsolve_krylovdim=s.eigsolve_krylovdim, eigsolve_maxiter=s.eigsolve_maxiter,

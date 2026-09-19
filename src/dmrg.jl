@@ -1,12 +1,13 @@
 """
-    initial_mps(sites; seed=0, linkdim=4)
+    initial_mps(sites; Q=nothing, seed=0, linkdim=4)
 
-Make a reproducible complex random MPS in the `M/Msat = 1/9` sector.
+Make a reproducible complex random MPS with integer total charge `Q=2Sz`.
+Omitting `Q` selects `M/Msat=1/9`; see [`target_sector`](@ref).
 A private random-number generator chooses a product configuration with
-exactly `5N/9` up spins before randomizing within the same total charge.
+exactly `(N+Q)/2` up spins before randomizing within the same total charge.
 """
-function initial_mps(sites; seed::Integer=0, linkdim::Integer=4)
-    sector = target_sector(length(sites))
+function initial_mps(sites; Q=nothing, seed::Integer=0, linkdim::Integer=4)
+    sector = target_sector(length(sites); Q)
     _check_sites(sites, sector.N)
     linkdim > 0 || throw(ArgumentError("linkdim must be positive"))
     rng = MersenneTwister(seed)
@@ -56,12 +57,14 @@ function ITensorMPS.measure!(obs::_SweepDiagnostics; sweep, half_sweep, bond,
 end
 
 """
-    run_dmrg(lattice, theta; sites=spin_sites(lattice), psi0=nothing, ...)
+    run_dmrg(lattice, theta; Q=nothing, sites=spin_sites(lattice), psi0=nothing, ...)
 
 Run the ITensor two-site U(1) reference solver at a single, unwrapped flux.
 The result contains the optimized `psi`, freshly built `H`, energy, `sz`,
 per-sweep measured truncation errors, raw energy variance, and solver settings.
 `psi0` is copied; its site indices and total charge must match the request.
+Omitting `Q` selects the 1/9 sector, including when `psi0` is supplied.
+Set `Q` explicitly for other sectors; the solver never infers it from `psi0`.
 
 This is a single-point optimizer, not an adiabatic branch-tracking driver.
 No convergence or phase label is inferred from a low energy or a warm start.
@@ -71,20 +74,21 @@ Local Krylov convergence flags are not exposed by the upstream `dmrg` API.
 With nonzero `noise`, truncation errors refer to a perturbed density matrix;
 they must not be interpreted as exact discarded wavefunction probabilities.
 An empty or nonfinite state after factorization raises an error immediately.
-The tested upstream backend has a known failure when `maxdim` splits exactly
-degenerate Schmidt values across QN sectors; this guard detects total loss,
-and mismatches between its reported spectrum and retained bond dimension are
-also rejected. These guards do not repair the upstream allocation or establish
-general correctness of every degenerate truncation.
+The pinned local NDTensors correction allocates retained ranks from one global
+selection, including ties across QN sectors. A hard `maxdim` can split a tied
+subspace; equal weights use block-coordinate then local-index order. Guards
+still reject zero states and reported-spectrum/retained-dimension mismatches.
+The calibrated truncation loss is not an error bound on physical observables.
 """
 function run_dmrg(lattice::KagomeCylinder, theta::Real;
-                  sites=spin_sites(lattice), psi0=nothing, seed::Integer=0,
+                  Q=nothing, sites=spin_sites(lattice), psi0=nothing, seed::Integer=0,
                   initial_linkdim::Integer=4, nsweeps::Integer=8,
                   maxdim=[16, 32, 64], cutoff::Real=1e-12, noise::Real=0.0,
                   eigsolve_tol::Real=1e-12, eigsolve_krylovdim::Integer=20,
                   eigsolve_maxiter::Integer=10, gauge::Symbol=:seam, hz=nothing,
                   outputlevel::Integer=0, measure_variance::Bool=true)
-    sector = target_sector(nsites(lattice))
+    execution_identity = _execution_identity()
+    sector = target_sector(nsites(lattice); Q)
     _check_sites(sites, sector.N)
     nsweeps > 0 || throw(ArgumentError("nsweeps must be positive"))
     dims = maxdim isa Integer ? [Int(maxdim)] : Int.(collect(maxdim))
@@ -95,13 +99,13 @@ function run_dmrg(lattice::KagomeCylinder, theta::Real;
     eigsolve_krylovdim >= 2 || throw(ArgumentError("eigsolve_krylovdim must be at least 2"))
     eigsolve_maxiter > 0 || throw(ArgumentError("eigsolve_maxiter must be positive"))
     if psi0 === nothing
-        psi = initial_mps(sites; seed, linkdim=initial_linkdim)
+        psi = initial_mps(sites; Q=sector.Q, seed, linkdim=initial_linkdim)
     else
         length(psi0) == sector.N || throw(ArgumentError("initial MPS has incorrect length"))
         all(i -> siteind(psi0, i) == sites[i], eachindex(sites)) ||
             throw(ArgumentError("initial MPS site indices do not match"))
         flux(psi0) == QN("Sz", sector.Q) ||
-            throw(ArgumentError("initial MPS must have total integer charge N/9"))
+            throw(ArgumentError("initial MPS must have the requested integer charge Q=$(sector.Q)"))
         psi = complex(deepcopy(psi0))
     end
     # Keep the model attached to the result for checkpoint validation. A
@@ -126,9 +130,12 @@ function run_dmrg(lattice::KagomeCylinder, theta::Real;
                  eigsolve_krylovdim=Int(eigsolve_krylovdim),
                  eigsolve_maxiter=Int(eigsolve_maxiter), measure_variance,
                  initialization=psi0 === nothing ? "random_fixed_charge" : "provided_mps")
+    execution_identity == _execution_identity() ||
+        error("implementation changed during DMRG")
     return (; psi, H, sites, lattice=saved_lattice, hz=copy(fields),
              theta=Float64(theta), gauge, Q=sector.Q, energy,
              local_energy=real(local_energy), variance, sz=sz_profile(psi),
              sweep_energies=obs.energies,
-             max_truncation_errors=obs.max_truncation_errors, settings)
+             max_truncation_errors=obs.max_truncation_errors, settings,
+             execution_identity)
 end

@@ -1,8 +1,15 @@
 # P3: 既知 CSL ポンプ対照の実装前監査
 
-確認日: 2026-09-19。状態: **一次資料に基づく設計。CSL 計算は未実施**。
+確認日: 2026-09-19。状態: **一次資料に基づく設計。CSL ポンプは未検証**。
 最近接模型の `M/Msat=1/9` とは別の、零磁化・拡張交換模型を正応答対照にする。
 ここでの正応答対照は非零応答の検証を意味し、応答の符号は固定しない。
+この設計に続く[明示Qの検証](p3_explicit_charge_validation.md)と
+[拡張交換模型の実装・小系照合](p3_extended_model_validation.md)は別記録とする。
+
+研究全体では、[最近接1/9の静的研究](p4_static_plateau_strategy.md)を最優先で進め、
+この対照の残る校正を並行する。本書のN18Q0・chirality・非零ポンプの段階は
+CSL側の条件であり、最近接模型の磁化境界・競合秩序の計算を待たせない。
+既知非零応答の再現は、1/9の輸送を物理的なポンプとして解釈する前に必要とする。
 
 ## 出版済みの基準と、再現に不足する情報
 
@@ -77,14 +84,14 @@ J2 の `3/4`、J3 の `1`、画像を含む bond 一意性を確認した。
 
 ## 必要な API と記録の変更
 
-| 対象 | 現在 | 実装する契約 |
+| 対象 | 現在の実装 | 契約・残る検証 |
 | --- | --- | --- |
-| 電荷 | `target_sector(N)` と `initial_mps`/`run_dmrg` が 1/9 固定 | 既定の 1/9 を維持し、明示した整数 Q を通す。`abs(Q)≤N`、`N+Q` 偶数、`Nup=(N+Q)÷2` を検証 |
-| bond | 最近接 `kagome_cylinder` | 別名の拡張模型 builder と、種類別 J1/J2/J3 metadata。既存 NN 既定値を変えない |
-| 保存 | checkpoint の configuration が `target_sector` を再計算 | Q をモデル・初期状態・baseline・再開条件で照合。Q 不一致を拒否するテストを追加 |
-| continuation | 各点の `run_dmrg` を呼ぶ | 全点と再開に同じ Q を明示伝播。初期零 flux profile を保存 |
-| ED | `test/reference_ed.jl` は nup 指定可、NN 距離判定のみ | 拡張 bond を独立に生成。production の bond 配列や MPO を参照しない |
-| 観測 | Sz、Schmidt、overlap、variance 等 | 方向付き三角形の scalar chirality と空間分布を追加し、三 spin の行列参照で符号を校正 |
+| 電荷 | 新規計算で整数Qを明示でき、省略時は1/9 | `−N≤Q≤N`、Nとの偶奇一致を検証。Qを変更する再開は拒否 |
+| bond | `kagome_j1j2j3_cylinder` と `bond_families` を追加 | 既存NNを維持。J3は六角形対向頂点のみ。零結合も保存 |
+| 保存 | 実際の全bond・family・Qを保存し再計算で照合 | source一致が必要。旧ソースの自動移行は未実装 |
+| continuation | 始点・保存状態のQを全点で継承 | 初期零flux profileを保持。拡張模型の枝追跡は後続 |
+| ED | NN距離参照に加え、平面六角形探索による拡張参照を追加 | productionのbondテンプレート・MPOを参照しない。N18Q0の拡張模型照合は後続 |
+| 観測 | Sz、Schmidt、overlap、variance、bond energy | 方向付き三角形のscalar chiralityは未実装。三spin行列で符号を校正する |
 
 現在の checkpoint はソース・manifest 一致を要求する。
 新規ソースを provenance allowlist に加え、旧 schema との互換性を明記する。
@@ -117,5 +124,6 @@ seed に明示的 chirality 項を加えた場合はモデル変更として別�
 端の分離、複数 bulk cut、左右打消し、Schmidt 校正、刻み・bond dimension・長さ・幅・
 初期状態依存が揃うまで P3 完了としない。4π の bulk sector 帰還と端密度の帰還も分ける。
 
-この監査で行った計算は上記の幾何学的検算のみ。拡張模型のソース変更、CSL の ED/DMRG、
-CSL ポンプの再現、相同定、新規性の主張は行っていない。
+初回監査で行った計算は上記の幾何学的検算のみだった。その後の拡張模型の
+ソース変更・小系ED/DMRGは[実装検証記録](p3_extended_model_validation.md)に分ける。
+CSLポンプの再現、相同定、新規性は依然として主張していない。

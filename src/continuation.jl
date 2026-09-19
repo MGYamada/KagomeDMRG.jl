@@ -39,12 +39,13 @@ _flux_data(point) = hasproperty(point, :diagnostics) ? point.diagnostics : point
 function _flux_result(saved)
     return (; psi=saved.psi, sites=saved.sites, lattice=saved.lattice,
         hz=saved.hz, theta=saved.theta, gauge=saved.gauge, Q=saved.Q,
-        settings=saved.settings, saved.diagnostics...)
+        settings=saved.settings, execution_identity=saved.execution_identity,
+        saved.diagnostics...)
 end
 
 function _continuation_solve(saved, lattice, theta; gauge, hz, outputlevel)
     s = saved.settings
-    return run_dmrg(lattice, theta; sites=saved.sites, psi0=saved.psi,
+    return run_dmrg(lattice, theta; sites=saved.sites, psi0=saved.psi, Q=saved.Q,
         seed=s.seed, initial_linkdim=s.initial_linkdim, nsweeps=s.nsweeps,
         maxdim=s.maxdim, cutoff=s.cutoff, noise=s.noise, eigsolve_tol=s.eigsolve_tol,
         eigsolve_krylovdim=s.eigsolve_krylovdim, eigsolve_maxiter=s.eigsolve_maxiter,
@@ -145,12 +146,13 @@ end
     continue_flux(lattice, targets; start, output_root, policy::FluxPolicy,
                   initial_step, min_step, max_trials=100, cuts=1:lattice.Lx-1,
                   diagnostic_bonds=..., bulk_sites=1:nsites(lattice),
-                  gauge=:seam, hz=nothing, outputlevel=0)
+                  gauge=:seam, hz=nothing, Q=nothing, outputlevel=0)
 
 Sequential, diagnostic-gated continuation through ordered, unwrapped targets.
 `start` is a zero-flux `run_dmrg` result or an accepted checkpoint path. Every
 trial reloads the last accepted checkpoint, rebuilds H, and retains its solver
-settings and original zero-flux baseline. Rejections halve the step; accepted
+settings, total charge and original zero-flux baseline. Omitted `Q` inherits the
+validated charge of `start`; an explicit `Q` must match it. Rejections halve the step; accepted
 steps retain that reduced size. Reversals are allowed. There is no automatic
 increase of bond dimension, sweep count, or step size.
 
@@ -176,8 +178,9 @@ function continue_flux(lattice::KagomeCylinder, targets;
                        cuts=collect(1:(lattice.Lx-1)),
                        diagnostic_bonds=unique([3lattice.Ly .* collect(cuts); div(nsites(lattice),2)]),
                        bulk_sites=collect(1:nsites(lattice)),
-                       gauge::Symbol=:seam, hz=nothing, outputlevel::Integer=0,
+                       gauge::Symbol=:seam, hz=nothing, Q=nothing, outputlevel::Integer=0,
                        _solver=_continuation_solve)
+    execution_identity = _execution_identity()
     gauge == :seam || throw(ArgumentError("continuation currently requires seam gauge"))
     endpoints = Float64.(collect(targets))
     !isempty(endpoints) && all(isfinite, endpoints) || throw(ArgumentError("targets must be nonempty and finite"))
@@ -194,13 +197,14 @@ function continue_flux(lattice::KagomeCylinder, targets;
     bulk = Int.(collect(bulk_sites))
     !isempty(bulk) && length(unique(bulk)) == length(bulk) && all(x -> 1 <= x <= N, bulk) ||
         throw(ArgumentError("invalid monitored bulk sites"))
-    config = _checkpoint_configuration(lattice, gauge, hz)
-    fields = config["hz"]
-    saved_start = start isa AbstractString ? load_checkpoint(start, lattice; gauge, hz=fields) : nothing
+    saved_start = start isa AbstractString ? load_checkpoint(start, lattice; gauge, hz, Q) : nothing
     initial = saved_start === nothing ? start : _flux_result(saved_start)
+    charge = _checkpoint_charge(N, initial.Q; Q)
+    config = _checkpoint_configuration(lattice, gauge, hz; Q=charge)
+    fields = config["hz"]
     saved_start === nothing && initial.theta != 0 &&
         throw(ArgumentError("a new continuation must start at zero flux"))
-    _checkpoint_configuration(initial.lattice, initial.gauge, initial.hz) == config ||
+    _checkpoint_configuration(initial.lattice, initial.gauge, initial.hz; Q=charge) == config ||
         throw(ArgumentError("start model or gauge does not match continuation"))
     settings = _checkpoint_settings(initial.settings)
     settings.measure_variance && settings.nsweeps >= 2 && settings.noise == 0 ||
@@ -214,8 +218,8 @@ function continue_flux(lattice::KagomeCylinder, targets;
     trials = Dict{String,Any}[]
     record = Dict{String,Any}("schema_version"=>1, "status"=>"running",
         "scope"=>"finite_diagnostic_gated_continuation", "phase_identification"=>"not_attempted",
-        "configuration"=>config, "runtime"=>_checkpoint_runtime(),
-        "provenance"=>_checkpoint_provenance(), "policy"=>_flux_policy_record(policy),
+        "configuration"=>config, "runtime"=>Dict(execution_identity.runtime),
+        "provenance"=>_checkpoint_provenance(execution_identity), "policy"=>_flux_policy_record(policy),
         "solver"=>Dict(string(k)=>v for (k,v) in pairs(settings)),
         "targets"=>endpoints, "initial_step"=>Float64(initial_step),
         "min_step"=>Float64(min_step), "max_trials"=>Int(max_trials),
@@ -241,7 +245,7 @@ function continue_flux(lattice::KagomeCylinder, targets;
     initial_trial, initial_diag, baseline_schmidt = try
         snapshot = save_checkpoint(directory, initial; baseline, theta_path, status=:trial)
         record["initial"]["checkpoint"] = relpath(snapshot, directory)
-        restored = load_checkpoint(snapshot, lattice; gauge, hz=fields, status=:trial)
+        restored = load_checkpoint(snapshot, lattice; gauge, hz=fields, Q=charge, status=:trial)
         reference_schmidt = _flux_schmidt(restored.baseline.psi, b)
         diagnostic = _flux_diagnostics(restored, restored, restored.baseline,
                                        reference_schmidt, c, b, bulk)
@@ -273,7 +277,7 @@ function continue_flux(lattice::KagomeCylinder, targets;
             attempted_step = min(step, distance)
             theta = distance <= step ? target : from + copysign(attempted_step, target-from)
             theta != from || return finish(:unresolved, "step_underflow")
-            saved = load_checkpoint(last_checkpoint, lattice; gauge, hz=fields,
+            saved = load_checkpoint(last_checkpoint, lattice; gauge, hz=fields, Q=charge,
                                     expected_theta=from)
             trial = Dict{String,Any}("theta"=>theta, "from_theta"=>from,
                 "step"=>theta-from, "target"=>target, "status"=>"running",
