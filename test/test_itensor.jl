@@ -80,6 +80,59 @@ end
     end
 end
 
+@testset "Scalar DMRG progress preserves the numerical result" begin
+    lattice = kagome_cylinder(1, 3)
+    sites = spin_sites(lattice)
+    psi0 = initial_mps(sites; seed=11)
+    solver = (; sites, psi0, nsweeps=2, maxdim=16, cutoff=0.0)
+    plain = run_dmrg(lattice, 0.0; solver...)
+    events = NamedTuple[]
+    observed = run_dmrg(lattice, 0.0; solver...,
+                        progress_callback=event -> push!(events, event))
+    @test observed.energy ≈ plain.energy atol=1e-13 rtol=0
+    @test observed.sz ≈ plain.sz atol=1e-13 rtol=0
+    @test abs(inner(observed.psi, plain.psi)) ≈ 1 atol=1e-13
+    @test observed.sweep_energies ≈ plain.sweep_energies atol=1e-13 rtol=0
+    @test observed.max_truncation_errors ≈ plain.max_truncation_errors atol=1e-13 rtol=0
+    @test observed.settings == plain.settings
+    @test !hasproperty(observed, :progress_callback)
+    @test all(event -> all(value -> value isa Union{Real,Symbol}, values(event)), events)
+    @test all(event -> isfinite(event.elapsed_seconds) && event.elapsed_seconds >= 0, events)
+    @test issorted(getproperty.(events, :elapsed_seconds))
+    phases = filter(event -> event.kind === :phase, events)
+    @test [(event.phase, event.status) for event in phases] ==
+          [(phase, status) for phase in (:initialization, :mpo, :sweeps, :energy, :variance, :sz)
+                           for status in (:started, :completed)]
+    bonds = filter(event -> event.kind === :bond, events)
+    @test length(bonds) == 2 * (length(sites) - 1) * solver.nsweeps
+    @test all(event -> 0 <= event.truncation_error <= 1 &&
+                       1 <= event.retained_dimension <= solver.maxdim, bonds)
+    sweeps = filter(event -> event.kind === :sweep, events)
+    @test getproperty.(sweeps, :energy) == observed.sweep_energies
+    @test getproperty.(sweeps, :max_truncation_error) == observed.max_truncation_errors
+    mktempdir() do directory
+        path = save_checkpoint(directory, observed; baseline=observed, theta_path=[0.0])
+        loaded = load_checkpoint(path, lattice; status=:trial)
+        @test loaded.settings == plain.settings
+        @test !occursin("progress_callback", read(joinpath(path, "metadata.toml"), String))
+        @test keys(deserialize(joinpath(path, "state.jls"))) == (:psi, :sites, :baseline_psi)
+    end
+    empty!(events)
+    stop = ErrorException("intentional progress callback failure")
+    caught = try
+        run_dmrg(lattice, 0.0; solver..., progress_callback=event -> begin
+            push!(events, event)
+            event.kind === :bond && throw(stop)
+        end)
+    catch error
+        error
+    end
+    @test caught === stop
+    @test last(events).kind === :bond
+    @test !any(event -> event.kind === :phase && event.phase === :sweeps &&
+                       event.status === :completed, events)
+end
+
 @testset "Analytic two-spin truncation controls" begin
     # The field explicitly changes the Hamiltonian. Its Schmidt probabilities
     # are (4/5,1/5); the zero-field singlet has the formerly failing (1/2,1/2).
@@ -109,11 +162,16 @@ end
     hz = [fill(1.0, 9); fill(-1.0, 9)]
     baseline = MPS(ComplexF64, sites, labels)
     before = deepcopy(baseline)
+    progress = NamedTuple[]
     result = run_dmrg(lattice, 0.73; Q=0, sites, psi0=baseline, hz,
-                      nsweeps=2, maxdim=2, measure_variance=false)
+                      nsweeps=2, maxdim=2, measure_variance=false,
+                      progress_callback=event -> push!(progress, event))
     @test result.Q == 0 && flux(result.psi) == QN("Sz", 0)
     @test result.energy ≈ -9 atol=1e-12
     @test result.variance === nothing
+    @test !result.settings.measure_variance
+    @test [event.phase for event in progress if event.kind === :phase &&
+           event.status === :started] == [:initialization, :mpo, :sweeps, :energy, :sz]
     @test result.sz ≈ sz_profile(baseline) atol=1e-12
     @test abs(inner(before, baseline)) ≈ 1 atol=1e-12
     @test all(siteind(result.psi, i) == sites[i] for i in 1:18)

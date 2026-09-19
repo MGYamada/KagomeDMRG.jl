@@ -1,0 +1,1130 @@
+callback_seconds = 0.12088229299999997
+callback_seconds_before_this_write = 0.11942225099999998
+energy_semantics = "bond_and_sweep_energies_are_local_optimizer_values_not_final_MPO_expectations"
+schema_version = 1
+status = "dmrg_call_completed"
+status_semantics = "last_atomic_snapshot_consult_execution_for_process_exit"
+
+[[events]]
+elapsed_seconds = 4.2000000000000006e-8
+kind = "phase"
+phase = "initialization"
+status = "started"
+worker_elapsed_seconds = 10.7948475
+[[events]]
+elapsed_seconds = 19.320376333000002
+kind = "phase"
+phase = "initialization"
+status = "completed"
+worker_elapsed_seconds = 30.1152185
+[[events]]
+elapsed_seconds = 19.321161167
+kind = "phase"
+phase = "mpo"
+status = "started"
+worker_elapsed_seconds = 30.115985
+[[events]]
+elapsed_seconds = 22.199976625
+kind = "phase"
+phase = "mpo"
+status = "completed"
+worker_elapsed_seconds = 32.994807292
+[[events]]
+elapsed_seconds = 22.200736667
+kind = "phase"
+phase = "sweeps"
+status = "started"
+worker_elapsed_seconds = 32.995559875
+[[events]]
+bond = 1
+elapsed_seconds = 27.530938708
+energy = -1.219317231154696
+half_sweep = 1
+kind = "bond"
+retained_dimension = 2
+sweep = 1
+truncation_error = 0.0
+worker_elapsed_seconds = 38.325781125
+[[events]]
+bond = 2
+elapsed_seconds = 29.549694125000002
+energy = -1.8155705634822343
+half_sweep = 1
+kind = "bond"
+retained_dimension = 2
+sweep = 1
+truncation_error = 0.0
+worker_elapsed_seconds = 40.344523333
+[[events]]
+bond = 3
+elapsed_seconds = 29.551315042000002
+energy = -1.8710454372743177
+half_sweep = 1
+kind = "bond"
+retained_dimension = 2
+sweep = 1
+truncation_error = 0.0
+worker_elapsed_seconds = 40.346139333
+[[events]]
+bond = 4
+elapsed_seconds = 30.053883667
+energy = -3.1889971116309055
+half_sweep = 1
+kind = "bond"
+retained_dimension = 4
+sweep = 1
+truncation_error = 0.0
+worker_elapsed_seconds = 40.848712917
+[[events]]
+bond = 5
+elapsed_seconds = 30.186507833
+energy = -3.3235271681057617
+half_sweep = 1
+kind = "bond"
+retained_dimension = 8
+sweep = 1
+truncation_error = 0.0
+worker_elapsed_seconds = 40.981335292
+[[events]]
+bond = 6
+elapsed_seconds = 30.209509250000004
+energy = -3.6621981783467223
+half_sweep = 1
+kind = "bond"
+retained_dimension = 8
+sweep = 1
+truncation_error = 0.0
+worker_elapsed_seconds = 41.004342542
+[[events]]
+bond = 7
+elapsed_seconds = 30.24686425
+energy = -3.9182432942383976
+half_sweep = 1
+kind = "bond"
+retained_dimension = 8
+sweep = 1
+truncation_error = 0.0
+worker_elapsed_seconds = 41.041691417
+[[events]]
+bond = 8
+elapsed_seconds = 30.269504375
+energy = -4.088769414699646
+half_sweep = 1
+kind = "bond"
+retained_dimension = 8
+sweep = 1
+truncation_error = 0.0
+worker_elapsed_seconds = 41.064331667
+[[events]]
+bond = 9
+elapsed_seconds = 30.301406917
+energy = -4.192172247662853
+half_sweep = 1
+kind = "bond"
+retained_dimension = 8
+sweep = 1
+truncation_error = 0.0
+worker_elapsed_seconds = 41.096235417
+[[events]]
+bond = 10
+elapsed_seconds = 30.329797042000003
+energy = -4.371535912667615
+half_sweep = 1
+kind = "bond"
+retained_dimension = 8
+sweep = 1
+truncation_error = 0.0
+worker_elapsed_seconds = 41.124624542
+[[events]]
+bond = 11
+elapsed_seconds = 30.353000708000003
+energy = -4.548221509283439
+half_sweep = 1
+kind = "bond"
+retained_dimension = 8
+sweep = 1
+truncation_error = 0.0
+worker_elapsed_seconds = 41.147827625
+[[events]]
+bond = 12
+elapsed_seconds = 30.380389125
+energy = -5.275206007556553
+half_sweep = 1
+kind = "bond"
+retained_dimension = 8
+sweep = 1
+truncation_error = 0.0
+worker_elapsed_seconds = 41.175216
+[[events]]
+bond = 13
+elapsed_seconds = 30.407326875000003
+energy = -5.627932102288658
+half_sweep = 1
+kind = "bond"
+retained_dimension = 8
+sweep = 1
+truncation_error = 0.0
+worker_elapsed_seconds = 41.202154958
+[[events]]
+bond = 14
+elapsed_seconds = 30.434594250000004
+energy = -5.985047839068154
+half_sweep = 1
+kind = "bond"
+retained_dimension = 8
+sweep = 1
+truncation_error = 0.0
+worker_elapsed_seconds = 41.229422
+[[events]]
+bond = 15
+elapsed_seconds = 30.45726325
+energy = -6.100140848943431
+half_sweep = 1
+kind = "bond"
+retained_dimension = 8
+sweep = 1
+truncation_error = 0.0
+worker_elapsed_seconds = 41.252089958
+[[events]]
+bond = 16
+elapsed_seconds = 30.484277875000004
+energy = -6.548164823762222
+half_sweep = 1
+kind = "bond"
+retained_dimension = 8
+sweep = 1
+truncation_error = 0.0
+worker_elapsed_seconds = 41.279106042
+[[events]]
+bond = 17
+elapsed_seconds = 30.51104275
+energy = -6.6441657208399505
+half_sweep = 1
+kind = "bond"
+retained_dimension = 8
+sweep = 1
+truncation_error = 0.0
+worker_elapsed_seconds = 41.305870625
+[[events]]
+bond = 18
+elapsed_seconds = 30.537430833000002
+energy = -7.012379258018308
+half_sweep = 1
+kind = "bond"
+retained_dimension = 8
+sweep = 1
+truncation_error = 0.0
+worker_elapsed_seconds = 41.332259
+[[events]]
+bond = 19
+elapsed_seconds = 30.560075292
+energy = -7.494219756870401
+half_sweep = 1
+kind = "bond"
+retained_dimension = 8
+sweep = 1
+truncation_error = 0.0
+worker_elapsed_seconds = 41.354902833
+[[events]]
+bond = 20
+elapsed_seconds = 30.587005792000003
+energy = -7.520959574005863
+half_sweep = 1
+kind = "bond"
+retained_dimension = 8
+sweep = 1
+truncation_error = 0.0
+worker_elapsed_seconds = 41.381832958
+[[events]]
+bond = 21
+elapsed_seconds = 30.614173375000004
+energy = -7.988415065831642
+half_sweep = 1
+kind = "bond"
+retained_dimension = 8
+sweep = 1
+truncation_error = 0.0
+worker_elapsed_seconds = 41.409000625
+[[events]]
+bond = 22
+elapsed_seconds = 30.640938667
+energy = -8.845458238207835
+half_sweep = 1
+kind = "bond"
+retained_dimension = 8
+sweep = 1
+truncation_error = 0.0
+worker_elapsed_seconds = 41.43576725
+[[events]]
+bond = 23
+elapsed_seconds = 30.663774667000002
+energy = -9.335959096345789
+half_sweep = 1
+kind = "bond"
+retained_dimension = 8
+sweep = 1
+truncation_error = 0.0
+worker_elapsed_seconds = 41.458601875
+[[events]]
+bond = 24
+elapsed_seconds = 30.691417792000003
+energy = -9.53564292900483
+half_sweep = 1
+kind = "bond"
+retained_dimension = 8
+sweep = 1
+truncation_error = 0.0
+worker_elapsed_seconds = 41.486245167
+[[events]]
+bond = 25
+elapsed_seconds = 30.702672000000003
+energy = -9.53564292900483
+half_sweep = 1
+kind = "bond"
+retained_dimension = 4
+sweep = 1
+truncation_error = 0.0
+worker_elapsed_seconds = 41.49749925
+[[events]]
+bond = 26
+elapsed_seconds = 31.084065917
+energy = -9.535642929004824
+half_sweep = 1
+kind = "bond"
+retained_dimension = 2
+sweep = 1
+truncation_error = 0.0
+worker_elapsed_seconds = 41.878894917
+[[events]]
+bond = 26
+elapsed_seconds = 31.101303875000003
+energy = -9.535642929004826
+half_sweep = 2
+kind = "bond"
+retained_dimension = 2
+sweep = 1
+truncation_error = 0.0
+worker_elapsed_seconds = 41.896131667
+[[events]]
+bond = 25
+elapsed_seconds = 31.113931
+energy = -9.535642929004833
+half_sweep = 2
+kind = "bond"
+retained_dimension = 4
+sweep = 1
+truncation_error = 0.0
+worker_elapsed_seconds = 41.908757125
+[[events]]
+bond = 24
+elapsed_seconds = 31.115420208000003
+energy = -9.535642929004839
+half_sweep = 2
+kind = "bond"
+retained_dimension = 8
+sweep = 1
+truncation_error = 0.0
+worker_elapsed_seconds = 41.910244125
+[[events]]
+bond = 23
+elapsed_seconds = 31.147823042000002
+energy = -9.568115731964333
+half_sweep = 2
+kind = "bond"
+retained_dimension = 16
+sweep = 1
+truncation_error = 0.0
+worker_elapsed_seconds = 41.942650792
+[[events]]
+bond = 22
+elapsed_seconds = 31.473252583
+energy = -9.591529241287244
+half_sweep = 2
+kind = "bond"
+retained_dimension = 16
+sweep = 1
+truncation_error = 0.0
+worker_elapsed_seconds = 42.268080792
+[[events]]
+bond = 21
+elapsed_seconds = 31.500774292000003
+energy = -9.604268944185815
+half_sweep = 2
+kind = "bond"
+retained_dimension = 16
+sweep = 1
+truncation_error = 0.0
+worker_elapsed_seconds = 42.295602
+[[events]]
+bond = 20
+elapsed_seconds = 31.561204917
+energy = -9.69392461687732
+half_sweep = 2
+kind = "bond"
+retained_dimension = 16
+sweep = 1
+truncation_error = 0.0
+worker_elapsed_seconds = 42.356033917
+[[events]]
+bond = 19
+elapsed_seconds = 31.591828583
+energy = -9.703030633619711
+half_sweep = 2
+kind = "bond"
+retained_dimension = 16
+sweep = 1
+truncation_error = 0.0
+worker_elapsed_seconds = 42.386656667
+[[events]]
+bond = 18
+elapsed_seconds = 31.621623042000003
+energy = -9.705665854079195
+half_sweep = 2
+kind = "bond"
+retained_dimension = 16
+sweep = 1
+truncation_error = 0.0
+worker_elapsed_seconds = 42.41645075
+[[events]]
+bond = 17
+elapsed_seconds = 31.651690833000004
+energy = -9.714571329639776
+half_sweep = 2
+kind = "bond"
+retained_dimension = 16
+sweep = 1
+truncation_error = 0.0
+worker_elapsed_seconds = 42.446518708
+[[events]]
+bond = 16
+elapsed_seconds = 31.683015792000003
+energy = -9.722775411645605
+half_sweep = 2
+kind = "bond"
+retained_dimension = 16
+sweep = 1
+truncation_error = 0.0
+worker_elapsed_seconds = 42.4778435
+[[events]]
+bond = 15
+elapsed_seconds = 31.710528667000002
+energy = -9.753139642759493
+half_sweep = 2
+kind = "bond"
+retained_dimension = 16
+sweep = 1
+truncation_error = 0.0
+worker_elapsed_seconds = 42.505360917
+[[events]]
+bond = 14
+elapsed_seconds = 31.788831542
+energy = -9.782585905870473
+half_sweep = 2
+kind = "bond"
+retained_dimension = 16
+sweep = 1
+truncation_error = 0.0
+worker_elapsed_seconds = 42.583662083
+[[events]]
+bond = 13
+elapsed_seconds = 31.833256792
+energy = -9.848443352484894
+half_sweep = 2
+kind = "bond"
+retained_dimension = 16
+sweep = 1
+truncation_error = 0.0
+worker_elapsed_seconds = 42.628084625
+[[events]]
+bond = 12
+elapsed_seconds = 31.864277625000003
+energy = -9.879951986738918
+half_sweep = 2
+kind = "bond"
+retained_dimension = 16
+sweep = 1
+truncation_error = 0.0
+worker_elapsed_seconds = 42.659105708
+[[events]]
+bond = 11
+elapsed_seconds = 31.895520333
+energy = -9.881517741699039
+half_sweep = 2
+kind = "bond"
+retained_dimension = 16
+sweep = 1
+truncation_error = 0.0
+worker_elapsed_seconds = 42.690348042
+[[events]]
+bond = 10
+elapsed_seconds = 31.926744875
+energy = -9.967906869373234
+half_sweep = 2
+kind = "bond"
+retained_dimension = 16
+sweep = 1
+truncation_error = 0.0
+worker_elapsed_seconds = 42.721571833
+[[events]]
+bond = 9
+elapsed_seconds = 31.956459125000002
+energy = -9.972073695705872
+half_sweep = 2
+kind = "bond"
+retained_dimension = 16
+sweep = 1
+truncation_error = 0.0
+worker_elapsed_seconds = 42.751286875
+[[events]]
+bond = 8
+elapsed_seconds = 31.986126833000004
+energy = -9.972643372469294
+half_sweep = 2
+kind = "bond"
+retained_dimension = 16
+sweep = 1
+truncation_error = 0.0
+worker_elapsed_seconds = 42.780954417
+[[events]]
+bond = 7
+elapsed_seconds = 32.016624542
+energy = -9.984795600559659
+half_sweep = 2
+kind = "bond"
+retained_dimension = 16
+sweep = 1
+truncation_error = 0.0
+worker_elapsed_seconds = 42.811451375
+[[events]]
+bond = 6
+elapsed_seconds = 32.047090042
+energy = -9.990486706863459
+half_sweep = 2
+kind = "bond"
+retained_dimension = 16
+sweep = 1
+truncation_error = 0.0
+worker_elapsed_seconds = 42.841917542
+[[events]]
+bond = 5
+elapsed_seconds = 32.049099042
+energy = -9.990486706863459
+half_sweep = 2
+kind = "bond"
+retained_dimension = 8
+sweep = 1
+truncation_error = 0.0
+worker_elapsed_seconds = 42.84392325
+[[events]]
+bond = 4
+elapsed_seconds = 32.050436375000004
+energy = -9.990486706863459
+half_sweep = 2
+kind = "bond"
+retained_dimension = 4
+sweep = 1
+truncation_error = 0.0
+worker_elapsed_seconds = 42.8452595
+[[events]]
+bond = 3
+elapsed_seconds = 32.053569708000005
+energy = -9.9981864261633
+half_sweep = 2
+kind = "bond"
+retained_dimension = 4
+sweep = 1
+truncation_error = 0.0
+worker_elapsed_seconds = 42.848393083
+[[events]]
+bond = 2
+elapsed_seconds = 32.056427042
+energy = -10.001215900841204
+half_sweep = 2
+kind = "bond"
+retained_dimension = 4
+sweep = 1
+truncation_error = 0.0
+worker_elapsed_seconds = 42.851250625
+[[events]]
+bond = 1
+elapsed_seconds = 32.072850667000004
+energy = -10.001215900841197
+half_sweep = 2
+kind = "bond"
+retained_dimension = 2
+sweep = 1
+truncation_error = 0.0
+worker_elapsed_seconds = 42.86767875
+[[events]]
+elapsed_seconds = 32.096437917
+energy = -10.001215900841197
+kind = "sweep"
+max_truncation_error = 0.0
+maxlinkdim = 16
+sweep = 1
+worker_elapsed_seconds = 42.891278917
+[[events]]
+bond = 1
+elapsed_seconds = 32.113192250000004
+energy = -10.001215900841197
+half_sweep = 1
+kind = "bond"
+retained_dimension = 2
+sweep = 2
+truncation_error = 0.0
+worker_elapsed_seconds = 42.90801925
+[[events]]
+bond = 2
+elapsed_seconds = 32.165468292
+energy = -10.001215900841203
+half_sweep = 1
+kind = "bond"
+retained_dimension = 4
+sweep = 2
+truncation_error = 0.0
+worker_elapsed_seconds = 42.9602955
+[[events]]
+bond = 3
+elapsed_seconds = 32.181032917
+energy = -10.001223195014871
+half_sweep = 1
+kind = "bond"
+retained_dimension = 5
+sweep = 2
+truncation_error = 0.0
+worker_elapsed_seconds = 42.975860208
+[[events]]
+bond = 4
+elapsed_seconds = 32.201229292
+energy = -10.015856002151393
+half_sweep = 1
+kind = "bond"
+retained_dimension = 10
+sweep = 2
+truncation_error = 0.0
+worker_elapsed_seconds = 42.996056708
+[[events]]
+bond = 5
+elapsed_seconds = 32.238275792
+energy = -10.20866744736608
+half_sweep = 1
+kind = "bond"
+retained_dimension = 20
+sweep = 2
+truncation_error = 0.0
+worker_elapsed_seconds = 43.033104542
+[[events]]
+bond = 6
+elapsed_seconds = 32.302549833
+energy = -10.218693314438205
+half_sweep = 1
+kind = "bond"
+retained_dimension = 23
+sweep = 2
+truncation_error = 0.0
+worker_elapsed_seconds = 43.097378
+[[events]]
+bond = 7
+elapsed_seconds = 32.364541708000004
+energy = -10.221075453375025
+half_sweep = 1
+kind = "bond"
+retained_dimension = 24
+sweep = 2
+truncation_error = 0.0
+worker_elapsed_seconds = 43.159369417
+[[events]]
+bond = 8
+elapsed_seconds = 32.430820125000004
+energy = -10.230533441811984
+half_sweep = 1
+kind = "bond"
+retained_dimension = 32
+sweep = 2
+truncation_error = 0.0
+worker_elapsed_seconds = 43.22564875
+[[events]]
+bond = 9
+elapsed_seconds = 32.501630375000005
+energy = -10.232296426366748
+half_sweep = 1
+kind = "bond"
+retained_dimension = 32
+sweep = 2
+truncation_error = 0.0
+worker_elapsed_seconds = 43.296457667
+[[events]]
+bond = 10
+elapsed_seconds = 32.544891333
+energy = -10.23257635012466
+half_sweep = 1
+kind = "bond"
+retained_dimension = 32
+sweep = 2
+truncation_error = 0.0
+worker_elapsed_seconds = 43.339718958
+[[events]]
+bond = 11
+elapsed_seconds = 32.617342458
+energy = -10.243819583689628
+half_sweep = 1
+kind = "bond"
+retained_dimension = 32
+sweep = 2
+truncation_error = 0.0
+worker_elapsed_seconds = 43.412170167
+[[events]]
+bond = 12
+elapsed_seconds = 32.690342917
+energy = -10.264159247968436
+half_sweep = 1
+kind = "bond"
+retained_dimension = 32
+sweep = 2
+truncation_error = 0.0
+worker_elapsed_seconds = 43.485171125
+[[events]]
+bond = 13
+elapsed_seconds = 32.764346583000005
+energy = -10.271903018503174
+half_sweep = 1
+kind = "bond"
+retained_dimension = 32
+sweep = 2
+truncation_error = 0.0
+worker_elapsed_seconds = 43.559174417
+[[events]]
+bond = 14
+elapsed_seconds = 32.841588167000005
+energy = -10.303029331269853
+half_sweep = 1
+kind = "bond"
+retained_dimension = 32
+sweep = 2
+truncation_error = 0.0
+worker_elapsed_seconds = 43.636416083
+[[events]]
+bond = 15
+elapsed_seconds = 32.915464375
+energy = -10.310650786092268
+half_sweep = 1
+kind = "bond"
+retained_dimension = 32
+sweep = 2
+truncation_error = 0.0
+worker_elapsed_seconds = 43.710292042
+[[events]]
+bond = 16
+elapsed_seconds = 32.9908275
+energy = -10.382458653846427
+half_sweep = 1
+kind = "bond"
+retained_dimension = 32
+sweep = 2
+truncation_error = 0.0
+worker_elapsed_seconds = 43.785654875
+[[events]]
+bond = 17
+elapsed_seconds = 33.064763125
+energy = -10.406080030462475
+half_sweep = 1
+kind = "bond"
+retained_dimension = 32
+sweep = 2
+truncation_error = 0.0
+worker_elapsed_seconds = 43.859590667
+[[events]]
+bond = 18
+elapsed_seconds = 33.138127458
+energy = -10.422449742524421
+half_sweep = 1
+kind = "bond"
+retained_dimension = 32
+sweep = 2
+truncation_error = 0.0
+worker_elapsed_seconds = 43.932955208
+[[events]]
+bond = 19
+elapsed_seconds = 33.213576208
+energy = -10.471960912032268
+half_sweep = 1
+kind = "bond"
+retained_dimension = 32
+sweep = 2
+truncation_error = 0.0
+worker_elapsed_seconds = 44.008403125
+[[events]]
+bond = 20
+elapsed_seconds = 33.314576042
+energy = -10.50391792395841
+half_sweep = 1
+kind = "bond"
+retained_dimension = 32
+sweep = 2
+truncation_error = 0.0
+worker_elapsed_seconds = 44.109404167
+[[events]]
+bond = 21
+elapsed_seconds = 33.389879583
+energy = -10.525353649717626
+half_sweep = 1
+kind = "bond"
+retained_dimension = 32
+sweep = 2
+truncation_error = 0.0
+worker_elapsed_seconds = 44.18470725
+[[events]]
+bond = 22
+elapsed_seconds = 33.463918792
+energy = -10.569618111868259
+half_sweep = 1
+kind = "bond"
+retained_dimension = 32
+sweep = 2
+truncation_error = 0.0
+worker_elapsed_seconds = 44.25874575
+[[events]]
+bond = 23
+elapsed_seconds = 33.466474583
+energy = -10.569618111868268
+half_sweep = 1
+kind = "bond"
+retained_dimension = 16
+sweep = 2
+truncation_error = 0.0
+worker_elapsed_seconds = 44.261299375
+[[events]]
+bond = 24
+elapsed_seconds = 33.4682395
+energy = -10.56961811186827
+half_sweep = 1
+kind = "bond"
+retained_dimension = 8
+sweep = 2
+truncation_error = 0.0
+worker_elapsed_seconds = 44.263063125
+[[events]]
+bond = 25
+elapsed_seconds = 33.469531458
+energy = -10.569618111868277
+half_sweep = 1
+kind = "bond"
+retained_dimension = 4
+sweep = 2
+truncation_error = 0.0
+worker_elapsed_seconds = 44.264354708
+[[events]]
+bond = 26
+elapsed_seconds = 33.470654542000005
+energy = -10.569618111868273
+half_sweep = 1
+kind = "bond"
+retained_dimension = 2
+sweep = 2
+truncation_error = 0.0
+worker_elapsed_seconds = 44.265477458
+[[events]]
+bond = 26
+elapsed_seconds = 33.471656417000005
+energy = -10.569618111868275
+half_sweep = 2
+kind = "bond"
+retained_dimension = 2
+sweep = 2
+truncation_error = 0.0
+worker_elapsed_seconds = 44.26647925
+[[events]]
+bond = 25
+elapsed_seconds = 33.472868708
+energy = -10.569618111868277
+half_sweep = 2
+kind = "bond"
+retained_dimension = 4
+sweep = 2
+truncation_error = 0.0
+worker_elapsed_seconds = 44.267691458
+[[events]]
+bond = 24
+elapsed_seconds = 33.474315042
+energy = -10.569618111868275
+half_sweep = 2
+kind = "bond"
+retained_dimension = 8
+sweep = 2
+truncation_error = 0.0
+worker_elapsed_seconds = 44.269137833
+[[events]]
+bond = 23
+elapsed_seconds = 33.476144875
+energy = -10.569618111868273
+half_sweep = 2
+kind = "bond"
+retained_dimension = 16
+sweep = 2
+truncation_error = 0.0
+worker_elapsed_seconds = 44.27096775
+[[events]]
+bond = 22
+elapsed_seconds = 33.478499500000005
+energy = -10.569618111868268
+half_sweep = 2
+kind = "bond"
+retained_dimension = 32
+sweep = 2
+truncation_error = 0.0
+worker_elapsed_seconds = 44.2733235
+[[events]]
+bond = 21
+elapsed_seconds = 33.599461542
+energy = -10.572719101941141
+half_sweep = 2
+kind = "bond"
+retained_dimension = 44
+sweep = 2
+truncation_error = 0.0
+worker_elapsed_seconds = 44.394289208
+[[events]]
+bond = 20
+elapsed_seconds = 33.780524375
+energy = -10.592050342350383
+half_sweep = 2
+kind = "bond"
+retained_dimension = 64
+sweep = 2
+truncation_error = 0.0
+worker_elapsed_seconds = 44.575352875
+[[events]]
+bond = 19
+elapsed_seconds = 33.987067208
+energy = -10.602739463771139
+half_sweep = 2
+kind = "bond"
+retained_dimension = 64
+sweep = 2
+truncation_error = 0.0
+worker_elapsed_seconds = 44.781895833
+[[events]]
+bond = 18
+elapsed_seconds = 34.151541417000004
+energy = -10.612301329940669
+half_sweep = 2
+kind = "bond"
+retained_dimension = 64
+sweep = 2
+truncation_error = 0.0
+worker_elapsed_seconds = 44.946370667
+[[events]]
+bond = 17
+elapsed_seconds = 34.310423583
+energy = -10.629285119409916
+half_sweep = 2
+kind = "bond"
+retained_dimension = 64
+sweep = 2
+truncation_error = 0.0
+worker_elapsed_seconds = 45.105254
+[[events]]
+bond = 16
+elapsed_seconds = 34.470406458
+energy = -10.641050376037276
+half_sweep = 2
+kind = "bond"
+retained_dimension = 64
+sweep = 2
+truncation_error = 0.0
+worker_elapsed_seconds = 45.265234875
+[[events]]
+bond = 15
+elapsed_seconds = 34.687925292
+energy = -10.661952439173415
+half_sweep = 2
+kind = "bond"
+retained_dimension = 64
+sweep = 2
+truncation_error = 0.0
+worker_elapsed_seconds = 45.482753417
+[[events]]
+bond = 14
+elapsed_seconds = 34.851262375000005
+energy = -10.682176359866986
+half_sweep = 2
+kind = "bond"
+retained_dimension = 64
+sweep = 2
+truncation_error = 0.0
+worker_elapsed_seconds = 45.6460905
+[[events]]
+bond = 13
+elapsed_seconds = 34.966069792
+energy = -10.708191407266877
+half_sweep = 2
+kind = "bond"
+retained_dimension = 64
+sweep = 2
+truncation_error = 0.0
+worker_elapsed_seconds = 45.760897792
+[[events]]
+bond = 12
+elapsed_seconds = 35.079905208
+energy = -10.721083508837584
+half_sweep = 2
+kind = "bond"
+retained_dimension = 64
+sweep = 2
+truncation_error = 0.0
+worker_elapsed_seconds = 45.874732625
+[[events]]
+bond = 11
+elapsed_seconds = 35.194815958
+energy = -10.724322620580919
+half_sweep = 2
+kind = "bond"
+retained_dimension = 64
+sweep = 2
+truncation_error = 0.0
+worker_elapsed_seconds = 45.989643958
+[[events]]
+bond = 10
+elapsed_seconds = 35.306880625000005
+energy = -10.757512259256872
+half_sweep = 2
+kind = "bond"
+retained_dimension = 64
+sweep = 2
+truncation_error = 0.0
+worker_elapsed_seconds = 46.101709042
+[[events]]
+bond = 9
+elapsed_seconds = 35.415471542
+energy = -10.757960046265545
+half_sweep = 2
+kind = "bond"
+retained_dimension = 64
+sweep = 2
+truncation_error = 0.0
+worker_elapsed_seconds = 46.21029875
+[[events]]
+bond = 8
+elapsed_seconds = 35.536527583
+energy = -10.758195967489891
+half_sweep = 2
+kind = "bond"
+retained_dimension = 48
+sweep = 2
+truncation_error = 0.0
+worker_elapsed_seconds = 46.331356
+[[events]]
+bond = 7
+elapsed_seconds = 35.626479125
+energy = -10.77049469668745
+half_sweep = 2
+kind = "bond"
+retained_dimension = 46
+sweep = 2
+truncation_error = 0.0
+worker_elapsed_seconds = 46.421307792
+[[events]]
+bond = 6
+elapsed_seconds = 35.718485417000004
+energy = -10.780300881611296
+half_sweep = 2
+kind = "bond"
+retained_dimension = 40
+sweep = 2
+truncation_error = 0.0
+worker_elapsed_seconds = 46.513313708
+[[events]]
+bond = 5
+elapsed_seconds = 35.724153667
+energy = -10.780300881611295
+half_sweep = 2
+kind = "bond"
+retained_dimension = 20
+sweep = 2
+truncation_error = 0.0
+worker_elapsed_seconds = 46.518980583
+[[events]]
+bond = 4
+elapsed_seconds = 35.726309542
+energy = -10.780300881611295
+half_sweep = 2
+kind = "bond"
+retained_dimension = 10
+sweep = 2
+truncation_error = 0.0
+worker_elapsed_seconds = 46.521133625
+[[events]]
+bond = 3
+elapsed_seconds = 35.747775292
+energy = -10.82581681336108
+half_sweep = 2
+kind = "bond"
+retained_dimension = 8
+sweep = 2
+truncation_error = 0.0
+worker_elapsed_seconds = 46.542604042
+[[events]]
+bond = 2
+elapsed_seconds = 35.749677125000005
+energy = -10.825816813361083
+half_sweep = 2
+kind = "bond"
+retained_dimension = 4
+sweep = 2
+truncation_error = 0.0
+worker_elapsed_seconds = 46.544501333
+[[events]]
+bond = 1
+elapsed_seconds = 35.751124250000004
+energy = -10.825816813361083
+half_sweep = 2
+kind = "bond"
+retained_dimension = 2
+sweep = 2
+truncation_error = 0.0
+worker_elapsed_seconds = 46.545948125
+[[events]]
+elapsed_seconds = 35.752124542000004
+energy = -10.825816813361083
+kind = "sweep"
+max_truncation_error = 0.0
+maxlinkdim = 64
+sweep = 2
+worker_elapsed_seconds = 46.546950375
+[[events]]
+elapsed_seconds = 35.753236417000004
+kind = "phase"
+phase = "sweeps"
+status = "completed"
+worker_elapsed_seconds = 46.54806
+[[events]]
+elapsed_seconds = 35.754209917000004
+kind = "phase"
+phase = "energy"
+status = "started"
+worker_elapsed_seconds = 46.549032625
+[[events]]
+elapsed_seconds = 37.169000542
+kind = "phase"
+phase = "energy"
+status = "completed"
+worker_elapsed_seconds = 47.963830708
+[[events]]
+elapsed_seconds = 37.170630042
+kind = "phase"
+phase = "sz"
+status = "started"
+worker_elapsed_seconds = 47.965455
+[[events]]
+elapsed_seconds = 39.395230125000005
+kind = "phase"
+phase = "sz"
+status = "completed"
+worker_elapsed_seconds = 50.190059333
+
+[last_event]
+elapsed_seconds = 39.395230125000005
+kind = "phase"
+phase = "sz"
+status = "completed"
+worker_elapsed_seconds = 50.190059333

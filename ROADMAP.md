@@ -3,9 +3,23 @@
 更新日: 2026-09-19。対象は、特に指定がない限り、スピン 1/2 の最近接反強磁性
 kagome Heisenberg 模型の飽和磁化比 `M/Msat = 1/9`。
 
-**次の優先課題は、最近接1/9の静的な磁化境界と競合秩序。**
-NN模型のN18・θ=0・Q=0,2,4を最初の限定研究とし、次にN27の資源pilotへ進む。
-既知CSL側のchirality校正・拡張模型N18Q0照合は並行する。
+**直近はN27の追加収束を保留し、P3aの観測量・小系校正を進める。**
+最近接1/9の静的な磁化境界と競合秩序を研究の主対象に保ち、
+一つのtrialの収束を他のロードマップ項目の前提にしない。
+NN模型のN18・θ=0・Q=0,2,4の独立ED/DMRG比較を完了した。
+比較した3sector内の安定区間は `0.2585201582<h/J<0.4869821958`。
+N27・Q=3・χ256の8-sweep試行は10分上限で停止し、完了状態は未取得。
+続く2-sweep試行で保存状態を得て、同じtrialから累積4 sweepsまで進めた。
+今回189.979秒で実保持次元256に達し、varianceは0.31546→0.008498 J²へ低下した。
+列磁化は大きく変化し、3→4のenergy差も0.04067 J残るため、収束は未確立。
+累積6 sweepsへの追加は保留し、保存状態を未収束の研究記録として保持する。
+[N18研究記録](docs/research/p4_static18_validation.md)、[N27停止記録](docs/research/p4_static27_pilot.md)、
+[N27の初期保存状態](docs/research/p4_static27_progress.md)、
+[累積2→4 sweepsの比較](docs/research/p4_static27_refine.md)。
+P3aの方向付きchirality測定と独立三spin校正を完了した。
+三角形の周期画像・符号・非零fluxのゲージ同値を確認し、重点検証736件が通過した。
+次の作業単位は拡張模型N18Q0の照合とする。
+[chiralityの実装・校正](docs/research/p3_chirality_validation.md)。
 CSLの非零応答再現は1/9ポンプの解釈の条件とし、静的NN研究の開始を待たせない。
 選択肢の比較、一次文献、具体的な計算予算は
 [更新した研究方針](docs/research/p4_static_plateau_strategy.md)にまとめる。
@@ -55,15 +69,18 @@ hごとのDMRGではなくsector間の全交換エネルギーを比較する。
 | 対象 | 実装・確認できたこと | 残る制限と記録 |
 | --- | --- | --- |
 | 格子・模型・ED | NN bond、winding、U(1)、Hermiticity、局所／円周 flux、2π 周期、ゲージ同値性 | 最近接模型での P0 検証。拡張模型は別途再検証する。[P0](docs/research/p0_reference_validation.md) |
-| 明示Q | 初期化・DMRG・保存・継続・独立EDに整数Qを伝搬。NNのN12Q0とN9Q=−1,1,3の計5点が独立EDに一致 | N18Q0は基底数・上限契約のみ確認。CSL・plateauの検証ではない。[検証記録](docs/research/p3_explicit_charge_validation.md) |
-| 拡張交換・bond energy | J3を六角形対向頂点に限定。独立平面幾何、family保存、各bond energyとN12Q0の2点を照合 | 最大独立残差≤`4.19e-13`。chirality・N18Q0・CSLポンプは未検証。[検証記録](docs/research/p3_extended_model_validation.md) |
+| 明示Q | 初期化・DMRG・保存・継続・独立EDに整数Qを伝搬。NNのN12Q0とN9Q=−1,1,3の計5点が独立EDに一致 | NNのN18Q0,2,4も下記の静的研究で照合済み。CSL対照とは別。[API検証記録](docs/research/p3_explicit_charge_validation.md) |
+| 拡張交換・bond energy | J3を六角形対向頂点に限定。独立平面幾何、family保存、各bond energyとN12Q0の2点を照合 | 最大独立残差≤`4.19e-13`。拡張模型N18Q0・CSLポンプは未検証。[検証記録](docs/research/p3_extended_model_validation.md) |
+| 方向付きchirality | CCWの基本三角形・周期画像、U(1)保存MPO、正規化期待値を実装。独立Pauli行列と非零の合成状態で符号・ゲージを校正 | 演算子の校正。CSL状態の取得・相同定ではなく、研究サイズの測定費用は未計測。[校正記録](docs/research/p3_chirality_validation.md) |
 | 基準 DMRG | 9 サイトおよび 18 サイトの複素状態を独立 ED と照合 | 小系での一致。有限 χ の一般的な精度保証ではない。[18 サイト](docs/research/p2_interacting18_validation.md) |
 | 切断 | 局所版 NDTensors 0.4.31+1 を固定。密行列校正、捕捉入力 replay、N18 中央 bond 168 更新で保持 rank と損失が一致 | CPU 複素 SVD/Hermitian の検証範囲。hard maxdim は縮退空間を分割し得る。[修正・校正](docs/research/p1_qn_truncation_calibration.md) |
 | 保存・Schmidt | 原子的保存、受理／試行分離、絶対左電荷。ロード済みコードの identity を保持し、編集後の誤った hash 付替えを拒否 | 同一 source/runtime の再開。途中 sweep・異なる版への移行は未実装。[保存](docs/research/p1_restart_schmidt_validation.md)、[履歴修正](docs/research/p1_qn_truncation_calibration.md#保存する実行履歴の修正) |
 | flux 追跡 | 受理・棄却・刻み半減・復元。零応答対照で `0→6π→0` と再開 | 相互作用系の全 cycle、研究サイズの枝選択は未検証。[P2 初期検証](docs/research/p2_continuation_validation.md) |
 | 18 サイト相互作用系 | χ=512 の四経路 `0→±0.37→0`、延べ 24 保存点が ED と一致。刻み・seed の移送差 ≤`4.21e-13` | χ=512 は最大固定 Q rank 386 を切らない。χ=128 は初期点を棄却。cut は一つで内部 bulk がない。[研究記録](docs/research/p2_interacting18_validation.md) |
 | 修正後の有限 χ | θ=0,0.37 の計 10 trial 点。χ=512 の残差 ≤`7.18e-12`、χ=256 は約`1.6–1.8e-3`、χ=128 は約`2.5–2.7e-2` | χ=128,256 は ED 比較基準未達。6→12 sweep だけでは解消しない。新しい受理済み continuation 経路ではない。[比較表](docs/research/p1_qn_truncation_calibration.md#18-サイトの結果) |
-| 既知 CSL 対照 | 原著監査、Q指定、J2/J3交換のN12小系照合まで完了 | chirality・枝準備・CSLポンプ計算は未実施。原著の端・入力条件には未取得項目がある。[P3 設計](docs/research/p3_csl_control_design.md) |
+| N18の静的磁化境界 | NN・θ=0・Q=0,2,4のED/DMRGを照合。比較内のQ2区間幅は `Δh/J=0.2284620376`。Q4のみ6 sweeps追加して全点通過 | 二列で内部bulkなし、遠方Q未探索。全磁化に対する安定性・bulk plateauではない。[結果と列磁化](docs/research/p4_static18_validation.md) |
+| N27の資源・sweep比較 | 親trialから累積4 sweepsへ進め、実保持次元256・variance 0.008498 J²の新trialを取得。今回189.979秒・2.31615 GiB | 3→4のenergy差0.04067 J、列磁化も変化。基底収束・χ依存・隣接Q比較は未達。[累積2→4比較](docs/research/p4_static27_refine.md) |
+| 既知 CSL 対照 | 原著監査、Q指定、J2/J3交換のN12小系照合、chirality演算子の校正まで完了 | 拡張模型N18Q0、枝準備・CSLポンプ計算は未実施。原著の端・入力条件には未取得項目がある。[P3 設計](docs/research/p3_csl_control_design.md) |
 
 変更前の Julia 1.13.0 統合 `Pkg.test()` は **4,348 assertions** が成功した。
 切断修正時の独立校正 **3,783 件**・backend 回帰 **346 件**、最終保存・再開の重点検証
@@ -88,28 +105,49 @@ guard を保った N18 比較では χ=128,256 の精度不足も保存した。
 
 成果物は [再現・限定修正・比較表・source hash 付き記録](docs/research/p1_qn_truncation_calibration.md)。
 途中の計算と全体テストの中断も記録し、最終コードを使った結果として付け替えていない。
-明示 Q と拡張交換のN12小系検証も完了した。次は以下の静的NN研究を優先し、
-CSL側で必要な残る校正を並行する。
+明示 Q と拡張交換のN12小系検証も完了した。静的NNの保存済み結果を保持し、
+直近は第3節のCSL側に必要な観測量・小系校正を進める。
 
-### 2. 最優先: 最近接1/9の静的sector比較
+### 2. N18静的比較を完了、N27の追加収束は保留
 
-最初の研究単位は `(Lx,Ly)=(2,3),N=18,θ=0` の `Q=0,2,4`。
-各sectorで独立EDとDMRGを一回ずつ比較し、全交換エネルギーから
-`h−=E0(2)−E0(0)`、`h+=E0(4)−E0(2)` と列別の磁化差を記録する。
-χ=512、6 sweeps、seed=11、cutoff=noise=0を出発点とし、精度未達sectorだけ
-予算内で6 sweepsを一回追加する。飛び越しの確認が必要ならQ=6のEDを加える。
-総wall上限10分、Julia/BLAS各1 thread、数値process一つを割り当てる。
-未探索Q・未収束sectorを残したまま全磁化に対する安定性を宣言しない。
+最初の研究単位 `(Lx,Ly)=(2,3),N=18,θ=0,Q=0,2,4` は完了した。
+χ=512、seed=11、cutoff=noise=0でQ0/Q2は6 sweeps、Q4は追加後12 sweepsで
+独立ED比較を通過した。最終残差は最大 `7.18e-12`、全trialで実測切断誤差0。
+全交換エネルギーの差から、比較したsector内の `h−/J=0.2585201582`、
+`h+/J=0.4869821958` と列別の磁化差を保存した。Q6以上は未探索である。
+単一solveを外側から監視する10分上限launcherも実装し、Julia/BLAS各1 thread、
+数値process一つ、起動込み225.620秒で完了した。
+[数値・未達だった初回Q4・保存監査](docs/research/p4_static18_validation.md)を正本とする。
 
-この単位は有限クラスターの境界・不確かさ・端への磁化分布を報告すれば完了できる。
-bulk plateau、中性ギャップ、相同定までを一括した完了条件にはしない。
-次に `(3,3),N=27,Q=3` の代表1点を別の10分上限で測り、その費用・精度を見て
-隣接Q、χまたは初期状態の比較を選ぶ。全面的な直積走査は行わない。
+二列しかないため端とbulkの分離はできず、全磁化に対する安定性、bulk plateau、
+中性ギャップ、相同定を意味しない。
+`(3,3),N=27,Q=3` のχ256・seed11・8-sweep試行は、別の10分上限内で
+598.239秒に停止した。peak RSSは2.08034 GiB。`run_dmrg` が返らず、最終状態・
+エネルギー・variance・切断誤差は未取得で、完了sweep数も不明。
+呼出しにはJITや最終診断も含まれるため、sweepとvarianceのどちらが主因かは判定できない。
+[原記録・独立監査・未取得量](docs/research/p4_static27_pilot.md)を保存した。
+
+その後、同じmaxdim256・seed11の新しい初期状態を2 sweepsだけ最適化し、各bond/sweepの
+進行と工程時間を保存した。57.812秒・peak RSS 1.45277 GiBで完了し、trialの再読込、
+Schmidt量、相関・bond profile、別計時varianceの整合性を確認した。
+E/J=−10.825816813361072、variance/J²=0.3154628741。
+実保持次元は16→64で、energyも大きく変化しており基底収束は未確立である。
+今回のvariance収縮は2.483秒だが、この低保持次元の結果から旧試行の停止原因を断定しない。
+[診断用完了点と検証範囲](docs/research/p4_static27_progress.md)を正本とする。
+
+同じsourceのtrialからmaxdim256のまま2 sweepsを追加し、累積4まで完了した。
+E/J=−11.300352744875930、variance/J²=0.0084979590、実保持次元256。
+新trialの保存と全診断を189.979秒で完了し、最大切断誤差は1.36e−5だった。
+前回の列磁化の偏りは大きく変わり、初期状態の模様を収束した秩序とは扱えない。
+[再開由来・比較・保存監査](docs/research/p4_static27_refine.md)を正本とする。
+3→4の末尾energy差0.04067 Jが残り、収束は未確立である。
+累積6への追加を保留し、未収束のN27を用いた秩序・磁化境界の結論は出さない。
+再着手する際に、固定χのsweep変動・χ512・隣接Q・別seedのどれが問いを解くかを選ぶ。
 さらに同じwrapと端で `(6,3),N=54` を候補とする。
 境界の一般式・停止条件・geometry・未実装の解析は
 [静的研究の段階A–D](docs/research/p4_static_plateau_strategy.md)を参照。
 
-### 3. 並行: CSLに必要な残る観測量・小系照合
+### 3. 直近: CSLに必要な残る観測量・小系照合
 
 既定の 1/9 を保った明示的な整数 Q の指定は実装・小系検証済み。
 `−N≤Q≤N` と N との偶奇一致を検証し、初期 MPS、DMRG、continuation、
@@ -123,9 +161,11 @@ energy/site誤差≤`1.26e-15`、独立残差≤`9.39e-13`でEDと一致した�
 J3 は六角形の対向頂点に限定し、production のテンプレートと独立な平面NN graphの
 六角形探索で照合した。N12Q0、J1=1・J2=J3=.5のθ=0,.37は独立EDと一致した。
 最大残差≤`4.19e-13`、各bond energy誤差≤`5.07e-14`。
-次に方向付き三角形のscalar chiralityを追加し、三spin行列で向き・符号を校正する。
-chirality はまず観測量として追加し、Hamiltonian に加える seed 項は必要になった段階で
-別実装とする。非零 flux のゲージ間比較では観測演算子も状態と同じ規約で変換する。
+方向付き三角形のscalar chiralityを観測量として追加し、独立Pauli三spin行列で
+向き・符号を校正した。行列差は約8.33e−17。継ぎ目を跨ぐN18合成状態で
+非零fluxのdressed観測量を照合し、seam/uniformの差は約2.22e−16だった。
+Hamiltonianに加えるseed項は未実装であり、必要になった段階で別途追加する。
+[定義・合成対照・736件の重点検証](docs/research/p3_chirality_validation.md)を正本とする。
 
 この共通 API・拡張模型の全体完了条件は NN の既定動作を保ち、拡張模型でも
 `N=12,Q=0` の零・一般 flux で
@@ -138,7 +178,7 @@ ED/MPO/DMRG とゲージを照合し、`N=18,Q=0` でも残差・射影・移送
 
 切断校正後の NN 対照はまず `(Lx,Ly)=(3,3),N=27,Q=3` とする。
 二つの幾何学 cut があるが、三列で十分な bulk ができるとは仮定しない。
-静的pilotで得た代表初期点を起点に、必要なχと別seedを選択的に比較し、
+静的pilotの完了状態を得てから、必要なχと別seedを選択的に比較し、
 通過した精度設定についてのみ短い正負flux往復と半分の刻みの別走行を行う。
 全seed×全χの実行は必須にしない。開始時の刻みは 18 サイトの実測を
 参考に決め、閾値・最小刻み・試行数上限を走行前に保存する。
@@ -239,16 +279,16 @@ GPU の QN 対応には公式文書でも制約が示されている。
 | P0: 格子と物理規約 | NN の小系検証は完了 | 模型を拡張するたびに bond・ゲージ・独立 ED を再照合 |
 | P1: ITensor 基準実装 | 小系照合・完了点保存・QN 切断校正・N18 の χ/sweep 比較を完了 | より大きい系の精度評価。局所 solver と全系誤差の区別を維持 |
 | P2: flux continuation | driver と零応答対照、N18 の短区間は検証済み | 相互作用系の複数 cut、有限 χ、刻み・長さ・seed、棄却／復元を検証 |
-| P3a: CSL 模型・観測量 | 明示Q、J2/J3、bond energy・保存契約とN12小系照合が完了 | chiralityの三spin校正、N18Q0の残差・射影・移送を照合 |
+| P3a: CSL 模型・観測量 | 明示Q、J2/J3、bond energy・保存契約、N12小系照合、chiralityの独立校正を完了 | 拡張模型N18Q0の残差・射影・移送を照合 |
 | P3b: 既知非零応答 | 未着手 | 同じ枝の `0→2π→4π`、±1/2 応答と数値・サイズ依存を再現。零応答対照も維持 |
-| P4a-1: 有限系の磁化境界 | N9の差分を記録。次の優先課題 | 最初の完了単位はN18の3sectorと必要な遠方Q、境界・磁化分布・精度の記録。N27は別の研究単位 |
+| P4a-1: 有限系の磁化境界 | N9/N18比較を完了。N27は累積4-sweep trialと全診断を取得、追加収束は保留 | 再着手時にsweep・χ・隣接Qの比較を選ぶ。N18の遠方Q・bulk安定性は未判定 |
 | P4a-2: 競合秩序・bulk評価 | 未着手。P3と独立に進行可 | 拡大単位胞を許した密度・bond・相関の比較、長さ・幅・端依存。中性励起は別単位で評価 |
 | P4b: 1/9 輸送 | 未着手 | P2/P3bの測定検証とP4aの状態評価後に `0→2π→4π→6π` と逆走を比較。非量子化・未解決も誤差付きで出力 |
 | P5: 性能改善・独自 backend | 未着手、計測後に選択 | ED/基準実装と同じ物理精度で時間・メモリ・I/O を比較 |
 | P6: 幅の拡張・相同定 | 未着手 | 必要な追加 sector・entanglement・modular 診断を実施し、識別できる範囲と限界を明記 |
 
 P0–P3 は測定基盤、P4 は最近接 1/9 の物理評価とする。
-P4a-1/2の静的研究を直近で優先し、P3と並行する。
+P4a-1/2を研究の主対象に保ち、直近の実装・検証はP3aを進める。
 P3b完了をP4aの開始条件にしない。有限系の磁化境界とbulk評価を別々に完了判定する。
 P5 は自動的な次段階にせず、P2/P3/P4 の実測で必要になったときに実施する。
 P6 で使う GPU/MPI・iDMRG も手段であり、相同定の証拠を代替しない。
@@ -258,7 +298,7 @@ flowchart LR
   BASE[検証済みNN・固定Q・切断] --> STATIC[優先: NNの有限系磁化境界]
   STATIC --> ORDER[競合秩序・端・長さ・幅]
   BASE --> P2[相互作用系の複数cut追跡]
-  CSL[実装済み拡張模型] --> P3a[chirality・N18Q0校正]
+  CSL[実装済み拡張模型・chirality] --> P3a[次: N18Q0校正]
   BASE --> P3a
   P2 --> P3b[既知 CSL 応答の再現]
   P3a --> P3b
@@ -316,8 +356,9 @@ examples/validate_continuation.jl # 零応答の往復・再開、ED、縮退に
 examples/validate_interacting18.jl # 18 サイト相互作用系の精度・刻み・seed・正負 flux 比較
 ```
 
-chirality、独自 backend、既知 CSL と 1/9 plateau の研究用 pump の実行例は
-今後の実装であり、現在の API ではない。
+chiralityは `oriented_triangles`、`scalar_chirality_mpo`、`triangle_chiralities` を実装した。
+[使用例と有限fluxでの定義](docs/research/p3_chirality_validation.md)を参照。
+chirality seed項、独自 backend、既知CSLと1/9 plateauの研究用pump実行例は今後の実装とする。
 
 保存する設定は明示的に選び、ローカルのネットワーク設定・接続情報は
 [AGENTS.md](AGENTS.md) の指示どおり記録しない。

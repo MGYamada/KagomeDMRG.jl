@@ -1,0 +1,1736 @@
+N = 27
+Q = 3
+accuracy_status = "unestablished_four_cumulative_sweeps_single_chi_single_seed"
+active_phase = "finished"
+automatic_retry = false
+axial_pump = "not_measured_theta_zero_only"
+bulk_plateau = "not_established"
+central_region_status = "one_interior_column_not_established_bulk"
+central_sites = [10, 11, 12, 13, 14, 15, 16, 17, 18]
+checkpoint = "trial/checkpoint-iYdlHH"
+checkpoint_baseline = "own_completed_zero_theta_state_parent_recorded_separately"
+checkpoint_overlap_error = 3.552713678800501e-15
+checkpoint_payload_bytes = 5810386
+checkpoint_verified = true
+completed_cumulative_sweeps = 4
+completed_local_sweeps = 2
+correlation_integrity_passed = true
+cuts = [9, 18]
+extra_sources_unchanged = true
+field_interval = "not_measured_only_Q3"
+independent_ED = "not_attempted_reference_limited_to_N18"
+local_Krylov_convergence_flags = "not_exposed_by_backend"
+parent_completed_sweeps = 2
+parent_files_unchanged = true
+phase_identification = "not_attempted"
+planned_added_sweeps = 2
+planned_cumulative_sweeps = 4
+point_budget = 1
+recorded_at_utc = "2026-09-19T10:12:58.684"
+schema_version = 1
+scope = "N27_same_source_trial_two_additional_sweeps_and_separate_diagnostics"
+status = "completed_refinement_pilot_accuracy_unestablished"
+theta = 0.0
+time_limit_enforcement = "external_launcher_including_startup_all_phases_and_termination_grace"
+wall_limit_seconds = 600.0
+worker_elapsed_seconds = 189.45329625
+worker_peak_rss_bytes = 0x94170000
+
+[bond_observables]
+energy_profile = [-0.2813833223920285, -0.11301858207320914, -0.17470724444074937, -0.5361909122207171, -0.2051205338948885, -0.223624040290531, -0.15399782676598966, -0.21015044840629524, -0.569920677078372, -0.09596745742401537, -0.16488977157166532, -0.11940911925277009, -0.2850660733629554, -0.5749459030205504, -0.24211282186954503, -0.3352774930662952, -0.06721142090846223, -0.2593232816271464, -0.25938332519499985, -0.17139224448966775, -0.17955176934428355, -0.2545119010137906, -0.06730018893340226, -0.3403321453080159, -0.09808628204434973, -0.4650874151836588, -0.0492230700172665, -0.091179363765312, -0.44685778591347536, -0.09753422918182761, -0.20420049279835073, -0.18973386644549756, -0.2749960959360084, -0.26559888748259297, -0.15698609573131161, -0.2502779929368894, -0.05175403121722778, -0.430473967918024, -0.10355536376631089, -0.0732654872425408, -0.5054820804773915, -0.1762757842051508, -0.43676316043819796, -0.51580324287933, -0.06600410975888632, -0.1030042950160252, -0.2665142767644056, -0.09690686380554059]
+energy_sum = -11.30035274487592
+
+[checkpoint_files."checksums.toml"]
+bytes = 247
+path = "outputs/p4-static27-refine-20260919/trial/checkpoint-iYdlHH/checksums.toml"
+sha256 = "539eaadf66480dbf26a41d51fd471cb5bb0aedd7ff46846493512251840dd8a7"
+
+[checkpoint_files."metadata.toml"]
+bytes = 37515
+path = "outputs/p4-static27-refine-20260919/trial/checkpoint-iYdlHH/metadata.toml"
+sha256 = "f34ce3598bd03028437a459a2a97149532aa3a6528c7ad1728c162aeebd7e258"
+
+[checkpoint_files."state.jls"]
+bytes = 5810386
+path = "outputs/p4-static27-refine-20260919/trial/checkpoint-iYdlHH/state.jls"
+sha256 = "b6e07a0f14301cbf9acfd42a5874e0f7e748daf46e4162d47c4698a04ffa29f9"
+
+[code]
+git_revision = "3e4b290bba85e6e4941e41c80ae27fd6f06d4231"
+manifest = "Manifest-v1.13.toml"
+worktree_dirty = true
+
+    [code.source_sha256]
+    "Manifest-v1.13.toml" = "134a3797eb3ba08171879ce51e354b8da641733911dc64b1f5944b0199c7187b"
+    "Project.toml" = "debb9b90c699e01f034a8ec21602c9eba26795a60fe5a69c0e8e793ed9a6bb0e"
+    "src/KagomeDMRG.jl" = "11c332090f4343dcaacef3844f56c5fd448aa8cf564cab687a18f8d20bca4f36"
+    "src/checkpoint.jl" = "2faea3170bb2f94c8bc112e9c13f87496946e463d51396a1620903acbcfbcff4"
+    "src/continuation.jl" = "613c5151ff09040fecd8002465a626fde5e70eb501be59aff45619044d3ae44e"
+    "src/dmrg.jl" = "94e66b1668b3bc3e502924ab8c6b11b6dd533ea5b65122ddc040d18fe0217012"
+    "src/extended_model.jl" = "3db76c474147afbee04d04e56db5e34e318cf485e18f74858898539a903eb120"
+    "src/lattice.jl" = "15d9ea5bea1514f49b36ac45bc139489fd6c6c03b00dff4e836d3d3e3aa7b2ec"
+    "src/model.jl" = "ec57b01141fd90a4938fc22d2833bd7a3ddfa107a107fb083753a4a39e91f58b"
+    "src/observables.jl" = "dfc48cc85a2cc6f51c99e4a58dc64f7709fad9f3834136e9fa915659147b29f8"
+    "src/provenance.jl" = "6a027b5383f70bded31c3477fb113044b55a991a37cc74ecd3daa5c7e99dc81a"
+    "src/schmidt.jl" = "13517078685ce1e1ca43b6200cbc61ff7aa6113757fa61ed9fcee4dfee3cbd0a"
+    "vendor/NDTensors/Project.toml" = "59d3d69bcb46b7af4386ea455483ac9419fcc89b169f21d6a2b6b0c1eb3a7c87"
+    "vendor/NDTensors/ext/NDTensorsAMDGPUExt/NDTensorsAMDGPUExt.jl" = "bb1acaffbbfac3b92a001f60d1025593df8fb4c8f00cfba30181fa74b84aa14d"
+    "vendor/NDTensors/ext/NDTensorsAMDGPUExt/adapt.jl" = "d8aa0643a3c9798ff4d9fed8949c34029b1407b805fa97384bff4fa9ecf9b5f8"
+    "vendor/NDTensors/ext/NDTensorsAMDGPUExt/append.jl" = "063fab626a97267ef21b31cbc9df4173ed242a6b6c2e8b26a34a626197c197af"
+    "vendor/NDTensors/ext/NDTensorsAMDGPUExt/copyto.jl" = "c2cf9fea12a743bf002de9cd22d1e857244108380665c520533b21f6fb2b8b4d"
+    "vendor/NDTensors/ext/NDTensorsAMDGPUExt/indexing.jl" = "3b0455a0677f5bb192244c821d6eb5dcdf0301f2b6f5e2d0a50a296469cbe6b5"
+    "vendor/NDTensors/ext/NDTensorsAMDGPUExt/linearalgebra.jl" = "9fb2bb3c028b92e20f5283c74b617567575ec2329a0b417bd938579ef52ccbb9"
+    "vendor/NDTensors/ext/NDTensorsAMDGPUExt/mul.jl" = "fdb4bdaa980ada17fe6d43eef03c30c735e3a76671b28fc059d688c85ecff355"
+    "vendor/NDTensors/ext/NDTensorsAMDGPUExt/permutedims.jl" = "e65ec0ce70cbd50fae5c5e659479b06e3776e28836b42626d485df29a8bb54df"
+    "vendor/NDTensors/ext/NDTensorsAMDGPUExt/set_types.jl" = "f3f39efbacd0da22e0685758cbc067db85cfeb0671f500ac94871f0de489fac9"
+    "vendor/NDTensors/ext/NDTensorsCUDAExt/NDTensorsCUDAExt.jl" = "c2be69a4f4562d15ddfaf709d1ff78fbbfa6869d0a361d371a58063a80697e09"
+    "vendor/NDTensors/ext/NDTensorsCUDAExt/adapt.jl" = "bbbd1a16b485eaa40f91a7ea25eb1079aedd7e2a82656533f072e70dced42f2f"
+    "vendor/NDTensors/ext/NDTensorsCUDAExt/append.jl" = "3c6d3da547c826d9f137cd9ab8c9549d97282d5d89d9ebf4467fb7be019032fa"
+    "vendor/NDTensors/ext/NDTensorsCUDAExt/copyto.jl" = "96fafee4f759697e78fd0b4cacf94489130e531ba150b91900a4775a458bf7eb"
+    "vendor/NDTensors/ext/NDTensorsCUDAExt/default_kwargs.jl" = "58b93e96de1142122f22e6e18c2c9c96a55de605bd59f9170ec49dea16c23eb8"
+    "vendor/NDTensors/ext/NDTensorsCUDAExt/indexing.jl" = "2585ee449609317792f7c91c27756d6b9b3b1af62c9f870ea1595d881120a371"
+    "vendor/NDTensors/ext/NDTensorsCUDAExt/iscu.jl" = "eac86157ecfc52cb3294ee253a18eb7c1848d4b0d2555b757159a9420fed67af"
+    "vendor/NDTensors/ext/NDTensorsCUDAExt/linearalgebra.jl" = "b0db2ce8390966d028729c8ba20b086c2d488c953c2833f171086abb134a3cc3"
+    "vendor/NDTensors/ext/NDTensorsCUDAExt/mul.jl" = "bb5a63ba0f60fb5c060a34aa5b1867aa15d5de2681673393982be28d187c6d4d"
+    "vendor/NDTensors/ext/NDTensorsCUDAExt/permutedims.jl" = "b08a6bcea0aa1ae69017ac0629cd72f1c69827f81d44f17232ae8468d4a8db7d"
+    "vendor/NDTensors/ext/NDTensorsCUDAExt/set_types.jl" = "03311e18a80634f5e59c39329c5a33ea33c05d227f510a70de7a4a76b74cfa0b"
+    "vendor/NDTensors/ext/NDTensorsGPUArraysCoreExt/NDTensorsGPUArraysCoreExt.jl" = "9cd9b5eb73583b656d301d0aab1b6c75466e913ccec28e0f7af66c532381773c"
+    "vendor/NDTensors/ext/NDTensorsGPUArraysCoreExt/blocksparsetensor.jl" = "7f09e9551d323b533ecec0756e0968541481d9f27f7f0d41bada7ce920229e3c"
+    "vendor/NDTensors/ext/NDTensorsGPUArraysCoreExt/contract.jl" = "acb83f46c5ead56ce5ecd1cbbff8d9c4f38339931637198d45561023a8823bc9"
+    "vendor/NDTensors/ext/NDTensorsHDF5Ext/NDTensorsHDF5Ext.jl" = "1e1c233183cb0b8c3e624eebcbab8b437fe6db79f7776938acfd545d93c36de7"
+    "vendor/NDTensors/ext/NDTensorsHDF5Ext/blocksparse.jl" = "04abf715f0d956f4fbc770450c939a4a8cf1b921a3f7f9a81536d068605bb282"
+    "vendor/NDTensors/ext/NDTensorsHDF5Ext/dense.jl" = "219e28b4a9a845eed582ba2508d98b703c36e64a1c6714330cb90812f50f5b47"
+    "vendor/NDTensors/ext/NDTensorsHDF5Ext/diag.jl" = "c8783890968f1c146aee3bccf636530ee23426d39301ee4a54884cf1f1309f04"
+    "vendor/NDTensors/ext/NDTensorsHDF5Ext/empty.jl" = "878d058d51c63222082a1abcda33d022cfa830176f168ae9bd04291ff6c87854"
+    "vendor/NDTensors/ext/NDTensorsJLArraysExt/NDTensorsJLArraysExt.jl" = "c52d0e1359ff2245acf3da6499c74f5b5c1a0c94da6417839a7ce81532b7a25f"
+    "vendor/NDTensors/ext/NDTensorsJLArraysExt/copyto.jl" = "3845eefcfe25c541115f93ff25454f0a45bf196e04b68382e331fce14c9295e7"
+    "vendor/NDTensors/ext/NDTensorsJLArraysExt/indexing.jl" = "5fc8f8ad3ac50a44a4c198f5646aba9a85b4988b601982da61a7a49a772c6dcb"
+    "vendor/NDTensors/ext/NDTensorsJLArraysExt/linearalgebra.jl" = "a1573a844829ee4d0069275be5803d5038b58ca026abe6eed6d820c8acb78d41"
+    "vendor/NDTensors/ext/NDTensorsJLArraysExt/mul.jl" = "72e3e6e22d1d5e6c006e3a82f8aaf5559b7f88bb27cb88ad7b380d557a2b9632"
+    "vendor/NDTensors/ext/NDTensorsJLArraysExt/permutedims.jl" = "3acb431354be8599e802bb100c499f17680c31e05260a6d1c0277132e9b774b2"
+    "vendor/NDTensors/ext/NDTensorsMappedArraysExt/NDTensorsMappedArraysExt.jl" = "9ad0b0aed6d7fad2483c7832bbb0e64f62ccfd2db28a02d8ff821bfdadd76cf6"
+    "vendor/NDTensors/ext/NDTensorsMetalExt/NDTensorsMetalExt.jl" = "3c0a3e75578417edc321b9ac0388f5a715acde4d11f3f79282580cee67c50fef"
+    "vendor/NDTensors/ext/NDTensorsMetalExt/adapt.jl" = "8abdb539d3f47701f32e3805b0f22188ffe09fccb6ad0037f140e863cf7c944b"
+    "vendor/NDTensors/ext/NDTensorsMetalExt/append.jl" = "f959252459f5de9815cfd9769f091b2c1bb3e42832174e0a0dcf0556cbb2daa7"
+    "vendor/NDTensors/ext/NDTensorsMetalExt/copyto.jl" = "89e61ab070b7500a54dda539c2532ef6cedc69615cef159c1e6b68631f8d7853"
+    "vendor/NDTensors/ext/NDTensorsMetalExt/indexing.jl" = "a9980cb384868bc7a7253d5bb3868bc0dc30910d1ecf836a1be78333d0d89ee4"
+    "vendor/NDTensors/ext/NDTensorsMetalExt/linearalgebra.jl" = "a3f2cd3e72254c33b3f5728fed9bbb7bc8ef45dcf37000d7788bc230fcc18cc9"
+    "vendor/NDTensors/ext/NDTensorsMetalExt/mul.jl" = "a40ab18645e079125811c6e25d3fcf9ce1a7c817691b22a659ab309b19f15629"
+    "vendor/NDTensors/ext/NDTensorsMetalExt/permutedims.jl" = "008d467a5cbc59ddd4859a7313749f941cc615043c6e7222fa48f733086f01c7"
+    "vendor/NDTensors/ext/NDTensorsMetalExt/set_types.jl" = "6b4b915b4ea4b7c843e780be8f846cad4bfce85a3ecb59bbf7efff7eaff5cc74"
+    "vendor/NDTensors/ext/NDTensorsOctavianExt/NDTensorsOctavianExt.jl" = "da1dc0f60d567fc36f46f4cfbac218d618b76db3c760e5392c774c19acf72663"
+    "vendor/NDTensors/ext/NDTensorsOctavianExt/import.jl" = "f2d8a4be22d07849ec3ea5274e02f310dfedd90bfed960d4441e5c69556a43a6"
+    "vendor/NDTensors/ext/NDTensorsOctavianExt/octavian.jl" = "979931868e2b22652b2825eb73aa187e5da409a61d508889f17de7d8e6efee48"
+    "vendor/NDTensors/ext/NDTensorsTBLISExt/NDTensorsTBLISExt.jl" = "5b613aedc8141e47c57011f92609657d932496fe3bf5651d6e3e29c5b148240e"
+    "vendor/NDTensors/ext/NDTensorsTBLISExt/contract.jl" = "db281c3a609e01e909595dd46db2f1c546234a80510bbb4ae7c52bfc17829471"
+    "vendor/NDTensors/ext/NDTensorscuTENSORExt/NDTensorscuTENSORExt.jl" = "d550d70ebaff58ad9f2fbe752e7e79fc5f37d8b6ff0b246db01e17f2e1fb3190"
+    "vendor/NDTensors/ext/NDTensorscuTENSORExt/contract.jl" = "0e87d4952463e12b815fa44b6cd297d4c618e963dbcb870195af8387ec0601ef"
+    "vendor/NDTensors/src/NDTensors.jl" = "93c116350d38bd51a23896b892a09554b80c4f60606a66af532c85e9316903ed"
+    "vendor/NDTensors/src/abstractarray/diaginterface.jl" = "dafc569213a1ef7faefa0602a836caf036645170631fd40ba2c0f511ecf9ffe0"
+    "vendor/NDTensors/src/abstractarray/generic_array_constructors.jl" = "377bbc3565a58ebcacce575fb3038458c990b31038f45a388d75563d2eb4d3e3"
+    "vendor/NDTensors/src/abstractarray/iscu.jl" = "a4db07b5b7bf728fd27004e568b2f428918ad39c8fd2b6ef7942f11b5eeb0e79"
+    "vendor/NDTensors/src/abstractarray/mul.jl" = "cdfeab2363d527ab3dcb0077e44b61bdf338fd1ea28c3d7e844adf826893ee0d"
+    "vendor/NDTensors/src/abstractarray/permutedims.jl" = "fbf318e87d0ba11fafd55ce545a05bee96e5900292a20a885f810519f8155ae1"
+    "vendor/NDTensors/src/abstractarray/set_types.jl" = "c5897f70892af64f9de9fbc0e7fbc7b171079bfaed01c054e72fa7d99c58523e"
+    "vendor/NDTensors/src/abstractarray/similar.jl" = "2a6fa581a450b2cbb705cd1dbca84930a54a0290934bfb3f424ad7c7f1c9f0f2"
+    "vendor/NDTensors/src/abstractarray/tensoralgebra/contract.jl" = "2ca9c0080c960d381e850153ebb7f1aeac3487f6fe339c4182a24ef0dd9b440c"
+    "vendor/NDTensors/src/abstractarray/to_shape.jl" = "902d5b8c92b0f1a2bdb6320d1a4ecb6a8ff01aa391bce372215fcd8c9e09cfe3"
+    "vendor/NDTensors/src/adapt.jl" = "703430e951574cc2213197db19872e4cce4731f5683dc66a067e15b14cd43ded"
+    "vendor/NDTensors/src/aliasstyle.jl" = "37b9abfaf80131020f72a518a454ed1404dabcfdac579c19d012fb0428644dbd"
+    "vendor/NDTensors/src/array/mul.jl" = "b289d62407d9013511623a21d2bab0234f9aeab86a4e8b3075e0261aad2fff07"
+    "vendor/NDTensors/src/array/permutedims.jl" = "cd1c04c0b1454f105eac0499413ea8a441641220b498812ce68e9b00453246bc"
+    "vendor/NDTensors/src/blocksparse/adapt.jl" = "02cac5677ab74ff2430f7e32a8580e7b5cd4cb15d1f02b210c062148ff03aa5e"
+    "vendor/NDTensors/src/blocksparse/block.jl" = "87a64296109a7b5a31f334f207c70c313b28cbd20759151ac79a84eda3abb224"
+    "vendor/NDTensors/src/blocksparse/blockdims.jl" = "150dc643646b655b35c9747618e09cc96cb9fec174d9465e83329d8059227096"
+    "vendor/NDTensors/src/blocksparse/blockoffsets.jl" = "c7ed7c47f72114478552833472ffd4b53b70c8a53ed89044cf6b5ef123ae2f2e"
+    "vendor/NDTensors/src/blocksparse/blocksparse.jl" = "688917f03103228bbd16afd731dcba418925d47e73862d2a41d5e59e7886d93e"
+    "vendor/NDTensors/src/blocksparse/blocksparsetensor.jl" = "2c85d550bf5b36f0e6b38c8dc2ae8f4733ec48bd119803cdde9456f7119289c7"
+    "vendor/NDTensors/src/blocksparse/combiner.jl" = "0206a11fd7e4bf672e567ce98ab3b52accbcfca5a487daaf130c9f683ed4b2a4"
+    "vendor/NDTensors/src/blocksparse/contract.jl" = "6b5e86ef8621732d67471fa43bb0c528088351d3379c72b476c571ffd329bee4"
+    "vendor/NDTensors/src/blocksparse/contract_generic.jl" = "4b2861b60a9e122a91c2a5325955bd21c9812ae7281875a25ac5832333d29c7d"
+    "vendor/NDTensors/src/blocksparse/contract_sequential.jl" = "33a8c02b9da93aa7a77291134681860051de2069662e5db005e746348825dd67"
+    "vendor/NDTensors/src/blocksparse/contract_threaded.jl" = "86a30e45a582e0316626822f3f9a65d4b7fa67f408af97db9c69b778c68050c6"
+    "vendor/NDTensors/src/blocksparse/contract_utilities.jl" = "9174a6a4022b6b5269c67ced65a8e6bd0fffc8c8368c5f9571d852de76d9d5b8"
+    "vendor/NDTensors/src/blocksparse/diagblocksparse.jl" = "565c6f0cd87b3fc3e5cc0ddeb52524567530152629e5a9bb379ba93f57bb2d20"
+    "vendor/NDTensors/src/blocksparse/fermions.jl" = "26af87d934bc9b167fdb92c5f38ba9c76d213933e9506b2fb91a6fafe67e13fc"
+    "vendor/NDTensors/src/blocksparse/linearalgebra.jl" = "fde39b44654889cef82b2fe1f330e03d814b16d1bb786a801ae176ebbb3d880b"
+    "vendor/NDTensors/src/blocksparse/similar.jl" = "2ecf8a7b0afe013be4c9fd06d417cf91e957f09f49b41f2a90c9333d1a1a16af"
+    "vendor/NDTensors/src/blocksparse/truncate_spectrum.jl" = "3f5b958c7878288619b7bc64f2449a5c36c2b9587e7906a20488448ef27a2a8b"
+    "vendor/NDTensors/src/combiner/combiner.jl" = "4a0e1e9eb7a3ae941bfdf389db0d310824f24c278aa59e6471e662a9ab66b19f"
+    "vendor/NDTensors/src/combiner/contract.jl" = "efd57cea1168a7e13401a0ae9b05e3ea119d47dd3a7134f53fe4974c3d647bac"
+    "vendor/NDTensors/src/default_kwargs.jl" = "48a588e7cfcfeec1f13cb3de4b0e8359164de14da21710083499afbd7402e1b5"
+    "vendor/NDTensors/src/dense/dense.jl" = "114ea60f15bd54b422f95234b11b86e57a822a1740130734813116f6a8ebac21"
+    "vendor/NDTensors/src/dense/densetensor.jl" = "eb656cf8d9af846c1e8fa268f18458939296995aed805a7a6e86aa7f4a5d9e8d"
+    "vendor/NDTensors/src/dense/generic_array_constructors.jl" = "47b3ba9ae03dfe3bf24756804b657b37413654f598d8b98c42b4b354a33dfdae"
+    "vendor/NDTensors/src/dense/linearalgebra/decompositions.jl" = "6a0d32e99fe1b0aa70ed04f803aed53d66fc0127253d312a445ee092753b43e9"
+    "vendor/NDTensors/src/dense/set_types.jl" = "1dc6576102a723c2dbb6578a7555f7d1a3b5bafe4ba0d5c5325b77703e245ff5"
+    "vendor/NDTensors/src/dense/tensoralgebra/contract.jl" = "6e130bff906e28909b0027fdf2ac99bf8274503039c83bf2773878c603cb70ab"
+    "vendor/NDTensors/src/dense/tensoralgebra/outer.jl" = "95feeda74e5bd9186769c9573909e8a83c8238b6c0df476817d263807235245c"
+    "vendor/NDTensors/src/deprecated.jl" = "32c8a23e3f8971a7a14e82dbcfbdfbfdf523eafd5d5db495a61016a45d0a7f14"
+    "vendor/NDTensors/src/diag/diag.jl" = "4d86cc755b5c2100cd7c1ce56a4107dce686f913c3b22a721e643387f5f2d106"
+    "vendor/NDTensors/src/diag/diagtensor.jl" = "a85308112964847e38ede59e26341561e4bd6dbf6873dd740598fb8a4150a6a0"
+    "vendor/NDTensors/src/diag/set_types.jl" = "eae287d3a100a7e3fb2896fca49a3642f92d4ed0d55fb2d08d974ae4781449a3"
+    "vendor/NDTensors/src/diag/similar.jl" = "196bc09444f3b2313adc26fee80da2f49b1501cf663155bfd6fd1e559ce0148a"
+    "vendor/NDTensors/src/diag/tensoralgebra/contract.jl" = "397d27c466bcf5fe3dd8e88deb196ba3d4a70b6773cc800297287f6e5145eb96"
+    "vendor/NDTensors/src/diag/tensoralgebra/outer.jl" = "f29c15122ffe7b8bd15ea47dba3c34dbf2a3fb3b4268d38a1398a54ca585d715"
+    "vendor/NDTensors/src/dims.jl" = "a58a06bf0f6e75706257249743ad9cebdb361a20949e9ba691642c736835daee"
+    "vendor/NDTensors/src/empty/EmptyTensor.jl" = "73af0d8585bed3922717d34eb426b03689adb90e962c9a4cb2e26f6726fbdc68"
+    "vendor/NDTensors/src/empty/adapt.jl" = "5866d1124f4ae6d5474f7a71ec6d6178e2b009e02b4d26e7a680fe90e6edecf7"
+    "vendor/NDTensors/src/empty/empty.jl" = "749946e78eb9b6506cd20d9f86a460b867b3184e6ebbf0cd79c2368f0cf786cc"
+    "vendor/NDTensors/src/empty/tensoralgebra/contract.jl" = "e998e877e4600b116d47ce946e8cd98211d0cf92e524adc654f7db8deaa1190f"
+    "vendor/NDTensors/src/emptynumber.jl" = "18a15b78659bb2612c92a84449a45a7dc30388900286e1d57a559688b19fec52"
+    "vendor/NDTensors/src/exports.jl" = "5780406d52a704d209d3160f4558159ddfa841f347ec36bfd6d038ec92770648"
+    "vendor/NDTensors/src/imports.jl" = "fa0ebef6a1db4ad0b6bdecea2c17e82ed26c20c473006e3016b9a5f08f313c04"
+    "vendor/NDTensors/src/kagome_source_identity.jl" = "8aafb41dceea0bcdf042fa981f73a024f8a02f24d82e5dc1981f7f5631fd8543"
+    "vendor/NDTensors/src/lib/AMDGPUExtensions/.JuliaFormatter.toml" = "7dcb26f6bc8dd8a9ddb2efdcd31fc918d15f078ff50a83aaecd8dbf56f4bdb13"
+    "vendor/NDTensors/src/lib/AMDGPUExtensions/src/AMDGPUExtensions.jl" = "636dc90e1c2b4226cf5ec7b473b6f86f7803574353cb2215e42d45ddee5d2380"
+    "vendor/NDTensors/src/lib/AMDGPUExtensions/src/roc.jl" = "d24a448ae7b72b5167f7117fbefe0128e6dab4e64fa744d51def80db7e9dbafb"
+    "vendor/NDTensors/src/lib/AMDGPUExtensions/test/runtests.jl" = "298bb6050e8d35100f16cb678dabe29bd051598ef923e33e00217e9c04c33678"
+    "vendor/NDTensors/src/lib/BackendSelection/.JuliaFormatter.toml" = "7dcb26f6bc8dd8a9ddb2efdcd31fc918d15f078ff50a83aaecd8dbf56f4bdb13"
+    "vendor/NDTensors/src/lib/BackendSelection/src/BackendSelection.jl" = "c7d1da4c95b760078b8b4f18350c437e403c50795ad79b684e27f0b1679368dd"
+    "vendor/NDTensors/src/lib/BackendSelection/src/abstractbackend.jl" = "0fb2873af5570b1c1492e0677408a034a64a607d2c93df95abbec31ef3f2713b"
+    "vendor/NDTensors/src/lib/BackendSelection/src/backend_types.jl" = "ebcd62b00d17d16d48f6d7d941b9f2d28010ba4d162ba02a8e71140761bf5ba2"
+    "vendor/NDTensors/src/lib/BackendSelection/test/Project.toml" = "6028c353382f17791c029e17fe16b661cd81873e181a609caf3ed60b60560e1b"
+    "vendor/NDTensors/src/lib/BackendSelection/test/runtests.jl" = "46f712cfacfe4091b35ef5ecbd91c3f7388df6f76e571ba4a16ae6aa03ccd8c5"
+    "vendor/NDTensors/src/lib/CUDAExtensions/.JuliaFormatter.toml" = "7dcb26f6bc8dd8a9ddb2efdcd31fc918d15f078ff50a83aaecd8dbf56f4bdb13"
+    "vendor/NDTensors/src/lib/CUDAExtensions/src/CUDAExtensions.jl" = "50d3e5fede2305e521da55a51fe7a12efd53e93b962c5197c73fd86bf45bd1d4"
+    "vendor/NDTensors/src/lib/CUDAExtensions/src/cuda.jl" = "9c1a2ab1e413281d124009d36835f26ba8131e62706dbbdb2b6f18acd0adf58c"
+    "vendor/NDTensors/src/lib/CUDAExtensions/test/runtests.jl" = "a850ccd891344cbb1384b9322932d1bf43d0140ae47d8722e85b004af3553e90"
+    "vendor/NDTensors/src/lib/Expose/.JuliaFormatter.toml" = "7dcb26f6bc8dd8a9ddb2efdcd31fc918d15f078ff50a83aaecd8dbf56f4bdb13"
+    "vendor/NDTensors/src/lib/Expose/README.md" = "dfc15377f47fbf8463c35779f88e329ae237e0ff0122509700b5810573dca132"
+    "vendor/NDTensors/src/lib/Expose/TODO.md" = "f568062cfd9a4f0a3241512f85d31bac9ffa3b9117efae1ed5a814fa0afe7dec"
+    "vendor/NDTensors/src/lib/Expose/src/Expose.jl" = "1873ff885d771dde4de13ee2566444f20b3fb50b8adedc7486ad26d7b3198726"
+    "vendor/NDTensors/src/lib/Expose/src/exposed.jl" = "688e7cb2db3a68ff97bae652640ffbd0e931ba4148edab29d13a12546bdf043a"
+    "vendor/NDTensors/src/lib/Expose/src/functions/abstractarray.jl" = "7acf81bb297f49240446f4f61d31b85d297b3335cc97b49bd220693a48f1679c"
+    "vendor/NDTensors/src/lib/Expose/src/functions/adapt.jl" = "fc6a78e161b3cc7097c51b29b157f33d314bd262077597a02e27bac044c3e5e3"
+    "vendor/NDTensors/src/lib/Expose/src/functions/append.jl" = "ff04c35717bf2addfebbff5b6c65780f6a844714a56b1d2b221250d874e0693d"
+    "vendor/NDTensors/src/lib/Expose/src/functions/copyto.jl" = "0e9cd5ebf64e832adf111d3e585ca33e3e7eb2865f868885a06df3a8d5bcbc0f"
+    "vendor/NDTensors/src/lib/Expose/src/functions/linearalgebra.jl" = "ac9aa39e22dd459de607ed2198ff57772e1e4fa85e861375eda20945152d4525"
+    "vendor/NDTensors/src/lib/Expose/src/functions/mul.jl" = "a0f4d99444b0471765fccdde61216ed8f5b91d6cc38b2df4719f2e66b8738850"
+    "vendor/NDTensors/src/lib/Expose/src/functions/permutedims.jl" = "ec3577180b019f360ad85e3c7759f282b094c01b45144799b10267ff4c65c1ca"
+    "vendor/NDTensors/src/lib/Expose/src/import.jl" = "c53b91ca346fe1e3067d3cfea41359ca27b157d5088a405ba2c23447d1399044"
+    "vendor/NDTensors/src/lib/Expose/test/Project.toml" = "4b2187c8580ca3f1ca4492f89229019fa1a743b5ad35e83fb32aec866bcd42b5"
+    "vendor/NDTensors/src/lib/Expose/test/runtests.jl" = "2ee83b1fcd4bf7d47b9da29b9b4f9a674e19d55cdcd0d6da3ae8e249a7e411a2"
+    "vendor/NDTensors/src/lib/GPUArraysCoreExtensions/.JuliaFormatter.toml" = "7dcb26f6bc8dd8a9ddb2efdcd31fc918d15f078ff50a83aaecd8dbf56f4bdb13"
+    "vendor/NDTensors/src/lib/GPUArraysCoreExtensions/Project.toml" = "e0267f2c0f73dd928edc0daea60aae622f0e2244da9f990333e45b0586e4e6c6"
+    "vendor/NDTensors/src/lib/GPUArraysCoreExtensions/src/GPUArraysCoreExtensions.jl" = "5de26f3c1e1712e69ae4264a1f6ee02f7f08ecf9c35fc937dafe95fa352f3641"
+    "vendor/NDTensors/src/lib/GPUArraysCoreExtensions/src/gpuarrayscore.jl" = "7fdc8fdb5951a674c32bfb79592788e91e4113bb78099178d9a6950742d655fa"
+    "vendor/NDTensors/src/lib/GPUArraysCoreExtensions/test/runtests.jl" = "8755efad84f4ebb5a4ef825f3ed3b276eb4e20de3bf5d08792042d6b2da09d6f"
+    "vendor/NDTensors/src/lib/MetalExtensions/.JuliaFormatter.toml" = "7dcb26f6bc8dd8a9ddb2efdcd31fc918d15f078ff50a83aaecd8dbf56f4bdb13"
+    "vendor/NDTensors/src/lib/MetalExtensions/src/MetalExtensions.jl" = "16ed92900cd973ab8ccc4be31d446bbf291d55cb2ae48676f7d499b99d8f86fb"
+    "vendor/NDTensors/src/lib/MetalExtensions/src/metal.jl" = "e1b799e61c9349bdd631e77ddeabae63e79d7a3f1c1475f1fa55876a95a2dbe6"
+    "vendor/NDTensors/src/lib/MetalExtensions/test/runtests.jl" = "860df1edc08553a8815c5631be7944909a539b802fb612c4aaf6066a37b5f665"
+    "vendor/NDTensors/src/lib/RankFactorization/.JuliaFormatter.toml" = "7dcb26f6bc8dd8a9ddb2efdcd31fc918d15f078ff50a83aaecd8dbf56f4bdb13"
+    "vendor/NDTensors/src/lib/RankFactorization/src/RankFactorization.jl" = "97b0e57d4bae6f04d8391c61d97c2fce0cf856249f72bcb24f995ce875582de9"
+    "vendor/NDTensors/src/lib/RankFactorization/src/default_kwargs.jl" = "48a588e7cfcfeec1f13cb3de4b0e8359164de14da21710083499afbd7402e1b5"
+    "vendor/NDTensors/src/lib/RankFactorization/src/spectrum.jl" = "33f3df88dc5464ea24192f459d2bd962af2107339187f7f094ad9333eb18ac3e"
+    "vendor/NDTensors/src/lib/RankFactorization/src/truncate_spectrum.jl" = "f17a8bf3795f08f8c8b7fe4446ede6f91b3e3144471fd039f9e26776a8de4c1b"
+    "vendor/NDTensors/src/linearalgebra/linearalgebra.jl" = "395a7d6db964aa0c8bddc37752d8d89a2cf13d1679c6569c2c0a4108435e90b3"
+    "vendor/NDTensors/src/linearalgebra/svd.jl" = "682f12af30e8a7e215b38d67af071db3e0f53e17ac2dfcc3c2dc7f828514ddc5"
+    "vendor/NDTensors/src/linearalgebra/symmetric.jl" = "7d2b80f41ef1a370a673c8bdd951224ff3c6c94bc0089528f94c4b00cbef1349"
+    "vendor/NDTensors/src/nodata.jl" = "8cd0c0d0fe97d6007c364561a180037199a4852e8da8e12e7dc17df0086f82c5"
+    "vendor/NDTensors/src/tensor/set_types.jl" = "14baee12a641bad6631b7c268bb92102b066a13ee16e4908d2819db42e01f27c"
+    "vendor/NDTensors/src/tensor/similar.jl" = "ac6c5231858c06cc7bef492c461db583b191645e3e3daef61f463d2a87f635cd"
+    "vendor/NDTensors/src/tensor/tensor.jl" = "2fb8ab3c1eba14d556963f8b231b91f4e8d6235a3f7f349530db4b15bda6b2b9"
+    "vendor/NDTensors/src/tensoroperations/contraction_logic.jl" = "13183fce7f3935e46b6045abcf6939a686187c65cd050298f21a57d13abe1ce3"
+    "vendor/NDTensors/src/tensoroperations/generic_tensor_operations.jl" = "4f185ec78d7d2fd43a5b825b37738c7110da0b8cb3d90b52a51a2a3af36357d0"
+    "vendor/NDTensors/src/tensorstorage/default_storage.jl" = "165385a10b9d429d177382f1be85bb05993af6236d615d15f453febfdfd68a4b"
+    "vendor/NDTensors/src/tensorstorage/set_types.jl" = "2b3e1d4b912e1c1bf59a297fb764f7f2de329504b59178c756c6f015ffb3a229"
+    "vendor/NDTensors/src/tensorstorage/similar.jl" = "5df277863e03c364d1c542f590b55b824bc7c59fd80d4cbbe235c541026fbbf5"
+    "vendor/NDTensors/src/tensorstorage/tensorstorage.jl" = "4de5792ce6f2b4428de4312931542f90f899bbea324712ee745aa8c46f532bbd"
+    "vendor/NDTensors/src/truncate.jl" = "29526042ddab5a0a99f185ff422654642c552bc654f7a871593022c3aff1ded3"
+    "vendor/NDTensors/src/tupletools.jl" = "fac0b91a445c0843fff057ad6ff9dede713f68d9945155a99f7b322d4e4e5f7d"
+
+[comparison_with_parent]
+after_cumulative_sweeps = 4
+before_cumulative_sweeps = 2
+bond_energy_change = [-0.1592866917889192, 0.11890981636231251, -0.023018460977567656, -0.006445156483127601, -0.15109576892991727, -0.10426920018575256, 0.0772599496708358, -0.06250092174317676, -0.044239085778274734, -0.021412556901682964, -0.04890702751823382, 0.11441363114337708, -0.14353241111133527, -0.042014848913569214, -0.18208046852857418, -0.09241623043754327, 0.08869737641653362, -0.10553363268794341, -0.2697137876349666, 0.3514400393732263, 0.23171713007986747, -0.023319531864890164, -0.03063994779023116, 0.02501875809878651, -0.07890461625825143, 0.09465207414129384, 0.15300817683932438, 0.21601817270287, -0.3870827143027084, 0.148873495910059, -0.09690019292138924, 0.2641413021134314, -0.10641048535409411, 0.3645406505212172, -0.19759630335586414, -0.11749819305952583, 0.09074730760558238, -0.34971546152837035, 0.23563358249748775, -0.052353721711079486, -0.16981840004519377, -0.1833942509191711, 0.05347496819159103, -0.11303331268393563, -0.1243624053962655, 0.26306147801304963, -0.15244443770118213, 0.2737963833170574]
+column_sz_change = [-0.953623546037242, 0.4346420527572457, 0.5189814932800018]
+energy_change = -0.4745359315148576
+energy_per_site_change = -0.017575404870920654
+interpretation = "fixed_theta_optimization_change_not_flux_pump"
+maximum_bond_energy_change = 0.3870827143027084
+maximum_sz_change = 0.38786164746903706
+maxlinkdim_after = 256
+maxlinkdim_before = 64
+normalized_overlap = 0.06686699071505502
+raw_variance_change = -0.30696491511228885
+sz_profile_change = [-0.027030886057220038, -0.38786164746903706, 0.07117285105011302, -0.12637629529272218, -0.07998777445694805, -0.08424985412334897, 0.036265000101252186, -0.3220194376934006, -0.033535502095930564, 0.010770382339728365, 0.05797402844094543, 0.015788219832227144, -0.009910590423079745, 0.030005123134756933, 0.08891654624538387, 0.04695269614885258, 0.07744689576679673, 0.11669875127163438, -0.03925465618419926, 0.2762884377494556, -0.08663924820356425, 0.12688942302430858, 0.0891052898941469, -0.031008411473361572, -0.07596095294664892, 0.18328146619269708, 0.07628014522716764]
+variance_after = 0.008497959029512003
+variance_before = 0.31546287414180085
+
+    [[comparison_with_parent.schmidt_changes]]
+    bond = 9
+    charge_probability_after = [8.174136103504791e-7, 0.0029538371113084633, 0.13609550788932206, 0.7460262677540902, 0.11462592606338205, 0.0002975657865746337, 7.798171234059549e-8, 0.0]
+    charge_probability_before = [0.0, 3.3352686134944483e-10, 0.00013282279086651198, 0.07413977418241195, 0.9244837325715376, 0.0012427162183741825, 9.538973573135664e-7, 5.9253922058531245e-12]
+    charge_probability_change = [8.174136103504791e-7, 0.0029538367777816018, 0.13596268509845555, 0.6718864935716783, -0.8098578065081555, -0.0009451504317995489, -8.759156449729709e-7, -5.9253922058531245e-12]
+    charge_values = [-5, -3, -1, 1, 3, 5, 7, 9]
+    entropy_change = 1.1154930780747543
+    mean_left_sz_change = -0.9536235460372415
+    variance_left_sz_change = 0.19245260505444242
+    [[comparison_with_parent.schmidt_changes]]
+    bond = 18
+    charge_probability_after = [3.702217060035844e-6, 0.002889371994258405, 0.2034160403550275, 0.7132698252124307, 0.07985873087645368, 0.0005622945957452379, 3.4749024321168473e-8]
+    charge_probability_before = [1.2101335767556843e-8, 4.8485368472001535e-5, 0.026317333080987697, 0.5644934820327947, 0.4011088373463945, 0.008031020834211533, 8.292358038728207e-7]
+    charge_probability_change = [3.690115724268287e-6, 0.0028408866257864035, 0.1770987072740398, 0.14877634317963595, -0.32125010646994084, -0.0074687262384662955, -7.944867795516522e-7]
+    charge_values = [-4, -2, 0, 2, 4, 6, 8]
+    entropy_change = 0.0828157164499792
+    mean_left_sz_change = -0.5189814932799972
+    variance_left_sz_change = -0.026385081077940464
+
+[configuration]
+Lx = 3
+Ly = 3
+N = 27
+Q = 3
+axis_boundary = "open"
+bond_family_convention = "J1_nn_J2_second_J3_hexagon_opposite_other_unclassified"
+charge_convention = "q=2Sz"
+circumference_boundary = "periodic"
+exchange_phase = "S+_i_S-_j_has_exp(+im*bond_phase)"
+gauge = "seam"
+hz = [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+ordering = "x_then_y_then_A_B_C"
+termination = "complete_cells_with_outgoing_open_axis_bonds_removed"
+wrap = [1.5, 2.598076211353316]
+
+    [[configuration.bonds]]
+    Jxy = 1.0
+    Jz = 1.0
+    family = "J1"
+    i = 1
+    j = 2
+    wy = 0
+    [[configuration.bonds]]
+    Jxy = 1.0
+    Jz = 1.0
+    family = "J1"
+    i = 1
+    j = 3
+    wy = 0
+    [[configuration.bonds]]
+    Jxy = 1.0
+    Jz = 1.0
+    family = "J1"
+    i = 2
+    j = 3
+    wy = 0
+    [[configuration.bonds]]
+    Jxy = 1.0
+    Jz = 1.0
+    family = "J1"
+    i = 1
+    j = 9
+    wy = -1
+    [[configuration.bonds]]
+    Jxy = 1.0
+    Jz = 1.0
+    family = "J1"
+    i = 2
+    j = 18
+    wy = -1
+    [[configuration.bonds]]
+    Jxy = 1.0
+    Jz = 1.0
+    family = "J1"
+    i = 4
+    j = 5
+    wy = 0
+    [[configuration.bonds]]
+    Jxy = 1.0
+    Jz = 1.0
+    family = "J1"
+    i = 4
+    j = 6
+    wy = 0
+    [[configuration.bonds]]
+    Jxy = 1.0
+    Jz = 1.0
+    family = "J1"
+    i = 5
+    j = 6
+    wy = 0
+    [[configuration.bonds]]
+    Jxy = 1.0
+    Jz = 1.0
+    family = "J1"
+    i = 4
+    j = 3
+    wy = 0
+    [[configuration.bonds]]
+    Jxy = 1.0
+    Jz = 1.0
+    family = "J1"
+    i = 5
+    j = 12
+    wy = 0
+    [[configuration.bonds]]
+    Jxy = 1.0
+    Jz = 1.0
+    family = "J1"
+    i = 7
+    j = 8
+    wy = 0
+    [[configuration.bonds]]
+    Jxy = 1.0
+    Jz = 1.0
+    family = "J1"
+    i = 7
+    j = 9
+    wy = 0
+    [[configuration.bonds]]
+    Jxy = 1.0
+    Jz = 1.0
+    family = "J1"
+    i = 8
+    j = 9
+    wy = 0
+    [[configuration.bonds]]
+    Jxy = 1.0
+    Jz = 1.0
+    family = "J1"
+    i = 7
+    j = 6
+    wy = 0
+    [[configuration.bonds]]
+    Jxy = 1.0
+    Jz = 1.0
+    family = "J1"
+    i = 8
+    j = 15
+    wy = 0
+    [[configuration.bonds]]
+    Jxy = 1.0
+    Jz = 1.0
+    family = "J1"
+    i = 10
+    j = 11
+    wy = 0
+    [[configuration.bonds]]
+    Jxy = 1.0
+    Jz = 1.0
+    family = "J1"
+    i = 10
+    j = 12
+    wy = 0
+    [[configuration.bonds]]
+    Jxy = 1.0
+    Jz = 1.0
+    family = "J1"
+    i = 11
+    j = 12
+    wy = 0
+    [[configuration.bonds]]
+    Jxy = 1.0
+    Jz = 1.0
+    family = "J1"
+    i = 10
+    j = 2
+    wy = 0
+    [[configuration.bonds]]
+    Jxy = 1.0
+    Jz = 1.0
+    family = "J1"
+    i = 10
+    j = 18
+    wy = -1
+    [[configuration.bonds]]
+    Jxy = 1.0
+    Jz = 1.0
+    family = "J1"
+    i = 11
+    j = 27
+    wy = -1
+    [[configuration.bonds]]
+    Jxy = 1.0
+    Jz = 1.0
+    family = "J1"
+    i = 13
+    j = 14
+    wy = 0
+    [[configuration.bonds]]
+    Jxy = 1.0
+    Jz = 1.0
+    family = "J1"
+    i = 13
+    j = 15
+    wy = 0
+    [[configuration.bonds]]
+    Jxy = 1.0
+    Jz = 1.0
+    family = "J1"
+    i = 14
+    j = 15
+    wy = 0
+    [[configuration.bonds]]
+    Jxy = 1.0
+    Jz = 1.0
+    family = "J1"
+    i = 13
+    j = 5
+    wy = 0
+    [[configuration.bonds]]
+    Jxy = 1.0
+    Jz = 1.0
+    family = "J1"
+    i = 13
+    j = 12
+    wy = 0
+    [[configuration.bonds]]
+    Jxy = 1.0
+    Jz = 1.0
+    family = "J1"
+    i = 14
+    j = 21
+    wy = 0
+    [[configuration.bonds]]
+    Jxy = 1.0
+    Jz = 1.0
+    family = "J1"
+    i = 16
+    j = 17
+    wy = 0
+    [[configuration.bonds]]
+    Jxy = 1.0
+    Jz = 1.0
+    family = "J1"
+    i = 16
+    j = 18
+    wy = 0
+    [[configuration.bonds]]
+    Jxy = 1.0
+    Jz = 1.0
+    family = "J1"
+    i = 17
+    j = 18
+    wy = 0
+    [[configuration.bonds]]
+    Jxy = 1.0
+    Jz = 1.0
+    family = "J1"
+    i = 16
+    j = 8
+    wy = 0
+    [[configuration.bonds]]
+    Jxy = 1.0
+    Jz = 1.0
+    family = "J1"
+    i = 16
+    j = 15
+    wy = 0
+    [[configuration.bonds]]
+    Jxy = 1.0
+    Jz = 1.0
+    family = "J1"
+    i = 17
+    j = 24
+    wy = 0
+    [[configuration.bonds]]
+    Jxy = 1.0
+    Jz = 1.0
+    family = "J1"
+    i = 19
+    j = 20
+    wy = 0
+    [[configuration.bonds]]
+    Jxy = 1.0
+    Jz = 1.0
+    family = "J1"
+    i = 19
+    j = 21
+    wy = 0
+    [[configuration.bonds]]
+    Jxy = 1.0
+    Jz = 1.0
+    family = "J1"
+    i = 20
+    j = 21
+    wy = 0
+    [[configuration.bonds]]
+    Jxy = 1.0
+    Jz = 1.0
+    family = "J1"
+    i = 19
+    j = 11
+    wy = 0
+    [[configuration.bonds]]
+    Jxy = 1.0
+    Jz = 1.0
+    family = "J1"
+    i = 19
+    j = 27
+    wy = -1
+    [[configuration.bonds]]
+    Jxy = 1.0
+    Jz = 1.0
+    family = "J1"
+    i = 22
+    j = 23
+    wy = 0
+    [[configuration.bonds]]
+    Jxy = 1.0
+    Jz = 1.0
+    family = "J1"
+    i = 22
+    j = 24
+    wy = 0
+    [[configuration.bonds]]
+    Jxy = 1.0
+    Jz = 1.0
+    family = "J1"
+    i = 23
+    j = 24
+    wy = 0
+    [[configuration.bonds]]
+    Jxy = 1.0
+    Jz = 1.0
+    family = "J1"
+    i = 22
+    j = 14
+    wy = 0
+    [[configuration.bonds]]
+    Jxy = 1.0
+    Jz = 1.0
+    family = "J1"
+    i = 22
+    j = 21
+    wy = 0
+    [[configuration.bonds]]
+    Jxy = 1.0
+    Jz = 1.0
+    family = "J1"
+    i = 25
+    j = 26
+    wy = 0
+    [[configuration.bonds]]
+    Jxy = 1.0
+    Jz = 1.0
+    family = "J1"
+    i = 25
+    j = 27
+    wy = 0
+    [[configuration.bonds]]
+    Jxy = 1.0
+    Jz = 1.0
+    family = "J1"
+    i = 26
+    j = 27
+    wy = 0
+    [[configuration.bonds]]
+    Jxy = 1.0
+    Jz = 1.0
+    family = "J1"
+    i = 25
+    j = 17
+    wy = 0
+    [[configuration.bonds]]
+    Jxy = 1.0
+    Jz = 1.0
+    family = "J1"
+    i = 25
+    j = 24
+    wy = 0
+
+    [[configuration.sites]]
+    index = 1
+    position = [0.0, 0.0]
+    sublattice = "A"
+    x = 0
+    y = 0
+    [[configuration.sites]]
+    index = 2
+    position = [0.5, 0.0]
+    sublattice = "B"
+    x = 0
+    y = 0
+    [[configuration.sites]]
+    index = 3
+    position = [0.25, 0.4330127018922193]
+    sublattice = "C"
+    x = 0
+    y = 0
+    [[configuration.sites]]
+    index = 4
+    position = [0.5, 0.8660254037844386]
+    sublattice = "A"
+    x = 0
+    y = 1
+    [[configuration.sites]]
+    index = 5
+    position = [1.0, 0.8660254037844386]
+    sublattice = "B"
+    x = 0
+    y = 1
+    [[configuration.sites]]
+    index = 6
+    position = [0.75, 1.299038105676658]
+    sublattice = "C"
+    x = 0
+    y = 1
+    [[configuration.sites]]
+    index = 7
+    position = [1.0, 1.7320508075688772]
+    sublattice = "A"
+    x = 0
+    y = 2
+    [[configuration.sites]]
+    index = 8
+    position = [1.5, 1.7320508075688772]
+    sublattice = "B"
+    x = 0
+    y = 2
+    [[configuration.sites]]
+    index = 9
+    position = [1.25, 2.1650635094610964]
+    sublattice = "C"
+    x = 0
+    y = 2
+    [[configuration.sites]]
+    index = 10
+    position = [1.0, 0.0]
+    sublattice = "A"
+    x = 1
+    y = 0
+    [[configuration.sites]]
+    index = 11
+    position = [1.5, 0.0]
+    sublattice = "B"
+    x = 1
+    y = 0
+    [[configuration.sites]]
+    index = 12
+    position = [1.25, 0.4330127018922193]
+    sublattice = "C"
+    x = 1
+    y = 0
+    [[configuration.sites]]
+    index = 13
+    position = [1.5, 0.8660254037844386]
+    sublattice = "A"
+    x = 1
+    y = 1
+    [[configuration.sites]]
+    index = 14
+    position = [2.0, 0.8660254037844386]
+    sublattice = "B"
+    x = 1
+    y = 1
+    [[configuration.sites]]
+    index = 15
+    position = [1.75, 1.299038105676658]
+    sublattice = "C"
+    x = 1
+    y = 1
+    [[configuration.sites]]
+    index = 16
+    position = [2.0, 1.7320508075688772]
+    sublattice = "A"
+    x = 1
+    y = 2
+    [[configuration.sites]]
+    index = 17
+    position = [2.5, 1.7320508075688772]
+    sublattice = "B"
+    x = 1
+    y = 2
+    [[configuration.sites]]
+    index = 18
+    position = [2.25, 2.1650635094610964]
+    sublattice = "C"
+    x = 1
+    y = 2
+    [[configuration.sites]]
+    index = 19
+    position = [2.0, 0.0]
+    sublattice = "A"
+    x = 2
+    y = 0
+    [[configuration.sites]]
+    index = 20
+    position = [2.5, 0.0]
+    sublattice = "B"
+    x = 2
+    y = 0
+    [[configuration.sites]]
+    index = 21
+    position = [2.25, 0.4330127018922193]
+    sublattice = "C"
+    x = 2
+    y = 0
+    [[configuration.sites]]
+    index = 22
+    position = [2.5, 0.8660254037844386]
+    sublattice = "A"
+    x = 2
+    y = 1
+    [[configuration.sites]]
+    index = 23
+    position = [3.0, 0.8660254037844386]
+    sublattice = "B"
+    x = 2
+    y = 1
+    [[configuration.sites]]
+    index = 24
+    position = [2.75, 1.299038105676658]
+    sublattice = "C"
+    x = 2
+    y = 1
+    [[configuration.sites]]
+    index = 25
+    position = [3.0, 1.7320508075688772]
+    sublattice = "A"
+    x = 2
+    y = 2
+    [[configuration.sites]]
+    index = 26
+    position = [3.5, 1.7320508075688772]
+    sublattice = "B"
+    x = 2
+    y = 2
+    [[configuration.sites]]
+    index = 27
+    position = [3.25, 2.1650635094610964]
+    sublattice = "C"
+    x = 2
+    y = 2
+
+[correlation_integrity_errors]
+bond_energy_sum = 1.0658141036401503e-14
+fixed_charge_zz_row = 1.2159597815226203e-15
+pm_diagonal = 2.672443215747199e-15
+pm_hermiticity = 5.30869546263353e-16
+schmidt_variance = 9.992007221626409e-16
+zz_diagonal = 9.46793157569176e-16
+zz_imaginary = 8.420777301593967e-17
+zz_symmetry = 1.2927922393653917e-16
+
+[correlations]
+pm_imag = [[0.0, -3.8471567773924404e-5, 1.6558630740774737e-5, -3.0133605408184953e-5, 2.0168454888366057e-5, -1.053948840361484e-7, 3.6454054371618074e-6, -2.680097501456963e-5, 2.1912937033746066e-5, 5.4016146517781305e-5, -3.3158105211881474e-5, 1.4285959628832091e-5, -2.394431531245654e-5, -3.865188081260393e-5, 9.281856046069863e-5, -6.735398145893527e-5, 5.34121233778976e-5, -4.464420342619381e-5, 2.7267757999445998e-5, -1.0598396739328277e-5, 9.084936689442898e-6, 4.96006535488108e-6, -2.587905724192961e-7, -1.2071457191690612e-5, -2.5262854086179388e-5, 1.8403452220136568e-5, -6.058100196431714e-6], [3.8471567773924404e-5, -3.945710219911906e-38, 3.5382178167212724e-6, 1.0431780380862993e-6, 1.2826847903905103e-5, 9.924558302103862e-6, -4.233046171002666e-6, 6.539966820447267e-5, -2.7137675667781068e-5, -0.0001479165554678019, 7.331247748399386e-5, -2.6963706894523124e-5, -6.058249768702336e-5, 0.00020684399115040338, -0.00018099940163613927, 0.0001503747914974823, -0.0001373607025635987, 0.00010590676987726543, -5.074827646233833e-5, 3.1309715306416156e-6, -2.810112930528167e-5, -4.214042362986459e-5, -3.171745836504405e-5, 6.412735986402434e-5, 5.2526902153556223e-5, -3.2887969080497305e-5, 1.9581250534821812e-5], [-1.6558630740774737e-5, -3.5382178167212724e-6, -3.522148093210335e-20, 2.0096848557108055e-5, -8.434289153660794e-6, -1.0951350831153896e-5, 3.5451996128324524e-6, -2.216529790780103e-5, 6.288611698178299e-7, 2.34557117849499e-6, 1.6464737243746612e-5, -6.298951689861746e-5, 9.110215024329099e-5, -0.00012953188314467084, 0.00010652989750119135, -4.457858342507107e-5, 4.095455150089512e-6, -2.7448793060513652e-6, 5.218499050660205e-6, 1.0495481513454672e-5, -2.0550082392078307e-6, 3.7499086646180005e-5, 9.455578656664223e-6, -3.6969265978714253e-6, -9.557304256262219e-6, 1.1909608425573975e-5, -6.75057510336267e-6], [3.0133605408184953e-5, -1.0431780380862993e-6, -2.0096848557108055e-5, 2.7297312428123268e-19, 1.0040366840011539e-5, 1.0056481717373701e-5, 3.6103433727362836e-6, 3.577583171279754e-5, -1.724028523774995e-5, -1.8157060028448892e-5, -5.3307350132819615e-6, 4.9399775484656354e-5, -7.824750998689553e-5, 0.00012726230587946743, -8.832125548434537e-5, 3.0272331018822044e-5, -1.876861115909848e-5, 1.5359991615135076e-5, -1.1805038206681767e-5, -9.320776915036034e-6, 3.787065158394716e-6, -3.873047717480821e-5, -1.724244968463777e-5, 1.6454664850935043e-5, 5.965723606782696e-6, -1.0940697386452953e-5, 7.910606383312526e-6], [-2.0168454888366057e-5, -1.2826847903905103e-5, 8.434289153660794e-6, -1.0040366840011539e-5, 5.057021360383822e-18, -2.075760618394644e-5, 1.1019940920063574e-5, -6.133917383639519e-5, 1.603396799439019e-5, -6.105490913498706e-5, 0.00011834784352979797, -0.00027837344373100517, 0.0003091714167545259, -0.00028086502319982156, 0.00015669717153750213, -7.53629300476068e-6, -3.4368434251829937e-5, 2.3615367593536627e-5, 7.117760502234787e-6, 4.717971739637912e-7, 1.4297308139702048e-5, 7.580279430994981e-5, 2.33564092660917e-5, 7.086659336030042e-6, -1.1870729022013325e-5, 1.3829244190454772e-5, -1.8416580984829684e-5], [1.053948840361484e-7, -9.924558302103862e-6, 1.0951350831153896e-5, -1.0056481717373701e-5, 2.075760618394644e-5, -1.1959121073142103e-18, -1.0701124466689127e-5, 2.3632386715616222e-5, -8.024822635233394e-6, 3.852838391322249e-5, -4.548986352576661e-5, 5.790209214060159e-5, -6.701218815734897e-5, 6.96898584696007e-5, 1.0671594586293788e-6, -3.6705704458288586e-5, 2.28508729447796e-5, -2.8299733034443778e-5, 1.3800291580686606e-5, -6.444505022752717e-6, -1.0261257008225434e-6, -1.686577612378453e-5, -9.31382937172049e-6, -5.026828564284156e-6, -8.370086702549831e-6, 9.244946116167822e-6, -1.6591060838138043e-6], [-3.6454054371618074e-6, 4.233046171002666e-6, -3.5451996128324524e-6, -3.6103433727362836e-6, -1.1019940920063574e-5, 1.0701124466689127e-5, -1.2847623290673227e-17, -2.5235948012604638e-5, 1.4534823546285129e-5, -4.02432226488734e-5, 4.563635683872336e-5, -6.107802786983498e-5, 7.30176763630053e-5, -9.681848572065964e-5, 3.228085666151335e-5, 9.717571325338044e-6, -1.4680710155907347e-6, 2.4403573311980385e-5, -2.0374755803376595e-5, 1.2482273299617993e-5, 2.3720063660724225e-6, 2.261098560414736e-5, 1.3283654319330688e-5, -4.161986319810558e-6, 2.4889849613562623e-6, -7.0934780886332e-6, 4.574396713295031e-6], [2.680097501456963e-5, -6.539966820447267e-5, 2.216529790780103e-5, -3.577583171279754e-5, 6.133917383639519e-5, -2.3632386715616222e-5, 2.5235948012604638e-5, -7.557996590695725e-18, -3.604496232723562e-5, 5.975831627248389e-5, -5.81445660457636e-5, 2.0823478874678545e-5, -6.454235048969433e-5, 3.6842220656199676e-5, 0.00018266274756445283, -0.00017185373324924623, 8.17619569411061e-5, -5.4213239779037125e-5, 4.541067092823733e-5, -1.1807579197255269e-5, -4.600589180698122e-6, -1.7751227404389353e-5, -7.670763698394999e-6, -3.5517614404811586e-5, 9.916292737673049e-6, 1.9209882076982567e-6, -2.9124845667948043e-5], [-2.1912937033746066e-5, 2.7137675667781068e-5, -6.288611698178299e-7, 1.724028523774995e-5, -1.603396799439019e-5, 8.024822635233394e-6, -1.4534823546285129e-5, 3.604496232723562e-5, 5.371108746612574e-18, -5.422375108699646e-5, 3.692465678640457e-5, -1.3105546357997893e-5, 9.097853985023143e-6, 5.021034579503615e-5, -9.197556409550089e-5, 7.709228064582141e-5, -3.9514480495629275e-5, 3.172141729900944e-5, -2.226358362455313e-5, 9.66770330483224e-6, -1.3206496352391678e-5, -4.115327673285678e-6, -4.247762004121359e-7, 9.450866440208584e-6, 1.9209736573872264e-5, -1.6897295121116036e-5, 7.011456770070638e-7], [-5.4016146517781305e-5, 0.0001479165554678019, -2.34557117849499e-6, 1.8157060028448892e-5, 6.105490913498706e-5, -3.852838391322249e-5, 4.02432226488734e-5, -5.975831627248389e-5, 5.422375108699646e-5, -3.437747102077581e-17, 4.952359455826769e-6, -2.3932545622870097e-5, 1.2862123930843367e-5, -6.493236822873908e-5, 5.4416806592902714e-5, -0.00011548799946180726, 0.0001222477463780605, -0.00012703085523879152, 6.182633921801609e-5, -3.1965700715084246e-5, 8.341435063105629e-6, 1.7014170843305299e-6, 3.7270089718879773e-5, -6.387478322003827e-5, -1.7486536914372874e-5, 1.9508893968773343e-5, -8.005493043758993e-5], [3.3158105211881474e-5, -7.331247748399386e-5, -1.6464737243746612e-5, 5.3307350132819615e-6, -0.00011834784352979797, 4.548986352576661e-5, -4.563635683872336e-5, 5.81445660457636e-5, -3.692465678640457e-5, -4.952359455826769e-6, 1.2899713071749122e-17, -1.3134435629084185e-5, 0.00010540195128480328, -2.291471312745844e-5, -2.7705721020391775e-5, -3.230695187939695e-5, 2.8377586087806413e-5, 7.554342022570541e-5, -3.548233368122419e-5, 2.4821328264840208e-5, 3.8073816414534777e-6, 2.9926345759580842e-5, 9.424726939273776e-6, -7.622497561715767e-6, 2.305869955453068e-5, -4.256498487794502e-5, 5.027088431777571e-5], [-1.4285959628832091e-5, 2.6963706894523124e-5, 6.298951689861746e-5, -4.9399775484656354e-5, 0.00027837344373100517, -5.790209214060159e-5, 6.107802786983498e-5, -2.0823478874678545e-5, 1.3105546357997893e-5, 2.3932545622870097e-5, 1.3134435629084185e-5, -6.253993662466501e-17, -0.0002637621315541985, 0.00022470052111428076, -0.00014749295334552998, 8.759128638764427e-5, -6.33382665252225e-5, -3.210688723166565e-5, -2.773983293712137e-5, -6.337880499797047e-6, 7.052953576942593e-6, -4.958083722332356e-5, -3.4913691427841464e-5, 6.162376790263695e-5, -9.50696561471532e-7, 2.5292073136920796e-5, 1.7552838484819053e-5], [2.394431531245654e-5, 6.058249768702336e-5, -9.110215024329099e-5, 7.824750998689553e-5, -0.0003091714167545259, 6.701218815734897e-5, -7.30176763630053e-5, 6.454235048969433e-5, -9.097853985023143e-6, -1.2862123930843367e-5, -0.00010540195128480328, 0.0002637621315541985, -1.3164591343048116e-16, -6.097309415015302e-5, 7.976302967811718e-5, -4.4948202652825656e-5, 4.31831253818484e-5, -2.3266345398097832e-5, 1.9791639480969294e-5, 1.2089727506052199e-5, -4.308172307892732e-5, 1.170940761869392e-5, -2.5310155727922307e-5, -1.8001516536623135e-5, -1.2426720192333664e-5, -8.73506816385853e-6, 3.207973848079937e-5], [3.865188081260393e-5, -0.00020684399115040338, 0.00012953188314467084, -0.00012726230587946743, 0.00028086502319982156, -6.96898584696007e-5, 9.681848572065964e-5, -3.6842220656199676e-5, -5.021034579503615e-5, 6.493236822873908e-5, 2.291471312745844e-5, -0.00022470052111428076, 6.097309415015302e-5, -1.4842691723492483e-16, -6.019194372510292e-5, 3.700383318396279e-5, -9.763605342086407e-5, 4.667565926965312e-5, -7.085519366411281e-5, 1.631449638018554e-5, 1.922798598742782e-6, -1.2198815798823505e-5, 1.138076099728594e-5, 1.5513947199416132e-5, 6.503107906104133e-5, -5.554235480989347e-5, 3.947904929709057e-5], [-9.281856046069863e-5, 0.00018099940163613927, -0.00010652989750119135, 8.832125548434537e-5, -0.00015669717153750213, -1.0671594586293788e-6, -3.228085666151335e-5, -0.00018266274756445283, 9.197556409550089e-5, -5.4416806592902714e-5, 2.7705721020391775e-5, 0.00014749295334552998, -7.976302967811718e-5, 6.019194372510292e-5, -2.0769411365017071e-16, 0.00021075809593384124, 3.5481128109104076e-6, -6.483584050620775e-5, -1.3509232481940302e-5, -8.102066521541872e-6, 2.6878688336910544e-6, 4.655397976924432e-6, -1.8203320210107903e-6, 1.80498744359512e-5, -6.4071570648365885e-6, -4.835826355671255e-6, 8.286630868539976e-7], [6.735398145893527e-5, -0.0001503747914974823, 4.457858342507107e-5, -3.0272331018822044e-5, 7.53629300476068e-6, 3.6705704458288586e-5, -9.717571325338044e-6, 0.00017185373324924623, -7.709228064582141e-5, 0.00011548799946180726, 3.230695187939695e-5, -8.759128638764427e-5, 4.4948202652825656e-5, -3.700383318396279e-5, -0.00021075809593384124, -8.534437045522097e-17, 6.770987155359061e-5, -2.8926158865000796e-5, 1.2851250812524996e-5, -2.5321083284545222e-5, 3.5564403240772737e-5, 7.990824873952025e-7, 4.914090674447114e-5, 6.557393987113121e-7, -3.3857891529245933e-5, 4.9732460308591995e-5, -1.5140194684318692e-6], [-5.34121233778976e-5, 0.0001373607025635987, -4.095455150089512e-6, 1.876861115909848e-5, 3.4368434251829937e-5, -2.28508729447796e-5, 1.4680710155907347e-6, -8.17619569411061e-5, 3.9514480495629275e-5, -0.0001222477463780605, -2.8377586087806413e-5, 6.33382665252225e-5, -4.31831253818484e-5, 9.763605342086407e-5, -3.5481128109104076e-6, -6.770987155359061e-5, -2.372264591263852e-16, 4.5045898089888386e-5, -2.0535102143732306e-6, 3.3984211458598688e-6, -1.4418382649515082e-5, -2.6902292790903103e-5, -4.1218755962591514e-5, 4.5665989796073876e-5, -1.626884373302289e-5, 3.251303740649617e-5, 3.2347229110226165e-6], [4.464420342619381e-5, -0.00010590676987726543, 2.7448793060513652e-6, -1.5359991615135076e-5, -2.3615367593536627e-5, 2.8299733034443778e-5, -2.4403573311980385e-5, 5.4213239779037125e-5, -3.172141729900944e-5, 0.00012703085523879152, -7.554342022570541e-5, 3.210688723166565e-5, 2.3266345398097832e-5, -4.667565926965312e-5, 6.483584050620775e-5, 2.8926158865000796e-5, -4.5045898089888386e-5, -2.0543756814205942e-16, -1.5585672020282142e-5, 4.8784997244504524e-5, -3.20543833467449e-5, 2.4690065018576334e-5, -1.7676736537551406e-5, -2.6080077732252768e-5, 1.5357612830716094e-5, -4.375719293688511e-5, 3.7616047816639835e-5], [-2.7267757999445998e-5, 5.074827646233833e-5, -5.218499050660205e-6, 1.1805038206681767e-5, -7.117760502234787e-6, -1.3800291580686606e-5, 2.0374755803376595e-5, -4.541067092823733e-5, 2.226358362455313e-5, -6.182633921801609e-5, 3.548233368122419e-5, 2.773983293712137e-5, -1.9791639480969294e-5, 7.085519366411281e-5, 1.3509232481940302e-5, -1.2851250812524996e-5, 2.0535102143732306e-6, 1.5585672020282142e-5, -1.527896312381634e-16, -1.1755903912334151e-5, 4.268020353365703e-5, -5.840372166369422e-5, 2.1565500651676497e-6, 1.4499017757205084e-5, -2.432048741147547e-5, 3.778466758635422e-5, -4.129579256508194e-5], [1.0598396739328277e-5, -3.1309715306416156e-6, -1.0495481513454672e-5, 9.320776915036034e-6, -4.717971739637912e-7, 6.444505022752717e-6, -1.2482273299617993e-5, 1.1807579197255269e-5, -9.66770330483224e-6, 3.1965700715084246e-5, -2.4821328264840208e-5, 6.337880499797047e-6, -1.2089727506052199e-5, -1.631449638018554e-5, 8.102066521541872e-6, 2.5321083284545222e-5, -3.3984211458598688e-6, -4.8784997244504524e-5, 1.1755903912334151e-5, -2.654347731316765e-16, -4.3478880572926275e-5, 1.4824421954133625e-5, -8.187728230013489e-6, 1.1772734481490305e-5, -1.1820313411824925e-5, -6.451252231914731e-6, 6.237468496392165e-5], [-9.084936689442898e-6, 2.810112930528167e-5, 2.0550082392078307e-6, -3.787065158394716e-6, -1.4297308139702048e-5, 1.0261257008225434e-6, -2.3720063660724225e-6, 4.600589180698122e-6, 1.3206496352391678e-5, -8.341435063105629e-6, -3.8073816414534777e-6, -7.052953576942593e-6, 4.308172307892732e-5, -1.922798598742782e-6, -2.6878688336910544e-6, -3.5564403240772737e-5, 1.4418382649515082e-5, 3.20543833467449e-5, -4.268020353365703e-5, 4.3478880572926275e-5, -1.5555589674515503e-16, -7.722886270931611e-6, 1.430487097186423e-5, -3.189524032644446e-5, 1.4612702177363312e-5, -1.7113627245674536e-5, -2.4054164754330032e-5], [-4.96006535488108e-6, 4.214042362986459e-5, -3.7499086646180005e-5, 3.873047717480821e-5, -7.580279430994981e-5, 1.686577612378453e-5, -2.261098560414736e-5, 1.7751227404389353e-5, 4.115327673285678e-6, -1.7014170843305299e-6, -2.9926345759580842e-5, 4.958083722332356e-5, -1.170940761869392e-5, 1.2198815798823505e-5, -4.655397976924432e-6, -7.990824873952025e-7, 2.6902292790903103e-5, -2.4690065018576334e-5, 5.840372166369422e-5, -1.4824421954133625e-5, 7.722886270931611e-6, -2.1505466355744905e-16, -4.806914536968022e-5, 3.76862259060014e-5, -5.468867677389115e-5, 5.302391790803238e-5, 1.6522131394220464e-6], [2.587905724192961e-7, 3.171745836504405e-5, -9.455578656664223e-6, 1.724244968463777e-5, -2.33564092660917e-5, 9.31382937172049e-6, -1.3283654319330688e-5, 7.670763698394999e-6, 4.247762004121359e-7, -3.7270089718879773e-5, -9.424726939273776e-6, 3.4913691427841464e-5, 2.5310155727922307e-5, -1.138076099728594e-5, 1.8203320210107903e-6, -4.914090674447114e-5, 4.1218755962591514e-5, 1.7676736537551406e-5, -2.1565500651676497e-6, 8.187728230013489e-6, -1.430487097186423e-5, 4.806914536968022e-5, -2.3548327445528556e-16, -5.302809398310135e-5, 5.918205001523073e-6, -8.793062745156778e-6, 8.279087550578078e-6], [1.2071457191690612e-5, -6.412735986402434e-5, 3.6969265978714253e-6, -1.6454664850935043e-5, -7.086659336030042e-6, 5.026828564284156e-6, 4.161986319810558e-6, 3.5517614404811586e-5, -9.450866440208584e-6, 6.387478322003827e-5, 7.622497561715767e-6, -6.162376790263695e-5, 1.8001516536623135e-5, -1.5513947199416132e-5, -1.80498744359512e-5, -6.557393987113121e-7, -4.5665989796073876e-5, 2.6080077732252768e-5, -1.4499017757205084e-5, -1.1772734481490305e-5, 3.189524032644446e-5, -3.76862259060014e-5, 5.302809398310135e-5, -1.2593236320112562e-16, 1.8948881274501158e-5, -3.6054829329626244e-5, 3.3356931485064904e-6], [2.5262854086179388e-5, -5.2526902153556223e-5, 9.557304256262219e-6, -5.965723606782696e-6, 1.1870729022013325e-5, 8.370086702549831e-6, -2.4889849613562623e-6, -9.916292737673049e-6, -1.9209736573872264e-5, 1.7486536914372874e-5, -2.305869955453068e-5, 9.50696561471532e-7, 1.2426720192333664e-5, -6.503107906104133e-5, 6.4071570648365885e-6, 3.3857891529245933e-5, 1.626884373302289e-5, -1.5357612830716094e-5, 2.432048741147547e-5, 1.1820313411824925e-5, -1.4612702177363312e-5, 5.468867677389115e-5, -5.918205001523073e-6, -1.8948881274501158e-5, -1.2405842904807067e-16, -2.5743378355256556e-5, 2.4894573073847233e-5], [-1.8403452220136568e-5, 3.2887969080497305e-5, -1.1909608425573975e-5, 1.0940697386452953e-5, -1.3829244190454772e-5, -9.244946116167822e-6, 7.0934780886332e-6, -1.9209882076982567e-6, 1.6897295121116036e-5, -1.9508893968773343e-5, 4.256498487794502e-5, -2.5292073136920796e-5, 8.73506816385853e-6, 5.554235480989347e-5, 4.835826355671255e-6, -4.9732460308591995e-5, -3.251303740649617e-5, 4.375719293688511e-5, -3.778466758635422e-5, 6.451252231914731e-6, 1.7113627245674536e-5, -5.302391790803238e-5, 8.793062745156778e-6, 3.6054829329626244e-5, 2.5743378355256556e-5, -2.3460913528176853e-16, -3.7745848970908e-5], [6.058100196431714e-6, -1.9581250534821812e-5, 6.75057510336267e-6, -7.910606383312526e-6, 1.8416580984829684e-5, 1.6591060838138043e-6, -4.574396713295031e-6, 2.9124845667948043e-5, -7.011456770070638e-7, 8.005493043758993e-5, -5.027088431777571e-5, -1.7552838484819053e-5, -3.207973848079937e-5, -3.947904929709057e-5, -8.286630868539976e-7, 1.5140194684318692e-6, -3.2347229110226165e-6, -3.7616047816639835e-5, 4.129579256508194e-5, -6.237468496392165e-5, 2.4054164754330032e-5, -1.6522131394220464e-6, -8.279087550578078e-6, -3.3356931485064904e-6, -2.4894573073847233e-5, 3.7745848970908e-5, -2.264954662577533e-16]]
+pm_real = [[0.5239924690120747, -0.187442928694708, -0.0761225884870183, 0.04364009647970333, 0.005182737384363709, -0.05167025114532155, 0.04906469317563124, 0.09706551779797006, -0.35741742456047954, 0.04885579040798518, -0.022227284621598464, -0.004104568621919591, 0.001940358340145241, 0.016455560466294834, -0.03962550424302649, -0.03498021306318153, 0.0023246594629176298, 0.030423031526786132, 0.0035913209040109675, -4.668385405824419e-5, -0.002351711806350647, -0.0018607956635252484, -0.0015693193629202063, 0.0005826801335212002, -0.0021442931138540133, 0.0033613493677690518, 0.0032056689110815193], [-0.187442928694708, 0.5119205238479786, -0.117177696816153, 0.06727643060868016, -0.03381695820809264, -0.020374080425339534, 0.01859394763479073, -0.1228522690659348, 0.09520094907080341, -0.17452554851964916, 0.03357206873932805, 0.019136167215163615, -0.0010114979560759926, -0.03314217942509779, 0.05224292849028724, 0.033922747441331766, 0.027132846605928487, -0.1345997685854927, -0.005076443683614774, 0.0007710148470189324, 0.004902387466323093, 0.00595217273004125, 0.008867739727647452, -0.013640645848928452, -0.009496797818206905, 0.0013080912459039968, -0.004312160693387827], [-0.0761225884870183, -0.117177696816153, 0.6047037611262623, -0.3802624988105038, 0.08897626587073935, 0.056159142274634796, -0.06264888403985039, 0.020925421496727572, 0.047560073184754345, 0.03212583506917085, -0.0017379794864389674, -0.0161669050109133, -0.011402036421760851, 0.011436836916277705, -0.006580985259813604, -0.0013056082968438923, -0.013026663725771067, 0.026868182933704944, 0.0009459129488752553, -9.683155206349421e-5, -0.0008492390538455313, -0.001854960245047418, -0.0022349045229315447, 0.006262949626355946, 0.005374680321068637, -0.0006922981861715517, 0.00037839099586148956], [0.04364009647970333, 0.06727643060868016, -0.3802624988105038, 0.435216810788862, -0.151077541774404, -0.10047470663143429, 0.05577776326802184, -0.021921569881916896, -0.04988552583405809, -0.031394368906050844, -0.0013987514105142421, 0.016877351976296556, 0.012140842584222284, -0.01450203504877797, 0.007801284610536096, -0.002825503528738049, 0.013283595762355117, -0.024101757458910352, -0.0007915686600072685, 0.00021419947801392354, 0.001188658265393175, 0.002197921642475447, 0.003174256726839589, -0.0065672376680919855, -0.0052612845008243436, 0.0010933919768411297, 0.0005239464406170374], [0.005182737384363709, -0.03381695820809264, 0.08897626587073935, -0.151077541774404, 0.8056807561552926, -0.14261207218784663, 0.08633357071056873, -0.02563733110309316, 0.0013022975849825012, 0.021756722386754225, 0.019457842398369625, -0.06579945865571611, -0.06724318633929233, 0.02078071218861329, 0.02011136230012023, 0.01585893870415745, -0.02214536951830474, 0.019036061938733667, -0.0007185467411099052, 0.00036060849653984375, 0.0005321447946578142, -0.0024311247907018406, -0.0016631847843676384, 0.01112973515036471, 0.01025924089204156, -0.0013892303831448901, -0.000945977908504723], [-0.05167025114532155, -0.020374080425339534, 0.056159142274634796, -0.10047470663143429, -0.14261207218784663, 0.4451253468307105, -0.3837846642103252, 0.06650658646352224, 0.044763206276010756, 0.008186265649633288, -0.014036642836255187, 0.011721921666016, 0.01618031750122443, -0.0007224722237219826, -0.02919167796724493, -0.023066993162101, 0.013540356182191, -0.0033913213869458054, 0.0019218333428109508, 0.00016543766280975917, -0.0009160921867569675, 0.0010065475857133144, 0.001307697602433078, -0.00542660288151562, -0.006159480255254708, 0.003394291001209089, 0.0017793586165477818], [0.04906469317563124, 0.01859394763479073, -0.06264888403985039, 0.05577776326802184, 0.08633357071056873, -0.3837846642103252, 0.595573952171779, -0.11148703585594635, -0.07953400250451977, -0.0068552851863240205, 0.010643269025335246, -0.010725295683289495, -0.01588614545169383, -0.0013684519482625853, 0.02980624082258731, 0.025143573255673065, -0.013047049705995656, -0.0003592520794964182, -0.001549189505972485, -5.7972338452789415e-5, 0.0011070524283772246, -0.00031965750511475904, -0.0009289955557775652, 0.0055631413428292205, 0.005768869968297967, -0.002382859043550195, -0.0012964007372542568], [0.09706551779797006, -0.1228522690659348, 0.020925421496727572, -0.021921569881916896, -0.02563733110309316, 0.06650658646352224, -0.11148703585594635, 0.5462342241650434, -0.19018866045382254, 0.05514039723044176, -0.032921609431639146, -0.0012078272359095448, 0.017409596035218647, 0.03548831794368167, -0.16340976127246487, -0.13422028042900877, 0.028014593461487446, 0.03444635108197578, 0.00639095322515735, 0.0005567624626103805, -0.004147076793320741, -0.0032964688718210376, 0.0019551727161338677, -0.009031082727615254, -0.012710479342887167, 0.010016396038275067, 0.005714604187453525], [-0.35741742456047954, 0.09520094907080341, 0.047560073184754345, -0.04988552583405809, 0.0013022975849825012, 0.044763206276010756, -0.07953400250451977, -0.19018866045382254, 0.5047678131308984, -0.04214183347457689, 0.0160364591128936, 0.002192022187681911, -0.0038788816361877243, -0.022470625401479788, 0.0460463664042415, 0.030464834079636082, 0.0015493386164165451, -0.034817582585171106, -0.0031157452344239126, 0.00024038493745038499, 0.0028307119221392023, 0.003006644922691525, 0.0028034744763352827, -0.002422754356213832, 0.00027225552763029514, -0.0020468269274469307, -0.0019573560498332976], [0.04885579040798518, -0.17452554851964916, 0.03212583506917085, -0.031394368906050844, 0.021756722386754225, 0.008186265649633288, -0.0068552851863240205, 0.05514039723044176, -0.04214183347457689, 0.579618138669828, -0.22617300270891644, -0.04505853302638008, 0.006086815764065249, 0.04919554295199897, -0.0815792099795642, 0.04273939001735023, 0.013207594435271296, -0.11518802182249412, 0.018191560558494736, -0.001094810054508171, -0.009250436397349427, -0.005755217953096468, -0.002576349618207858, -0.0024258644986007026, -0.008656568875091943, 0.007789646507640402, 0.028864893805367352], [-0.022227284621598464, 0.03357206873932805, -0.0017379794864389674, -0.0013987514105142421, 0.019457842398369625, -0.014036642836255187, 0.010643269025335246, -0.032921609431639146, 0.0160364591128936, -0.22617300270891644, 0.5338039175215185, -0.17120141498032834, 0.04809682210299302, -0.06478261436669577, 0.04764803782465901, -0.018895406749345877, -0.013286008800174717, 0.03743247321786838, -0.035304750265769354, 0.011755963296615522, -0.001850820961133225, 0.022087395456967106, -0.0027847580671013753, 0.0037343538302162384, 0.009656003101403545, 0.0015131936177885008, -0.12109442890416322], [-0.004104568621919591, 0.019136167215163615, -0.0161669050109133, 0.016877351976296556, -0.06579945865571611, 0.011721921666016, -0.010725295683289495, -0.0012078272359095448, 0.002192022187681911, -0.04505853302638008, -0.17120141498032834, 0.4821251281258101, -0.3079560686442098, 0.04696314881076328, 0.006785274163814007, -0.004082853346733233, 0.00627811450397603, -0.004544678182724125, 0.001975018087813655, -0.0013894192996436897, -0.0007780893944411101, -0.0207933894945597, 0.0003595116891086817, -0.001513761285850418, -0.005929859257313695, 0.00039043700294126446, 0.031314104032667725], [0.001940358340145241, -0.0010114979560759926, -0.011402036421760851, 0.012140842584222284, -0.06724318633929233, 0.01618031750122443, -0.01588614545169383, 0.017409596035218647, -0.0038788816361877243, 0.006086815764065249, 0.04809682210299302, -0.3079560686442098, 0.48474975589249875, -0.16818958558737002, -0.04503499106832964, -0.0030934715327902403, 0.004939989975608988, -0.0035772640850388767, -0.0004437637081066295, -0.0008481445774173471, 0.0018455051471475855, 0.0303088873009879, 0.0017711147179519074, -0.006093850615585322, -0.00016221483044574525, 0.000815836684171931, -0.022302512454472567], [0.016455560466294834, -0.03314217942509779, 0.011436836916277705, -0.01450203504877797, 0.02078071218861329, -0.0007224722237219826, -0.0013684519482625853, 0.03548831794368167, -0.022470625401479788, 0.04919554295199897, -0.06478261436669577, 0.04696314881076328, -0.16818958558737002, 0.5401145371679988, -0.22944775729643324, 0.03739734532582201, -0.012733765186667776, -0.019785784186974766, -0.0015087763777153643, 0.011243731815649903, -0.03391449491418721, -0.1187852345280706, 0.002389607190470659, 0.00888302886052994, 0.003037491710460215, -0.00250219343394899, 0.02238925175303021], [-0.03962550424302649, 0.05224292849028724, -0.006580985259813604, 0.007801284610536096, 0.02011136230012023, -0.02919167796724493, 0.02980624082258731, -0.16340976127246487, 0.0460463664042415, -0.0815792099795642, 0.04764803782465901, 0.006785274163814007, -0.04503499106832964, -0.22944775729643324, 0.5697667984206506, -0.12689366402703667, 0.01241184333583508, 0.04533287666417791, -0.010222106575348215, -0.000543282874296803, 0.018177143123408356, 0.02790368159511044, 0.005942794388298972, -0.007755595134809248, -0.0032593808003848193, -0.003308577701151639, -0.004413208176685699], [-0.03498021306318153, 0.033922747441331766, -0.0013056082968438923, -0.002825503528738049, 0.01585893870415745, -0.023066993162101, 0.025143573255673065, -0.13422028042900877, 0.030464834079636082, 0.04273939001735023, -0.018895406749345877, -0.004082853346733233, -0.0030934715327902403, 0.03739734532582201, -0.12689366402703667, 0.482279286424504, -0.06316935687545615, -0.2938390537278375, 0.004054002119014758, -0.00048151302012802277, -0.007861115503087813, -0.004964719604481595, -0.008557670146307421, 0.015400653437702472, 0.014980148250630772, -0.006439581948458773, -0.0028370635426171295], [0.0023246594629176298, 0.027132846605928487, -0.013026663725771067, 0.013283595762355117, -0.02214536951830474, 0.013540356182191, -0.013047049705995656, 0.028014593461487446, 0.0015493386164165451, 0.013207594435271296, -0.013286008800174717, 0.00627811450397603, 0.004939989975608988, -0.012733765186667776, 0.01241184333583508, -0.06316935687545615, 0.7261336886942761, -0.06815654120193981, -0.0015339787382612294, 0.004351171409095464, -0.002834285277748088, 0.015226386492715436, 0.06895938984966167, -0.18146057681704678, -0.17588795433286272, 0.0675434536289572, 0.015014233939822964], [0.030423031526786132, -0.1345997685854927, 0.026868182933704944, -0.024101757458910352, 0.019036061938733667, -0.0033913213869458054, -0.0003592520794964182, 0.03444635108197578, -0.034817582585171106, -0.11518802182249412, 0.03743247321786838, -0.004544678182724125, -0.0035772640850388767, -0.019785784186974766, 0.04533287666417791, -0.2938390537278375, -0.06815654120193981, 0.4999706251743221, -0.007617770992618908, 5.849880984149562e-5, 0.004512657658361824, -0.002777122453199093, -0.005483102996392142, 0.01657934011340264, 0.017250384361778115, -0.008410182193179155, -0.004510779012282194], [0.0035913209040109675, -0.005076443683614774, 0.0009459129488752553, -0.0007915686600072685, -0.0007185467411099052, 0.0019218333428109508, -0.001549189505972485, 0.00639095322515735, -0.0031157452344239126, 0.018191560558494736, -0.035304750265769354, 0.001975018087813655, -0.0004437637081066295, -0.0015087763777153643, -0.010222106575348215, 0.004054002119014758, -0.0015339787382612294, -0.007617770992618908, 0.4648905656025039, -0.1798196238877335, -0.10088771840848564, 0.029172365702101768, -0.017708853185517046, 0.002647650235776144, 0.0030013134974808857, 0.04500252250847207, -0.2856691056884481], [-4.668385405824419e-5, 0.0007710148470189324, -9.683155206349421e-5, 0.00021419947801392354, 0.00036060849653984375, 0.00016543766280975917, -5.7972338452789415e-5, 0.0005567624626103805, 0.00024038493745038499, -0.001094810054508171, 0.011755963296615522, -0.0013894192996436897, -0.0008481445774173471, 0.011243731815649903, -0.000543282874296803, -0.00048151302012802277, 0.004351171409095464, 5.849880984149562e-5, -0.1798196238877335, 0.7685877693530959, -0.1699888673933394, 0.05420976557642428, 2.9803706075375697e-5, -0.008367353047548586, -0.0055417978748401745, -0.002143841452969052, 0.05540756702456916], [-0.002351711806350647, 0.004902387466323093, -0.0008492390538455313, 0.001188658265393175, 0.0005321447946578142, -0.0009160921867569675, 0.0011070524283772246, -0.004147076793320741, 0.0028307119221392023, -0.009250436397349427, -0.001850820961133225, -0.0007780893944411101, 0.0018455051471475855, -0.03391449491418721, 0.018177143123408356, -0.007861115503087813, -0.002834285277748088, 0.004512657658361824, -0.10088771840848564, -0.1699888673933394, 0.4747220227152814, -0.2899087357465972, 0.04466598700420414, 0.006174649623368756, 0.0015616652697805608, -0.01666918568370428, 0.029353793766507548], [-0.0018607956635252484, 0.00595217273004125, -0.001854960245047418, 0.002197921642475447, -0.0024311247907018406, 0.0010065475857133144, -0.00031965750511475904, -0.0032964688718210376, 0.003006644922691525, -0.005755217953096468, 0.022087395456967106, -0.0207933894945597, 0.0303088873009879, -0.1187852345280706, 0.02790368159511044, -0.004964719604481595, 0.015226386492715436, -0.002777122453199093, 0.029172365702101768, 0.05420976557642428, -0.2899087357465972, 0.5994813505884868, -0.07577573069987013, -0.04417430333815811, -0.007146817101185064, 0.012928673111868858, -0.024792578857509386], [-0.0015693193629202063, 0.008867739727647452, -0.0022349045229315447, 0.003174256726839589, -0.0016631847843676384, 0.001307697602433078, -0.0009289955557775652, 0.0019551727161338677, 0.0028034744763352827, -0.002576349618207858, -0.0027847580671013753, 0.0003595116891086817, 0.0017711147179519074, 0.002389607190470659, 0.005942794388298972, -0.008557670146307421, 0.06895938984966167, -0.005483102996392142, -0.017708853185517046, 2.9803706075375697e-5, 0.04466598700420414, -0.07577573069987013, 0.7004432356400235, -0.3370146277611187, 0.031994858627348785, -0.03211659980173353, 0.014816345812190448], [0.0005826801335212002, -0.013640645848928452, 0.006262949626355946, -0.0065672376680919855, 0.01112973515036471, -0.00542660288151562, 0.0055631413428292205, -0.009031082727615254, -0.002422754356213832, -0.0024258644986007026, 0.0037343538302162384, -0.001513761285850418, -0.006093850615585322, 0.00888302886052994, -0.007755595134809248, 0.015400653437702472, -0.18146057681704678, 0.01657934011340264, 0.002647650235776144, -0.008367353047548586, 0.006174649623368756, -0.04417430333815811, -0.3370146277611187, 0.4083577003060843, -0.0665291051929075, 0.03281108359840268, -0.009378966260159938], [-0.0021442931138540133, -0.009496797818206905, 0.005374680321068637, -0.0052612845008243436, 0.01025924089204156, -0.006159480255254708, 0.005768869968297967, -0.012710479342887167, 0.00027225552763029514, -0.008656568875091943, 0.009656003101403545, -0.005929859257313695, -0.00016221483044574525, 0.003037491710460215, -0.0032593808003848193, 0.014980148250630772, -0.17588795433286272, 0.017250384361778115, 0.0030013134974808857, -0.0055417978748401745, 0.0015616652697805608, -0.007146817101185064, 0.031994858627348785, -0.0665291051929075, 0.4114680971642188, -0.3438757330040246, -0.0389390449788299], [0.0033613493677690518, 0.0013080912459039968, -0.0006922981861715517, 0.0010933919768411297, -0.0013892303831448901, 0.003394291001209089, -0.002382859043550195, 0.010016396038275067, -0.0020468269274469307, 0.007789646507640402, 0.0015131936177885008, 0.00039043700294126446, 0.000815836684171931, -0.00250219343394899, -0.003308577701151639, -0.006439581948458773, 0.0675434536289572, -0.008410182193179155, 0.04500252250847207, -0.002143841452969052, -0.01666918568370428, 0.012928673111868858, -0.03211659980173353, 0.03281108359840268, -0.3438757330040246, 0.6899894856436253, -0.0759620872728012], [0.0032056689110815193, -0.004312160693387827, 0.00037839099586148956, 0.0005239464406170374, -0.000945977908504723, 0.0017793586165477818, -0.0012964007372542568, 0.005714604187453525, -0.0019573560498332976, 0.028864893805367352, -0.12109442890416322, 0.031314104032667725, -0.022302512454472567, 0.02238925175303021, -0.004413208176685699, -0.0028370635426171295, 0.015014233939822964, -0.004510779012282194, -0.2856691056884481, 0.05540756702456916, 0.029353793766507548, -0.024792578857509386, 0.014816345812190448, -0.009378966260159938, -0.0389390449788299, -0.0759620872728012, 0.6102822396664038]]
+zz_imag = [[0.0, 2.083366611350682e-21, -3.521678150276319e-21, 8.288997589727624e-19, 2.7589643127534026e-18, 3.0014516380085252e-18, -1.466304690347001e-18, 6.751282185498019e-18, -2.509789010704723e-17, 2.1900228663590342e-18, 4.85900377995219e-19, -2.7592088452020693e-18, -9.767891521606761e-20, 8.018862595565632e-19, -2.8846835395799624e-18, -1.280371057844652e-17, 1.339373768838063e-18, 9.79330764793657e-18, -9.649236247115311e-19, 1.6774114017646527e-18, 1.770242714115816e-18, -1.7798387698624012e-18, 3.481850510925143e-18, -1.596413406370209e-19, -2.9582158284865575e-19, 7.478281717660308e-19, 3.66699543830734e-18], [-2.083366611350682e-21, -2.083366611350682e-21, -3.675001879632832e-21, -5.923721841378615e-19, 7.062574138413586e-19, 5.076363044976212e-19, -1.229622964238089e-18, -6.615101875108662e-18, 1.1848303345252063e-17, -5.603100787449191e-18, -2.707945509384782e-18, -7.758519086939052e-19, 1.5341268062925174e-18, -7.325863644576583e-18, 1.6368236429349735e-17, 5.18510968170511e-18, -7.878468076211558e-18, -8.88743577195245e-18, 2.548188204160705e-18, -1.2991396994732556e-18, -3.07345992952948e-19, 3.8506404647383705e-19, -1.3792638729805985e-18, 2.9471957118827242e-18, 1.5327363776083013e-18, 1.0945929469607832e-18, -2.0085986977162787e-18], [3.521678150276319e-21, 3.675001879632832e-21, -1.783617371726464e-20, 4.355893960312265e-18, 1.6798690593516147e-18, -4.494997244095044e-18, 6.8258186925292844e-18, -1.7708436293133396e-18, 3.479509914851323e-18, 3.3284003730107524e-18, -9.50439807653724e-18, 2.988150739750545e-18, 3.644376719565394e-18, 4.380776928375182e-18, -7.528300516132346e-18, 7.819905840196403e-18, -1.659380988994528e-17, -2.2091276286369224e-17, 4.0584592134990745e-18, -1.3785814387845873e-17, 2.7916258804792774e-18, -1.020518857571385e-17, -8.813319317986166e-18, 7.053777638637985e-18, 6.991469357101152e-18, -9.527845904234503e-18, -6.711607893393497e-18], [-8.288997589727624e-19, 5.923721841378615e-19, -4.355893960312265e-18, 2.7330289913967845e-19, -1.082926243828399e-18, -1.6974009661917038e-19, 2.9808200305193265e-18, 5.559555497420236e-19, -2.633823566663442e-18, 1.4646277275685596e-17, 8.553859102861431e-19, -9.177410616373319e-18, 9.92907052193109e-18, -8.959274514434886e-18, 5.635151494519177e-18, -8.219575245684244e-18, 1.401893472616057e-17, 8.446538946316055e-18, -2.0205885614643764e-18, 1.14493060503824e-17, -1.5618539383682161e-18, 7.122447599989173e-18, 7.904293489849367e-18, -6.0272633705558175e-18, -5.536175495729894e-18, 7.890691002721555e-18, 4.62405806344998e-18], [-2.7589643127534026e-18, -7.062574138413586e-19, -1.6798690593516147e-18, 1.082926243828399e-18, 2.093501780207225e-18, 7.339019921214012e-18, -4.967239418969483e-18, 2.5756864863085507e-18, -7.657126884557043e-18, -1.5662640083491504e-17, -4.035109722095982e-17, 7.042242281623225e-18, -1.304295687647442e-17, -8.370736978006483e-18, -9.224767841136326e-18, -7.669362510175265e-18, 8.757294509689941e-18, 7.241435863896914e-18, 8.342545289724896e-19, 5.922830567256532e-18, -3.929685004666114e-19, 4.114623737528927e-18, 4.985207578539747e-18, -6.042751962043531e-19, -3.1667399556453866e-19, 2.3359396875955537e-18, 8.795585429645557e-18], [-3.0014516380085252e-18, -5.076363044976212e-19, 4.494997244095044e-18, 1.6974009661917038e-19, -7.339019921214012e-18, -4.264483575748842e-18, 4.041205795593121e-18, -2.205565358015327e-18, -2.781924288933177e-18, 3.0405302170406903e-18, -8.159682257378565e-18, -3.832358854968606e-18, 1.1596316703323439e-18, 4.2178378356906647e-19, -3.445533473006821e-18, -4.105688035779558e-18, -8.890962434502246e-18, -4.270124638369959e-18, 6.705058361741541e-19, -8.237358087543416e-18, 1.9818878312417463e-18, -4.980316771976834e-18, -5.422316001068814e-18, 3.784653807123675e-18, 3.310915202202468e-18, -5.423243097228505e-18, -5.344052809914682e-18], [1.466304690347001e-18, 1.229622964238089e-18, -6.8258186925292844e-18, -2.9808200305193265e-18, 4.967239418969483e-18, -4.041205795593121e-18, -3.1898814670000406e-18, -2.3237628985292696e-18, -1.9698645656858493e-18, -7.43280758009819e-18, 1.0354297822335887e-17, 3.328510901127134e-18, 4.8396217739475574e-18, -5.516466969686218e-18, 1.047038561510882e-17, 3.2714614319388713e-18, 1.5436607032035214e-18, 1.5518155903559318e-17, -3.4441513077415147e-19, 2.9769284369031638e-18, 2.069380199343039e-19, 2.7171107892844503e-19, 3.286267141367059e-18, -2.2808435807125566e-19, -4.582886224245893e-19, 3.471372683722226e-18, -6.016730774187477e-19], [-6.751282185498019e-18, 6.615101875108662e-18, 1.7708436293133396e-18, -5.559555497420236e-19, -2.5756864863085507e-18, 2.205565358015327e-18, 2.3237628985292696e-18, -3.063299182605047e-18, 4.005846699518957e-18, 1.7009283597184646e-17, -1.8144472951164598e-17, 5.9172426350974456e-18, -8.404552224643326e-18, 1.2509535097594299e-17, -1.1617162664005935e-17, 1.6860516523139817e-17, 4.606791997340429e-18, -2.5473386106942178e-17, -6.499610631986161e-19, -1.7957542870420066e-18, -1.8404497233997342e-19, -3.5256632163006767e-19, -2.851601690920026e-18, -1.5084199758935473e-18, -2.192911281178591e-18, -3.2399022825240052e-18, 4.298692864099808e-18], [2.509789010704723e-17, -1.1848303345252063e-17, -3.479509914851323e-18, 2.633823566663442e-18, 7.657126884557043e-18, 2.781924288933177e-18, 1.9698645656858493e-18, -4.005846699518957e-18, -1.1606971772094143e-18, 5.9363501225323955e-18, -4.4341058714992936e-18, 1.9439450960015458e-18, 9.609621937852749e-19, 3.9004504061013717e-19, -7.147058680062035e-18, -2.789702954241011e-18, 5.796874529230159e-18, 7.472312760283042e-18, -5.462806035162212e-19, 7.408419386253763e-18, 3.020168026976204e-19, 2.9812865443807893e-18, 6.592067700491888e-18, -2.7198639269662936e-18, -1.9431066701077804e-18, 4.0917063796729055e-18, 6.195523213985103e-18], [-2.1900228663590342e-18, 5.603100787449191e-18, -3.3284003730107524e-18, -1.4646277275685596e-17, 1.5662640083491504e-17, -3.0405302170406903e-18, 7.43280758009819e-18, -1.7009283597184646e-17, -5.9363501225323955e-18, -1.0702462762653616e-17, -1.2899967416040571e-17, -3.0556217826058423e-19, 1.8977534248033662e-17, -3.796817501807199e-18, -3.342243106329659e-18, -8.781681652227697e-18, -1.2559083938224543e-17, -2.534380554141522e-18, -2.668861032920067e-19, -1.2346297450702325e-17, -1.210506813489093e-18, -8.86610492409234e-18, -1.1379612414636157e-17, 6.774288732443934e-18, 6.55432476753539e-18, -1.1325967421619475e-17, -7.469755464018054e-18], [-4.85900377995219e-19, 2.707945509384782e-18, 9.50439807653724e-18, -8.553859102861431e-19, 4.035109722095982e-17, 8.159682257378565e-18, -1.0354297822335887e-17, 1.8144472951164598e-17, 4.4341058714992936e-18, 1.2899967416040571e-17, -8.564431913332566e-19, -4.671919465067865e-18, 5.881143942078395e-18, -2.7494625566198284e-17, 2.0232740174412688e-17, -8.818964181714311e-18, -1.6036341131933715e-18, 1.1052499343784545e-17, 2.6198773491409773e-18, -5.787821784106363e-18, 2.6955842191433846e-18, 2.5477814365851996e-18, -1.3204410961874011e-18, -1.5809728179073327e-19, 2.306152793401307e-19, 4.9041640908585966e-20, -1.0143868887870191e-17], [2.7592088452020693e-18, 7.758519086939052e-19, -2.988150739750545e-18, 9.177410616373319e-18, -7.042242281623225e-18, 3.832358854968606e-18, -3.328510901127134e-18, -5.9172426350974456e-18, -1.9439450960015458e-18, 3.0556217826058423e-19, 4.671919465067865e-18, -1.8625961742987425e-17, 3.9960030264621216e-17, -5.449475876497767e-18, -3.0085514312912133e-18, 2.8708484886737662e-18, -1.9722625362193894e-17, 4.9425699593766326e-18, 2.5339074468112744e-18, -1.8306739077728698e-17, 1.26291247554888e-18, -8.53648908802317e-18, -1.52454370164581e-17, 9.362071516505945e-18, 7.480641413252856e-18, -1.392894765500695e-17, -1.2511172744116568e-17], [9.767891521606761e-20, -1.5341268062925174e-18, -3.644376719565394e-18, -9.92907052193109e-18, 1.304295687647442e-17, -1.1596316703323439e-18, -4.8396217739475574e-18, 8.404552224643326e-18, -9.609621937852749e-19, -1.8977534248033662e-17, -5.881143942078395e-18, -3.9960030264621216e-17, -4.420360646627199e-17, 3.831040037965189e-18, 1.136092342352507e-18, -6.7120786911955285e-19, -8.74392411895987e-18, -5.368557390172114e-18, 1.9903561587432177e-18, -1.3832405509948202e-17, 9.740452889682196e-19, -5.43289755342275e-18, -8.028568434233752e-18, 3.0214700318729924e-18, 3.3201766178671215e-18, -8.748586464211198e-18, -6.840469008501563e-18], [-8.018862595565632e-19, 7.325863644576583e-18, -4.380776928375182e-18, 8.959274514434886e-18, 8.370736978006483e-18, -4.2178378356906647e-19, 5.516466969686218e-18, -1.2509535097594299e-17, -3.9004504061013717e-19, 3.796817501807199e-18, 2.7494625566198284e-17, 5.449475876497767e-18, -3.831040037965189e-18, -6.875364047085179e-17, 5.584103796161574e-17, -2.0762831376100786e-17, 4.3000662840134465e-18, 2.050081223624477e-17, 3.4251341988254154e-18, 1.1824882310404019e-18, -6.799513503403106e-19, 1.7200311717756036e-17, -2.2716199039591085e-18, 1.176137710671522e-20, -2.1903398747438334e-18, 4.6384437050326756e-18, -5.812334547717876e-18], [2.8846835395799624e-18, -1.6368236429349735e-17, 7.528300516132346e-18, -5.635151494519177e-18, 9.224767841136326e-18, 3.445533473006821e-18, -1.047038561510882e-17, 1.1617162664005935e-17, 7.147058680062035e-18, 3.342243106329659e-18, -2.0232740174412688e-17, 3.0085514312912133e-18, -1.136092342352507e-18, -5.584103796161574e-17, -7.691527331223827e-17, 3.710313040197982e-17, -2.0790880128892094e-17, -3.624622645951764e-17, -9.588441517559281e-19, -1.5352936291559205e-17, 1.814435463902585e-18, -1.7439046184749015e-17, -1.1685118194951325e-17, 1.0434212283321904e-17, 1.064646380661638e-17, -1.5123752118954402e-17, -2.1849730283961588e-18], [1.280371057844652e-17, -5.18510968170511e-18, -7.819905840196403e-18, 8.219575245684244e-18, 7.669362510175265e-18, 4.105688035779558e-18, -3.2714614319388713e-18, -1.6860516523139817e-17, 2.789702954241011e-18, 8.781681652227697e-18, 8.818964181714311e-18, -2.8708484886737662e-18, 6.7120786911955285e-19, 2.0762831376100786e-17, -3.710313040197982e-17, -5.246055619291276e-17, -1.1062760487784356e-17, 3.90117874619162e-17, 4.747654007409235e-18, -3.3881532269635174e-18, 1.6706496978086551e-18, 2.8199280731449016e-18, -3.37475404740424e-18, 3.4419055752715192e-18, 1.4310321257568404e-18, 1.2587177241392638e-18, -4.032245271216102e-18], [-1.339373768838063e-18, 7.878468076211558e-18, 1.659380988994528e-17, -1.401893472616057e-17, -8.757294509689941e-18, 8.890962434502246e-18, -1.5436607032035214e-18, -4.606791997340429e-18, -5.796874529230159e-18, 1.2559083938224543e-17, 1.6036341131933715e-18, 1.9722625362193894e-17, 8.74392411895987e-18, -4.3000662840134465e-18, 2.0790880128892094e-17, 1.1062760487784356e-17, -7.659815229594418e-17, -1.867681351386772e-17, 8.923188885025569e-18, -1.86477344658596e-17, 5.8550749633075136e-18, -9.448060837375197e-18, -1.3538674864605028e-17, 3.093100372705598e-17, 2.9580954586085304e-17, -1.1269608193589979e-17, -1.0609898951309912e-17], [-9.79330764793657e-18, 8.88743577195245e-18, 2.2091276286369224e-17, -8.446538946316055e-18, -7.241435863896914e-18, 4.270124638369959e-18, -1.5518155903559318e-17, 2.5473386106942178e-17, -7.472312760283042e-18, 2.534380554141522e-18, -1.1052499343784545e-17, -4.9425699593766326e-18, 5.368557390172114e-18, -2.050081223624477e-17, 3.624622645951764e-17, -3.90117874619162e-17, 1.867681351386772e-17, -8.283392150161169e-17, -2.390286591893978e-18, -9.19516400903642e-18, -2.8059322353983083e-19, -6.8962424733795995e-18, -6.152813115644856e-18, -1.779760664981444e-18, -1.0870754434200684e-18, -8.92768321835084e-18, -2.126964974562283e-18], [9.649236247115311e-19, -2.548188204160705e-18, -4.0584592134990745e-18, 2.0205885614643764e-18, -8.342545289724896e-19, -6.705058361741541e-19, 3.4441513077415147e-19, 6.499610631986161e-19, 5.462806035162212e-19, 2.668861032920067e-19, -2.6198773491409773e-18, -2.5339074468112744e-18, -1.9903561587432177e-18, -3.4251341988254154e-18, 9.588441517559281e-19, -4.747654007409235e-18, -8.923188885025569e-18, 2.390286591893978e-18, -8.420777301593967e-17, 3.0681349353458e-17, 1.4957291079049806e-17, -9.489340941837239e-18, 8.56055141134646e-18, -2.5369631285836335e-18, -2.270173251255678e-18, -4.9376192006831226e-18, 6.180821693641848e-17], [-1.6774114017646527e-18, 1.2991396994732556e-18, 1.3785814387845873e-17, -1.14493060503824e-17, -5.922830567256532e-18, 8.237358087543416e-18, -2.9769284369031638e-18, 1.7957542870420066e-18, -7.408419386253763e-18, 1.2346297450702325e-17, 5.787821784106363e-18, 1.8306739077728698e-17, 1.3832405509948202e-17, -1.1824882310404019e-18, 1.5352936291559205e-17, 3.3881532269635174e-18, 1.86477344658596e-17, 9.19516400903642e-18, -3.0681349353458e-17, -8.405618131362897e-17, 2.839166083713164e-17, -1.4281764303656952e-17, -1.6580775021174782e-17, 1.0862154136824425e-17, 1.252775442527069e-17, -1.811021357065935e-17, -1.9237162713551443e-17], [-1.770242714115816e-18, 3.07345992952948e-19, -2.7916258804792774e-18, 1.5618539383682161e-18, 3.929685004666114e-19, -1.9818878312417463e-18, -2.069380199343039e-19, 1.8404497233997342e-19, -3.020168026976204e-19, 1.210506813489093e-18, -2.6955842191433846e-18, -1.26291247554888e-18, -9.740452889682196e-19, 6.799513503403106e-19, -1.814435463902585e-18, -1.6706496978086551e-18, -5.8550749633075136e-18, 2.8059322353983083e-19, -1.4957291079049806e-17, -2.839166083713164e-17, -8.409087972986569e-17, 5.532359109544008e-17, -3.65817788625295e-18, -4.0479893844181155e-18, -3.9014704971734345e-18, 9.206877498774048e-18, -1.398558847504984e-17], [1.7798387698624012e-18, -3.8506404647383705e-19, 1.020518857571385e-17, -7.122447599989173e-18, -4.114623737528927e-18, 4.980316771976834e-18, -2.7171107892844503e-19, 3.5256632163006767e-19, -2.9812865443807893e-18, 8.86610492409234e-18, -2.5477814365851996e-18, 8.53648908802317e-18, 5.43289755342275e-18, -1.7200311717756036e-17, 1.7439046184749015e-17, -2.8199280731449016e-18, 9.448060837375197e-18, 6.8962424733795995e-18, 9.489340941837239e-18, 1.4281764303656952e-17, -5.532359109544008e-17, -8.414320612057555e-17, 4.340554146707938e-18, 9.696784470686277e-18, 7.858350224944375e-18, -1.520303615456568e-17, 1.2207878372188842e-17], [-3.481850510925143e-18, 1.3792638729805985e-18, 8.813319317986166e-18, -7.904293489849367e-18, -4.985207578539747e-18, 5.422316001068814e-18, -3.286267141367059e-18, 2.851601690920026e-18, -6.592067700491888e-18, 1.1379612414636157e-17, 1.3204410961874011e-18, 1.52454370164581e-17, 8.028568434233752e-18, 2.2716199039591085e-18, 1.1685118194951325e-17, 3.37475404740424e-18, 1.3538674864605028e-17, 6.152813115644856e-18, -8.56055141134646e-18, 1.6580775021174782e-17, 3.65817788625295e-18, -4.340554146707938e-18, -8.410224518331591e-17, 6.301193876399555e-17, 6.912646263209692e-19, -2.0543808487875645e-18, -1.9144820349584696e-17], [1.596413406370209e-19, -2.9471957118827242e-18, -7.053777638637985e-18, 6.0272633705558175e-18, 6.042751962043531e-19, -3.784653807123675e-18, 2.2808435807125566e-19, 1.5084199758935473e-18, 2.7198639269662936e-18, -6.774288732443934e-18, 1.5809728179073327e-19, -9.362071516505945e-18, -3.0214700318729924e-18, -1.176137710671522e-20, -1.0434212283321904e-17, -3.4419055752715192e-18, -3.093100372705598e-17, 1.779760664981444e-18, 2.5369631285836335e-18, -1.0862154136824425e-17, 4.0479893844181155e-18, -9.696784470686277e-18, -6.301193876399555e-17, -8.414142532299461e-17, 4.166089408832743e-18, -3.4498535496555006e-19, 8.032903147591014e-18], [2.9582158284865575e-19, -1.5327363776083013e-18, -6.991469357101152e-18, 5.536175495729894e-18, 3.1667399556453866e-19, -3.310915202202468e-18, 4.582886224245893e-19, 2.192911281178591e-18, 1.9431066701077804e-18, -6.55432476753539e-18, -2.306152793401307e-19, -7.480641413252856e-18, -3.3201766178671215e-18, 2.1903398747438334e-18, -1.064646380661638e-17, -1.4310321257568404e-18, -2.9580954586085304e-17, 1.0870754434200684e-18, 2.270173251255678e-18, -1.252775442527069e-17, 3.9014704971734345e-18, -7.858350224944375e-18, -6.912646263209692e-19, -4.166089408832743e-18, -8.406945808989938e-17, 6.463961196826959e-17, 6.86075657593321e-18], [-7.478281717660308e-19, -1.0945929469607832e-18, 9.527845904234503e-18, -7.890691002721555e-18, -2.3359396875955537e-18, 5.423243097228505e-18, -3.471372683722226e-18, 3.2399022825240052e-18, -4.0917063796729055e-18, 1.1325967421619475e-17, -4.9041640908585966e-20, 1.392894765500695e-17, 8.748586464211198e-18, -4.6384437050326756e-18, 1.5123752118954402e-17, -1.2587177241392638e-18, 1.1269608193589979e-17, 8.92768321835084e-18, 4.9376192006831226e-18, 1.811021357065935e-17, -9.206877498774048e-18, 1.520303615456568e-17, 2.0543808487875645e-18, 3.4498535496555006e-19, -6.463961196826959e-17, -8.406369729067325e-17, 4.8469535039409666e-18], [-3.66699543830734e-18, 2.0085986977162787e-18, 6.711607893393497e-18, -4.62405806344998e-18, -8.795585429645557e-18, 5.344052809914682e-18, 6.016730774187477e-19, -4.298692864099808e-18, -6.195523213985103e-18, 7.469755464018054e-18, 1.0143868887870191e-17, 1.2511172744116568e-17, 6.840469008501563e-18, 5.812334547717876e-18, 2.1849730283961588e-18, 4.032245271216102e-18, 1.0609898951309912e-17, 2.126964974562283e-18, -6.180821693641848e-17, 1.9237162713551443e-17, 1.398558847504984e-17, -1.2207878372188842e-17, 1.9144820349584696e-17, -8.032903147591014e-18, -6.86075657593321e-18, -4.8469535039409666e-18, -8.406369729067325e-17]]
+zz_real = [[0.25000000000000006, -0.0939403936973205, -0.03689599358619084, 0.021649479416764372, 0.00655845329335321, -0.028261952196849193, 0.027407958619069014, 0.048388139460564236, -0.1787734876602376, 0.022542601716957933, -0.004347234769688745, -0.0033751433394320065, 0.002004984371541602, 0.0018286134829982017, -0.01541566697971724, -0.0210280176365374, 0.003572845095094965, 0.019279786196706814, -0.002599838475044248, 0.005542832768143102, 0.0019983770285219907, -0.0010805761982553412, 0.007254116677143355, -0.0024982562945835185, -0.0002645934281995671, 0.0008131714815459942, 0.005628498171763483], [-0.0939403936973205, 0.2500000000000001, -0.057529547624596354, 0.03191382686263775, -0.009189669175570873, -0.013287206654347381, 0.01314657575731432, -0.06404350736802812, 0.04762175067355622, -0.08485777667535067, 0.012054262358906838, 0.009170909357740944, -0.002002257836509815, 0.0007616038896296144, 0.01665004940984231, 0.027121240444845467, 0.010529740645230663, -0.0705207653093958, 0.0019982225100770076, 0.002596631510941232, -0.00567400867922635, 0.005674289844557459, -0.003912812065300246, -0.0015836328583568255, -0.004742061303976577, 0.006668337824408756, -0.006743016069742209], [-0.03689599358619084, -0.057529547624596354, 0.25000000000000017, -0.1896581782678682, 0.041600774602661456, 0.03364154873999786, -0.03647574858908311, 0.016385688335835737, 0.02501247835088779, 0.022535262516789962, -0.0012617514480285997, -0.006997725657731065, -0.0037871892429561403, 0.0002512991650898928, 0.00592435671876185, -0.008048509786540934, 0.023003885314486053, 0.012262606422968671, -0.0042820516236548875, 0.027958534162988203, -0.001354132904939172, 0.010617806537186874, 0.022083921642676765, -0.010939584552753793, -0.009806122265101034, 0.018808422712522917, 0.014005592015983465], [0.021649479416764372, 0.03191382686263775, -0.1896581782678682, 0.25000000000000017, -0.07254649851612702, -0.05352312013455537, 0.03308929340907044, -0.01523573209006976, -0.026274913038919705, -0.01959521416217881, -0.0007342894561651692, 0.007586571552188335, 0.0042870970229824, -0.0011204021271613565, -0.003132319396854483, 0.0053096214556968505, -0.014615248001525527, -0.011165005563484709, 0.003279708756726035, -0.018235367694299644, 0.0006888317481400165, -0.006781457073895124, -0.014757186381279003, 0.007386268533683516, 0.00622192329455376, -0.011509342855886723, -0.00970313110888075], [0.00655845329335321, -0.009189669175570873, 0.041600774602661456, -0.07254649851612702, 0.25, -0.0675383762184486, 0.03918104767588179, 0.0003154584039167673, 0.0013744176355172247, 0.030507763147460214, 0.0058592478502439305, -0.030167998768299262, -0.030843095705057406, 0.006259332419354523, 0.029639878600249407, -0.00535124824350406, 0.07319901174231762, 0.001026171009013976, -0.011664314775762073, 0.0830487052649432, -0.008318220624470608, 0.03393151695160083, 0.060515559224319546, -0.032245028350798344, -0.031529150268667434, 0.05823720249817976, 0.03666019456063196], [-0.028261952196849193, -0.013287206654347381, 0.03364154873999786, -0.05352312013455537, -0.0675383762184486, 0.25000000000000017, -0.1911612388102252, 0.030213613944668784, 0.02346570448536142, -0.0020828064538344735, -0.0009827573344574987, 0.003644317210442927, 0.007788752614762475, -0.0004349049942240504, -0.01834577711722749, -0.009450244738611998, -0.013851474697535454, 0.004198122594771578, 0.001140804597679869, -0.015820311488917035, 0.002525698964081931, -0.008369665531549083, -0.010015410150758694, 0.006090674746477929, 0.007152426464939378, -0.01272041299886584, -0.006327984596712449], [0.027407958619069014, 0.01314657575731432, -0.03647574858908311, 0.03308929340907044, 0.03918104767588179, -0.1911612388102252, 0.2500000000000002, -0.05340273571571896, -0.039875116748250325, 0.005289649035864056, 4.0895326488058256e-5, -0.003300869543433636, -0.0071113376736220155, -0.0011629366830262433, 0.021069796856155048, 0.009817668434771316, 0.022309669084328097, -0.006133695854664461, -0.00219757551378163, 0.025705644471791307, -0.003124946188408386, 0.01232974517782496, 0.01779013209525205, -0.009778527275964682, -0.010550583811710151, 0.01981715378234975, 0.010641010939396154], [0.048388139460564236, -0.06404350736802812, 0.016385688335835737, -0.01523573209006976, 0.0003154584039167673, 0.030213613944668784, -0.05340273571571896, 0.2500000000000004, -0.09487741290913286, 0.020829589548516637, 0.000616001079353321, -0.003540632067677116, 0.00965697627045346, 0.012597424669167225, -0.07870306059708017, -0.06998021236934196, 0.013143446482912494, 0.028147976537206743, -0.006509010102411836, 0.010903012948570358, 0.002093356616010506, -0.00415051682213629, 0.013439613006082894, -0.0057198157614630095, -0.0018241954614330576, 0.0013530135257217336, 0.009254856683075794], [-0.1787734876602376, 0.04762175067355622, 0.02501247835088779, -0.026274913038919705, 0.0013744176355172247, 0.02346570448536142, -0.039875116748250325, -0.09487741290913286, 0.2500000000000004, -0.01765088412293377, 0.001722249349163118, 0.0020909937638261475, -0.0029668527031245172, -0.004463474958903846, 0.019995983610995346, 0.018721584790433506, 0.0019589899798243635, -0.02111772125013427, 0.002025772072542854, 0.0009092298997314616, -0.002195246366551693, 0.003745469997844654, -0.0023023905870295453, -5.632645051971513e-6, -0.0020431743264585126, 0.003683279002076602, -0.002629876598685981], [0.022542601716957933, -0.08485777667535067, 0.022535262516789962, -0.01959521416217881, 0.030507763147460214, -0.0020828064538344735, 0.005289649035864056, 0.020829589548516637, -0.01765088412293377, 0.25000000000000056, -0.10910449035737876, -0.02215288788208215, 0.0019821924526140693, 0.016275749643179634, -0.03020909766276756, 0.02472135944409944, 0.011168740959026398, -0.05620422266717364, -0.00016977202153607124, 0.012833907104283927, 0.00812994201609566, -0.006216501699809569, 0.021091436649722708, -0.005048325936304092, -0.004469610288281591, 0.006597753227919254, 0.022682850471842327], [-0.004347234769688745, 0.012054262358906838, -0.0012617514480285997, -0.0007342894561651692, 0.0058592478502439305, -0.0009827573344574987, 4.0895326488058256e-5, 0.000616001079353321, 0.001722249349163118, -0.10910449035737876, 0.2500000000000002, -0.08812186664681805, 0.03277256306112329, -0.03671242121763718, 0.016150303547661542, -0.012086874940696666, 0.009407272140787064, 0.013390596583922105, -0.016449280951458433, 0.019752936622358636, -0.010927639158840404, 0.021623946755589686, 0.0007941517692795143, -0.003963975283263509, -0.0031886190783541623, 0.012859990920306383, -0.058457340440120326], [-0.0033751433394320065, 0.009170909357740944, -0.006997725657731065, 0.007586571552188335, -0.030167998768299262, 0.003644317210442927, -0.003300869543433636, -0.003540632067677116, 0.0020909937638261475, -0.02215288788208215, -0.08812186664681805, 0.25000000000000033, -0.15713134653944902, 0.03290147355664827, 0.0012546205920504875, 7.610262017139626e-5, -0.003588668286969952, -0.0011631277322865106, 0.005338247645375951, -0.011201997040426459, 0.0004442404996036476, -0.015239523114675156, -0.0012880391858630066, 0.0008296919753278724, 0.0028770409079325668, -0.006119012813615956, 0.010362321126164543], [0.002004984371541602, -0.002002257836509815, -0.0037871892429561403, 0.0042870970229824, -0.030843095705057406, 0.007788752614762475, -0.0071113376736220155, 0.00965697627045346, -0.0029668527031245172, 0.0019821924526140693, 0.03277256306112329, -0.15713134653944902, 0.25000000000000044, -0.08632231542642059, -0.02226519786507262, -0.0005825390019158593, -0.004935389976196409, -0.0007956869551258353, 0.0005590912024378026, -0.009943786323674372, 0.004632382066625392, 0.010372811604449687, -0.007309826985143099, 0.004095721836611543, 0.0014454848551100654, -0.0010990745201230516, -0.015377526765574785], [0.0018286134829982017, 0.0007616038896296144, 0.0002512991650898928, -0.0011204021271613565, 0.006259332419354523, -0.0004349049942240504, -0.0011629366830262433, 0.012597424669167225, -0.004463474958903846, 0.016275749643179634, -0.03671242121763718, 0.03290147355664827, -0.08632231542642059, 0.2500000000000005, -0.11088438801158265, 0.014282500807736012, 0.011666004352855523, -0.013109868689197895, -0.010836834708035769, 0.020443155965071114, -0.015308575103079293, -0.057490549677080206, 0.016422039535944972, -0.005095104867050843, -0.0045358486336980995, 0.001715186266478071, 0.022245047094940493], [-0.01541566697971724, 0.01665004940984231, 0.00592435671876185, -0.003132319396854483, 0.029639878600249407, -0.01834577711722749, 0.021069796856155048, -0.07870306059708017, 0.019995983610995346, -0.03020909766276756, 0.016150303547661542, 0.0012546205920504875, -0.02226519786507262, -0.11088438801158265, 0.2500000000000007, -0.06284020241846089, 0.01013766648704278, 0.0271272350010114, 0.007280885480074059, 0.01074500642050394, 0.0006616113020214498, 0.02136792462394256, 0.005473951302115899, -0.004487929866380221, -0.004584594088474911, 0.017989583145474258, -0.005950421463311258], [-0.0210280176365374, 0.027121240444845467, -0.008048509786540934, 0.0053096214556968505, -0.00535124824350406, -0.009450244738611998, 0.009817668434771316, -0.06998021236934196, 0.018721584790433506, 0.02472135944409944, -0.012086874940696666, 7.610262017139626e-5, -0.0005825390019158593, 0.014282500807736012, -0.06284020241846089, 0.25000000000000094, -0.028010006889855853, -0.15301873218563786, 0.0018855868327697144, -0.004753516227054801, -9.992666574710542e-6, -0.004007708454985267, -0.005207581273618943, 0.006060206627623811, 0.004592516248442799, -0.004126512601963834, -0.000667558634536285], [0.003572845095094965, 0.010529740645230663, 0.023003885314486053, -0.014615248001525527, 0.07319901174231762, -0.013851474697535454, 0.022309669084328097, 0.013143446482912494, 0.0019589899798243635, 0.011168740959026398, 0.009407272140787064, -0.003588668286969952, -0.004935389976196409, 0.011666004352855523, 0.01013766648704278, -0.028010006889855853, 0.25000000000000094, -0.029377687979887802, -0.022322585611181067, 0.061725793119564616, -0.021499156780381275, 0.03606779962853591, 0.04369701753693915, -0.0935355191189616, -0.09062632243154287, 0.042064527290717496, 0.0379101829557853], [0.019279786196706814, -0.0705207653093958, 0.012262606422968671, -0.011165005563484709, 0.001026171009013976, 0.004198122594771578, -0.006133695854664461, 0.028147976537206743, -0.02111772125013427, -0.05620422266717364, 0.013390596583922105, -0.0011631277322865106, -0.0007956869551258353, -0.013109868689197895, 0.0271272350010114, -0.15301873218563786, -0.029377687979887802, 0.2500000000000009, 0.00012966182719477428, -7.116603696445833e-5, 0.002034180927450333, 0.0009320088510645424, -0.0014162051352132, 0.004405917676891131, 0.005479218862159861, -0.0018618929064568956, -0.0025017664632591362], [-0.002599838475044248, 0.0019982225100770076, -0.0042820516236548875, 0.003279708756726035, -0.011664314775762073, 0.001140804597679869, -0.00219757551378163, -0.006509010102411836, 0.002025772072542854, -0.00016977202153607124, -0.016449280951458433, 0.005338247645375951, 0.0005590912024378026, -0.010836834708035769, 0.007280885480074059, 0.0018855868327697144, -0.022322585611181067, 0.00012966182719477428, 0.2500000000000008, -0.08577926359485948, -0.05609837732282597, 0.031447638313483246, -0.01816473114229551, 0.0022596094155922118, 0.012841382745134845, 0.009027735077087443, -0.1448048622295759], [0.005542832768143102, 0.002596631510941232, 0.027958534162988203, -0.018235367694299644, 0.0830487052649432, -0.015820311488917035, 0.025705644471791307, 0.010903012948570358, 0.0009092298997314616, 0.012833907104283927, 0.019752936622358636, -0.011201997040426459, -0.009943786323674372, 0.020443155965071114, 0.01074500642050394, -0.004753516227054801, 0.061725793119564616, -7.116603696445833e-5, -0.08577926359485948, 0.25000000000000067, -0.08028912554355, 0.025831426980006598, 0.04627624413030975, -0.023997384853117698, -0.022504860824257136, 0.04374748867257654, 0.027457883614978112], [0.0019983770285219907, -0.00567400867922635, -0.001354132904939172, 0.0006888317481400165, -0.008318220624470608, 0.002525698964081931, -0.003124946188408386, 0.002093356616010506, -0.002195246366551693, 0.00812994201609566, -0.010927639158840404, 0.0004442404996036476, 0.004632382066625392, -0.015308575103079293, 0.0006616113020214498, -9.992666574710542e-6, -0.021499156780381275, 0.002034180927450333, -0.05609837732282597, -0.08028912554355, 0.2500000000000008, -0.14685442469160076, 0.009572609542151821, 0.013965340933622821, 0.001222774219700874, -0.016435326662601505, 0.032202860901943034], [-0.0010805761982553412, 0.005674289844557459, 0.010617806537186874, -0.006781457073895124, 0.03393151695160083, -0.008369665531549083, 0.01232974517782496, -0.00415051682213629, 0.003745469997844654, -0.006216501699809569, 0.021623946755589686, -0.015239523114675156, 0.010372811604449687, -0.057490549677080206, 0.02136792462394256, -0.004007708454985267, 0.03606779962853591, 0.0009320088510645424, 0.031447638313483246, 0.025831426980006598, -0.14685442469160076, 0.2500000000000008, -0.02777963306644076, -0.029091183904382686, -0.010078499090651248, 0.031233193528716986, -0.028813313586615732], [0.007254116677143355, -0.003912812065300246, 0.022083921642676765, -0.014757186381279003, 0.060515559224319546, -0.010015410150758694, 0.01779013209525205, 0.013439613006082894, -0.0023023905870295453, 0.021091436649722708, 0.0007941517692795143, -0.0012880391858630066, -0.007309826985143099, 0.016422039535944972, 0.005473951302115899, -0.005207581273618943, 0.04369701753693915, -0.0014162051352132, -0.01816473114229551, 0.04627624413030975, 0.009572609542151821, -0.02777963306644076, 0.25000000000000067, -0.16846745271627286, 0.005487946717151914, 0.007136039985776079, 0.03425134233438101], [-0.0024982562945835185, -0.0015836328583568255, -0.010939584552753793, 0.007386268533683516, -0.032245028350798344, 0.006090674746477929, -0.009778527275964682, -0.0057198157614630095, -5.632645051971513e-6, -0.005048325936304092, -0.003963975283263509, 0.0008296919753278724, 0.004095721836611543, -0.005095104867050843, -0.004487929866380221, 0.006060206627623811, -0.0935355191189616, 0.004405917676891131, 0.0022596094155922118, -0.023997384853117698, 0.013965340933622821, -0.029091183904382686, -0.16846745271627286, 0.25000000000000083, -0.03037775861263309, 0.006073442501619376, -0.011795210890987975], [-0.0002645934281995671, -0.004742061303976577, -0.009806122265101034, 0.00622192329455376, -0.031529150268667434, 0.007152426464939378, -0.010550583811710151, -0.0018241954614330576, -0.0020431743264585126, -0.004469610288281591, -0.0031886190783541623, 0.0028770409079325668, 0.0014454848551100654, -0.0045358486336980995, -0.004584594088474911, 0.004592516248442799, -0.09062632243154287, 0.005479218862159861, 0.012841382745134845, -0.022504860824257136, 0.001222774219700874, -0.010078499090651248, 0.005487946717151914, -0.03037775861263309, 0.25000000000000083, -0.17192750987530536, -0.02706506478005642], [0.0008131714815459942, 0.006668337824408756, 0.018808422712522917, -0.011509342855886723, 0.05823720249817976, -0.01272041299886584, 0.01981715378234975, 0.0013530135257217336, 0.003683279002076602, 0.006597753227919254, 0.012859990920306383, -0.006119012813615956, -0.0010990745201230516, 0.001715186266478071, 0.017989583145474258, -0.004126512601963834, 0.042064527290717496, -0.0018618929064568956, 0.009027735077087443, 0.04374748867257654, -0.016435326662601505, 0.031233193528716986, 0.007136039985776079, 0.006073442501619376, -0.17192750987530536, 0.2500000000000009, -0.02704220774322401], [0.005628498171763483, -0.006743016069742209, 0.014005592015983465, -0.00970313110888075, 0.03666019456063196, -0.006327984596712449, 0.010641010939396154, 0.009254856683075794, -0.002629876598685981, 0.022682850471842327, -0.058457340440120326, 0.010362321126164543, -0.015377526765574785, 0.022245047094940493, -0.005950421463311258, -0.000667558634536285, 0.0379101829557853, -0.0025017664632591362, -0.1448048622295759, 0.027457883614978112, 0.032202860901943034, -0.028813313586615732, 0.03425134233438101, -0.011795210890987975, -0.02706506478005642, -0.02704220774322401, 0.2500000000000009]]
+
+[extra_source_sha256]
+"examples/run_static18.py" = "d03c350aeb0a1e6bf55d925f56973cf00682d23f4bde40b8257a036ce0b26a29"
+"examples/run_static27.py" = "3664f6c8cdb73bdf508ac7a9b413410fd469a01f16009bc8e8fcae770934d8d9"
+"examples/run_static27_progress.py" = "346b9f841b316bbc41407b0d4aa4fbade88506df9900cd359b0ab8ad99cc5b6d"
+"examples/run_static27_refine.py" = "c650bb7c4910d58b5dcf8adc071e4433a0dfbd36a8094ed6342dea5cf6bc46e8"
+"examples/validate_static27_progress.jl" = "1784e540dc8f73c2640e2a72c0d7c84a222c333946fea0d29d6e10639dd5f97e"
+"examples/validate_static27_refine.jl" = "d5cbafc06d250a2ffa99e9c60b6cf6d668933509420eedcf18038faa67f0512b"
+
+[parent]
+achieved_maxlinkdim = 64
+checkpoint = "outputs/p4-static27-progress-20260919/trial/checkpoint-fG0rfi"
+completed_sweeps = 2
+expected_outcome_sha256 = "6f7b0211fa85e9c7a82eecc3a86670b1d9fce9c22e471c57a6a15e29604814e0"
+verified = true
+
+    [parent.checkpoint_checksums]
+    bytes = 246
+    path = "outputs/p4-static27-progress-20260919/trial/checkpoint-fG0rfi/checksums.toml"
+    sha256 = "9217b8a072fef085dba2ae67bd3c1ed841fa6d41ec603a9258f82d3ae22ac65a"
+
+    [parent.checkpoint_metadata]
+    bytes = 37524
+    path = "outputs/p4-static27-progress-20260919/trial/checkpoint-fG0rfi/metadata.toml"
+    sha256 = "280ca62cc436187ab1641c6a04d0852dd484f5f5b94bfa1cd613067b002d2f9b"
+
+    [parent.checkpoint_payload]
+    bytes = 514274
+    path = "outputs/p4-static27-progress-20260919/trial/checkpoint-fG0rfi/state.jls"
+    sha256 = "cea233bc01dd2ceda01cb143c9d16a48e4237830edb9d6b5d238e4ebb36f042e"
+
+    [parent.configuration]
+    Lx = 3
+    Ly = 3
+    N = 27
+    Q = 3
+    axis_boundary = "open"
+    bond_family_convention = "J1_nn_J2_second_J3_hexagon_opposite_other_unclassified"
+    charge_convention = "q=2Sz"
+    circumference_boundary = "periodic"
+    exchange_phase = "S+_i_S-_j_has_exp(+im*bond_phase)"
+    gauge = "seam"
+    hz = [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+    ordering = "x_then_y_then_A_B_C"
+    termination = "complete_cells_with_outgoing_open_axis_bonds_removed"
+    wrap = [1.5, 2.598076211353316]
+
+        [[parent.configuration.bonds]]
+        Jxy = 1.0
+        Jz = 1.0
+        family = "J1"
+        i = 1
+        j = 2
+        wy = 0
+        [[parent.configuration.bonds]]
+        Jxy = 1.0
+        Jz = 1.0
+        family = "J1"
+        i = 1
+        j = 3
+        wy = 0
+        [[parent.configuration.bonds]]
+        Jxy = 1.0
+        Jz = 1.0
+        family = "J1"
+        i = 2
+        j = 3
+        wy = 0
+        [[parent.configuration.bonds]]
+        Jxy = 1.0
+        Jz = 1.0
+        family = "J1"
+        i = 1
+        j = 9
+        wy = -1
+        [[parent.configuration.bonds]]
+        Jxy = 1.0
+        Jz = 1.0
+        family = "J1"
+        i = 2
+        j = 18
+        wy = -1
+        [[parent.configuration.bonds]]
+        Jxy = 1.0
+        Jz = 1.0
+        family = "J1"
+        i = 4
+        j = 5
+        wy = 0
+        [[parent.configuration.bonds]]
+        Jxy = 1.0
+        Jz = 1.0
+        family = "J1"
+        i = 4
+        j = 6
+        wy = 0
+        [[parent.configuration.bonds]]
+        Jxy = 1.0
+        Jz = 1.0
+        family = "J1"
+        i = 5
+        j = 6
+        wy = 0
+        [[parent.configuration.bonds]]
+        Jxy = 1.0
+        Jz = 1.0
+        family = "J1"
+        i = 4
+        j = 3
+        wy = 0
+        [[parent.configuration.bonds]]
+        Jxy = 1.0
+        Jz = 1.0
+        family = "J1"
+        i = 5
+        j = 12
+        wy = 0
+        [[parent.configuration.bonds]]
+        Jxy = 1.0
+        Jz = 1.0
+        family = "J1"
+        i = 7
+        j = 8
+        wy = 0
+        [[parent.configuration.bonds]]
+        Jxy = 1.0
+        Jz = 1.0
+        family = "J1"
+        i = 7
+        j = 9
+        wy = 0
+        [[parent.configuration.bonds]]
+        Jxy = 1.0
+        Jz = 1.0
+        family = "J1"
+        i = 8
+        j = 9
+        wy = 0
+        [[parent.configuration.bonds]]
+        Jxy = 1.0
+        Jz = 1.0
+        family = "J1"
+        i = 7
+        j = 6
+        wy = 0
+        [[parent.configuration.bonds]]
+        Jxy = 1.0
+        Jz = 1.0
+        family = "J1"
+        i = 8
+        j = 15
+        wy = 0
+        [[parent.configuration.bonds]]
+        Jxy = 1.0
+        Jz = 1.0
+        family = "J1"
+        i = 10
+        j = 11
+        wy = 0
+        [[parent.configuration.bonds]]
+        Jxy = 1.0
+        Jz = 1.0
+        family = "J1"
+        i = 10
+        j = 12
+        wy = 0
+        [[parent.configuration.bonds]]
+        Jxy = 1.0
+        Jz = 1.0
+        family = "J1"
+        i = 11
+        j = 12
+        wy = 0
+        [[parent.configuration.bonds]]
+        Jxy = 1.0
+        Jz = 1.0
+        family = "J1"
+        i = 10
+        j = 2
+        wy = 0
+        [[parent.configuration.bonds]]
+        Jxy = 1.0
+        Jz = 1.0
+        family = "J1"
+        i = 10
+        j = 18
+        wy = -1
+        [[parent.configuration.bonds]]
+        Jxy = 1.0
+        Jz = 1.0
+        family = "J1"
+        i = 11
+        j = 27
+        wy = -1
+        [[parent.configuration.bonds]]
+        Jxy = 1.0
+        Jz = 1.0
+        family = "J1"
+        i = 13
+        j = 14
+        wy = 0
+        [[parent.configuration.bonds]]
+        Jxy = 1.0
+        Jz = 1.0
+        family = "J1"
+        i = 13
+        j = 15
+        wy = 0
+        [[parent.configuration.bonds]]
+        Jxy = 1.0
+        Jz = 1.0
+        family = "J1"
+        i = 14
+        j = 15
+        wy = 0
+        [[parent.configuration.bonds]]
+        Jxy = 1.0
+        Jz = 1.0
+        family = "J1"
+        i = 13
+        j = 5
+        wy = 0
+        [[parent.configuration.bonds]]
+        Jxy = 1.0
+        Jz = 1.0
+        family = "J1"
+        i = 13
+        j = 12
+        wy = 0
+        [[parent.configuration.bonds]]
+        Jxy = 1.0
+        Jz = 1.0
+        family = "J1"
+        i = 14
+        j = 21
+        wy = 0
+        [[parent.configuration.bonds]]
+        Jxy = 1.0
+        Jz = 1.0
+        family = "J1"
+        i = 16
+        j = 17
+        wy = 0
+        [[parent.configuration.bonds]]
+        Jxy = 1.0
+        Jz = 1.0
+        family = "J1"
+        i = 16
+        j = 18
+        wy = 0
+        [[parent.configuration.bonds]]
+        Jxy = 1.0
+        Jz = 1.0
+        family = "J1"
+        i = 17
+        j = 18
+        wy = 0
+        [[parent.configuration.bonds]]
+        Jxy = 1.0
+        Jz = 1.0
+        family = "J1"
+        i = 16
+        j = 8
+        wy = 0
+        [[parent.configuration.bonds]]
+        Jxy = 1.0
+        Jz = 1.0
+        family = "J1"
+        i = 16
+        j = 15
+        wy = 0
+        [[parent.configuration.bonds]]
+        Jxy = 1.0
+        Jz = 1.0
+        family = "J1"
+        i = 17
+        j = 24
+        wy = 0
+        [[parent.configuration.bonds]]
+        Jxy = 1.0
+        Jz = 1.0
+        family = "J1"
+        i = 19
+        j = 20
+        wy = 0
+        [[parent.configuration.bonds]]
+        Jxy = 1.0
+        Jz = 1.0
+        family = "J1"
+        i = 19
+        j = 21
+        wy = 0
+        [[parent.configuration.bonds]]
+        Jxy = 1.0
+        Jz = 1.0
+        family = "J1"
+        i = 20
+        j = 21
+        wy = 0
+        [[parent.configuration.bonds]]
+        Jxy = 1.0
+        Jz = 1.0
+        family = "J1"
+        i = 19
+        j = 11
+        wy = 0
+        [[parent.configuration.bonds]]
+        Jxy = 1.0
+        Jz = 1.0
+        family = "J1"
+        i = 19
+        j = 27
+        wy = -1
+        [[parent.configuration.bonds]]
+        Jxy = 1.0
+        Jz = 1.0
+        family = "J1"
+        i = 22
+        j = 23
+        wy = 0
+        [[parent.configuration.bonds]]
+        Jxy = 1.0
+        Jz = 1.0
+        family = "J1"
+        i = 22
+        j = 24
+        wy = 0
+        [[parent.configuration.bonds]]
+        Jxy = 1.0
+        Jz = 1.0
+        family = "J1"
+        i = 23
+        j = 24
+        wy = 0
+        [[parent.configuration.bonds]]
+        Jxy = 1.0
+        Jz = 1.0
+        family = "J1"
+        i = 22
+        j = 14
+        wy = 0
+        [[parent.configuration.bonds]]
+        Jxy = 1.0
+        Jz = 1.0
+        family = "J1"
+        i = 22
+        j = 21
+        wy = 0
+        [[parent.configuration.bonds]]
+        Jxy = 1.0
+        Jz = 1.0
+        family = "J1"
+        i = 25
+        j = 26
+        wy = 0
+        [[parent.configuration.bonds]]
+        Jxy = 1.0
+        Jz = 1.0
+        family = "J1"
+        i = 25
+        j = 27
+        wy = 0
+        [[parent.configuration.bonds]]
+        Jxy = 1.0
+        Jz = 1.0
+        family = "J1"
+        i = 26
+        j = 27
+        wy = 0
+        [[parent.configuration.bonds]]
+        Jxy = 1.0
+        Jz = 1.0
+        family = "J1"
+        i = 25
+        j = 17
+        wy = 0
+        [[parent.configuration.bonds]]
+        Jxy = 1.0
+        Jz = 1.0
+        family = "J1"
+        i = 25
+        j = 24
+        wy = 0
+
+        [[parent.configuration.sites]]
+        index = 1
+        position = [0.0, 0.0]
+        sublattice = "A"
+        x = 0
+        y = 0
+        [[parent.configuration.sites]]
+        index = 2
+        position = [0.5, 0.0]
+        sublattice = "B"
+        x = 0
+        y = 0
+        [[parent.configuration.sites]]
+        index = 3
+        position = [0.25, 0.4330127018922193]
+        sublattice = "C"
+        x = 0
+        y = 0
+        [[parent.configuration.sites]]
+        index = 4
+        position = [0.5, 0.8660254037844386]
+        sublattice = "A"
+        x = 0
+        y = 1
+        [[parent.configuration.sites]]
+        index = 5
+        position = [1.0, 0.8660254037844386]
+        sublattice = "B"
+        x = 0
+        y = 1
+        [[parent.configuration.sites]]
+        index = 6
+        position = [0.75, 1.299038105676658]
+        sublattice = "C"
+        x = 0
+        y = 1
+        [[parent.configuration.sites]]
+        index = 7
+        position = [1.0, 1.7320508075688772]
+        sublattice = "A"
+        x = 0
+        y = 2
+        [[parent.configuration.sites]]
+        index = 8
+        position = [1.5, 1.7320508075688772]
+        sublattice = "B"
+        x = 0
+        y = 2
+        [[parent.configuration.sites]]
+        index = 9
+        position = [1.25, 2.1650635094610964]
+        sublattice = "C"
+        x = 0
+        y = 2
+        [[parent.configuration.sites]]
+        index = 10
+        position = [1.0, 0.0]
+        sublattice = "A"
+        x = 1
+        y = 0
+        [[parent.configuration.sites]]
+        index = 11
+        position = [1.5, 0.0]
+        sublattice = "B"
+        x = 1
+        y = 0
+        [[parent.configuration.sites]]
+        index = 12
+        position = [1.25, 0.4330127018922193]
+        sublattice = "C"
+        x = 1
+        y = 0
+        [[parent.configuration.sites]]
+        index = 13
+        position = [1.5, 0.8660254037844386]
+        sublattice = "A"
+        x = 1
+        y = 1
+        [[parent.configuration.sites]]
+        index = 14
+        position = [2.0, 0.8660254037844386]
+        sublattice = "B"
+        x = 1
+        y = 1
+        [[parent.configuration.sites]]
+        index = 15
+        position = [1.75, 1.299038105676658]
+        sublattice = "C"
+        x = 1
+        y = 1
+        [[parent.configuration.sites]]
+        index = 16
+        position = [2.0, 1.7320508075688772]
+        sublattice = "A"
+        x = 1
+        y = 2
+        [[parent.configuration.sites]]
+        index = 17
+        position = [2.5, 1.7320508075688772]
+        sublattice = "B"
+        x = 1
+        y = 2
+        [[parent.configuration.sites]]
+        index = 18
+        position = [2.25, 2.1650635094610964]
+        sublattice = "C"
+        x = 1
+        y = 2
+        [[parent.configuration.sites]]
+        index = 19
+        position = [2.0, 0.0]
+        sublattice = "A"
+        x = 2
+        y = 0
+        [[parent.configuration.sites]]
+        index = 20
+        position = [2.5, 0.0]
+        sublattice = "B"
+        x = 2
+        y = 0
+        [[parent.configuration.sites]]
+        index = 21
+        position = [2.25, 0.4330127018922193]
+        sublattice = "C"
+        x = 2
+        y = 0
+        [[parent.configuration.sites]]
+        index = 22
+        position = [2.5, 0.8660254037844386]
+        sublattice = "A"
+        x = 2
+        y = 1
+        [[parent.configuration.sites]]
+        index = 23
+        position = [3.0, 0.8660254037844386]
+        sublattice = "B"
+        x = 2
+        y = 1
+        [[parent.configuration.sites]]
+        index = 24
+        position = [2.75, 1.299038105676658]
+        sublattice = "C"
+        x = 2
+        y = 1
+        [[parent.configuration.sites]]
+        index = 25
+        position = [3.0, 1.7320508075688772]
+        sublattice = "A"
+        x = 2
+        y = 2
+        [[parent.configuration.sites]]
+        index = 26
+        position = [3.5, 1.7320508075688772]
+        sublattice = "B"
+        x = 2
+        y = 2
+        [[parent.configuration.sites]]
+        index = 27
+        position = [3.25, 2.1650635094610964]
+        sublattice = "C"
+        x = 2
+        y = 2
+
+    [parent.expected_settings]
+    cutoff = 0.0
+    eigsolve_krylovdim = 40
+    eigsolve_maxiter = 20
+    eigsolve_tol = 1.0e-11
+    initial_linkdim = 4
+    initialization = "random_fixed_charge"
+    maxdim = [256]
+    measure_variance = false
+    noise = 0.0
+    nsweeps = 2
+    seed = 11
+
+    [parent.extra_source_sha256]
+    "examples/run_static18.py" = "d03c350aeb0a1e6bf55d925f56973cf00682d23f4bde40b8257a036ce0b26a29"
+    "examples/run_static27.py" = "3664f6c8cdb73bdf508ac7a9b413410fd469a01f16009bc8e8fcae770934d8d9"
+    "examples/run_static27_progress.py" = "346b9f841b316bbc41407b0d4aa4fbade88506df9900cd359b0ab8ad99cc5b6d"
+    "examples/validate_static27_progress.jl" = "1784e540dc8f73c2640e2a72c0d7c84a222c333946fea0d29d6e10639dd5f97e"
+
+    [parent.integrity_errors]
+    norm_error = 0.0
+    outcome_energy_error = 0.0
+    total_sz_error = 2.220446049250313e-16
+    validation_energy_error = 0.0
+    validation_profile_error = 0.0
+
+    [parent.outcome]
+    bytes = 2130
+    path = "docs/research/data/p4_static27_progress_outcome.toml"
+    sha256 = "6f7b0211fa85e9c7a82eecc3a86670b1d9fce9c22e471c57a6a15e29604814e0"
+
+    [parent.production_source_sha256]
+    "Manifest-v1.13.toml" = "134a3797eb3ba08171879ce51e354b8da641733911dc64b1f5944b0199c7187b"
+    "Project.toml" = "debb9b90c699e01f034a8ec21602c9eba26795a60fe5a69c0e8e793ed9a6bb0e"
+    "src/KagomeDMRG.jl" = "11c332090f4343dcaacef3844f56c5fd448aa8cf564cab687a18f8d20bca4f36"
+    "src/checkpoint.jl" = "2faea3170bb2f94c8bc112e9c13f87496946e463d51396a1620903acbcfbcff4"
+    "src/continuation.jl" = "613c5151ff09040fecd8002465a626fde5e70eb501be59aff45619044d3ae44e"
+    "src/dmrg.jl" = "94e66b1668b3bc3e502924ab8c6b11b6dd533ea5b65122ddc040d18fe0217012"
+    "src/extended_model.jl" = "3db76c474147afbee04d04e56db5e34e318cf485e18f74858898539a903eb120"
+    "src/lattice.jl" = "15d9ea5bea1514f49b36ac45bc139489fd6c6c03b00dff4e836d3d3e3aa7b2ec"
+    "src/model.jl" = "ec57b01141fd90a4938fc22d2833bd7a3ddfa107a107fb083753a4a39e91f58b"
+    "src/observables.jl" = "dfc48cc85a2cc6f51c99e4a58dc64f7709fad9f3834136e9fa915659147b29f8"
+    "src/provenance.jl" = "6a027b5383f70bded31c3477fb113044b55a991a37cc74ecd3daa5c7e99dc81a"
+    "src/schmidt.jl" = "13517078685ce1e1ca43b6200cbc61ff7aa6113757fa61ed9fcee4dfee3cbd0a"
+    "vendor/NDTensors/Project.toml" = "59d3d69bcb46b7af4386ea455483ac9419fcc89b169f21d6a2b6b0c1eb3a7c87"
+    "vendor/NDTensors/ext/NDTensorsAMDGPUExt/NDTensorsAMDGPUExt.jl" = "bb1acaffbbfac3b92a001f60d1025593df8fb4c8f00cfba30181fa74b84aa14d"
+    "vendor/NDTensors/ext/NDTensorsAMDGPUExt/adapt.jl" = "d8aa0643a3c9798ff4d9fed8949c34029b1407b805fa97384bff4fa9ecf9b5f8"
+    "vendor/NDTensors/ext/NDTensorsAMDGPUExt/append.jl" = "063fab626a97267ef21b31cbc9df4173ed242a6b6c2e8b26a34a626197c197af"
+    "vendor/NDTensors/ext/NDTensorsAMDGPUExt/copyto.jl" = "c2cf9fea12a743bf002de9cd22d1e857244108380665c520533b21f6fb2b8b4d"
+    "vendor/NDTensors/ext/NDTensorsAMDGPUExt/indexing.jl" = "3b0455a0677f5bb192244c821d6eb5dcdf0301f2b6f5e2d0a50a296469cbe6b5"
+    "vendor/NDTensors/ext/NDTensorsAMDGPUExt/linearalgebra.jl" = "9fb2bb3c028b92e20f5283c74b617567575ec2329a0b417bd938579ef52ccbb9"
+    "vendor/NDTensors/ext/NDTensorsAMDGPUExt/mul.jl" = "fdb4bdaa980ada17fe6d43eef03c30c735e3a76671b28fc059d688c85ecff355"
+    "vendor/NDTensors/ext/NDTensorsAMDGPUExt/permutedims.jl" = "e65ec0ce70cbd50fae5c5e659479b06e3776e28836b42626d485df29a8bb54df"
+    "vendor/NDTensors/ext/NDTensorsAMDGPUExt/set_types.jl" = "f3f39efbacd0da22e0685758cbc067db85cfeb0671f500ac94871f0de489fac9"
+    "vendor/NDTensors/ext/NDTensorsCUDAExt/NDTensorsCUDAExt.jl" = "c2be69a4f4562d15ddfaf709d1ff78fbbfa6869d0a361d371a58063a80697e09"
+    "vendor/NDTensors/ext/NDTensorsCUDAExt/adapt.jl" = "bbbd1a16b485eaa40f91a7ea25eb1079aedd7e2a82656533f072e70dced42f2f"
+    "vendor/NDTensors/ext/NDTensorsCUDAExt/append.jl" = "3c6d3da547c826d9f137cd9ab8c9549d97282d5d89d9ebf4467fb7be019032fa"
+    "vendor/NDTensors/ext/NDTensorsCUDAExt/copyto.jl" = "96fafee4f759697e78fd0b4cacf94489130e531ba150b91900a4775a458bf7eb"
+    "vendor/NDTensors/ext/NDTensorsCUDAExt/default_kwargs.jl" = "58b93e96de1142122f22e6e18c2c9c96a55de605bd59f9170ec49dea16c23eb8"
+    "vendor/NDTensors/ext/NDTensorsCUDAExt/indexing.jl" = "2585ee449609317792f7c91c27756d6b9b3b1af62c9f870ea1595d881120a371"
+    "vendor/NDTensors/ext/NDTensorsCUDAExt/iscu.jl" = "eac86157ecfc52cb3294ee253a18eb7c1848d4b0d2555b757159a9420fed67af"
+    "vendor/NDTensors/ext/NDTensorsCUDAExt/linearalgebra.jl" = "b0db2ce8390966d028729c8ba20b086c2d488c953c2833f171086abb134a3cc3"
+    "vendor/NDTensors/ext/NDTensorsCUDAExt/mul.jl" = "bb5a63ba0f60fb5c060a34aa5b1867aa15d5de2681673393982be28d187c6d4d"
+    "vendor/NDTensors/ext/NDTensorsCUDAExt/permutedims.jl" = "b08a6bcea0aa1ae69017ac0629cd72f1c69827f81d44f17232ae8468d4a8db7d"
+    "vendor/NDTensors/ext/NDTensorsCUDAExt/set_types.jl" = "03311e18a80634f5e59c39329c5a33ea33c05d227f510a70de7a4a76b74cfa0b"
+    "vendor/NDTensors/ext/NDTensorsGPUArraysCoreExt/NDTensorsGPUArraysCoreExt.jl" = "9cd9b5eb73583b656d301d0aab1b6c75466e913ccec28e0f7af66c532381773c"
+    "vendor/NDTensors/ext/NDTensorsGPUArraysCoreExt/blocksparsetensor.jl" = "7f09e9551d323b533ecec0756e0968541481d9f27f7f0d41bada7ce920229e3c"
+    "vendor/NDTensors/ext/NDTensorsGPUArraysCoreExt/contract.jl" = "acb83f46c5ead56ce5ecd1cbbff8d9c4f38339931637198d45561023a8823bc9"
+    "vendor/NDTensors/ext/NDTensorsHDF5Ext/NDTensorsHDF5Ext.jl" = "1e1c233183cb0b8c3e624eebcbab8b437fe6db79f7776938acfd545d93c36de7"
+    "vendor/NDTensors/ext/NDTensorsHDF5Ext/blocksparse.jl" = "04abf715f0d956f4fbc770450c939a4a8cf1b921a3f7f9a81536d068605bb282"
+    "vendor/NDTensors/ext/NDTensorsHDF5Ext/dense.jl" = "219e28b4a9a845eed582ba2508d98b703c36e64a1c6714330cb90812f50f5b47"
+    "vendor/NDTensors/ext/NDTensorsHDF5Ext/diag.jl" = "c8783890968f1c146aee3bccf636530ee23426d39301ee4a54884cf1f1309f04"
+    "vendor/NDTensors/ext/NDTensorsHDF5Ext/empty.jl" = "878d058d51c63222082a1abcda33d022cfa830176f168ae9bd04291ff6c87854"
+    "vendor/NDTensors/ext/NDTensorsJLArraysExt/NDTensorsJLArraysExt.jl" = "c52d0e1359ff2245acf3da6499c74f5b5c1a0c94da6417839a7ce81532b7a25f"
+    "vendor/NDTensors/ext/NDTensorsJLArraysExt/copyto.jl" = "3845eefcfe25c541115f93ff25454f0a45bf196e04b68382e331fce14c9295e7"
+    "vendor/NDTensors/ext/NDTensorsJLArraysExt/indexing.jl" = "5fc8f8ad3ac50a44a4c198f5646aba9a85b4988b601982da61a7a49a772c6dcb"
+    "vendor/NDTensors/ext/NDTensorsJLArraysExt/linearalgebra.jl" = "a1573a844829ee4d0069275be5803d5038b58ca026abe6eed6d820c8acb78d41"
+    "vendor/NDTensors/ext/NDTensorsJLArraysExt/mul.jl" = "72e3e6e22d1d5e6c006e3a82f8aaf5559b7f88bb27cb88ad7b380d557a2b9632"
+    "vendor/NDTensors/ext/NDTensorsJLArraysExt/permutedims.jl" = "3acb431354be8599e802bb100c499f17680c31e05260a6d1c0277132e9b774b2"
+    "vendor/NDTensors/ext/NDTensorsMappedArraysExt/NDTensorsMappedArraysExt.jl" = "9ad0b0aed6d7fad2483c7832bbb0e64f62ccfd2db28a02d8ff821bfdadd76cf6"
+    "vendor/NDTensors/ext/NDTensorsMetalExt/NDTensorsMetalExt.jl" = "3c0a3e75578417edc321b9ac0388f5a715acde4d11f3f79282580cee67c50fef"
+    "vendor/NDTensors/ext/NDTensorsMetalExt/adapt.jl" = "8abdb539d3f47701f32e3805b0f22188ffe09fccb6ad0037f140e863cf7c944b"
+    "vendor/NDTensors/ext/NDTensorsMetalExt/append.jl" = "f959252459f5de9815cfd9769f091b2c1bb3e42832174e0a0dcf0556cbb2daa7"
+    "vendor/NDTensors/ext/NDTensorsMetalExt/copyto.jl" = "89e61ab070b7500a54dda539c2532ef6cedc69615cef159c1e6b68631f8d7853"
+    "vendor/NDTensors/ext/NDTensorsMetalExt/indexing.jl" = "a9980cb384868bc7a7253d5bb3868bc0dc30910d1ecf836a1be78333d0d89ee4"
+    "vendor/NDTensors/ext/NDTensorsMetalExt/linearalgebra.jl" = "a3f2cd3e72254c33b3f5728fed9bbb7bc8ef45dcf37000d7788bc230fcc18cc9"
+    "vendor/NDTensors/ext/NDTensorsMetalExt/mul.jl" = "a40ab18645e079125811c6e25d3fcf9ce1a7c817691b22a659ab309b19f15629"
+    "vendor/NDTensors/ext/NDTensorsMetalExt/permutedims.jl" = "008d467a5cbc59ddd4859a7313749f941cc615043c6e7222fa48f733086f01c7"
+    "vendor/NDTensors/ext/NDTensorsMetalExt/set_types.jl" = "6b4b915b4ea4b7c843e780be8f846cad4bfce85a3ecb59bbf7efff7eaff5cc74"
+    "vendor/NDTensors/ext/NDTensorsOctavianExt/NDTensorsOctavianExt.jl" = "da1dc0f60d567fc36f46f4cfbac218d618b76db3c760e5392c774c19acf72663"
+    "vendor/NDTensors/ext/NDTensorsOctavianExt/import.jl" = "f2d8a4be22d07849ec3ea5274e02f310dfedd90bfed960d4441e5c69556a43a6"
+    "vendor/NDTensors/ext/NDTensorsOctavianExt/octavian.jl" = "979931868e2b22652b2825eb73aa187e5da409a61d508889f17de7d8e6efee48"
+    "vendor/NDTensors/ext/NDTensorsTBLISExt/NDTensorsTBLISExt.jl" = "5b613aedc8141e47c57011f92609657d932496fe3bf5651d6e3e29c5b148240e"
+    "vendor/NDTensors/ext/NDTensorsTBLISExt/contract.jl" = "db281c3a609e01e909595dd46db2f1c546234a80510bbb4ae7c52bfc17829471"
+    "vendor/NDTensors/ext/NDTensorscuTENSORExt/NDTensorscuTENSORExt.jl" = "d550d70ebaff58ad9f2fbe752e7e79fc5f37d8b6ff0b246db01e17f2e1fb3190"
+    "vendor/NDTensors/ext/NDTensorscuTENSORExt/contract.jl" = "0e87d4952463e12b815fa44b6cd297d4c618e963dbcb870195af8387ec0601ef"
+    "vendor/NDTensors/src/NDTensors.jl" = "93c116350d38bd51a23896b892a09554b80c4f60606a66af532c85e9316903ed"
+    "vendor/NDTensors/src/abstractarray/diaginterface.jl" = "dafc569213a1ef7faefa0602a836caf036645170631fd40ba2c0f511ecf9ffe0"
+    "vendor/NDTensors/src/abstractarray/generic_array_constructors.jl" = "377bbc3565a58ebcacce575fb3038458c990b31038f45a388d75563d2eb4d3e3"
+    "vendor/NDTensors/src/abstractarray/iscu.jl" = "a4db07b5b7bf728fd27004e568b2f428918ad39c8fd2b6ef7942f11b5eeb0e79"
+    "vendor/NDTensors/src/abstractarray/mul.jl" = "cdfeab2363d527ab3dcb0077e44b61bdf338fd1ea28c3d7e844adf826893ee0d"
+    "vendor/NDTensors/src/abstractarray/permutedims.jl" = "fbf318e87d0ba11fafd55ce545a05bee96e5900292a20a885f810519f8155ae1"
+    "vendor/NDTensors/src/abstractarray/set_types.jl" = "c5897f70892af64f9de9fbc0e7fbc7b171079bfaed01c054e72fa7d99c58523e"
+    "vendor/NDTensors/src/abstractarray/similar.jl" = "2a6fa581a450b2cbb705cd1dbca84930a54a0290934bfb3f424ad7c7f1c9f0f2"
+    "vendor/NDTensors/src/abstractarray/tensoralgebra/contract.jl" = "2ca9c0080c960d381e850153ebb7f1aeac3487f6fe339c4182a24ef0dd9b440c"
+    "vendor/NDTensors/src/abstractarray/to_shape.jl" = "902d5b8c92b0f1a2bdb6320d1a4ecb6a8ff01aa391bce372215fcd8c9e09cfe3"
+    "vendor/NDTensors/src/adapt.jl" = "703430e951574cc2213197db19872e4cce4731f5683dc66a067e15b14cd43ded"
+    "vendor/NDTensors/src/aliasstyle.jl" = "37b9abfaf80131020f72a518a454ed1404dabcfdac579c19d012fb0428644dbd"
+    "vendor/NDTensors/src/array/mul.jl" = "b289d62407d9013511623a21d2bab0234f9aeab86a4e8b3075e0261aad2fff07"
+    "vendor/NDTensors/src/array/permutedims.jl" = "cd1c04c0b1454f105eac0499413ea8a441641220b498812ce68e9b00453246bc"
+    "vendor/NDTensors/src/blocksparse/adapt.jl" = "02cac5677ab74ff2430f7e32a8580e7b5cd4cb15d1f02b210c062148ff03aa5e"
+    "vendor/NDTensors/src/blocksparse/block.jl" = "87a64296109a7b5a31f334f207c70c313b28cbd20759151ac79a84eda3abb224"
+    "vendor/NDTensors/src/blocksparse/blockdims.jl" = "150dc643646b655b35c9747618e09cc96cb9fec174d9465e83329d8059227096"
+    "vendor/NDTensors/src/blocksparse/blockoffsets.jl" = "c7ed7c47f72114478552833472ffd4b53b70c8a53ed89044cf6b5ef123ae2f2e"
+    "vendor/NDTensors/src/blocksparse/blocksparse.jl" = "688917f03103228bbd16afd731dcba418925d47e73862d2a41d5e59e7886d93e"
+    "vendor/NDTensors/src/blocksparse/blocksparsetensor.jl" = "2c85d550bf5b36f0e6b38c8dc2ae8f4733ec48bd119803cdde9456f7119289c7"
+    "vendor/NDTensors/src/blocksparse/combiner.jl" = "0206a11fd7e4bf672e567ce98ab3b52accbcfca5a487daaf130c9f683ed4b2a4"
+    "vendor/NDTensors/src/blocksparse/contract.jl" = "6b5e86ef8621732d67471fa43bb0c528088351d3379c72b476c571ffd329bee4"
+    "vendor/NDTensors/src/blocksparse/contract_generic.jl" = "4b2861b60a9e122a91c2a5325955bd21c9812ae7281875a25ac5832333d29c7d"
+    "vendor/NDTensors/src/blocksparse/contract_sequential.jl" = "33a8c02b9da93aa7a77291134681860051de2069662e5db005e746348825dd67"
+    "vendor/NDTensors/src/blocksparse/contract_threaded.jl" = "86a30e45a582e0316626822f3f9a65d4b7fa67f408af97db9c69b778c68050c6"
+    "vendor/NDTensors/src/blocksparse/contract_utilities.jl" = "9174a6a4022b6b5269c67ced65a8e6bd0fffc8c8368c5f9571d852de76d9d5b8"
+    "vendor/NDTensors/src/blocksparse/diagblocksparse.jl" = "565c6f0cd87b3fc3e5cc0ddeb52524567530152629e5a9bb379ba93f57bb2d20"
+    "vendor/NDTensors/src/blocksparse/fermions.jl" = "26af87d934bc9b167fdb92c5f38ba9c76d213933e9506b2fb91a6fafe67e13fc"
+    "vendor/NDTensors/src/blocksparse/linearalgebra.jl" = "fde39b44654889cef82b2fe1f330e03d814b16d1bb786a801ae176ebbb3d880b"
+    "vendor/NDTensors/src/blocksparse/similar.jl" = "2ecf8a7b0afe013be4c9fd06d417cf91e957f09f49b41f2a90c9333d1a1a16af"
+    "vendor/NDTensors/src/blocksparse/truncate_spectrum.jl" = "3f5b958c7878288619b7bc64f2449a5c36c2b9587e7906a20488448ef27a2a8b"
+    "vendor/NDTensors/src/combiner/combiner.jl" = "4a0e1e9eb7a3ae941bfdf389db0d310824f24c278aa59e6471e662a9ab66b19f"
+    "vendor/NDTensors/src/combiner/contract.jl" = "efd57cea1168a7e13401a0ae9b05e3ea119d47dd3a7134f53fe4974c3d647bac"
+    "vendor/NDTensors/src/default_kwargs.jl" = "48a588e7cfcfeec1f13cb3de4b0e8359164de14da21710083499afbd7402e1b5"
+    "vendor/NDTensors/src/dense/dense.jl" = "114ea60f15bd54b422f95234b11b86e57a822a1740130734813116f6a8ebac21"
+    "vendor/NDTensors/src/dense/densetensor.jl" = "eb656cf8d9af846c1e8fa268f18458939296995aed805a7a6e86aa7f4a5d9e8d"
+    "vendor/NDTensors/src/dense/generic_array_constructors.jl" = "47b3ba9ae03dfe3bf24756804b657b37413654f598d8b98c42b4b354a33dfdae"
+    "vendor/NDTensors/src/dense/linearalgebra/decompositions.jl" = "6a0d32e99fe1b0aa70ed04f803aed53d66fc0127253d312a445ee092753b43e9"
+    "vendor/NDTensors/src/dense/set_types.jl" = "1dc6576102a723c2dbb6578a7555f7d1a3b5bafe4ba0d5c5325b77703e245ff5"
+    "vendor/NDTensors/src/dense/tensoralgebra/contract.jl" = "6e130bff906e28909b0027fdf2ac99bf8274503039c83bf2773878c603cb70ab"
+    "vendor/NDTensors/src/dense/tensoralgebra/outer.jl" = "95feeda74e5bd9186769c9573909e8a83c8238b6c0df476817d263807235245c"
+    "vendor/NDTensors/src/deprecated.jl" = "32c8a23e3f8971a7a14e82dbcfbdfbfdf523eafd5d5db495a61016a45d0a7f14"
+    "vendor/NDTensors/src/diag/diag.jl" = "4d86cc755b5c2100cd7c1ce56a4107dce686f913c3b22a721e643387f5f2d106"
+    "vendor/NDTensors/src/diag/diagtensor.jl" = "a85308112964847e38ede59e26341561e4bd6dbf6873dd740598fb8a4150a6a0"
+    "vendor/NDTensors/src/diag/set_types.jl" = "eae287d3a100a7e3fb2896fca49a3642f92d4ed0d55fb2d08d974ae4781449a3"
+    "vendor/NDTensors/src/diag/similar.jl" = "196bc09444f3b2313adc26fee80da2f49b1501cf663155bfd6fd1e559ce0148a"
+    "vendor/NDTensors/src/diag/tensoralgebra/contract.jl" = "397d27c466bcf5fe3dd8e88deb196ba3d4a70b6773cc800297287f6e5145eb96"
+    "vendor/NDTensors/src/diag/tensoralgebra/outer.jl" = "f29c15122ffe7b8bd15ea47dba3c34dbf2a3fb3b4268d38a1398a54ca585d715"
+    "vendor/NDTensors/src/dims.jl" = "a58a06bf0f6e75706257249743ad9cebdb361a20949e9ba691642c736835daee"
+    "vendor/NDTensors/src/empty/EmptyTensor.jl" = "73af0d8585bed3922717d34eb426b03689adb90e962c9a4cb2e26f6726fbdc68"
+    "vendor/NDTensors/src/empty/adapt.jl" = "5866d1124f4ae6d5474f7a71ec6d6178e2b009e02b4d26e7a680fe90e6edecf7"
+    "vendor/NDTensors/src/empty/empty.jl" = "749946e78eb9b6506cd20d9f86a460b867b3184e6ebbf0cd79c2368f0cf786cc"
+    "vendor/NDTensors/src/empty/tensoralgebra/contract.jl" = "e998e877e4600b116d47ce946e8cd98211d0cf92e524adc654f7db8deaa1190f"
+    "vendor/NDTensors/src/emptynumber.jl" = "18a15b78659bb2612c92a84449a45a7dc30388900286e1d57a559688b19fec52"
+    "vendor/NDTensors/src/exports.jl" = "5780406d52a704d209d3160f4558159ddfa841f347ec36bfd6d038ec92770648"
+    "vendor/NDTensors/src/imports.jl" = "fa0ebef6a1db4ad0b6bdecea2c17e82ed26c20c473006e3016b9a5f08f313c04"
+    "vendor/NDTensors/src/kagome_source_identity.jl" = "8aafb41dceea0bcdf042fa981f73a024f8a02f24d82e5dc1981f7f5631fd8543"
+    "vendor/NDTensors/src/lib/AMDGPUExtensions/.JuliaFormatter.toml" = "7dcb26f6bc8dd8a9ddb2efdcd31fc918d15f078ff50a83aaecd8dbf56f4bdb13"
+    "vendor/NDTensors/src/lib/AMDGPUExtensions/src/AMDGPUExtensions.jl" = "636dc90e1c2b4226cf5ec7b473b6f86f7803574353cb2215e42d45ddee5d2380"
+    "vendor/NDTensors/src/lib/AMDGPUExtensions/src/roc.jl" = "d24a448ae7b72b5167f7117fbefe0128e6dab4e64fa744d51def80db7e9dbafb"
+    "vendor/NDTensors/src/lib/AMDGPUExtensions/test/runtests.jl" = "298bb6050e8d35100f16cb678dabe29bd051598ef923e33e00217e9c04c33678"
+    "vendor/NDTensors/src/lib/BackendSelection/.JuliaFormatter.toml" = "7dcb26f6bc8dd8a9ddb2efdcd31fc918d15f078ff50a83aaecd8dbf56f4bdb13"
+    "vendor/NDTensors/src/lib/BackendSelection/src/BackendSelection.jl" = "c7d1da4c95b760078b8b4f18350c437e403c50795ad79b684e27f0b1679368dd"
+    "vendor/NDTensors/src/lib/BackendSelection/src/abstractbackend.jl" = "0fb2873af5570b1c1492e0677408a034a64a607d2c93df95abbec31ef3f2713b"
+    "vendor/NDTensors/src/lib/BackendSelection/src/backend_types.jl" = "ebcd62b00d17d16d48f6d7d941b9f2d28010ba4d162ba02a8e71140761bf5ba2"
+    "vendor/NDTensors/src/lib/BackendSelection/test/Project.toml" = "6028c353382f17791c029e17fe16b661cd81873e181a609caf3ed60b60560e1b"
+    "vendor/NDTensors/src/lib/BackendSelection/test/runtests.jl" = "46f712cfacfe4091b35ef5ecbd91c3f7388df6f76e571ba4a16ae6aa03ccd8c5"
+    "vendor/NDTensors/src/lib/CUDAExtensions/.JuliaFormatter.toml" = "7dcb26f6bc8dd8a9ddb2efdcd31fc918d15f078ff50a83aaecd8dbf56f4bdb13"
+    "vendor/NDTensors/src/lib/CUDAExtensions/src/CUDAExtensions.jl" = "50d3e5fede2305e521da55a51fe7a12efd53e93b962c5197c73fd86bf45bd1d4"
+    "vendor/NDTensors/src/lib/CUDAExtensions/src/cuda.jl" = "9c1a2ab1e413281d124009d36835f26ba8131e62706dbbdb2b6f18acd0adf58c"
+    "vendor/NDTensors/src/lib/CUDAExtensions/test/runtests.jl" = "a850ccd891344cbb1384b9322932d1bf43d0140ae47d8722e85b004af3553e90"
+    "vendor/NDTensors/src/lib/Expose/.JuliaFormatter.toml" = "7dcb26f6bc8dd8a9ddb2efdcd31fc918d15f078ff50a83aaecd8dbf56f4bdb13"
+    "vendor/NDTensors/src/lib/Expose/README.md" = "dfc15377f47fbf8463c35779f88e329ae237e0ff0122509700b5810573dca132"
+    "vendor/NDTensors/src/lib/Expose/TODO.md" = "f568062cfd9a4f0a3241512f85d31bac9ffa3b9117efae1ed5a814fa0afe7dec"
+    "vendor/NDTensors/src/lib/Expose/src/Expose.jl" = "1873ff885d771dde4de13ee2566444f20b3fb50b8adedc7486ad26d7b3198726"
+    "vendor/NDTensors/src/lib/Expose/src/exposed.jl" = "688e7cb2db3a68ff97bae652640ffbd0e931ba4148edab29d13a12546bdf043a"
+    "vendor/NDTensors/src/lib/Expose/src/functions/abstractarray.jl" = "7acf81bb297f49240446f4f61d31b85d297b3335cc97b49bd220693a48f1679c"
+    "vendor/NDTensors/src/lib/Expose/src/functions/adapt.jl" = "fc6a78e161b3cc7097c51b29b157f33d314bd262077597a02e27bac044c3e5e3"
+    "vendor/NDTensors/src/lib/Expose/src/functions/append.jl" = "ff04c35717bf2addfebbff5b6c65780f6a844714a56b1d2b221250d874e0693d"
+    "vendor/NDTensors/src/lib/Expose/src/functions/copyto.jl" = "0e9cd5ebf64e832adf111d3e585ca33e3e7eb2865f868885a06df3a8d5bcbc0f"
+    "vendor/NDTensors/src/lib/Expose/src/functions/linearalgebra.jl" = "ac9aa39e22dd459de607ed2198ff57772e1e4fa85e861375eda20945152d4525"
+    "vendor/NDTensors/src/lib/Expose/src/functions/mul.jl" = "a0f4d99444b0471765fccdde61216ed8f5b91d6cc38b2df4719f2e66b8738850"
+    "vendor/NDTensors/src/lib/Expose/src/functions/permutedims.jl" = "ec3577180b019f360ad85e3c7759f282b094c01b45144799b10267ff4c65c1ca"
+    "vendor/NDTensors/src/lib/Expose/src/import.jl" = "c53b91ca346fe1e3067d3cfea41359ca27b157d5088a405ba2c23447d1399044"
+    "vendor/NDTensors/src/lib/Expose/test/Project.toml" = "4b2187c8580ca3f1ca4492f89229019fa1a743b5ad35e83fb32aec866bcd42b5"
+    "vendor/NDTensors/src/lib/Expose/test/runtests.jl" = "2ee83b1fcd4bf7d47b9da29b9b4f9a674e19d55cdcd0d6da3ae8e249a7e411a2"
+    "vendor/NDTensors/src/lib/GPUArraysCoreExtensions/.JuliaFormatter.toml" = "7dcb26f6bc8dd8a9ddb2efdcd31fc918d15f078ff50a83aaecd8dbf56f4bdb13"
+    "vendor/NDTensors/src/lib/GPUArraysCoreExtensions/Project.toml" = "e0267f2c0f73dd928edc0daea60aae622f0e2244da9f990333e45b0586e4e6c6"
+    "vendor/NDTensors/src/lib/GPUArraysCoreExtensions/src/GPUArraysCoreExtensions.jl" = "5de26f3c1e1712e69ae4264a1f6ee02f7f08ecf9c35fc937dafe95fa352f3641"
+    "vendor/NDTensors/src/lib/GPUArraysCoreExtensions/src/gpuarrayscore.jl" = "7fdc8fdb5951a674c32bfb79592788e91e4113bb78099178d9a6950742d655fa"
+    "vendor/NDTensors/src/lib/GPUArraysCoreExtensions/test/runtests.jl" = "8755efad84f4ebb5a4ef825f3ed3b276eb4e20de3bf5d08792042d6b2da09d6f"
+    "vendor/NDTensors/src/lib/MetalExtensions/.JuliaFormatter.toml" = "7dcb26f6bc8dd8a9ddb2efdcd31fc918d15f078ff50a83aaecd8dbf56f4bdb13"
+    "vendor/NDTensors/src/lib/MetalExtensions/src/MetalExtensions.jl" = "16ed92900cd973ab8ccc4be31d446bbf291d55cb2ae48676f7d499b99d8f86fb"
+    "vendor/NDTensors/src/lib/MetalExtensions/src/metal.jl" = "e1b799e61c9349bdd631e77ddeabae63e79d7a3f1c1475f1fa55876a95a2dbe6"
+    "vendor/NDTensors/src/lib/MetalExtensions/test/runtests.jl" = "860df1edc08553a8815c5631be7944909a539b802fb612c4aaf6066a37b5f665"
+    "vendor/NDTensors/src/lib/RankFactorization/.JuliaFormatter.toml" = "7dcb26f6bc8dd8a9ddb2efdcd31fc918d15f078ff50a83aaecd8dbf56f4bdb13"
+    "vendor/NDTensors/src/lib/RankFactorization/src/RankFactorization.jl" = "97b0e57d4bae6f04d8391c61d97c2fce0cf856249f72bcb24f995ce875582de9"
+    "vendor/NDTensors/src/lib/RankFactorization/src/default_kwargs.jl" = "48a588e7cfcfeec1f13cb3de4b0e8359164de14da21710083499afbd7402e1b5"
+    "vendor/NDTensors/src/lib/RankFactorization/src/spectrum.jl" = "33f3df88dc5464ea24192f459d2bd962af2107339187f7f094ad9333eb18ac3e"
+    "vendor/NDTensors/src/lib/RankFactorization/src/truncate_spectrum.jl" = "f17a8bf3795f08f8c8b7fe4446ede6f91b3e3144471fd039f9e26776a8de4c1b"
+    "vendor/NDTensors/src/linearalgebra/linearalgebra.jl" = "395a7d6db964aa0c8bddc37752d8d89a2cf13d1679c6569c2c0a4108435e90b3"
+    "vendor/NDTensors/src/linearalgebra/svd.jl" = "682f12af30e8a7e215b38d67af071db3e0f53e17ac2dfcc3c2dc7f828514ddc5"
+    "vendor/NDTensors/src/linearalgebra/symmetric.jl" = "7d2b80f41ef1a370a673c8bdd951224ff3c6c94bc0089528f94c4b00cbef1349"
+    "vendor/NDTensors/src/nodata.jl" = "8cd0c0d0fe97d6007c364561a180037199a4852e8da8e12e7dc17df0086f82c5"
+    "vendor/NDTensors/src/tensor/set_types.jl" = "14baee12a641bad6631b7c268bb92102b066a13ee16e4908d2819db42e01f27c"
+    "vendor/NDTensors/src/tensor/similar.jl" = "ac6c5231858c06cc7bef492c461db583b191645e3e3daef61f463d2a87f635cd"
+    "vendor/NDTensors/src/tensor/tensor.jl" = "2fb8ab3c1eba14d556963f8b231b91f4e8d6235a3f7f349530db4b15bda6b2b9"
+    "vendor/NDTensors/src/tensoroperations/contraction_logic.jl" = "13183fce7f3935e46b6045abcf6939a686187c65cd050298f21a57d13abe1ce3"
+    "vendor/NDTensors/src/tensoroperations/generic_tensor_operations.jl" = "4f185ec78d7d2fd43a5b825b37738c7110da0b8cb3d90b52a51a2a3af36357d0"
+    "vendor/NDTensors/src/tensorstorage/default_storage.jl" = "165385a10b9d429d177382f1be85bb05993af6236d615d15f453febfdfd68a4b"
+    "vendor/NDTensors/src/tensorstorage/set_types.jl" = "2b3e1d4b912e1c1bf59a297fb764f7f2de329504b59178c756c6f015ffb3a229"
+    "vendor/NDTensors/src/tensorstorage/similar.jl" = "5df277863e03c364d1c542f590b55b824bc7c59fd80d4cbbe235c541026fbbf5"
+    "vendor/NDTensors/src/tensorstorage/tensorstorage.jl" = "4de5792ce6f2b4428de4312931542f90f899bbea324712ee745aa8c46f532bbd"
+    "vendor/NDTensors/src/truncate.jl" = "29526042ddab5a0a99f185ff422654642c552bc654f7a871593022c3aff1ded3"
+    "vendor/NDTensors/src/tupletools.jl" = "fac0b91a445c0843fff057ad6ff9dede713f68d9945155a99f7b322d4e4e5f7d"
+
+    [parent.runtime]
+    ITensorMPS = "0.4.1"
+    ITensors = "0.9.31"
+    KrylovKit = "0.10.4"
+    LinearAlgebra = "1.13.0"
+    NDTensors = "0.4.31+1"
+    SHA = "1.0.0"
+    Serialization = "1.11.0"
+    TOML = "1.0.3"
+    arch = "aarch64"
+    blas_threads = 1
+    julia = "1.13.0"
+    julia_threads = 1
+    kernel = "Darwin"
+    word_size = 64
+
+    [parent.validation]
+    bytes = 109133
+    path = "docs/research/data/p4_static27_progress_validation.toml"
+    sha256 = "241846301c9d9b037e4365b67c6b92d3224fb58edc55773020b8b9c3230651c9"
+
+[[phases]]
+end_maxrss_bytes = 0x507b8000
+finished_worker_seconds = 30.696242166
+name = "verify_and_load_parent_trial"
+start_maxrss_bytes = 0x469b8000
+started_worker_seconds = 7.190856458
+status = "completed"
+wall_seconds = 23.505385708000002
+[[phases]]
+end_maxrss_bytes = 0x7fe1c000
+finished_worker_seconds = 173.310335833
+name = "two_additional_sweeps_without_variance"
+start_maxrss_bytes = 0x507b8000
+started_worker_seconds = 31.178599291
+status = "completed"
+wall_seconds = 142.131736542
+[[phases]]
+end_maxrss_bytes = 0x7fe1c000
+finished_worker_seconds = 175.254928083
+name = "checkpoint_save_and_reload"
+start_maxrss_bytes = 0x7fe1c000
+started_worker_seconds = 174.152317958
+status = "completed"
+wall_seconds = 1.1026101250000124
+[[phases]]
+end_maxrss_bytes = 0x7fe1c000
+finished_worker_seconds = 175.96576875
+name = "Schmidt_cuts_9_and_18"
+start_maxrss_bytes = 0x7fe1c000
+started_worker_seconds = 175.358954416
+status = "completed"
+wall_seconds = 0.6068143340000063
+[[phases]]
+end_maxrss_bytes = 0x7fe1c000
+finished_worker_seconds = 178.673116666
+name = "correlations_and_bond_profile"
+start_maxrss_bytes = 0x7fe1c000
+started_worker_seconds = 176.219771
+status = "completed"
+wall_seconds = 2.45334566599999
+[[phases]]
+end_maxrss_bytes = 0x94168000
+finished_worker_seconds = 189.450821083
+name = "variance_separate_HdaggerH_contraction"
+start_maxrss_bytes = 0x7fe1c000
+started_worker_seconds = 178.745845041
+status = "completed"
+wall_seconds = 10.704976041999998
+
+[runtime]
+ITensorMPS = "0.4.1"
+ITensors = "0.9.31"
+KrylovKit = "0.10.4"
+LinearAlgebra = "1.13.0"
+NDTensors = "0.4.31+1"
+SHA = "1.0.0"
+Serialization = "1.11.0"
+TOML = "1.0.3"
+arch = "aarch64"
+blas_threads = 1
+julia = "1.13.0"
+julia_threads = 1
+kernel = "Darwin"
+word_size = 64
+
+[[schmidt]]
+bond = 9
+density_error = 1.6653345369377348e-16
+density_mean_left_sz = 0.4732156572288979
+entropy = 1.4848921291947643
+left_q = [1, 1, 3, -1, 1, -1, -1, 1, -3, 3, 1, 1, 1, 3, -1, 1, -1, 3, -1, 1, 3, 3, 1, -1, 1, 3, -1, 5, 1, -1, 1, -1, -3, 1, 5, 3, 1, -1, 3, -1, -3, 1, 3, -1, -1, 1, 3, -1, 1, 1, -3, 1, 3, 1, -3, -1, 3, 1, 3, -1, 1, 3, 1, -1, 5, -1, -3, 1, 3, 1, 5, -1, 1, 1, 3, 1, -1, -3, 1, 3, 1, 3, -1, 3, -1, -3, 3, 1, 5, 1, 3, -1, 1, -3, 1, 3, 1, -1, -5, 1, 3, -1, 5, 3, 1, -1, -1, -3, 1, 1, 5, -1, -1, -1, -3, 1, 3, 1, 5, 3, 1, 3, -1, 3, 1, 5, 3, 1, -1, 5, 1, -3, 3, -5, -1, 1, 3, 1, 5, 3, -1, -3, 3, 1, -1, -1, 1, 1, -3, -1, -1, 1, 3, 3, -1, 3, -1, 5, 1, -3, 5, 1, 3, -1, 1, -1, 7, -1, -3, 1, 3, 1, -1, 3, -1, 1, 5, 3, -3, 1, 1, 3, 1, -1, 7, 1, -1, 5, 1, -1, 1, 1, -3, 3, -1, 1, 5, -3, -1, 1, -1, 1, 3, -1, 7, 1, 3, 5, -3, -1, 3, -3, -1, 1, 1, 3, 5, -3, -1, 3, -1, 1, 3, 1, 1, 3, -1, 5, -3, 3, -1, 1, 3, 5, -1, 1, -1, -3, 1, -1, 3, 1, 3, -1, 1, 1, 5, -5, 1, 1, 3, -1, 3, 1, 5, 3]
+mean_left_sz = 0.4732156572288981
+norm_squared = 1.0000000000000022
+normalization_error = 1.1102230246251565e-16
+probabilities = [0.5502059351218439, 0.15159587626424617, 0.11020316118544866, 0.09455463253720639, 0.03312864381324426, 0.029973633391702822, 0.009032395464967338, 0.004506107163766754, 0.0027764506156269645, 0.002062883565968025, 0.0019319651779899822, 0.0014967718536578194, 0.0011176676741063232, 0.0008889188331199728, 0.0008033310986356504, 0.0005752299135706203, 0.0004467247621788837, 0.00039579495931227224, 0.00037391061110932886, 0.0003494250366196597, 0.0003493850539502059, 0.0002785979189926506, 0.0002576469988703459, 0.00022777649015452023, 0.00022115883407486817, 0.00020896501015819812, 0.00020726224109582087, 0.00020201699047029444, 0.00018976429802228373, 0.00014046974156384486, 0.00012537835679516434, 0.00010351133577704275, 0.00010295694222380546, 8.535521517128922e-5, 8.320974084460456e-5, 6.833325829661451e-5, 6.242009071344755e-5, 5.7469385571993185e-5, 5.626943919339876e-5, 4.790431439329519e-5, 3.9778357598740154e-5, 3.7658228909500436e-5, 3.6069559450140175e-5, 3.492108648668976e-5, 2.7312526874583992e-5, 2.5952484866422276e-5, 2.4989524022401312e-5, 2.1712115776151268e-5, 2.05570358078564e-5, 1.633495735416223e-5, 1.5076699967523724e-5, 1.4845580674725901e-5, 1.097745259478436e-5, 1.0742130845821057e-5, 9.51565122158057e-6, 9.37785826983797e-6, 9.224717146317904e-6, 8.743304798130881e-6, 7.824874854379468e-6, 7.558032746806309e-6, 6.982752094102449e-6, 6.7370879601734535e-6, 6.522072433904228e-6, 6.127207152501134e-6, 5.994376702261973e-6, 5.333374346925058e-6, 4.701774219334493e-6, 3.988427867553173e-6, 3.617881022995773e-6, 3.3949699739891955e-6, 3.250410703262026e-6, 3.2050199988231506e-6, 3.070960180822755e-6, 2.787002627370639e-6, 2.5679966794310387e-6, 2.2435244573709567e-6, 2.0435324329623085e-6, 1.936579538856402e-6, 1.8975314107731035e-6, 1.8410524531449166e-6, 1.8279211241115452e-6, 1.7698737474487228e-6, 1.6399524774047247e-6, 1.4424429070575458e-6, 1.3859079887811631e-6, 1.291899916645026e-6, 1.2637449998711593e-6, 1.2158263382467774e-6, 1.1711397948462912e-6, 1.160553811570677e-6, 1.1213106116486115e-6, 1.0421594482538808e-6, 9.858113007550467e-7, 7.907982232672085e-7, 7.682460931396637e-7, 7.523381546365647e-7, 7.033485497451775e-7, 6.733039884550199e-7, 6.550140929796729e-7, 6.255004468471189e-7, 6.057297112551592e-7, 5.95867992251009e-7, 5.474632176351501e-7, 5.297230208696798e-7, 5.143814359801026e-7, 4.675922239232395e-7, 4.5678425855412263e-7, 4.329254476653648e-7, 3.888760417538264e-7, 3.693750853642453e-7, 3.675283962719722e-7, 3.6059789353742003e-7, 3.525192659108369e-7, 3.2237526299819103e-7, 3.2150490208045183e-7, 3.1745716738435367e-7, 3.167100372915338e-7, 2.817813399624804e-7, 2.568445650761043e-7, 2.518749437336667e-7, 2.4356154138492806e-7, 2.419870460055216e-7, 2.3680653320536791e-7, 2.2468869436769855e-7, 2.2276769690961988e-7, 2.2138693668264543e-7, 1.9505652841010633e-7, 1.9060625683828694e-7, 1.897341479651078e-7, 1.8293582001637177e-7, 1.800000251125662e-7, 1.72745431927276e-7, 1.6820724007127186e-7, 1.6009105015501902e-7, 1.5287814064788188e-7, 1.5085984999141535e-7, 1.391656440098124e-7, 1.3305309912019271e-7, 1.321216985816422e-7, 1.2915514073835023e-7, 1.2779915407365856e-7, 1.270996444772214e-7, 1.231216339588868e-7, 1.1253250840900183e-7, 1.0737446150548914e-7, 1.0114029466761383e-7, 1.01078881300216e-7, 9.520685188783547e-8, 9.210338359835742e-8, 8.943359791640522e-8, 8.116702853336868e-8, 7.918640230970348e-8, 7.688445564377963e-8, 7.558777189983879e-8, 6.892351065245866e-8, 6.878753370389665e-8, 6.542645966897473e-8, 6.535089628410903e-8, 5.8758641669257525e-8, 5.6171873153311816e-8, 5.4550708211169816e-8, 5.317602206532677e-8, 4.894665916151949e-8, 4.742935640364546e-8, 4.591844749867664e-8, 4.472091569432702e-8, 4.312930802373703e-8, 4.228373245796755e-8, 4.1921128274748176e-8, 4.045283952859331e-8, 3.921803509000542e-8, 3.7705299395446396e-8, 3.664893338274697e-8, 3.390885637291048e-8, 3.121673673387695e-8, 3.0951907953663746e-8, 2.8897522755861674e-8, 2.8808464967716208e-8, 2.7229621526207967e-8, 2.7096162140555468e-8, 2.4987213776405787e-8, 2.482669844646549e-8, 2.360245366717715e-8, 2.3493695918741457e-8, 2.302250854157182e-8, 2.2045697873086738e-8, 2.1635582017753243e-8, 2.039483993794316e-8, 2.0279456488319006e-8, 1.925640483218456e-8, 1.909378316981574e-8, 1.7691665272915266e-8, 1.7391747934651604e-8, 1.6326888184068586e-8, 1.582072473076981e-8, 1.5078891707605197e-8, 1.4685041795785959e-8, 1.3934443721659058e-8, 1.3746139314040404e-8, 1.335318101630173e-8, 1.2831685611082299e-8, 1.2765233986088853e-8, 1.2275965093338725e-8, 1.2073718619120072e-8, 1.182989577528663e-8, 1.102705497766528e-8, 1.0982269715460742e-8, 1.079068013742425e-8, 1.0379484697832648e-8, 9.88239752719749e-9, 9.529000135592186e-9, 9.077696194398291e-9, 8.807418951274906e-9, 8.676000735819435e-9, 7.84849498554789e-9, 7.636571290984983e-9, 7.408270143668986e-9, 7.021525875173265e-9, 6.947948148711178e-9, 6.69991379345506e-9, 6.263108256662821e-9, 6.120588233676062e-9, 5.8781355493250785e-9, 5.597771764280392e-9, 5.237594257497202e-9, 5.229927258050513e-9, 5.171767956160001e-9, 4.900291906512474e-9, 4.757585802865724e-9, 4.484634502888963e-9, 4.473149657281869e-9, 4.384090593847255e-9, 3.9925544137378876e-9, 3.907894238941354e-9, 3.855451331824013e-9, 3.80134185043637e-9, 3.5453633915365387e-9, 3.528854816622395e-9, 3.2843765589239275e-9, 3.1992305291672016e-9, 3.020225156145326e-9, 2.9568179669708617e-9, 2.9446520598224116e-9, 2.676957368779139e-9, 2.6765526068206255e-9, 2.4234855311398586e-9, 2.3139163760480026e-9, 2.3084672157872395e-9, 2.2199699112190243e-9, 2.165009789321585e-9, 2.083282222586169e-9, 2.036332155883026e-9, 1.875228740994825e-9, 1.669199636338314e-9, 1.6473633130319894e-9, 1.6349734955234843e-9]
+variance_left_sz = 0.2630177030844609
+[[schmidt]]
+bond = 18
+density_error = 4.440892098500626e-16
+density_mean_left_sz = 0.8717775333202933
+entropy = 1.6301858196193175
+left_q = [2, 0, 4, 2, 2, 2, 4, 2, 0, 0, 2, 0, 4, 2, 2, 4, 0, 0, 2, -2, 4, 2, 0, 2, 2, 0, 2, 0, -2, 4, 2, 6, 4, 0, 2, 0, 2, 0, 0, -2, 2, 4, -2, 2, 4, 0, 2, 2, 0, 4, 4, 2, 4, 2, 2, 4, 0, 0, 4, 2, -2, 2, 2, 0, 2, 2, 0, -2, 4, 0, 2, 0, 0, 2, 6, 2, 4, 0, 4, 0, 4, 0, 4, 2, 4, 2, -2, 6, 2, 4, 0, 2, 6, 0, 4, -2, 2, 0, 2, 6, 2, 4, 0, 0, -2, 2, 4, 2, 4, 2, -2, 6, 4, 2, -4, 0, 2, 4, 4, 0, 2, 4, -2, 2, 2, 6, 0, 4, 2, 4, -2, 4, 0, 2, 6, 0, 4, -2, 2, 2, 4, 0, 0, -2, 2, 2, 6, 0, 4, 2, 4, 0, 4, 2, 6, -2, -2, 4, 2, 0, 4, 2, 0, -2, 0, 4, 2, 0, 2, 0, 4, 2, 2, 6, 2, 4, 6, 0, 2, 4, -4, 4, 0, -2, 2, 2, 6, 0, 4, 0, 2, -4, 0, 4, 2, -2, 6, 4, -2, 4, 0, 2, 0, 2, 2, -2, 0, 2, 0, 2, 4, 6, 4, 6, 0, 4, 0, 2, 2, 4, 2, 0, -2, 4, 6, 2, 0, 4, -2, 2, 6, 2, 4, 2, 0, 2, 4, 2, 4, 0, 4, 4, 2, 0, 2, 4, 8, 2, 0, 6, 2, 4, 4, 2, 6, 8]
+mean_left_sz = 0.8717775333202928
+norm_squared = 1.0000000000000049
+normalization_error = 4.440892098500626e-16
+probabilities = [0.578170087658224, 0.1727691940201014, 0.05311644434657031, 0.03600682980806017, 0.03260552128152647, 0.028116221752370163, 0.01691124788083499, 0.01667092015090997, 0.009498062819453826, 0.008780174117200642, 0.006698926429630411, 0.004089422087967781, 0.004039260022956294, 0.004028825546472804, 0.002541359605593556, 0.0022160853231319483, 0.0019964739658401105, 0.0018139510644833217, 0.001803728694257677, 0.0017668304871254052, 0.0016195061803956229, 0.0016089452771120283, 0.001091444313818083, 0.0010907303705958644, 0.0009731671938757032, 0.0009299733382144729, 0.0007346617228775709, 0.0007322774684955456, 0.0007004862315047503, 0.0006323276295364619, 0.0005540754862997238, 0.0005082105740206366, 0.0004993608366476783, 0.0004294682181912199, 0.00030904487116666714, 0.00030575049701446705, 0.00027793069395901896, 0.0002538332361763761, 0.00018728720854706504, 0.00017556897800343564, 0.0001634272974645869, 0.00016312883614242338, 0.0001472221592156267, 0.00014257375969939582, 0.00013065188621722712, 0.00011781860268549857, 0.00011072053925665956, 0.00010704090412572201, 0.0001034987965582207, 0.00010133353950943387, 8.907509891490582e-5, 8.399246823585012e-5, 8.30967502140379e-5, 7.179457768738145e-5, 6.630418852690208e-5, 6.365006698756067e-5, 5.101452104806162e-5, 4.469155677618894e-5, 4.2666631085857706e-5, 4.169334019285366e-5, 3.723233773265037e-5, 3.629119202876478e-5, 3.478656209689784e-5, 3.188278490680229e-5, 3.059062941372063e-5, 2.9224830181061563e-5, 2.8834497600667446e-5, 2.7571223199508735e-5, 2.5847092173120107e-5, 2.559281788820917e-5, 2.3014826594143126e-5, 2.097949478942316e-5, 2.0100539039139012e-5, 1.9954711909205678e-5, 1.989396678625426e-5, 1.8542780637632464e-5, 1.7404050128903186e-5, 1.5784495037684026e-5, 1.5245958602661256e-5, 1.4231748357341451e-5, 1.4196527363982466e-5, 1.2188458560781548e-5, 1.2053979630931565e-5, 1.1828019496871813e-5, 1.0522884558695089e-5, 1.0425603780135046e-5, 1.0227953942637445e-5, 1.0078137377338135e-5, 9.14223020038605e-6, 9.026789534975086e-6, 8.95489246128111e-6, 8.626920774527268e-6, 8.146543972304519e-6, 7.881412912336846e-6, 7.668690915421143e-6, 7.14115989252455e-6, 7.123169871477556e-6, 6.9817362526526865e-6, 6.4359714485280984e-6, 6.277117423673307e-6, 5.468830202881783e-6, 5.456778522079456e-6, 5.216428683598229e-6, 4.730509278260356e-6, 4.730468061482666e-6, 4.638843713773676e-6, 4.428295096847631e-6, 4.3400001103618615e-6, 4.19442191009109e-6, 3.827175412295172e-6, 3.8081855295505318e-6, 3.6006497397226017e-6, 3.502073404835086e-6, 3.3837187052008047e-6, 3.2912715687343694e-6, 3.191817156143168e-6, 3.099321841278574e-6, 2.6865726205529503e-6, 2.621789496715602e-6, 2.5824647942244034e-6, 2.5033330896872096e-6, 2.385883274414875e-6, 2.288831565964154e-6, 2.2404720070999408e-6, 2.1347067857115894e-6, 2.1130442672625316e-6, 2.111016423375484e-6, 1.8992612857892977e-6, 1.876455675164537e-6, 1.8351127619120555e-6, 1.7988935376308818e-6, 1.5901009606651044e-6, 1.588089331473018e-6, 1.5795050041930172e-6, 1.3978470486476977e-6, 1.3639300927197045e-6, 1.3364402816089571e-6, 1.2031589455607022e-6, 1.1965169758119136e-6, 1.127671003621775e-6, 1.1189488371503407e-6, 1.0988851427425195e-6, 9.991030403086867e-7, 9.932984664834585e-7, 9.65993016617754e-7, 8.771870529489224e-7, 8.448717388647029e-7, 8.369178819470749e-7, 7.989183506342924e-7, 7.158565286562029e-7, 7.082458714946066e-7, 6.20262803987508e-7, 6.117770389302764e-7, 6.074421238962049e-7, 5.800829004677008e-7, 5.797450259968531e-7, 5.49057347256667e-7, 5.484602640022219e-7, 5.364493340686212e-7, 5.227463057813364e-7, 5.121953501697962e-7, 4.85079308979053e-7, 4.673072228043828e-7, 4.4066349359780176e-7, 4.2992729957371784e-7, 4.1243030930766455e-7, 3.985153408444182e-7, 3.8918037182620993e-7, 3.7047267558598245e-7, 3.460922236553934e-7, 3.3166148867922793e-7, 3.225313259181557e-7, 2.9839865239104934e-7, 2.980417256756131e-7, 2.714388193624749e-7, 2.6884322591879873e-7, 2.4668222546000745e-7, 2.461868601050911e-7, 2.457216746963448e-7, 2.427752255029404e-7, 2.3763394931394712e-7, 2.3409343630566266e-7, 2.2100161222775073e-7, 2.1729753259384764e-7, 2.0755529462603098e-7, 1.9167528086272218e-7, 1.8764410856697355e-7, 1.8702914043573392e-7, 1.8614990162577015e-7, 1.8518293370996983e-7, 1.7907317262012507e-7, 1.733115419875271e-7, 1.5883093852943264e-7, 1.4964223870617595e-7, 1.4951681520505817e-7, 1.437776145694327e-7, 1.4050548997109381e-7, 1.3913658052463622e-7, 1.3770811836864812e-7, 1.3413848385609134e-7, 1.3316863482966355e-7, 1.3138679487995493e-7, 1.241198641414598e-7, 1.2083624532778756e-7, 1.140912092846923e-7, 1.0137695558698005e-7, 9.748273165922556e-8, 9.476311586120277e-8, 9.342601833220385e-8, 8.467711004546301e-8, 8.306415818167729e-8, 8.046211968117641e-8, 7.865576272547928e-8, 7.396707698844755e-8, 7.154666829043599e-8, 6.78938541765254e-8, 6.733247814210128e-8, 6.6944158675849e-8, 6.46197517365539e-8, 6.057637254756154e-8, 5.849615568169038e-8, 5.6091291359054354e-8, 5.3644057111577693e-8, 5.142576811450061e-8, 5.116050743962026e-8, 5.064408746943533e-8, 4.6009878100695793e-8, 4.594004759716474e-8, 4.5357390112106735e-8, 4.343722316253406e-8, 4.043508332093309e-8, 4.034821187143107e-8, 3.75739193288016e-8, 3.709273168856232e-8, 3.506149805812489e-8, 3.128337679365082e-8, 3.108388956258093e-8, 3.0166406993345895e-8, 2.99247706454375e-8, 2.822885698179317e-8, 2.7264163764565566e-8, 2.597185029348509e-8, 2.5584198559875285e-8, 2.515426554280138e-8, 2.5088162031220633e-8, 2.3211002820678132e-8, 2.2822056146781448e-8, 2.1606179324613478e-8, 2.1112926036287052e-8, 2.0379494146763207e-8, 1.8564572380961416e-8, 1.7542023497287898e-8, 1.5600598640534354e-8, 1.5059240296301548e-8, 1.248263881536985e-8, 1.1926968174387027e-8]
+variance_left_sz = 0.2806740693248264
+
+[solver]
+cutoff = 0.0
+eigsolve_krylovdim = 40
+eigsolve_maxiter = 20
+eigsolve_tol = 1.0e-11
+maxdim = 256
+measure_variance = false
+noise = 0.0
+nsweeps = 2
+seed = 11
+
+[state]
+column_sz = [0.4732156572288979, 0.3985618760913955, 0.6282224666797122]
+energy = -11.30035274487593
+energy_per_site = -0.418531583143553
+link_dimensions = [2, 4, 8, 16, 32, 64, 128, 218, 256, 256, 256, 256, 256, 256, 256, 256, 256, 256, 242, 128, 64, 32, 16, 8, 4, 2]
+local_energy = -11.300352744875937
+maxlinkdim = 256
+measured_truncation_errors = [0.0, 1.359629631238424e-5]
+norm = 1.0
+sweep_energies = [-11.259680103462461, -11.300352744875937]
+sz_profile = [0.023992469012074608, 0.011920523847978301, 0.10470376112626205, -0.0647831892111383, 0.3056807561552925, -0.05487465316928999, 0.09557395217177872, 0.04623422416504231, 0.004767813130897675, 0.07961813866982823, 0.03380391752151755, -0.01787487187419066, -0.015250244107502843, 0.04011453716799785, 0.06976679842064888, -0.017720713575497836, 0.2261336886942749, -2.9374825680573992e-5, -0.03510943439749774, 0.268587769353095, -0.02527797728471988, 0.09948135058848512, 0.20044323564002262, -0.09164229969391674, -0.08853190283578286, 0.18998948564362383, 0.11028223966640285]
+total_sz = 1.5000000000000058
+variance_measured_in_dmrg = false
+
+    [state.settings]
+    cutoff = 0.0
+    eigsolve_krylovdim = 40
+    eigsolve_maxiter = 20
+    eigsolve_tol = 1.0e-11
+    initial_linkdim = 4
+    initialization = "provided_mps"
+    maxdim = [256]
+    measure_variance = false
+    noise = 0.0
+    nsweeps = 2
+    seed = 11
+
+[state_integrity]
+norm_error = 0.0
+passed = true
+total_sz_error = 5.773159728050814e-15
+
+[variance]
+HdaggerH_imag = 1.562234703037478e-14
+HdaggerH_real = 127.70647011765448
+contraction_seconds = 10.61493375
+energy_std_from_variance = 0.09218437519185127
+floor_limited = false
+interpretation = "MPO_energy_dispersion_not_ED_residual_or_ground_energy_error"
+norm_after = 1.0
+norm_before = 1.0
+overlap_with_checkpoint_after = 1.0000000000000036
+overlap_with_checkpoint_before = 1.0000000000000036
+raw_variance = 0.008497959029512003
+roundoff_scale = 2.8354645777689527e-12
+variance_per_site = 0.0003147392233152594
