@@ -51,8 +51,15 @@ function provenance_snapshot()
         push!(errors, "git_status_unavailable")
         "unavailable"
     end
+    environment = try
+        active_environment_snapshot()
+    catch exception
+        push!(errors, "active_environment_unavailable:" * string(typeof(exception)))
+        Dict{String,Any}("manifest"=>"unavailable",
+                         "environment_sha256"=>Dict{String,String}())
+    end
     return merge(Dict("git_revision"=>revision, "worktree_dirty"=>dirty,
-                "source_sha256"=>hashes, "errors"=>errors), active_environment_snapshot())
+                "source_sha256"=>hashes, "errors"=>errors), environment)
 end
 const SOURCE_BEFORE = provenance_snapshot()
 
@@ -101,6 +108,13 @@ for (theta, seed) in ((0.0, 11), (0.37, 11), (0.37, 29))
         point["sweep_energies"] = result.sweep_energies
         point["measured_truncation_errors"] = result.max_truncation_errors
         point["solver"] = Dict(string(k) => v for (k,v) in pairs(result.settings))
+        # Persist the identity captured by the solver, including the vendored
+        # backend. A git revision and dirty flag cannot identify local edits.
+        identity = result.execution_identity
+        point["execution_identity"] = Dict(
+            "source_sha256"=>Dict(identity.source_sha256),
+            "environment_sha256"=>Dict(identity.environment_sha256),
+            "manifest"=>identity.manifest, "runtime"=>Dict(identity.runtime))
         push!(points, point)
         println("theta=", theta, " seed=", seed, " status=", point["status"],
                 " energy_error/site=", m.energy_error_per_site,
@@ -117,6 +131,14 @@ end
 # Record only explicit reproducibility fields, never environment variables or
 # connection settings. A provenance error must not discard computed outcomes.
 source_after = provenance_snapshot()
+# The manual snapshot also covers the independent ED helpers, while this guard
+# checks every loaded backend source and the active environment before saving.
+# Preserve completed points with their original identities if that check fails.
+try
+    KagomeDMRG._execution_identity()
+catch exception
+    push!(source_after["errors"], "backend_identity_unavailable:" * string(typeof(exception)))
+end
 source_status = if !isempty(SOURCE_BEFORE["errors"]) || !isempty(source_after["errors"])
     "unavailable"
 elseif SOURCE_BEFORE["source_sha256"] != source_after["source_sha256"] ||

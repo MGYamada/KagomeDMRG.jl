@@ -1,0 +1,14 @@
+schema_version = 1
+mode = "prepare"
+
+[solver]
+seed = 11
+maxdim = 128
+initial_linkdim = 4
+eigsolve_tol = 1e-11
+eigsolve_krylovdim = 40
+eigsolve_maxiter = 20
+
+[preparation]
+batches = 2
+batch_sweeps = 2

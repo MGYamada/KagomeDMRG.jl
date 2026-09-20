@@ -1,0 +1,19 @@
+schema_version = 1
+case_id = "nn54_q6_chi128_period27"
+Lx = 6
+Ly = 3
+Q = 6
+seed = 11
+maxdim = 128
+batches = 4
+batch_sweeps = 2
+initialization = "period27"
+initial_completed_sweeps = 0
+backend_snapshot_origin = "48d15e2b566b4d4b50a6c5295b84348cc5f30f8d; exact archived 179 source files"
+
+[stationarity]
+energy_per_site = 1e-6
+sz_profile = 1e-4
+bond_profile = 1e-4
+variance_per_site = 1e-5
+truncation = 1e-6

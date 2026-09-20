@@ -1,0 +1,1718 @@
+N = 36
+Q = 0
+accuracy_status = "unestablished"
+added_chirality_term = false
+bulk_status = "three_columns_do_not_establish_a_bulk"
+center_sites = [13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24]
+config_sha256 = "b552cb8de302c3d6c70e9ab8ccffd8d669660904dffcd67da32e2df87ce3be97"
+cuts = [1, 2]
+execution_record = "execution.toml"
+expected_pump_used_for_acceptance = false
+flux_observations = []
+initial_state_convention = "complex_fixed_Q_random_seed_or_explicit_saved_parent"
+mode = "prepare"
+phase_identification = "not_attempted"
+quantized_pump = "not_established"
+recorded_at_utc = "2026-09-20T05:15:39.959"
+schema_version = 1
+schmidt_bonds = [12, 24]
+scope = "known_CSL_model_finite_measurement_control"
+status = "running"
+time_limit_enforcement = "external_launcher_including_startup_and_single_solves"
+uniform_zeeman_field = 0.0
+wall_limit_seconds = 600.0
+worker_elapsed_seconds = 516.537281458
+
+[code]
+git_revision = "2abc5f6b503447a11697f6f09205b55d350755f3"
+manifest = "Manifest-v1.13.toml"
+worktree_dirty = true
+
+    [code.source_sha256]
+    "Manifest-v1.13.toml" = "134a3797eb3ba08171879ce51e354b8da641733911dc64b1f5944b0199c7187b"
+    "Project.toml" = "debb9b90c699e01f034a8ec21602c9eba26795a60fe5a69c0e8e793ed9a6bb0e"
+    "src/KagomeDMRG.jl" = "c47a84d16584264430aa76c44addf00351b7c15c0e1c8188f82d2bda41d2fd81"
+    "src/checkpoint.jl" = "2faea3170bb2f94c8bc112e9c13f87496946e463d51396a1620903acbcfbcff4"
+    "src/chirality.jl" = "b09f8dee7cd0952920e190bbcbc244a505cebfac9756b4c5b7498e6780a4f18b"
+    "src/continuation.jl" = "613c5151ff09040fecd8002465a626fde5e70eb501be59aff45619044d3ae44e"
+    "src/dmrg.jl" = "94e66b1668b3bc3e502924ab8c6b11b6dd533ea5b65122ddc040d18fe0217012"
+    "src/extended_model.jl" = "3db76c474147afbee04d04e56db5e34e318cf485e18f74858898539a903eb120"
+    "src/lattice.jl" = "15d9ea5bea1514f49b36ac45bc139489fd6c6c03b00dff4e836d3d3e3aa7b2ec"
+    "src/model.jl" = "ec57b01141fd90a4938fc22d2833bd7a3ddfa107a107fb083753a4a39e91f58b"
+    "src/observables.jl" = "dfc48cc85a2cc6f51c99e4a58dc64f7709fad9f3834136e9fa915659147b29f8"
+    "src/provenance.jl" = "360724cf18a928363418a6dceef90c89ffad1fdde0f40fe43bd4c717175da5d2"
+    "src/schmidt.jl" = "13517078685ce1e1ca43b6200cbc61ff7aa6113757fa61ed9fcee4dfee3cbd0a"
+    "vendor/NDTensors/Project.toml" = "59d3d69bcb46b7af4386ea455483ac9419fcc89b169f21d6a2b6b0c1eb3a7c87"
+    "vendor/NDTensors/ext/NDTensorsAMDGPUExt/NDTensorsAMDGPUExt.jl" = "bb1acaffbbfac3b92a001f60d1025593df8fb4c8f00cfba30181fa74b84aa14d"
+    "vendor/NDTensors/ext/NDTensorsAMDGPUExt/adapt.jl" = "d8aa0643a3c9798ff4d9fed8949c34029b1407b805fa97384bff4fa9ecf9b5f8"
+    "vendor/NDTensors/ext/NDTensorsAMDGPUExt/append.jl" = "063fab626a97267ef21b31cbc9df4173ed242a6b6c2e8b26a34a626197c197af"
+    "vendor/NDTensors/ext/NDTensorsAMDGPUExt/copyto.jl" = "c2cf9fea12a743bf002de9cd22d1e857244108380665c520533b21f6fb2b8b4d"
+    "vendor/NDTensors/ext/NDTensorsAMDGPUExt/indexing.jl" = "3b0455a0677f5bb192244c821d6eb5dcdf0301f2b6f5e2d0a50a296469cbe6b5"
+    "vendor/NDTensors/ext/NDTensorsAMDGPUExt/linearalgebra.jl" = "9fb2bb3c028b92e20f5283c74b617567575ec2329a0b417bd938579ef52ccbb9"
+    "vendor/NDTensors/ext/NDTensorsAMDGPUExt/mul.jl" = "fdb4bdaa980ada17fe6d43eef03c30c735e3a76671b28fc059d688c85ecff355"
+    "vendor/NDTensors/ext/NDTensorsAMDGPUExt/permutedims.jl" = "e65ec0ce70cbd50fae5c5e659479b06e3776e28836b42626d485df29a8bb54df"
+    "vendor/NDTensors/ext/NDTensorsAMDGPUExt/set_types.jl" = "f3f39efbacd0da22e0685758cbc067db85cfeb0671f500ac94871f0de489fac9"
+    "vendor/NDTensors/ext/NDTensorsCUDAExt/NDTensorsCUDAExt.jl" = "c2be69a4f4562d15ddfaf709d1ff78fbbfa6869d0a361d371a58063a80697e09"
+    "vendor/NDTensors/ext/NDTensorsCUDAExt/adapt.jl" = "bbbd1a16b485eaa40f91a7ea25eb1079aedd7e2a82656533f072e70dced42f2f"
+    "vendor/NDTensors/ext/NDTensorsCUDAExt/append.jl" = "3c6d3da547c826d9f137cd9ab8c9549d97282d5d89d9ebf4467fb7be019032fa"
+    "vendor/NDTensors/ext/NDTensorsCUDAExt/copyto.jl" = "96fafee4f759697e78fd0b4cacf94489130e531ba150b91900a4775a458bf7eb"
+    "vendor/NDTensors/ext/NDTensorsCUDAExt/default_kwargs.jl" = "58b93e96de1142122f22e6e18c2c9c96a55de605bd59f9170ec49dea16c23eb8"
+    "vendor/NDTensors/ext/NDTensorsCUDAExt/indexing.jl" = "2585ee449609317792f7c91c27756d6b9b3b1af62c9f870ea1595d881120a371"
+    "vendor/NDTensors/ext/NDTensorsCUDAExt/iscu.jl" = "eac86157ecfc52cb3294ee253a18eb7c1848d4b0d2555b757159a9420fed67af"
+    "vendor/NDTensors/ext/NDTensorsCUDAExt/linearalgebra.jl" = "b0db2ce8390966d028729c8ba20b086c2d488c953c2833f171086abb134a3cc3"
+    "vendor/NDTensors/ext/NDTensorsCUDAExt/mul.jl" = "bb5a63ba0f60fb5c060a34aa5b1867aa15d5de2681673393982be28d187c6d4d"
+    "vendor/NDTensors/ext/NDTensorsCUDAExt/permutedims.jl" = "b08a6bcea0aa1ae69017ac0629cd72f1c69827f81d44f17232ae8468d4a8db7d"
+    "vendor/NDTensors/ext/NDTensorsCUDAExt/set_types.jl" = "03311e18a80634f5e59c39329c5a33ea33c05d227f510a70de7a4a76b74cfa0b"
+    "vendor/NDTensors/ext/NDTensorsGPUArraysCoreExt/NDTensorsGPUArraysCoreExt.jl" = "9cd9b5eb73583b656d301d0aab1b6c75466e913ccec28e0f7af66c532381773c"
+    "vendor/NDTensors/ext/NDTensorsGPUArraysCoreExt/blocksparsetensor.jl" = "7f09e9551d323b533ecec0756e0968541481d9f27f7f0d41bada7ce920229e3c"
+    "vendor/NDTensors/ext/NDTensorsGPUArraysCoreExt/contract.jl" = "acb83f46c5ead56ce5ecd1cbbff8d9c4f38339931637198d45561023a8823bc9"
+    "vendor/NDTensors/ext/NDTensorsHDF5Ext/NDTensorsHDF5Ext.jl" = "1e1c233183cb0b8c3e624eebcbab8b437fe6db79f7776938acfd545d93c36de7"
+    "vendor/NDTensors/ext/NDTensorsHDF5Ext/blocksparse.jl" = "04abf715f0d956f4fbc770450c939a4a8cf1b921a3f7f9a81536d068605bb282"
+    "vendor/NDTensors/ext/NDTensorsHDF5Ext/dense.jl" = "219e28b4a9a845eed582ba2508d98b703c36e64a1c6714330cb90812f50f5b47"
+    "vendor/NDTensors/ext/NDTensorsHDF5Ext/diag.jl" = "c8783890968f1c146aee3bccf636530ee23426d39301ee4a54884cf1f1309f04"
+    "vendor/NDTensors/ext/NDTensorsHDF5Ext/empty.jl" = "878d058d51c63222082a1abcda33d022cfa830176f168ae9bd04291ff6c87854"
+    "vendor/NDTensors/ext/NDTensorsJLArraysExt/NDTensorsJLArraysExt.jl" = "c52d0e1359ff2245acf3da6499c74f5b5c1a0c94da6417839a7ce81532b7a25f"
+    "vendor/NDTensors/ext/NDTensorsJLArraysExt/copyto.jl" = "3845eefcfe25c541115f93ff25454f0a45bf196e04b68382e331fce14c9295e7"
+    "vendor/NDTensors/ext/NDTensorsJLArraysExt/indexing.jl" = "5fc8f8ad3ac50a44a4c198f5646aba9a85b4988b601982da61a7a49a772c6dcb"
+    "vendor/NDTensors/ext/NDTensorsJLArraysExt/linearalgebra.jl" = "a1573a844829ee4d0069275be5803d5038b58ca026abe6eed6d820c8acb78d41"
+    "vendor/NDTensors/ext/NDTensorsJLArraysExt/mul.jl" = "72e3e6e22d1d5e6c006e3a82f8aaf5559b7f88bb27cb88ad7b380d557a2b9632"
+    "vendor/NDTensors/ext/NDTensorsJLArraysExt/permutedims.jl" = "3acb431354be8599e802bb100c499f17680c31e05260a6d1c0277132e9b774b2"
+    "vendor/NDTensors/ext/NDTensorsMappedArraysExt/NDTensorsMappedArraysExt.jl" = "9ad0b0aed6d7fad2483c7832bbb0e64f62ccfd2db28a02d8ff821bfdadd76cf6"
+    "vendor/NDTensors/ext/NDTensorsMetalExt/NDTensorsMetalExt.jl" = "3c0a3e75578417edc321b9ac0388f5a715acde4d11f3f79282580cee67c50fef"
+    "vendor/NDTensors/ext/NDTensorsMetalExt/adapt.jl" = "8abdb539d3f47701f32e3805b0f22188ffe09fccb6ad0037f140e863cf7c944b"
+    "vendor/NDTensors/ext/NDTensorsMetalExt/append.jl" = "f959252459f5de9815cfd9769f091b2c1bb3e42832174e0a0dcf0556cbb2daa7"
+    "vendor/NDTensors/ext/NDTensorsMetalExt/copyto.jl" = "89e61ab070b7500a54dda539c2532ef6cedc69615cef159c1e6b68631f8d7853"
+    "vendor/NDTensors/ext/NDTensorsMetalExt/indexing.jl" = "a9980cb384868bc7a7253d5bb3868bc0dc30910d1ecf836a1be78333d0d89ee4"
+    "vendor/NDTensors/ext/NDTensorsMetalExt/linearalgebra.jl" = "a3f2cd3e72254c33b3f5728fed9bbb7bc8ef45dcf37000d7788bc230fcc18cc9"
+    "vendor/NDTensors/ext/NDTensorsMetalExt/mul.jl" = "a40ab18645e079125811c6e25d3fcf9ce1a7c817691b22a659ab309b19f15629"
+    "vendor/NDTensors/ext/NDTensorsMetalExt/permutedims.jl" = "008d467a5cbc59ddd4859a7313749f941cc615043c6e7222fa48f733086f01c7"
+    "vendor/NDTensors/ext/NDTensorsMetalExt/set_types.jl" = "6b4b915b4ea4b7c843e780be8f846cad4bfce85a3ecb59bbf7efff7eaff5cc74"
+    "vendor/NDTensors/ext/NDTensorsOctavianExt/NDTensorsOctavianExt.jl" = "da1dc0f60d567fc36f46f4cfbac218d618b76db3c760e5392c774c19acf72663"
+    "vendor/NDTensors/ext/NDTensorsOctavianExt/import.jl" = "f2d8a4be22d07849ec3ea5274e02f310dfedd90bfed960d4441e5c69556a43a6"
+    "vendor/NDTensors/ext/NDTensorsOctavianExt/octavian.jl" = "979931868e2b22652b2825eb73aa187e5da409a61d508889f17de7d8e6efee48"
+    "vendor/NDTensors/ext/NDTensorsTBLISExt/NDTensorsTBLISExt.jl" = "5b613aedc8141e47c57011f92609657d932496fe3bf5651d6e3e29c5b148240e"
+    "vendor/NDTensors/ext/NDTensorsTBLISExt/contract.jl" = "db281c3a609e01e909595dd46db2f1c546234a80510bbb4ae7c52bfc17829471"
+    "vendor/NDTensors/ext/NDTensorscuTENSORExt/NDTensorscuTENSORExt.jl" = "d550d70ebaff58ad9f2fbe752e7e79fc5f37d8b6ff0b246db01e17f2e1fb3190"
+    "vendor/NDTensors/ext/NDTensorscuTENSORExt/contract.jl" = "0e87d4952463e12b815fa44b6cd297d4c618e963dbcb870195af8387ec0601ef"
+    "vendor/NDTensors/src/NDTensors.jl" = "93c116350d38bd51a23896b892a09554b80c4f60606a66af532c85e9316903ed"
+    "vendor/NDTensors/src/abstractarray/diaginterface.jl" = "dafc569213a1ef7faefa0602a836caf036645170631fd40ba2c0f511ecf9ffe0"
+    "vendor/NDTensors/src/abstractarray/generic_array_constructors.jl" = "377bbc3565a58ebcacce575fb3038458c990b31038f45a388d75563d2eb4d3e3"
+    "vendor/NDTensors/src/abstractarray/iscu.jl" = "a4db07b5b7bf728fd27004e568b2f428918ad39c8fd2b6ef7942f11b5eeb0e79"
+    "vendor/NDTensors/src/abstractarray/mul.jl" = "cdfeab2363d527ab3dcb0077e44b61bdf338fd1ea28c3d7e844adf826893ee0d"
+    "vendor/NDTensors/src/abstractarray/permutedims.jl" = "fbf318e87d0ba11fafd55ce545a05bee96e5900292a20a885f810519f8155ae1"
+    "vendor/NDTensors/src/abstractarray/set_types.jl" = "c5897f70892af64f9de9fbc0e7fbc7b171079bfaed01c054e72fa7d99c58523e"
+    "vendor/NDTensors/src/abstractarray/similar.jl" = "2a6fa581a450b2cbb705cd1dbca84930a54a0290934bfb3f424ad7c7f1c9f0f2"
+    "vendor/NDTensors/src/abstractarray/tensoralgebra/contract.jl" = "2ca9c0080c960d381e850153ebb7f1aeac3487f6fe339c4182a24ef0dd9b440c"
+    "vendor/NDTensors/src/abstractarray/to_shape.jl" = "902d5b8c92b0f1a2bdb6320d1a4ecb6a8ff01aa391bce372215fcd8c9e09cfe3"
+    "vendor/NDTensors/src/adapt.jl" = "703430e951574cc2213197db19872e4cce4731f5683dc66a067e15b14cd43ded"
+    "vendor/NDTensors/src/aliasstyle.jl" = "37b9abfaf80131020f72a518a454ed1404dabcfdac579c19d012fb0428644dbd"
+    "vendor/NDTensors/src/array/mul.jl" = "b289d62407d9013511623a21d2bab0234f9aeab86a4e8b3075e0261aad2fff07"
+    "vendor/NDTensors/src/array/permutedims.jl" = "cd1c04c0b1454f105eac0499413ea8a441641220b498812ce68e9b00453246bc"
+    "vendor/NDTensors/src/blocksparse/adapt.jl" = "02cac5677ab74ff2430f7e32a8580e7b5cd4cb15d1f02b210c062148ff03aa5e"
+    "vendor/NDTensors/src/blocksparse/block.jl" = "87a64296109a7b5a31f334f207c70c313b28cbd20759151ac79a84eda3abb224"
+    "vendor/NDTensors/src/blocksparse/blockdims.jl" = "150dc643646b655b35c9747618e09cc96cb9fec174d9465e83329d8059227096"
+    "vendor/NDTensors/src/blocksparse/blockoffsets.jl" = "c7ed7c47f72114478552833472ffd4b53b70c8a53ed89044cf6b5ef123ae2f2e"
+    "vendor/NDTensors/src/blocksparse/blocksparse.jl" = "688917f03103228bbd16afd731dcba418925d47e73862d2a41d5e59e7886d93e"
+    "vendor/NDTensors/src/blocksparse/blocksparsetensor.jl" = "2c85d550bf5b36f0e6b38c8dc2ae8f4733ec48bd119803cdde9456f7119289c7"
+    "vendor/NDTensors/src/blocksparse/combiner.jl" = "0206a11fd7e4bf672e567ce98ab3b52accbcfca5a487daaf130c9f683ed4b2a4"
+    "vendor/NDTensors/src/blocksparse/contract.jl" = "6b5e86ef8621732d67471fa43bb0c528088351d3379c72b476c571ffd329bee4"
+    "vendor/NDTensors/src/blocksparse/contract_generic.jl" = "4b2861b60a9e122a91c2a5325955bd21c9812ae7281875a25ac5832333d29c7d"
+    "vendor/NDTensors/src/blocksparse/contract_sequential.jl" = "33a8c02b9da93aa7a77291134681860051de2069662e5db005e746348825dd67"
+    "vendor/NDTensors/src/blocksparse/contract_threaded.jl" = "86a30e45a582e0316626822f3f9a65d4b7fa67f408af97db9c69b778c68050c6"
+    "vendor/NDTensors/src/blocksparse/contract_utilities.jl" = "9174a6a4022b6b5269c67ced65a8e6bd0fffc8c8368c5f9571d852de76d9d5b8"
+    "vendor/NDTensors/src/blocksparse/diagblocksparse.jl" = "565c6f0cd87b3fc3e5cc0ddeb52524567530152629e5a9bb379ba93f57bb2d20"
+    "vendor/NDTensors/src/blocksparse/fermions.jl" = "26af87d934bc9b167fdb92c5f38ba9c76d213933e9506b2fb91a6fafe67e13fc"
+    "vendor/NDTensors/src/blocksparse/linearalgebra.jl" = "fde39b44654889cef82b2fe1f330e03d814b16d1bb786a801ae176ebbb3d880b"
+    "vendor/NDTensors/src/blocksparse/similar.jl" = "2ecf8a7b0afe013be4c9fd06d417cf91e957f09f49b41f2a90c9333d1a1a16af"
+    "vendor/NDTensors/src/blocksparse/truncate_spectrum.jl" = "3f5b958c7878288619b7bc64f2449a5c36c2b9587e7906a20488448ef27a2a8b"
+    "vendor/NDTensors/src/combiner/combiner.jl" = "4a0e1e9eb7a3ae941bfdf389db0d310824f24c278aa59e6471e662a9ab66b19f"
+    "vendor/NDTensors/src/combiner/contract.jl" = "efd57cea1168a7e13401a0ae9b05e3ea119d47dd3a7134f53fe4974c3d647bac"
+    "vendor/NDTensors/src/default_kwargs.jl" = "48a588e7cfcfeec1f13cb3de4b0e8359164de14da21710083499afbd7402e1b5"
+    "vendor/NDTensors/src/dense/dense.jl" = "114ea60f15bd54b422f95234b11b86e57a822a1740130734813116f6a8ebac21"
+    "vendor/NDTensors/src/dense/densetensor.jl" = "eb656cf8d9af846c1e8fa268f18458939296995aed805a7a6e86aa7f4a5d9e8d"
+    "vendor/NDTensors/src/dense/generic_array_constructors.jl" = "47b3ba9ae03dfe3bf24756804b657b37413654f598d8b98c42b4b354a33dfdae"
+    "vendor/NDTensors/src/dense/linearalgebra/decompositions.jl" = "6a0d32e99fe1b0aa70ed04f803aed53d66fc0127253d312a445ee092753b43e9"
+    "vendor/NDTensors/src/dense/set_types.jl" = "1dc6576102a723c2dbb6578a7555f7d1a3b5bafe4ba0d5c5325b77703e245ff5"
+    "vendor/NDTensors/src/dense/tensoralgebra/contract.jl" = "6e130bff906e28909b0027fdf2ac99bf8274503039c83bf2773878c603cb70ab"
+    "vendor/NDTensors/src/dense/tensoralgebra/outer.jl" = "95feeda74e5bd9186769c9573909e8a83c8238b6c0df476817d263807235245c"
+    "vendor/NDTensors/src/deprecated.jl" = "32c8a23e3f8971a7a14e82dbcfbdfbfdf523eafd5d5db495a61016a45d0a7f14"
+    "vendor/NDTensors/src/diag/diag.jl" = "4d86cc755b5c2100cd7c1ce56a4107dce686f913c3b22a721e643387f5f2d106"
+    "vendor/NDTensors/src/diag/diagtensor.jl" = "a85308112964847e38ede59e26341561e4bd6dbf6873dd740598fb8a4150a6a0"
+    "vendor/NDTensors/src/diag/set_types.jl" = "eae287d3a100a7e3fb2896fca49a3642f92d4ed0d55fb2d08d974ae4781449a3"
+    "vendor/NDTensors/src/diag/similar.jl" = "196bc09444f3b2313adc26fee80da2f49b1501cf663155bfd6fd1e559ce0148a"
+    "vendor/NDTensors/src/diag/tensoralgebra/contract.jl" = "397d27c466bcf5fe3dd8e88deb196ba3d4a70b6773cc800297287f6e5145eb96"
+    "vendor/NDTensors/src/diag/tensoralgebra/outer.jl" = "f29c15122ffe7b8bd15ea47dba3c34dbf2a3fb3b4268d38a1398a54ca585d715"
+    "vendor/NDTensors/src/dims.jl" = "a58a06bf0f6e75706257249743ad9cebdb361a20949e9ba691642c736835daee"
+    "vendor/NDTensors/src/empty/EmptyTensor.jl" = "73af0d8585bed3922717d34eb426b03689adb90e962c9a4cb2e26f6726fbdc68"
+    "vendor/NDTensors/src/empty/adapt.jl" = "5866d1124f4ae6d5474f7a71ec6d6178e2b009e02b4d26e7a680fe90e6edecf7"
+    "vendor/NDTensors/src/empty/empty.jl" = "749946e78eb9b6506cd20d9f86a460b867b3184e6ebbf0cd79c2368f0cf786cc"
+    "vendor/NDTensors/src/empty/tensoralgebra/contract.jl" = "e998e877e4600b116d47ce946e8cd98211d0cf92e524adc654f7db8deaa1190f"
+    "vendor/NDTensors/src/emptynumber.jl" = "18a15b78659bb2612c92a84449a45a7dc30388900286e1d57a559688b19fec52"
+    "vendor/NDTensors/src/exports.jl" = "5780406d52a704d209d3160f4558159ddfa841f347ec36bfd6d038ec92770648"
+    "vendor/NDTensors/src/imports.jl" = "fa0ebef6a1db4ad0b6bdecea2c17e82ed26c20c473006e3016b9a5f08f313c04"
+    "vendor/NDTensors/src/kagome_source_identity.jl" = "8aafb41dceea0bcdf042fa981f73a024f8a02f24d82e5dc1981f7f5631fd8543"
+    "vendor/NDTensors/src/lib/AMDGPUExtensions/.JuliaFormatter.toml" = "7dcb26f6bc8dd8a9ddb2efdcd31fc918d15f078ff50a83aaecd8dbf56f4bdb13"
+    "vendor/NDTensors/src/lib/AMDGPUExtensions/src/AMDGPUExtensions.jl" = "636dc90e1c2b4226cf5ec7b473b6f86f7803574353cb2215e42d45ddee5d2380"
+    "vendor/NDTensors/src/lib/AMDGPUExtensions/src/roc.jl" = "d24a448ae7b72b5167f7117fbefe0128e6dab4e64fa744d51def80db7e9dbafb"
+    "vendor/NDTensors/src/lib/AMDGPUExtensions/test/runtests.jl" = "298bb6050e8d35100f16cb678dabe29bd051598ef923e33e00217e9c04c33678"
+    "vendor/NDTensors/src/lib/BackendSelection/.JuliaFormatter.toml" = "7dcb26f6bc8dd8a9ddb2efdcd31fc918d15f078ff50a83aaecd8dbf56f4bdb13"
+    "vendor/NDTensors/src/lib/BackendSelection/src/BackendSelection.jl" = "c7d1da4c95b760078b8b4f18350c437e403c50795ad79b684e27f0b1679368dd"
+    "vendor/NDTensors/src/lib/BackendSelection/src/abstractbackend.jl" = "0fb2873af5570b1c1492e0677408a034a64a607d2c93df95abbec31ef3f2713b"
+    "vendor/NDTensors/src/lib/BackendSelection/src/backend_types.jl" = "ebcd62b00d17d16d48f6d7d941b9f2d28010ba4d162ba02a8e71140761bf5ba2"
+    "vendor/NDTensors/src/lib/BackendSelection/test/Project.toml" = "6028c353382f17791c029e17fe16b661cd81873e181a609caf3ed60b60560e1b"
+    "vendor/NDTensors/src/lib/BackendSelection/test/runtests.jl" = "46f712cfacfe4091b35ef5ecbd91c3f7388df6f76e571ba4a16ae6aa03ccd8c5"
+    "vendor/NDTensors/src/lib/CUDAExtensions/.JuliaFormatter.toml" = "7dcb26f6bc8dd8a9ddb2efdcd31fc918d15f078ff50a83aaecd8dbf56f4bdb13"
+    "vendor/NDTensors/src/lib/CUDAExtensions/src/CUDAExtensions.jl" = "50d3e5fede2305e521da55a51fe7a12efd53e93b962c5197c73fd86bf45bd1d4"
+    "vendor/NDTensors/src/lib/CUDAExtensions/src/cuda.jl" = "9c1a2ab1e413281d124009d36835f26ba8131e62706dbbdb2b6f18acd0adf58c"
+    "vendor/NDTensors/src/lib/CUDAExtensions/test/runtests.jl" = "a850ccd891344cbb1384b9322932d1bf43d0140ae47d8722e85b004af3553e90"
+    "vendor/NDTensors/src/lib/Expose/.JuliaFormatter.toml" = "7dcb26f6bc8dd8a9ddb2efdcd31fc918d15f078ff50a83aaecd8dbf56f4bdb13"
+    "vendor/NDTensors/src/lib/Expose/README.md" = "dfc15377f47fbf8463c35779f88e329ae237e0ff0122509700b5810573dca132"
+    "vendor/NDTensors/src/lib/Expose/TODO.md" = "f568062cfd9a4f0a3241512f85d31bac9ffa3b9117efae1ed5a814fa0afe7dec"
+    "vendor/NDTensors/src/lib/Expose/src/Expose.jl" = "1873ff885d771dde4de13ee2566444f20b3fb50b8adedc7486ad26d7b3198726"
+    "vendor/NDTensors/src/lib/Expose/src/exposed.jl" = "688e7cb2db3a68ff97bae652640ffbd0e931ba4148edab29d13a12546bdf043a"
+    "vendor/NDTensors/src/lib/Expose/src/functions/abstractarray.jl" = "7acf81bb297f49240446f4f61d31b85d297b3335cc97b49bd220693a48f1679c"
+    "vendor/NDTensors/src/lib/Expose/src/functions/adapt.jl" = "fc6a78e161b3cc7097c51b29b157f33d314bd262077597a02e27bac044c3e5e3"
+    "vendor/NDTensors/src/lib/Expose/src/functions/append.jl" = "ff04c35717bf2addfebbff5b6c65780f6a844714a56b1d2b221250d874e0693d"
+    "vendor/NDTensors/src/lib/Expose/src/functions/copyto.jl" = "0e9cd5ebf64e832adf111d3e585ca33e3e7eb2865f868885a06df3a8d5bcbc0f"
+    "vendor/NDTensors/src/lib/Expose/src/functions/linearalgebra.jl" = "ac9aa39e22dd459de607ed2198ff57772e1e4fa85e861375eda20945152d4525"
+    "vendor/NDTensors/src/lib/Expose/src/functions/mul.jl" = "a0f4d99444b0471765fccdde61216ed8f5b91d6cc38b2df4719f2e66b8738850"
+    "vendor/NDTensors/src/lib/Expose/src/functions/permutedims.jl" = "ec3577180b019f360ad85e3c7759f282b094c01b45144799b10267ff4c65c1ca"
+    "vendor/NDTensors/src/lib/Expose/src/import.jl" = "c53b91ca346fe1e3067d3cfea41359ca27b157d5088a405ba2c23447d1399044"
+    "vendor/NDTensors/src/lib/Expose/test/Project.toml" = "4b2187c8580ca3f1ca4492f89229019fa1a743b5ad35e83fb32aec866bcd42b5"
+    "vendor/NDTensors/src/lib/Expose/test/runtests.jl" = "2ee83b1fcd4bf7d47b9da29b9b4f9a674e19d55cdcd0d6da3ae8e249a7e411a2"
+    "vendor/NDTensors/src/lib/GPUArraysCoreExtensions/.JuliaFormatter.toml" = "7dcb26f6bc8dd8a9ddb2efdcd31fc918d15f078ff50a83aaecd8dbf56f4bdb13"
+    "vendor/NDTensors/src/lib/GPUArraysCoreExtensions/Project.toml" = "e0267f2c0f73dd928edc0daea60aae622f0e2244da9f990333e45b0586e4e6c6"
+    "vendor/NDTensors/src/lib/GPUArraysCoreExtensions/src/GPUArraysCoreExtensions.jl" = "5de26f3c1e1712e69ae4264a1f6ee02f7f08ecf9c35fc937dafe95fa352f3641"
+    "vendor/NDTensors/src/lib/GPUArraysCoreExtensions/src/gpuarrayscore.jl" = "7fdc8fdb5951a674c32bfb79592788e91e4113bb78099178d9a6950742d655fa"
+    "vendor/NDTensors/src/lib/GPUArraysCoreExtensions/test/runtests.jl" = "8755efad84f4ebb5a4ef825f3ed3b276eb4e20de3bf5d08792042d6b2da09d6f"
+    "vendor/NDTensors/src/lib/MetalExtensions/.JuliaFormatter.toml" = "7dcb26f6bc8dd8a9ddb2efdcd31fc918d15f078ff50a83aaecd8dbf56f4bdb13"
+    "vendor/NDTensors/src/lib/MetalExtensions/src/MetalExtensions.jl" = "16ed92900cd973ab8ccc4be31d446bbf291d55cb2ae48676f7d499b99d8f86fb"
+    "vendor/NDTensors/src/lib/MetalExtensions/src/metal.jl" = "e1b799e61c9349bdd631e77ddeabae63e79d7a3f1c1475f1fa55876a95a2dbe6"
+    "vendor/NDTensors/src/lib/MetalExtensions/test/runtests.jl" = "860df1edc08553a8815c5631be7944909a539b802fb612c4aaf6066a37b5f665"
+    "vendor/NDTensors/src/lib/RankFactorization/.JuliaFormatter.toml" = "7dcb26f6bc8dd8a9ddb2efdcd31fc918d15f078ff50a83aaecd8dbf56f4bdb13"
+    "vendor/NDTensors/src/lib/RankFactorization/src/RankFactorization.jl" = "97b0e57d4bae6f04d8391c61d97c2fce0cf856249f72bcb24f995ce875582de9"
+    "vendor/NDTensors/src/lib/RankFactorization/src/default_kwargs.jl" = "48a588e7cfcfeec1f13cb3de4b0e8359164de14da21710083499afbd7402e1b5"
+    "vendor/NDTensors/src/lib/RankFactorization/src/spectrum.jl" = "33f3df88dc5464ea24192f459d2bd962af2107339187f7f094ad9333eb18ac3e"
+    "vendor/NDTensors/src/lib/RankFactorization/src/truncate_spectrum.jl" = "f17a8bf3795f08f8c8b7fe4446ede6f91b3e3144471fd039f9e26776a8de4c1b"
+    "vendor/NDTensors/src/linearalgebra/linearalgebra.jl" = "395a7d6db964aa0c8bddc37752d8d89a2cf13d1679c6569c2c0a4108435e90b3"
+    "vendor/NDTensors/src/linearalgebra/svd.jl" = "682f12af30e8a7e215b38d67af071db3e0f53e17ac2dfcc3c2dc7f828514ddc5"
+    "vendor/NDTensors/src/linearalgebra/symmetric.jl" = "7d2b80f41ef1a370a673c8bdd951224ff3c6c94bc0089528f94c4b00cbef1349"
+    "vendor/NDTensors/src/nodata.jl" = "8cd0c0d0fe97d6007c364561a180037199a4852e8da8e12e7dc17df0086f82c5"
+    "vendor/NDTensors/src/tensor/set_types.jl" = "14baee12a641bad6631b7c268bb92102b066a13ee16e4908d2819db42e01f27c"
+    "vendor/NDTensors/src/tensor/similar.jl" = "ac6c5231858c06cc7bef492c461db583b191645e3e3daef61f463d2a87f635cd"
+    "vendor/NDTensors/src/tensor/tensor.jl" = "2fb8ab3c1eba14d556963f8b231b91f4e8d6235a3f7f349530db4b15bda6b2b9"
+    "vendor/NDTensors/src/tensoroperations/contraction_logic.jl" = "13183fce7f3935e46b6045abcf6939a686187c65cd050298f21a57d13abe1ce3"
+    "vendor/NDTensors/src/tensoroperations/generic_tensor_operations.jl" = "4f185ec78d7d2fd43a5b825b37738c7110da0b8cb3d90b52a51a2a3af36357d0"
+    "vendor/NDTensors/src/tensorstorage/default_storage.jl" = "165385a10b9d429d177382f1be85bb05993af6236d615d15f453febfdfd68a4b"
+    "vendor/NDTensors/src/tensorstorage/set_types.jl" = "2b3e1d4b912e1c1bf59a297fb764f7f2de329504b59178c756c6f015ffb3a229"
+    "vendor/NDTensors/src/tensorstorage/similar.jl" = "5df277863e03c364d1c542f590b55b824bc7c59fd80d4cbbe235c541026fbbf5"
+    "vendor/NDTensors/src/tensorstorage/tensorstorage.jl" = "4de5792ce6f2b4428de4312931542f90f899bbea324712ee745aa8c46f532bbd"
+    "vendor/NDTensors/src/truncate.jl" = "29526042ddab5a0a99f185ff422654642c552bc654f7a871593022c3aff1ded3"
+    "vendor/NDTensors/src/tupletools.jl" = "fac0b91a445c0843fff057ad6ff9dede713f68d9945155a99f7b322d4e4e5f7d"
+
+[config]
+mode = "prepare"
+schema_version = 1
+start_checkpoint = "outputs/p3-campaign-csl36-flux-readiness-chi256/trial/checkpoint-xnh1sG"
+start_status = "trial"
+
+    [config.preparation]
+    batch_sweeps = 2
+    batches = 1
+
+    [config.solver]
+    eigsolve_krylovdim = 40
+    eigsolve_maxiter = 20
+    eigsolve_tol = 1.0e-11
+    initial_linkdim = 4
+    maxdim = 256
+    seed = 11
+
+[configuration]
+Lx = 3
+Ly = 4
+N = 36
+Q = 0
+axis_boundary = "open"
+bond_family_convention = "J1_nn_J2_second_J3_hexagon_opposite_other_unclassified"
+charge_convention = "q=2Sz"
+circumference_boundary = "periodic"
+exchange_phase = "S+_i_S-_j_has_exp(+im*bond_phase)"
+gauge = "seam"
+hz = [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+ordering = "x_then_y_then_A_B_C"
+termination = "complete_cells_with_outgoing_open_axis_bonds_removed"
+wrap = [2.0, 3.4641016151377544]
+
+    [[configuration.bonds]]
+    Jxy = 1.0
+    Jz = 1.0
+    family = "J1"
+    i = 1
+    j = 2
+    wy = 0
+    [[configuration.bonds]]
+    Jxy = 1.0
+    Jz = 1.0
+    family = "J1"
+    i = 1
+    j = 3
+    wy = 0
+    [[configuration.bonds]]
+    Jxy = 1.0
+    Jz = 1.0
+    family = "J1"
+    i = 2
+    j = 3
+    wy = 0
+    [[configuration.bonds]]
+    Jxy = 1.0
+    Jz = 1.0
+    family = "J1"
+    i = 1
+    j = 12
+    wy = -1
+    [[configuration.bonds]]
+    Jxy = 1.0
+    Jz = 1.0
+    family = "J1"
+    i = 2
+    j = 24
+    wy = -1
+    [[configuration.bonds]]
+    Jxy = 1.0
+    Jz = 1.0
+    family = "J1"
+    i = 4
+    j = 5
+    wy = 0
+    [[configuration.bonds]]
+    Jxy = 1.0
+    Jz = 1.0
+    family = "J1"
+    i = 4
+    j = 6
+    wy = 0
+    [[configuration.bonds]]
+    Jxy = 1.0
+    Jz = 1.0
+    family = "J1"
+    i = 5
+    j = 6
+    wy = 0
+    [[configuration.bonds]]
+    Jxy = 1.0
+    Jz = 1.0
+    family = "J1"
+    i = 4
+    j = 3
+    wy = 0
+    [[configuration.bonds]]
+    Jxy = 1.0
+    Jz = 1.0
+    family = "J1"
+    i = 5
+    j = 15
+    wy = 0
+    [[configuration.bonds]]
+    Jxy = 1.0
+    Jz = 1.0
+    family = "J1"
+    i = 7
+    j = 8
+    wy = 0
+    [[configuration.bonds]]
+    Jxy = 1.0
+    Jz = 1.0
+    family = "J1"
+    i = 7
+    j = 9
+    wy = 0
+    [[configuration.bonds]]
+    Jxy = 1.0
+    Jz = 1.0
+    family = "J1"
+    i = 8
+    j = 9
+    wy = 0
+    [[configuration.bonds]]
+    Jxy = 1.0
+    Jz = 1.0
+    family = "J1"
+    i = 7
+    j = 6
+    wy = 0
+    [[configuration.bonds]]
+    Jxy = 1.0
+    Jz = 1.0
+    family = "J1"
+    i = 8
+    j = 18
+    wy = 0
+    [[configuration.bonds]]
+    Jxy = 1.0
+    Jz = 1.0
+    family = "J1"
+    i = 10
+    j = 11
+    wy = 0
+    [[configuration.bonds]]
+    Jxy = 1.0
+    Jz = 1.0
+    family = "J1"
+    i = 10
+    j = 12
+    wy = 0
+    [[configuration.bonds]]
+    Jxy = 1.0
+    Jz = 1.0
+    family = "J1"
+    i = 11
+    j = 12
+    wy = 0
+    [[configuration.bonds]]
+    Jxy = 1.0
+    Jz = 1.0
+    family = "J1"
+    i = 10
+    j = 9
+    wy = 0
+    [[configuration.bonds]]
+    Jxy = 1.0
+    Jz = 1.0
+    family = "J1"
+    i = 11
+    j = 21
+    wy = 0
+    [[configuration.bonds]]
+    Jxy = 1.0
+    Jz = 1.0
+    family = "J1"
+    i = 13
+    j = 14
+    wy = 0
+    [[configuration.bonds]]
+    Jxy = 1.0
+    Jz = 1.0
+    family = "J1"
+    i = 13
+    j = 15
+    wy = 0
+    [[configuration.bonds]]
+    Jxy = 1.0
+    Jz = 1.0
+    family = "J1"
+    i = 14
+    j = 15
+    wy = 0
+    [[configuration.bonds]]
+    Jxy = 1.0
+    Jz = 1.0
+    family = "J1"
+    i = 13
+    j = 2
+    wy = 0
+    [[configuration.bonds]]
+    Jxy = 1.0
+    Jz = 1.0
+    family = "J1"
+    i = 13
+    j = 24
+    wy = -1
+    [[configuration.bonds]]
+    Jxy = 1.0
+    Jz = 1.0
+    family = "J1"
+    i = 14
+    j = 36
+    wy = -1
+    [[configuration.bonds]]
+    Jxy = 1.0
+    Jz = 1.0
+    family = "J1"
+    i = 16
+    j = 17
+    wy = 0
+    [[configuration.bonds]]
+    Jxy = 1.0
+    Jz = 1.0
+    family = "J1"
+    i = 16
+    j = 18
+    wy = 0
+    [[configuration.bonds]]
+    Jxy = 1.0
+    Jz = 1.0
+    family = "J1"
+    i = 17
+    j = 18
+    wy = 0
+    [[configuration.bonds]]
+    Jxy = 1.0
+    Jz = 1.0
+    family = "J1"
+    i = 16
+    j = 5
+    wy = 0
+    [[configuration.bonds]]
+    Jxy = 1.0
+    Jz = 1.0
+    family = "J1"
+    i = 16
+    j = 15
+    wy = 0
+    [[configuration.bonds]]
+    Jxy = 1.0
+    Jz = 1.0
+    family = "J1"
+    i = 17
+    j = 27
+    wy = 0
+    [[configuration.bonds]]
+    Jxy = 1.0
+    Jz = 1.0
+    family = "J1"
+    i = 19
+    j = 20
+    wy = 0
+    [[configuration.bonds]]
+    Jxy = 1.0
+    Jz = 1.0
+    family = "J1"
+    i = 19
+    j = 21
+    wy = 0
+    [[configuration.bonds]]
+    Jxy = 1.0
+    Jz = 1.0
+    family = "J1"
+    i = 20
+    j = 21
+    wy = 0
+    [[configuration.bonds]]
+    Jxy = 1.0
+    Jz = 1.0
+    family = "J1"
+    i = 19
+    j = 8
+    wy = 0
+    [[configuration.bonds]]
+    Jxy = 1.0
+    Jz = 1.0
+    family = "J1"
+    i = 19
+    j = 18
+    wy = 0
+    [[configuration.bonds]]
+    Jxy = 1.0
+    Jz = 1.0
+    family = "J1"
+    i = 20
+    j = 30
+    wy = 0
+    [[configuration.bonds]]
+    Jxy = 1.0
+    Jz = 1.0
+    family = "J1"
+    i = 22
+    j = 23
+    wy = 0
+    [[configuration.bonds]]
+    Jxy = 1.0
+    Jz = 1.0
+    family = "J1"
+    i = 22
+    j = 24
+    wy = 0
+    [[configuration.bonds]]
+    Jxy = 1.0
+    Jz = 1.0
+    family = "J1"
+    i = 23
+    j = 24
+    wy = 0
+    [[configuration.bonds]]
+    Jxy = 1.0
+    Jz = 1.0
+    family = "J1"
+    i = 22
+    j = 11
+    wy = 0
+    [[configuration.bonds]]
+    Jxy = 1.0
+    Jz = 1.0
+    family = "J1"
+    i = 22
+    j = 21
+    wy = 0
+    [[configuration.bonds]]
+    Jxy = 1.0
+    Jz = 1.0
+    family = "J1"
+    i = 23
+    j = 33
+    wy = 0
+    [[configuration.bonds]]
+    Jxy = 1.0
+    Jz = 1.0
+    family = "J1"
+    i = 25
+    j = 26
+    wy = 0
+    [[configuration.bonds]]
+    Jxy = 1.0
+    Jz = 1.0
+    family = "J1"
+    i = 25
+    j = 27
+    wy = 0
+    [[configuration.bonds]]
+    Jxy = 1.0
+    Jz = 1.0
+    family = "J1"
+    i = 26
+    j = 27
+    wy = 0
+    [[configuration.bonds]]
+    Jxy = 1.0
+    Jz = 1.0
+    family = "J1"
+    i = 25
+    j = 14
+    wy = 0
+    [[configuration.bonds]]
+    Jxy = 1.0
+    Jz = 1.0
+    family = "J1"
+    i = 25
+    j = 36
+    wy = -1
+    [[configuration.bonds]]
+    Jxy = 1.0
+    Jz = 1.0
+    family = "J1"
+    i = 28
+    j = 29
+    wy = 0
+    [[configuration.bonds]]
+    Jxy = 1.0
+    Jz = 1.0
+    family = "J1"
+    i = 28
+    j = 30
+    wy = 0
+    [[configuration.bonds]]
+    Jxy = 1.0
+    Jz = 1.0
+    family = "J1"
+    i = 29
+    j = 30
+    wy = 0
+    [[configuration.bonds]]
+    Jxy = 1.0
+    Jz = 1.0
+    family = "J1"
+    i = 28
+    j = 17
+    wy = 0
+    [[configuration.bonds]]
+    Jxy = 1.0
+    Jz = 1.0
+    family = "J1"
+    i = 28
+    j = 27
+    wy = 0
+    [[configuration.bonds]]
+    Jxy = 1.0
+    Jz = 1.0
+    family = "J1"
+    i = 31
+    j = 32
+    wy = 0
+    [[configuration.bonds]]
+    Jxy = 1.0
+    Jz = 1.0
+    family = "J1"
+    i = 31
+    j = 33
+    wy = 0
+    [[configuration.bonds]]
+    Jxy = 1.0
+    Jz = 1.0
+    family = "J1"
+    i = 32
+    j = 33
+    wy = 0
+    [[configuration.bonds]]
+    Jxy = 1.0
+    Jz = 1.0
+    family = "J1"
+    i = 31
+    j = 20
+    wy = 0
+    [[configuration.bonds]]
+    Jxy = 1.0
+    Jz = 1.0
+    family = "J1"
+    i = 31
+    j = 30
+    wy = 0
+    [[configuration.bonds]]
+    Jxy = 1.0
+    Jz = 1.0
+    family = "J1"
+    i = 34
+    j = 35
+    wy = 0
+    [[configuration.bonds]]
+    Jxy = 1.0
+    Jz = 1.0
+    family = "J1"
+    i = 34
+    j = 36
+    wy = 0
+    [[configuration.bonds]]
+    Jxy = 1.0
+    Jz = 1.0
+    family = "J1"
+    i = 35
+    j = 36
+    wy = 0
+    [[configuration.bonds]]
+    Jxy = 1.0
+    Jz = 1.0
+    family = "J1"
+    i = 34
+    j = 23
+    wy = 0
+    [[configuration.bonds]]
+    Jxy = 1.0
+    Jz = 1.0
+    family = "J1"
+    i = 34
+    j = 33
+    wy = 0
+    [[configuration.bonds]]
+    Jxy = 0.5
+    Jz = 0.5
+    family = "J2"
+    i = 1
+    j = 24
+    wy = -1
+    [[configuration.bonds]]
+    Jxy = 0.5
+    Jz = 0.5
+    family = "J2"
+    i = 2
+    j = 22
+    wy = -1
+    [[configuration.bonds]]
+    Jxy = 0.5
+    Jz = 0.5
+    family = "J2"
+    i = 2
+    j = 15
+    wy = 0
+    [[configuration.bonds]]
+    Jxy = 0.5
+    Jz = 0.5
+    family = "J2"
+    i = 3
+    j = 13
+    wy = 0
+    [[configuration.bonds]]
+    Jxy = 0.5
+    Jz = 0.5
+    family = "J2"
+    i = 1
+    j = 11
+    wy = -1
+    [[configuration.bonds]]
+    Jxy = 0.5
+    Jz = 0.5
+    family = "J2"
+    i = 2
+    j = 12
+    wy = -1
+    [[configuration.bonds]]
+    Jxy = 0.5
+    Jz = 0.5
+    family = "J3"
+    i = 1
+    j = 22
+    wy = -1
+    [[configuration.bonds]]
+    Jxy = 0.5
+    Jz = 0.5
+    family = "J3"
+    i = 2
+    j = 11
+    wy = -1
+    [[configuration.bonds]]
+    Jxy = 0.5
+    Jz = 0.5
+    family = "J3"
+    i = 3
+    j = 15
+    wy = 0
+    [[configuration.bonds]]
+    Jxy = 0.5
+    Jz = 0.5
+    family = "J2"
+    i = 4
+    j = 15
+    wy = 0
+    [[configuration.bonds]]
+    Jxy = 0.5
+    Jz = 0.5
+    family = "J2"
+    i = 5
+    j = 13
+    wy = 0
+    [[configuration.bonds]]
+    Jxy = 0.5
+    Jz = 0.5
+    family = "J2"
+    i = 5
+    j = 18
+    wy = 0
+    [[configuration.bonds]]
+    Jxy = 0.5
+    Jz = 0.5
+    family = "J2"
+    i = 6
+    j = 16
+    wy = 0
+    [[configuration.bonds]]
+    Jxy = 0.5
+    Jz = 0.5
+    family = "J2"
+    i = 4
+    j = 2
+    wy = 0
+    [[configuration.bonds]]
+    Jxy = 0.5
+    Jz = 0.5
+    family = "J2"
+    i = 5
+    j = 3
+    wy = 0
+    [[configuration.bonds]]
+    Jxy = 0.5
+    Jz = 0.5
+    family = "J3"
+    i = 4
+    j = 13
+    wy = 0
+    [[configuration.bonds]]
+    Jxy = 0.5
+    Jz = 0.5
+    family = "J3"
+    i = 5
+    j = 2
+    wy = 0
+    [[configuration.bonds]]
+    Jxy = 0.5
+    Jz = 0.5
+    family = "J3"
+    i = 6
+    j = 18
+    wy = 0
+    [[configuration.bonds]]
+    Jxy = 0.5
+    Jz = 0.5
+    family = "J2"
+    i = 7
+    j = 18
+    wy = 0
+    [[configuration.bonds]]
+    Jxy = 0.5
+    Jz = 0.5
+    family = "J2"
+    i = 8
+    j = 16
+    wy = 0
+    [[configuration.bonds]]
+    Jxy = 0.5
+    Jz = 0.5
+    family = "J2"
+    i = 8
+    j = 21
+    wy = 0
+    [[configuration.bonds]]
+    Jxy = 0.5
+    Jz = 0.5
+    family = "J2"
+    i = 9
+    j = 19
+    wy = 0
+    [[configuration.bonds]]
+    Jxy = 0.5
+    Jz = 0.5
+    family = "J2"
+    i = 7
+    j = 5
+    wy = 0
+    [[configuration.bonds]]
+    Jxy = 0.5
+    Jz = 0.5
+    family = "J2"
+    i = 8
+    j = 6
+    wy = 0
+    [[configuration.bonds]]
+    Jxy = 0.5
+    Jz = 0.5
+    family = "J3"
+    i = 7
+    j = 16
+    wy = 0
+    [[configuration.bonds]]
+    Jxy = 0.5
+    Jz = 0.5
+    family = "J3"
+    i = 8
+    j = 5
+    wy = 0
+    [[configuration.bonds]]
+    Jxy = 0.5
+    Jz = 0.5
+    family = "J3"
+    i = 9
+    j = 21
+    wy = 0
+    [[configuration.bonds]]
+    Jxy = 0.5
+    Jz = 0.5
+    family = "J2"
+    i = 10
+    j = 21
+    wy = 0
+    [[configuration.bonds]]
+    Jxy = 0.5
+    Jz = 0.5
+    family = "J2"
+    i = 11
+    j = 19
+    wy = 0
+    [[configuration.bonds]]
+    Jxy = 0.5
+    Jz = 0.5
+    family = "J2"
+    i = 11
+    j = 24
+    wy = 0
+    [[configuration.bonds]]
+    Jxy = 0.5
+    Jz = 0.5
+    family = "J2"
+    i = 12
+    j = 22
+    wy = 0
+    [[configuration.bonds]]
+    Jxy = 0.5
+    Jz = 0.5
+    family = "J2"
+    i = 10
+    j = 8
+    wy = 0
+    [[configuration.bonds]]
+    Jxy = 0.5
+    Jz = 0.5
+    family = "J2"
+    i = 11
+    j = 9
+    wy = 0
+    [[configuration.bonds]]
+    Jxy = 0.5
+    Jz = 0.5
+    family = "J3"
+    i = 10
+    j = 19
+    wy = 0
+    [[configuration.bonds]]
+    Jxy = 0.5
+    Jz = 0.5
+    family = "J3"
+    i = 11
+    j = 8
+    wy = 0
+    [[configuration.bonds]]
+    Jxy = 0.5
+    Jz = 0.5
+    family = "J3"
+    i = 12
+    j = 24
+    wy = 0
+    [[configuration.bonds]]
+    Jxy = 0.5
+    Jz = 0.5
+    family = "J2"
+    i = 13
+    j = 36
+    wy = -1
+    [[configuration.bonds]]
+    Jxy = 0.5
+    Jz = 0.5
+    family = "J2"
+    i = 14
+    j = 34
+    wy = -1
+    [[configuration.bonds]]
+    Jxy = 0.5
+    Jz = 0.5
+    family = "J2"
+    i = 14
+    j = 27
+    wy = 0
+    [[configuration.bonds]]
+    Jxy = 0.5
+    Jz = 0.5
+    family = "J2"
+    i = 15
+    j = 25
+    wy = 0
+    [[configuration.bonds]]
+    Jxy = 0.5
+    Jz = 0.5
+    family = "J2"
+    i = 13
+    j = 23
+    wy = -1
+    [[configuration.bonds]]
+    Jxy = 0.5
+    Jz = 0.5
+    family = "J2"
+    i = 14
+    j = 24
+    wy = -1
+    [[configuration.bonds]]
+    Jxy = 0.5
+    Jz = 0.5
+    family = "J3"
+    i = 13
+    j = 34
+    wy = -1
+    [[configuration.bonds]]
+    Jxy = 0.5
+    Jz = 0.5
+    family = "J3"
+    i = 14
+    j = 23
+    wy = -1
+    [[configuration.bonds]]
+    Jxy = 0.5
+    Jz = 0.5
+    family = "J3"
+    i = 15
+    j = 27
+    wy = 0
+    [[configuration.bonds]]
+    Jxy = 0.5
+    Jz = 0.5
+    family = "J2"
+    i = 16
+    j = 27
+    wy = 0
+    [[configuration.bonds]]
+    Jxy = 0.5
+    Jz = 0.5
+    family = "J2"
+    i = 17
+    j = 25
+    wy = 0
+    [[configuration.bonds]]
+    Jxy = 0.5
+    Jz = 0.5
+    family = "J2"
+    i = 17
+    j = 30
+    wy = 0
+    [[configuration.bonds]]
+    Jxy = 0.5
+    Jz = 0.5
+    family = "J2"
+    i = 18
+    j = 28
+    wy = 0
+    [[configuration.bonds]]
+    Jxy = 0.5
+    Jz = 0.5
+    family = "J2"
+    i = 16
+    j = 14
+    wy = 0
+    [[configuration.bonds]]
+    Jxy = 0.5
+    Jz = 0.5
+    family = "J2"
+    i = 17
+    j = 15
+    wy = 0
+    [[configuration.bonds]]
+    Jxy = 0.5
+    Jz = 0.5
+    family = "J3"
+    i = 16
+    j = 25
+    wy = 0
+    [[configuration.bonds]]
+    Jxy = 0.5
+    Jz = 0.5
+    family = "J3"
+    i = 17
+    j = 14
+    wy = 0
+    [[configuration.bonds]]
+    Jxy = 0.5
+    Jz = 0.5
+    family = "J3"
+    i = 18
+    j = 30
+    wy = 0
+    [[configuration.bonds]]
+    Jxy = 0.5
+    Jz = 0.5
+    family = "J2"
+    i = 19
+    j = 30
+    wy = 0
+    [[configuration.bonds]]
+    Jxy = 0.5
+    Jz = 0.5
+    family = "J2"
+    i = 20
+    j = 28
+    wy = 0
+    [[configuration.bonds]]
+    Jxy = 0.5
+    Jz = 0.5
+    family = "J2"
+    i = 20
+    j = 33
+    wy = 0
+    [[configuration.bonds]]
+    Jxy = 0.5
+    Jz = 0.5
+    family = "J2"
+    i = 21
+    j = 31
+    wy = 0
+    [[configuration.bonds]]
+    Jxy = 0.5
+    Jz = 0.5
+    family = "J2"
+    i = 19
+    j = 17
+    wy = 0
+    [[configuration.bonds]]
+    Jxy = 0.5
+    Jz = 0.5
+    family = "J2"
+    i = 20
+    j = 18
+    wy = 0
+    [[configuration.bonds]]
+    Jxy = 0.5
+    Jz = 0.5
+    family = "J3"
+    i = 19
+    j = 28
+    wy = 0
+    [[configuration.bonds]]
+    Jxy = 0.5
+    Jz = 0.5
+    family = "J3"
+    i = 20
+    j = 17
+    wy = 0
+    [[configuration.bonds]]
+    Jxy = 0.5
+    Jz = 0.5
+    family = "J3"
+    i = 21
+    j = 33
+    wy = 0
+    [[configuration.bonds]]
+    Jxy = 0.5
+    Jz = 0.5
+    family = "J2"
+    i = 22
+    j = 33
+    wy = 0
+    [[configuration.bonds]]
+    Jxy = 0.5
+    Jz = 0.5
+    family = "J2"
+    i = 23
+    j = 31
+    wy = 0
+    [[configuration.bonds]]
+    Jxy = 0.5
+    Jz = 0.5
+    family = "J2"
+    i = 23
+    j = 36
+    wy = 0
+    [[configuration.bonds]]
+    Jxy = 0.5
+    Jz = 0.5
+    family = "J2"
+    i = 24
+    j = 34
+    wy = 0
+    [[configuration.bonds]]
+    Jxy = 0.5
+    Jz = 0.5
+    family = "J2"
+    i = 22
+    j = 20
+    wy = 0
+    [[configuration.bonds]]
+    Jxy = 0.5
+    Jz = 0.5
+    family = "J2"
+    i = 23
+    j = 21
+    wy = 0
+    [[configuration.bonds]]
+    Jxy = 0.5
+    Jz = 0.5
+    family = "J3"
+    i = 22
+    j = 31
+    wy = 0
+    [[configuration.bonds]]
+    Jxy = 0.5
+    Jz = 0.5
+    family = "J3"
+    i = 23
+    j = 20
+    wy = 0
+    [[configuration.bonds]]
+    Jxy = 0.5
+    Jz = 0.5
+    family = "J3"
+    i = 24
+    j = 36
+    wy = 0
+    [[configuration.bonds]]
+    Jxy = 0.5
+    Jz = 0.5
+    family = "J2"
+    i = 25
+    j = 35
+    wy = -1
+    [[configuration.bonds]]
+    Jxy = 0.5
+    Jz = 0.5
+    family = "J2"
+    i = 26
+    j = 36
+    wy = -1
+    [[configuration.bonds]]
+    Jxy = 0.5
+    Jz = 0.5
+    family = "J3"
+    i = 26
+    j = 35
+    wy = -1
+    [[configuration.bonds]]
+    Jxy = 0.5
+    Jz = 0.5
+    family = "J2"
+    i = 28
+    j = 26
+    wy = 0
+    [[configuration.bonds]]
+    Jxy = 0.5
+    Jz = 0.5
+    family = "J2"
+    i = 29
+    j = 27
+    wy = 0
+    [[configuration.bonds]]
+    Jxy = 0.5
+    Jz = 0.5
+    family = "J3"
+    i = 29
+    j = 26
+    wy = 0
+    [[configuration.bonds]]
+    Jxy = 0.5
+    Jz = 0.5
+    family = "J2"
+    i = 31
+    j = 29
+    wy = 0
+    [[configuration.bonds]]
+    Jxy = 0.5
+    Jz = 0.5
+    family = "J2"
+    i = 32
+    j = 30
+    wy = 0
+    [[configuration.bonds]]
+    Jxy = 0.5
+    Jz = 0.5
+    family = "J3"
+    i = 32
+    j = 29
+    wy = 0
+    [[configuration.bonds]]
+    Jxy = 0.5
+    Jz = 0.5
+    family = "J2"
+    i = 34
+    j = 32
+    wy = 0
+    [[configuration.bonds]]
+    Jxy = 0.5
+    Jz = 0.5
+    family = "J2"
+    i = 35
+    j = 33
+    wy = 0
+    [[configuration.bonds]]
+    Jxy = 0.5
+    Jz = 0.5
+    family = "J3"
+    i = 35
+    j = 32
+    wy = 0
+
+    [[configuration.sites]]
+    index = 1
+    position = [0.0, 0.0]
+    sublattice = "A"
+    x = 0
+    y = 0
+    [[configuration.sites]]
+    index = 2
+    position = [0.5, 0.0]
+    sublattice = "B"
+    x = 0
+    y = 0
+    [[configuration.sites]]
+    index = 3
+    position = [0.25, 0.4330127018922193]
+    sublattice = "C"
+    x = 0
+    y = 0
+    [[configuration.sites]]
+    index = 4
+    position = [0.5, 0.8660254037844386]
+    sublattice = "A"
+    x = 0
+    y = 1
+    [[configuration.sites]]
+    index = 5
+    position = [1.0, 0.8660254037844386]
+    sublattice = "B"
+    x = 0
+    y = 1
+    [[configuration.sites]]
+    index = 6
+    position = [0.75, 1.299038105676658]
+    sublattice = "C"
+    x = 0
+    y = 1
+    [[configuration.sites]]
+    index = 7
+    position = [1.0, 1.7320508075688772]
+    sublattice = "A"
+    x = 0
+    y = 2
+    [[configuration.sites]]
+    index = 8
+    position = [1.5, 1.7320508075688772]
+    sublattice = "B"
+    x = 0
+    y = 2
+    [[configuration.sites]]
+    index = 9
+    position = [1.25, 2.1650635094610964]
+    sublattice = "C"
+    x = 0
+    y = 2
+    [[configuration.sites]]
+    index = 10
+    position = [1.5, 2.598076211353316]
+    sublattice = "A"
+    x = 0
+    y = 3
+    [[configuration.sites]]
+    index = 11
+    position = [2.0, 2.598076211353316]
+    sublattice = "B"
+    x = 0
+    y = 3
+    [[configuration.sites]]
+    index = 12
+    position = [1.75, 3.031088913245535]
+    sublattice = "C"
+    x = 0
+    y = 3
+    [[configuration.sites]]
+    index = 13
+    position = [1.0, 0.0]
+    sublattice = "A"
+    x = 1
+    y = 0
+    [[configuration.sites]]
+    index = 14
+    position = [1.5, 0.0]
+    sublattice = "B"
+    x = 1
+    y = 0
+    [[configuration.sites]]
+    index = 15
+    position = [1.25, 0.4330127018922193]
+    sublattice = "C"
+    x = 1
+    y = 0
+    [[configuration.sites]]
+    index = 16
+    position = [1.5, 0.8660254037844386]
+    sublattice = "A"
+    x = 1
+    y = 1
+    [[configuration.sites]]
+    index = 17
+    position = [2.0, 0.8660254037844386]
+    sublattice = "B"
+    x = 1
+    y = 1
+    [[configuration.sites]]
+    index = 18
+    position = [1.75, 1.299038105676658]
+    sublattice = "C"
+    x = 1
+    y = 1
+    [[configuration.sites]]
+    index = 19
+    position = [2.0, 1.7320508075688772]
+    sublattice = "A"
+    x = 1
+    y = 2
+    [[configuration.sites]]
+    index = 20
+    position = [2.5, 1.7320508075688772]
+    sublattice = "B"
+    x = 1
+    y = 2
+    [[configuration.sites]]
+    index = 21
+    position = [2.25, 2.1650635094610964]
+    sublattice = "C"
+    x = 1
+    y = 2
+    [[configuration.sites]]
+    index = 22
+    position = [2.5, 2.598076211353316]
+    sublattice = "A"
+    x = 1
+    y = 3
+    [[configuration.sites]]
+    index = 23
+    position = [3.0, 2.598076211353316]
+    sublattice = "B"
+    x = 1
+    y = 3
+    [[configuration.sites]]
+    index = 24
+    position = [2.75, 3.031088913245535]
+    sublattice = "C"
+    x = 1
+    y = 3
+    [[configuration.sites]]
+    index = 25
+    position = [2.0, 0.0]
+    sublattice = "A"
+    x = 2
+    y = 0
+    [[configuration.sites]]
+    index = 26
+    position = [2.5, 0.0]
+    sublattice = "B"
+    x = 2
+    y = 0
+    [[configuration.sites]]
+    index = 27
+    position = [2.25, 0.4330127018922193]
+    sublattice = "C"
+    x = 2
+    y = 0
+    [[configuration.sites]]
+    index = 28
+    position = [2.5, 0.8660254037844386]
+    sublattice = "A"
+    x = 2
+    y = 1
+    [[configuration.sites]]
+    index = 29
+    position = [3.0, 0.8660254037844386]
+    sublattice = "B"
+    x = 2
+    y = 1
+    [[configuration.sites]]
+    index = 30
+    position = [2.75, 1.299038105676658]
+    sublattice = "C"
+    x = 2
+    y = 1
+    [[configuration.sites]]
+    index = 31
+    position = [3.0, 1.7320508075688772]
+    sublattice = "A"
+    x = 2
+    y = 2
+    [[configuration.sites]]
+    index = 32
+    position = [3.5, 1.7320508075688772]
+    sublattice = "B"
+    x = 2
+    y = 2
+    [[configuration.sites]]
+    index = 33
+    position = [3.25, 2.1650635094610964]
+    sublattice = "C"
+    x = 2
+    y = 2
+    [[configuration.sites]]
+    index = 34
+    position = [3.5, 2.598076211353316]
+    sublattice = "A"
+    x = 2
+    y = 3
+    [[configuration.sites]]
+    index = 35
+    position = [4.0, 2.598076211353316]
+    sublattice = "B"
+    x = 2
+    y = 3
+    [[configuration.sites]]
+    index = 36
+    position = [3.75, 3.031088913245535]
+    sublattice = "C"
+    x = 2
+    y = 3
+
+[couplings]
+J1 = 1.0
+J2 = 0.5
+J3 = 0.5
+
+[extra_source_sha256]
+"examples/research_csl.jl" = "e5d13f59fb462110eb177d8893a7ca91ba7b0b41e51da53ca6e315e4763acf69"
+"examples/run_research.py" = "a3718f882aaa7a9187644bfc26b3f0faecbedceef9b8f26d7d7bd9bba5c0a798"
+"examples/run_static18.py" = "4e6a8d542352aaa0414ad610eefd81e11cc6b86955b192eb5f3fc76bddd6f5b2"
+"examples/run_static27.py" = "0267b91f6848a66d4e2ca0c10faee0752f28ed7116ec7b78b0c7cf72bec21ae6"
+
+[integrity_limits]
+checkpoint_overlap_error = 1.0e-10
+scaled_bond_energy_sum_error = 1.0e-9
+schmidt_density_error = 1.0e-9
+schmidt_probability_sum_error = 1.0e-10
+state_norm_error = 1.0e-10
+total_sz_error = 1.0e-9
+
+[literature]
+author_manuscript = "https://arxiv.org/abs/1312.4519"
+comparison = "same_couplings_and_hexagon_opposite_J3_not_same_size_or_convergence"
+paper = "https://www.nature.com/articles/srep06317"
+published_flux_case = "N288_Lx24_Ly4_Jprime0.5_complex_U1_up_to_5000_states"
+
+[parent]
+checksums_file_sha256 = "94ba9611c0bb8cccbe9bd457dc167e647c9b7a23e9e6f2b8066d1236691a7ed2"
+energy = -16.04147694678745
+metadata_sha256 = "a9320d8d8a081947a5a2e9b878feaab33dd97fe64068c570db1c4db71b50a319"
+path = "outputs/p3-campaign-csl36-flux-readiness-chi256/trial/checkpoint-xnh1sG"
+state_sha256 = "892970bfcd226e2e7b2f6d01e7f92cdc57c782a9ac14cb1023c01c9d7a516e3d"
+status = "trial"
+theta_path = [0.0]
+variance_measured = true
+
+    [parent.solver]
+    cutoff = 0.0
+    eigsolve_krylovdim = 40
+    eigsolve_maxiter = 20
+    eigsolve_tol = 1.0e-11
+    initial_linkdim = 4
+    initialization = "provided_mps"
+    maxdim = [256]
+    measure_variance = true
+    noise = 0.0
+    nsweeps = 2
+    seed = 11
+
+[[preparation_batches]]
+active_phase = "variance"
+batch = 1
+bond_energy_profile = [-0.1221041532030519, -0.3643858667562765, -0.09966793770778193, -0.46446779956016176, -0.1856932400748133, -0.10510708233319005, -0.3625249434465818, -0.11860120695803683, -0.46694111217887574, -0.26999160941299744, -0.11582120973258778, -0.3627184519170496, -0.10763637560912698, -0.4668551203360792, -0.18804449184285887, -0.10288365680599815, -0.36388804081224124, -0.11819382074867983, -0.4677088916004003, -0.2572361683415358, -0.22307738623806167, -0.2178561079299765, -0.19259145236015224, -0.27692927501091846, -0.1755916904422935, -0.15889240267923915, -0.15774748151427423, -0.3174835547247315, -0.16042281973001932, -0.18048486285771898, -0.20457742295247305, -0.20742774155945526, -0.1893510184735851, -0.22873843876714345, -0.21216488698639085, -0.2544034250129899, -0.20733712037204716, -0.17345751659299413, -0.1476044073023285, -0.32680179342077187, -0.16284513893276054, -0.19743591076118286, -0.18706159062489344, -0.21668159894983363, -0.2661824800363585, -0.105869486587235, -0.3253417954275269, -0.17025526959471587, -0.29108474373819654, -0.327189978204266, -0.11013269960485073, -0.26081307898769407, -0.19991512733545996, -0.21146718103583634, -0.2609555297941408, -0.10129540133417272, -0.3350021490973027, -0.16479812004488237, -0.29196965857180635, -0.3308377666494203, -0.10005136589883293, -0.2669644897145896, -0.22237099442546698, -0.19409836049636914, 0.0002353660751294459, -0.0032796804716148605, -0.00729338938690423, -0.001588692250796055, 0.018592001844162792, 0.019003425173309507, -0.0046647944945049985, -0.10010024294903624, -0.009163796951411644, -0.0007104778972428765, -0.009349003272371587, -0.009961049859457134, -0.002398278671967165, 0.013425371909409284, 0.01436426146481913, -0.007470485082217811, -0.07142402837703711, -0.0038408977244831334, -0.0007963998295901635, -0.010950447066853657, -0.009052152874078779, 0.0018024325973747058, 0.018149983178206788, 0.018054814182356455, -0.005729151630158755, -0.10174629075050037, -0.007277148173872497, 0.0031176549420990113, -0.009419393106666545, -0.005263982220696935, 0.0025257581048741522, 0.01456780663813066, 0.014035893001363355, -0.010101091249424448, -0.07362501107197472, -0.00832556065964238, -0.007467792618504046, -0.03160569958757431, -0.03363389544348987, -0.005991355775276552, -0.011213497424459134, -0.020689043734777215, -0.0023221753076277116, -0.016915964392712597, -0.006707277232833786, -0.006683731036058953, -0.04105968003393058, -0.04086504835169748, -0.006444461963874019, -0.023934308115894157, -0.017349973773845305, -0.013325421621097252, -0.020872100313014272, -0.010027145284145353, -0.008534258098131624, -0.03534485626566802, -0.03245959376580224, -0.010337090134411663, -0.01758246218540114, -0.021472076666407505, -0.008863523562229102, -0.021824978055638218, -0.006179467969078316, -0.016129629419424477, -0.042284485542549745, -0.04219854821254489, -0.016541519265329062, -0.022354550242226365, -0.0182654081223011, -0.018289283375836775, -0.017799138883410122, -0.02082053056672959, -0.006850533594491986, -0.007171843803486018, -0.09205585224391194, -0.008353151087883629, -0.009085798637207276, -0.0684283164578122, -0.009177561202558727, -0.008148439523718874, -0.09254506546265863, -0.010906299020549494, -0.010864225765827544, -0.06440792413567704]
+bond_energy_sum_error = 7.105427357601002e-15
+checkpoint = "trial/checkpoint-N8JX0z"
+checkpoint_overlap_error = 1.7763568394002505e-15
+checkpoint_overlap_measured = true
+checkpoint_reload_seconds = 0.9354435
+checkpoint_save_seconds = 1.232255542
+chirality_mean = 0.00040544623181429254
+chirality_profile = [0.00012828484784366422, 0.0001406098224763834, 0.0001401301592252381, 0.0001278233063865026, 0.0004364430020671455, 0.00039942192524704815, 0.000502442271493951, 0.00048371569560353545, 0.00044074330070402413, 0.0004665243405483485, 0.00044741460388118397, 0.0004097690227694409, 0.00046920373121962273, 0.0004999469615792194, 0.00048694359276739907, 0.0004717774083594316, 0.0005032779943901565, 0.0005526679306516743, 0.0004897062801134222, 0.0005120784389584584]
+column_sz = [1.8053602477058038e-5, 0.0002281456353217155, -0.0002461992377985826]
+dmrg_seconds = 461.576713958
+energy = -16.042073560344676
+maxlinkdim = 256
+measured_truncation_errors = [0.0007031490163233032, 0.0007274211696857013]
+parent_checkpoint = "outputs/p3-campaign-csl36-flux-readiness-chi256/trial/checkpoint-xnh1sG"
+scaled_bond_energy_sum_error = 4.4292449669133276e-16
+schmidt_density_error = 2.220988150336556e-16
+schmidt_probability_sum_error = 2.220446049250313e-16
+state_norm_error = 1.779029559609064e-15
+status = "running"
+sweep_energies = [-16.04194935225134, -16.042073560344697]
+sweep_energy_change = 0.00012420809335722538
+sweeps_in_this_invocation = 2
+sz_profile = [1.5768757007206258e-5, 5.868879154431739e-5, -1.981791615674952e-5, 2.3086907068688026e-5, 2.9009343362651117e-6, -2.121331536571353e-5, 3.164789570052341e-5, -1.2860479112523153e-6, -1.6834289969665577e-5, 2.9016905407938735e-5, -7.182679391579296e-5, -1.2078225268706987e-5, 1.2479593381768836e-6, 7.730356888028395e-5, -4.636206155205275e-5, 5.167425712066488e-5, 8.688645785986471e-5, -5.4215737598309906e-5, 6.408622679545822e-5, 6.738118121333795e-5, 2.6726440066883448e-5, 7.094318972182748e-5, -5.4452952814049305e-5, -6.30728937103701e-5, -6.744539112708603e-5, 5.361952219909175e-5, -9.986832050188184e-5, -7.1650000515236666e-6, -3.678501364517336e-5, -8.672016115436371e-5, -1.841924726541255e-5, 4.29198765071614e-5, -3.24190081056391e-5, 6.764366474722519e-5, -8.16071722101186e-5, 2.00470128091379e-5]
+theta = 0.0
+total_sz_error = 1.9092800257469733e-16
+
+    [preparation_batches.family_energy]
+    J1 = -14.624031900153684
+    J2 = -0.5331889962123078
+    J3 = -0.884852663978677
+
+    [preparation_batches.measurement_seconds]
+    bond_energies = 2.493875458
+    scalar_chirality = 2.180617292
+    schmidt = 0.548547375
+
+    [[preparation_batches.schmidt]]
+    bond = 12
+    entropy = 2.3672891958754088
+    left_q = [0, -2, 0, 2, 0, 2, 0, -2, 2, 0, -2, -4, -2, 0, 2, 4, 0, 0, 0, 2, 0, -2, 0, 2, 0, -2, 0, -2, 2, 2, 0, -2, 2, 0, -2, 2, 0, -2, 2, 0, -2, 2, 0, -2, 2, 0, -2, 0, 2, 0, -2, 4, 2, 0, -2, -4, 4, 2, 0, -2, -4, 0, 4, 2, 0, -2, -4, 0, 2, 0, -2, 2, 0, -2, 4, 2, 0, -2, -4, 0, 2, 0, 0, -2, 2, 0, -2, 2, 0, -2, 0, 0, 0, 2, -2, 0, 2, 0, 4, 2, -2, 0, 2, 0, -2, -4, -2, 2, 0, -2, 0, 2, 0, 0, -2, 4, 2, 0, -2, -4, 2, 0, -2, -4, -2, 4, 2, 0, 2, 0, -2, 2, 0, -2, 0, 2, 0, -2, 0, 2, -2, 4, 0, 2, -2, -4, 0, 2, 4, -2, 0, -4, 2, 0, 0, 2, -2, 0, -2, 2, 0, -2, 2, 0, -2, 0, 2, 0, -2, 2, 4, 2, 0, 0, -2, -4, -2, 2, 4, 0, 2, -2, 0, -2, -4, 0, -2, 2, 0, 2, 0, 2, -2, 0, 2, 4, 0, 0, -2, -4, -2, 2, 4, 0, -2, -4, 2, 0, -2, 0, 0, 2, 0, 2, -2, -2, 0, 4, -4, -2, 0, 2, 0, 2, 2, -2, 0, 4, 2, 0, -2, -4, 0, -2, -6, -4, -2, 0, 2, 4, 6, 0, 0, 2, -2, 4, -4, 2, 0, -2, 2, 0, -2, 0, 0, -2]
+    mean_left_sz = 1.8053602477275715e-5
+    probabilities = [0.3730949192674211, 0.06346722891904509, 0.06346364146187079, 0.06346086697794322, 0.062243314267300405, 0.0574836522946103, 0.05748334065847481, 0.05748180767896352, 0.045657003667469914, 0.045652157956680636, 0.045651019400821065, 0.007850333644450242, 0.007849547881401972, 0.007848969701337326, 0.007848594667883449, 0.007848343966903273, 0.002782555920879855, 0.001370100564604004, 0.0011685738990533455, 0.0011096342058306366, 0.00110898109005008, 0.0011083514424025346, 0.0009695599986083186, 0.0008557775090349351, 0.0008552777090064901, 0.0008544810745772852, 0.0005751414696853112, 0.0005750652192874014, 0.0005749976864378972, 0.000551655566299222, 0.0005513584540478027, 0.0005512423303653083, 0.00040298968452706245, 0.0004022283107723737, 0.00040186583602336447, 0.0003573728144411908, 0.00035694561829789824, 0.0003565446786393978, 0.0003405350672355072, 0.0003401531733002538, 0.0003400658790729866, 0.00019719899709665903, 0.0001969918561773963, 0.0001967443343786923, 0.00017771135754601956, 0.00017754935134814943, 0.00017748833597861446, 0.00014449604562881524, 0.00013942708102031214, 0.00013939433423449104, 0.0001392426688970452, 0.00012995071882256545, 0.0001298539840933542, 0.00012975857353014558, 0.0001296424342159423, 0.0001295154836120079, 0.00012474965587264367, 0.00012472679978402148, 0.00012471689949143514, 0.0001247000868789871, 0.00012463589114731195, 0.00010907681131546995, 0.00010439089138662025, 0.00010427733402712893, 0.00010412962537231828, 0.0001039589545230798, 0.00010374633318775154, 0.00010057209209402837, 0.00010035198634658712, 0.00010010351085751707, 0.00010003136273384645, 8.467303833842347e-5, 8.466853545543475e-5, 8.458566503674776e-5, 7.935171917597446e-5, 7.93509154684032e-5, 7.932925041971835e-5, 7.926501192264304e-5, 7.911554349291238e-5, 7.854481077310318e-5, 7.480216590697123e-5, 7.458019306866161e-5, 7.449330039614757e-5, 7.430472388575627e-5, 5.81986513931867e-5, 5.8107302728836524e-5, 5.7870683861254625e-5, 5.058076114117658e-5, 5.0339232565715973e-5, 5.0224208568821636e-5, 4.7543387430662024e-5, 3.723832217552259e-5, 3.480927728030081e-5, 3.4793700196761985e-5, 3.4557622093096906e-5, 3.4093821156460876e-5, 3.1744278725572746e-5, 3.127714253221604e-5, 3.1162646380037735e-5, 3.1079073100191494e-5, 3.105043495003667e-5, 3.1015139163245415e-5, 3.097285190453754e-5, 3.088573773193522e-5, 3.0882628801975766e-5, 3.076611244579331e-5, 3.036833605977651e-5, 2.927780835638508e-5, 2.8678574510140062e-5, 2.8380492296008198e-5, 2.6009537777421113e-5, 2.3462709833731212e-5, 2.3051256435235022e-5, 2.290868845829543e-5, 2.284242598122408e-5, 2.021655710119831e-5, 2.0176222477597246e-5, 2.015492713942204e-5, 2.012388373631349e-5, 2.0077201446662273e-5, 1.656178033683124e-5, 1.6436725206028638e-5, 1.62453224443452e-5, 1.424197688770248e-5, 1.4166778584616392e-5, 1.4144634743685635e-5, 1.4130900051556806e-5, 1.4129333242769227e-5, 1.3442075744486644e-5, 1.3428361627894626e-5, 1.3413116840478854e-5, 1.3046675029846346e-5, 1.2759792194256169e-5, 1.1996261415071795e-5, 1.100528340660012e-5, 1.0489029478355457e-5, 1.0269163368436605e-5, 9.816819120885909e-6, 7.98800970115575e-6, 7.983026602480159e-6, 7.90310412367201e-6, 7.868502096230285e-6, 7.81962423838591e-6, 7.80684205334037e-6, 7.711321277538071e-6, 7.645302129300323e-6, 7.054376813011077e-6, 6.835905750314718e-6, 6.830996974277325e-6, 6.811254689898205e-6, 6.802035229808183e-6, 6.768951919424414e-6, 6.277804106857849e-6, 6.011088332197477e-6, 5.903720584827085e-6, 5.86389983453666e-6, 5.83190901007601e-6, 5.663151231814797e-6, 5.3551243106331386e-6, 5.0705817571734774e-6, 5.030382525880275e-6, 5.02521537107249e-6, 4.5787277664487e-6, 4.54076257243016e-6, 4.422829317319179e-6, 4.054595886075105e-6, 3.342808910316898e-6, 3.3144583652894013e-6, 3.2074000103244808e-6, 2.9870807364599823e-6, 2.9591492063797195e-6, 2.931850772578435e-6, 2.9097013816859464e-6, 2.8668462244033285e-6, 2.8264971422821204e-6, 2.752580461974406e-6, 2.740397405057722e-6, 2.6139758633940424e-6, 2.5744899748575734e-6, 2.571689144375999e-6, 2.5435434957279895e-6, 2.539066501972131e-6, 2.5037258397362564e-6, 2.4358298585775953e-6, 2.3832443686373155e-6, 2.2666875662908227e-6, 2.2543745863187884e-6, 2.235858024315797e-6, 2.2066761656413054e-6, 1.8881187439731942e-6, 1.8296760379493831e-6, 1.7536599543311105e-6, 1.7500933087704756e-6, 1.741090544949069e-6, 1.7326143580795158e-6, 1.7314144688380748e-6, 1.723338010149698e-6, 1.719777217675516e-6, 1.7151237059564825e-6, 1.7018594795666426e-6, 1.6917265221039092e-6, 1.5167471067706761e-6, 1.5135294175392657e-6, 1.5129196664040037e-6, 1.5027366307133778e-6, 1.4938697232471074e-6, 1.376352241140885e-6, 1.3246696955672585e-6, 1.2341286809269757e-6, 1.2205715292114895e-6, 1.029967902531824e-6, 1.0033219150480634e-6, 9.923243618972567e-7, 9.80085797298114e-7, 9.791817442696251e-7, 9.724123639163885e-7, 9.720813616635743e-7, 9.652527756766993e-7, 9.101331597583973e-7, 8.970419037628063e-7, 8.824558002979954e-7, 8.514810673505468e-7, 7.710316702213117e-7, 7.704937209506513e-7, 6.981609482257596e-7, 6.866570179430172e-7, 6.689026710674107e-7, 6.647532016658896e-7, 6.595388103096635e-7, 6.522597885188172e-7, 6.460885379866971e-7, 6.420516948467204e-7, 6.350904550570051e-7, 5.823377890947352e-7, 5.447009474571874e-7, 5.444623186800691e-7, 5.442494384649224e-7, 5.440627320941336e-7, 5.43803994413997e-7, 5.435892604243711e-7, 5.434991285623313e-7, 5.235366382456335e-7, 4.938014436910188e-7, 4.889717370653395e-7, 4.874914183318222e-7, 4.830032696268221e-7, 4.822414491778019e-7, 4.7287983550997627e-7, 4.6951015990016465e-7, 4.525430957837719e-7, 4.338262029405852e-7, 4.270240247264895e-7, 4.056562800530648e-7, 3.8490220901239975e-7, 2.9267229200893725e-7, 2.3752274981366116e-7]
+    variance_left_sz = 0.42763722742219434
+    [[preparation_batches.schmidt]]
+    bond = 24
+    entropy = 2.7170577002237217
+    left_q = [0, 0, 2, 0, -2, 2, 0, -2, 2, 0, -2, 0, 0, 0, 2, 0, -2, 2, 0, -2, 4, 2, 2, 0, 0, -2, -2, -4, 0, 2, 0, -2, 2, 0, -2, 2, 0, -2, 2, 0, -2, 2, 0, -2, 4, 2, 0, -2, -4, 2, 0, -2, 0, 2, 0, -2, 4, 2, 0, -2, -4, 0, 0, 4, 2, 0, -2, -4, 2, 0, -2, 0, 2, 0, -2, 0, 2, -2, 2, 0, -2, 0, -2, 0, 2, 4, 0, 2, 0, -2, -4, 0, 2, 0, -2, 2, 0, -2, 2, 0, -2, 0, 2, 0, -2, 4, 2, 0, -2, -4, 2, 0, -2, 2, 0, -2, 2, 0, -2, 0, 0, 2, 0, -2, 0, 2, -2, 4, 2, 0, 0, -4, -2, -2, 0, 2, 4, -4, -2, 2, 0, -2, 0, 2, -4, -2, 0, 4, 2, 4, 2, 0, 0, -2, -4, 2, 0, -2, 0, 2, 4, 2, -2, 0, -2, -4, 0, -2, 2, 0, 0, -2, 0, 2, -2, 0, 2, 4, 2, -2, 0, 0, 2, -2, -4, 0, 4, 2, 0, -2, -4, 2, 0, -2, 0, 0, -2, 0, 4, 2, 2, 0, -2, -4, 2, 4, 0, -2, 0, 2, -2, -4, 0, 2, 4, 0, -2, 2, 0, 2, -2, 0, 0, 0, 2, -2, -2, -4, 2, 0, -2, 2, 0, -2, 0, 2, 0, 4, 2, -2, 0, -2, -4, 0, 2, -2, 0, 4, 2, -2, 0, 2, 0, 2, 0, 0]
+    mean_left_sz = 0.0002461992377989956
+    probabilities = [0.2663826776278302, 0.08211784411681362, 0.08050478887759413, 0.08049710761722935, 0.08049497795032087, 0.05305735590593038, 0.0530483777720663, 0.05303151335139122, 0.04682049692349269, 0.04678371977170729, 0.04673505883196841, 0.021225526617746536, 0.006886170908337769, 0.004647416090509547, 0.0038314717471515975, 0.0038296713200863153, 0.0038266226483687966, 0.003122989332725915, 0.0031210870990303944, 0.0031192836529257, 0.0028070772133398066, 0.0028068080028218817, 0.0028056717991518485, 0.0028052793075606557, 0.002803920775288881, 0.00280351570766638, 0.0028021617537964984, 0.00280040494298616, 0.0018046498857412871, 0.001563292807181808, 0.001562788112513814, 0.001561785053075089, 0.0009260759627342716, 0.000925006773338694, 0.0009232305328199806, 0.0008286846834159473, 0.0008283891425784685, 0.0008282645530337688, 0.0007493349807300588, 0.0007478162485947063, 0.0007453427456187032, 0.0007258152390309688, 0.0007251071721320332, 0.0007233207768012301, 0.0005769535843369073, 0.0005767880144009271, 0.0005764945552636393, 0.0005755071966258014, 0.0005748421097323265, 0.0005130089020920884, 0.0005121951841718736, 0.000511198713159312, 0.0004899202058516821, 0.0004691407829846857, 0.0004680347594475362, 0.0004665177532173527, 0.00046512118236549606, 0.0004650941427011019, 0.0004647475750445845, 0.00046415457490277896, 0.0004635896139468735, 0.00042871122341996414, 0.00034315308503147845, 0.00025480941176367946, 0.0002544188613596607, 0.00025362520416630474, 0.00025270191616974893, 0.0002510959832030529, 0.0002498900860435344, 0.000249780959066959, 0.00024968243494778334, 0.00024161092397917452, 0.0002316413513226881, 0.00023061474085729863, 0.00022946335977807434, 0.00022734931254027557, 0.00022733314663651969, 0.00022709246701256745, 0.00018957234884208363, 0.00018899494015433573, 0.00018796254708201287, 0.00017575851159237402, 0.00016516031878527853, 0.00016511877106902397, 0.00016508370824366023, 0.00014543582789410943, 0.00014532626961818865, 0.00014521188586698737, 0.00014445721055338797, 0.00014314148576960047, 0.00014135943281840858, 9.025235663853403e-5, 8.730274743581564e-5, 8.692347877977693e-5, 8.64054551042621e-5, 8.418838035429572e-5, 8.396645420216034e-5, 8.372665476617715e-5, 7.485302335600047e-5, 7.421554653597431e-5, 7.332060438194534e-5, 6.768181651030055e-5, 6.358066513644855e-5, 6.340954120867155e-5, 6.304515314317131e-5, 5.9623893489581856e-5, 5.951201543628396e-5, 5.910505471216823e-5, 5.810304376732903e-5, 5.7431507840468055e-5, 5.1573669866444014e-5, 5.1152985616750515e-5, 5.076162949051538e-5, 4.9209943824587e-5, 4.889183480330003e-5, 4.856030344560614e-5, 4.330304677986529e-5, 4.3069855962853125e-5, 4.270262776145447e-5, 4.2335966659644874e-5, 4.1972614358646574e-5, 3.491920657046567e-5, 3.465366210990934e-5, 3.450502745510472e-5, 3.333012029607044e-5, 3.32541727231635e-5, 3.311769029690839e-5, 3.290394514960151e-5, 3.2368732559067334e-5, 3.073095073981906e-5, 3.063320490276576e-5, 2.8605546054590235e-5, 2.8287747423511197e-5, 2.794905348937032e-5, 2.7861279168233638e-5, 2.774087703552076e-5, 2.7721746194902286e-5, 2.769522928650153e-5, 2.3547187338087405e-5, 2.3504601889072105e-5, 2.3486593997522483e-5, 2.0229786051984e-5, 1.995879028893869e-5, 1.97350875351173e-5, 1.9513786601453475e-5, 1.8979695483734438e-5, 1.8938868319182277e-5, 1.8721125306686362e-5, 1.8707884309042174e-5, 1.81782495572798e-5, 1.8080828665747603e-5, 1.7278588925141912e-5, 1.7148179502659765e-5, 1.4549407606491351e-5, 1.4157660144959593e-5, 1.408406983589187e-5, 1.4063151520146726e-5, 1.4038333237983816e-5, 1.309645505732029e-5, 1.2915036331298827e-5, 1.2682033834201178e-5, 1.1971740664706468e-5, 1.1906143235316881e-5, 1.186251721795213e-5, 1.1285599109061365e-5, 1.0392152336042001e-5, 9.089781642859256e-6, 8.843249061580895e-6, 8.793057850427652e-6, 8.791695987932923e-6, 7.74692428827737e-6, 7.141694851213737e-6, 7.030165100815602e-6, 6.9604530235070035e-6, 6.8824653571013045e-6, 6.828996171234045e-6, 6.754340642247048e-6, 5.499135716988341e-6, 5.4720053503677356e-6, 5.429000797770102e-6, 5.421001557783811e-6, 5.395452517332347e-6, 5.388341932006546e-6, 5.1886411622844275e-6, 5.130024054231808e-6, 5.113977414036117e-6, 5.008220768111025e-6, 5.001469418402317e-6, 4.990114513291577e-6, 4.917591020498961e-6, 4.727966211523287e-6, 4.553897890948357e-6, 4.530678759672467e-6, 4.495929498176654e-6, 4.239018380925846e-6, 3.7132687263094935e-6, 3.5728956932406663e-6, 3.52296524238861e-6, 3.497037290279209e-6, 3.4889035285464377e-6, 3.46731010794939e-6, 3.440399587565697e-6, 3.37202426901296e-6, 3.2678218903598737e-6, 2.957043948967824e-6, 2.9444983419608333e-6, 2.937918027337639e-6, 2.776628573010877e-6, 2.766750071506112e-6, 2.737894830498993e-6, 2.6844653429322607e-6, 2.644259327268143e-6, 2.4621372098160056e-6, 2.3083444786660734e-6, 2.3062918281738817e-6, 2.3061840439045167e-6, 2.305654420426946e-6, 2.2920323039662607e-6, 2.2152094225820604e-6, 2.1249046325346295e-6, 2.1035599579870987e-6, 2.0945090278325587e-6, 2.0570643168326278e-6, 1.998461196224374e-6, 1.996754381917029e-6, 1.9736370298719815e-6, 1.8777354907271742e-6, 1.8055829743682717e-6, 1.6651320099276532e-6, 1.6548607109929778e-6, 1.62992057851268e-6, 1.4918369022712717e-6, 1.4836858813136963e-6, 1.4624601401220755e-6, 1.2939910661511837e-6, 1.1596685795520975e-6, 1.148720781582663e-6, 1.1443056736603009e-6, 1.1387493985157497e-6, 1.1166864573973941e-6, 1.1010012733396843e-6, 1.0509569470681552e-6, 1.0331054113388618e-6, 9.95151743780631e-7, 9.174552813624302e-7, 8.990623743162112e-7, 8.965790350940458e-7, 8.597263751577381e-7, 8.43079347629293e-7, 8.315609720053424e-7, 8.266124311145588e-7, 8.253361520894699e-7, 7.707955638150559e-7, 7.418820493492204e-7, 7.03936950620406e-7, 6.857737147387021e-7]
+    variance_left_sz = 0.4393397684067475
+
+    [preparation_batches.settings]
+    cutoff = 0.0
+    eigsolve_krylovdim = 40
+    eigsolve_maxiter = 20
+    eigsolve_tol = 1.0e-11
+    initial_linkdim = 4
+    initialization = "provided_mps"
+    maxdim = [256]
+    measure_variance = false
+    noise = 0.0
+    nsweeps = 2
+    seed = 11
+
+    [preparation_batches.snapshot]
+    checksums_file_sha256 = "174684d46681bbf949c3a9604b0433fa127d4564bf6e705253e544728d07f991"
+    metadata_sha256 = "a7f8f870712212e0cc27683c473edbabe0e22ec3e53931f32b2ade196ebfca45"
+    path = "outputs/p3-csl36-fixed-chi-8to10-20260920/trial/checkpoint-N8JX0z"
+    state_sha256 = "12b6acd3895af98dcde7d99c4c63889e03e74c6526cc60918f1d2cbdcadf9cd8"
+
+[runtime]
+ITensorMPS = "0.4.1"
+ITensors = "0.9.31"
+KrylovKit = "0.10.4"
+LinearAlgebra = "1.13.0"
+NDTensors = "0.4.31+1"
+SHA = "1.0.0"
+Serialization = "1.11.0"
+TOML = "1.0.3"
+arch = "aarch64"
+blas_threads = 1
+julia = "1.13.0"
+julia_threads = 1
+kernel = "Darwin"
+word_size = 64
+
+[[triangles]]
+image_y = [0, 0, 0]
+kind = "up"
+sites = [1, 2, 3]
+[[triangles]]
+image_y = [0, 0, 0]
+kind = "up"
+sites = [4, 5, 6]
+[[triangles]]
+image_y = [0, 0, 0]
+kind = "up"
+sites = [7, 8, 9]
+[[triangles]]
+image_y = [0, 0, 0]
+kind = "up"
+sites = [10, 11, 12]
+[[triangles]]
+image_y = [0, 0, 0]
+kind = "up"
+sites = [13, 14, 15]
+[[triangles]]
+image_y = [0, 0, -1]
+kind = "down"
+sites = [13, 2, 24]
+[[triangles]]
+image_y = [0, 0, 0]
+kind = "up"
+sites = [16, 17, 18]
+[[triangles]]
+image_y = [0, 0, 0]
+kind = "down"
+sites = [16, 5, 15]
+[[triangles]]
+image_y = [0, 0, 0]
+kind = "up"
+sites = [19, 20, 21]
+[[triangles]]
+image_y = [0, 0, 0]
+kind = "down"
+sites = [19, 8, 18]
+[[triangles]]
+image_y = [0, 0, 0]
+kind = "up"
+sites = [22, 23, 24]
+[[triangles]]
+image_y = [0, 0, 0]
+kind = "down"
+sites = [22, 11, 21]
+[[triangles]]
+image_y = [0, 0, 0]
+kind = "up"
+sites = [25, 26, 27]
+[[triangles]]
+image_y = [0, 0, -1]
+kind = "down"
+sites = [25, 14, 36]
+[[triangles]]
+image_y = [0, 0, 0]
+kind = "up"
+sites = [28, 29, 30]
+[[triangles]]
+image_y = [0, 0, 0]
+kind = "down"
+sites = [28, 17, 27]
+[[triangles]]
+image_y = [0, 0, 0]
+kind = "up"
+sites = [31, 32, 33]
+[[triangles]]
+image_y = [0, 0, 0]
+kind = "down"
+sites = [31, 20, 30]
+[[triangles]]
+image_y = [0, 0, 0]
+kind = "up"
+sites = [34, 35, 36]
+[[triangles]]
+image_y = [0, 0, 0]
+kind = "down"
+sites = [34, 23, 33]

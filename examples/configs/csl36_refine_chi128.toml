@@ -1,0 +1,16 @@
+schema_version = 1
+mode = "prepare"
+start_checkpoint = "outputs/p3-campaign-csl36-prepare-chi128/trial/checkpoint-pjHDfN"
+start_status = "trial"
+
+[solver]
+seed = 11
+maxdim = 128
+initial_linkdim = 4
+eigsolve_tol = 1e-11
+eigsolve_krylovdim = 40
+eigsolve_maxiter = 20
+
+[preparation]
+batches = 1
+batch_sweeps = 2
