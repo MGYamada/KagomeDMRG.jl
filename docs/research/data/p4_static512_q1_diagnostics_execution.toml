@@ -1,0 +1,26 @@
+schema_version = 1
+status = "exited"
+command = ["julia", "--project=.", "--startup-file=no", "--threads=1", "/Users/masa/git/KagomeDMRG.jl/examples/research_static_split.jl", "diagnose", "/Users/masa/git/KagomeDMRG.jl/outputs/p4-static512-q1-8to9-20260920-diagnostics", "/Users/masa/git/KagomeDMRG.jl/examples/configs/nn27_q1_chi512_split8_to9.toml", "/Users/masa/git/KagomeDMRG.jl/outputs/p4-static512-q1-8to9-20260920-solve", "7de9a30b5e027f6abd8fa446462f06ceeb12648baf4f290efa2f8f52a4b0df7a", "8b2c50aabc329bca57871a388e9f14f3e50e8602c045868681f1ec868df683c9"]
+wall_limit_seconds = 180.0
+termination_grace_seconds = 2.0
+termination_grace_included_in_wall_limit = true
+julia_threads = 1
+blas_threads = 1
+worker_exit_confirmed = true
+worker_validation_status = "not_interpreted"
+worker_exit_code = 0
+wall_elapsed_seconds = 87.18641329198726
+resource_measurement_method = "resource.getrusage(resource.RUSAGE_CHILDREN)"
+resource_measurement_scope = "single worker reaped by this launcher; includes descendant usage only as accounted by the OS"
+resource_excludes_launcher = true
+resource_is_simultaneous_process_tree_peak = false
+resource_prior_child_usage_detected = false
+resource_cpu_method = "difference of cumulative child ru_utime and ru_stime before launch and after exit"
+resource_peak_rss_method = "post-exit ru_maxrss high water; available only with no prior child usage"
+resource_ru_maxrss_native_unit = "bytes"
+resource_ru_maxrss_bytes_per_native_unit = 1
+worker_cpu_user_seconds = 84.009412
+worker_cpu_system_seconds = 1.9350159999999998
+worker_cpu_total_seconds = 85.944428
+resource_measurement_status = "captured"
+worker_peak_rss_bytes = 4136648704

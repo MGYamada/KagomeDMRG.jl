@@ -2,6 +2,9 @@
 
 実施日: 2026-09-20。状態: **NNは全診断完了・精度未達。CSLは2 sweepsと状態保存後、分散測定中に上限停止**。
 
+後続の[同一親χ比較・CSL分散補足](p4_q5_matched_chi_comparison.md)で、このCSL保存trialの
+分散0.24237056 J²を追加DMRGなしで取得した。本記録の未完了状態や欠測欄は当時のまま保持する。
+
 Q5の固定χ256・累積8→10 sweepsでは、Szとbondの変化は前回の6→8より小さくなったが、
 5精度条件はいずれも未達だった。Q1/Q3を固定した有限trial区間は
 `0.258641424389<h/J<0.483732104557`へ変わった。
@@ -174,7 +177,8 @@ NNの区間・全5条件・列差・円周並進と、CSLの保存確率から�
 集計scriptのhelperを呼ばずに再計算した。CSLの累積履歴4+2+2+2も親系列から確認した。
 終了後のhash一致は独立した外部監査であり、未実行のworker終了時guardとは区別する。
 この監査はPythonでのbyte・metadata・算術検査で、新しいMPS収縮・EDではない。
-固定Q3の旧出力にはconfig原本のarchiveがなく、現configのhashと保存driverを照合した。
+前回の監査では固定Q3のconfig原本archiveを発見できず、現configのhashと保存driverを照合した。
+後続の上記比較で、旧`analysis-sources/examples/configs/`配置にある原本を発見しhashを確認した。
 独立再計算と比較JSONの差はNNで0、CSLで最大2.22e−15で、保存値との不一致はなかった。
 
 数値kernelは変更せず、package suiteと小系EDは再実行していない。

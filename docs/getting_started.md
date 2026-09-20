@@ -7,14 +7,15 @@ complex U(1) two-site DMRG reference solver using ITensors.jl and ITensorMPS.jl,
 and basic observables. Completed validation and its dependency baselines are
 recorded below; larger research systems have not been validated.
 
-The current priority is static nearest-neighbor 1/9 research: compare total
-exchange energies across charge sectors and examine competing order patterns.
-The published `h/J ≈ 0.35–0.42` interval is a reference, not a convergence target.
-A uniform field shifts a fixed-Q energy by `-h*Q/2`, so an h grid does not require
-repeated optimization within that sector. The known-CSL pump calibration proceeds
-alongside this work and is required before interpreting the 1/9 pump. See the
-[research strategy and bounded next steps](research/p4_static_plateau_strategy.md)
-and the [roadmap](../ROADMAP.md). These are plans, not new numerical results.
+The current priority is to compare competing central bond/spin structures on
+the same longer cylinder, separating preparation, boundary, and finite-width
+effects. The planned N54 comparison uses hourglass/windmill-inspired preparation
+and an unpinned complex reference; that protocol is not yet implemented.
+Additional sectors and higher accuracy are chosen to resolve specific physical
+uncertainties. Known-CSL pump calibration proceeds alongside static research
+and remains required before interpreting a 1/9 quantized pump. See the
+[roadmap](../ROADMAP.md) for priorities and the
+[static protocol](research/p4_static_plateau_strategy.md) for conventions and criteria.
 
 ## Run a small system
 

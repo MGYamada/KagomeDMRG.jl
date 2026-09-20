@@ -1,0 +1,23 @@
+schema_version = 1
+case_id = "nn27_q5_chi512_split_cumulative9_to10"
+Lx = 3
+Ly = 3
+Q = 5
+seed = 11
+maxdim = 512
+batches = 1
+batch_sweeps = 1
+initialization = "resume"
+initial_completed_sweeps = 9
+parent_checkpoint = "outputs/p4-q5-matched-chi512-8to9-20260920/trial/checkpoint-QYxrII"
+parent_record = "docs/research/data/p4_q5_matched_chi512_8to9_validation.toml"
+parent_record_sha256 = "82e85c8e0e3213651b2dbadc89f31759052c638dda534bd1bb5b27f808840db6"
+parent_metadata_sha256 = "766a33f1f40d9d32053aeb84b9707060f1f3d09be3ebac85e5e30baa5308ffaf"
+backend_snapshot_origin = "48d15e2b566b4d4b50a6c5295b84348cc5f30f8d; exact archived 179 source files"
+
+[stationarity]
+energy_per_site = 1e-6
+sz_profile = 1e-4
+bond_profile = 1e-4
+variance_per_site = 1e-5
+truncation = 1e-6
