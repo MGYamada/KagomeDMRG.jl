@@ -1,0 +1,29 @@
+# Zero-flux preparation only: J1=1, J2=J3=0.5, (Lx,Ly)=(3,4), N=36, Q=0.
+# Add 2 sweeps to the verified cumulative8 trial, reaching cumulative10.
+# Launch with a backend matching all 180 source hashes in the parent record;
+# the current checkout has a different checkpoint/provenance implementation.
+# Parent: outputs/p3-campaign-csl36-flux-readiness-chi256/validation.toml
+# Parent SHA256: 2d46e63ef5f8bba515792a705237ce01a39c0ac00a2440e19d4e7bb5e56f127c
+# Metadata SHA256: a9320d8d8a081947a5a2e9b878feaab33dd97fe64068c570db1c4db71b50a319
+# State SHA256: 892970bfcd226e2e7b2f6d01e7f92cdc57c782a9ac14cb1023c01c9d7a516e3d
+# One worker, Julia/BLAS each 1 thread, external inclusive limit 600 seconds.
+# Retain readiness comparisons variance<=1e-3 J^2, final truncation<=1e-5,
+# sweep energy change<=1e-4 J. Prepare mode records diagnostics only;
+# these comments do not add a flux acceptance gate or authorize flux insertion.
+# New variance is measured after checkpoint saving, not inside run_dmrg.
+schema_version = 1
+mode = "prepare"
+start_checkpoint = "outputs/p3-campaign-csl36-flux-readiness-chi256/trial/checkpoint-xnh1sG"
+start_status = "trial"
+
+[solver]
+seed = 11
+maxdim = 256
+initial_linkdim = 4
+eigsolve_tol = 1e-11
+eigsolve_krylovdim = 40
+eigsolve_maxiter = 20
+
+[preparation]
+batches = 1
+batch_sweeps = 2

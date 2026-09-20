@@ -1,15 +1,20 @@
-# P3: 既知 CSL ポンプ対照の実装前監査
+# P3: 既知 CSL ポンプ対照の設計と検証状況
 
-確認日: 2026-09-19。状態: **一次資料に基づく設計。CSL ポンプは未検証**。
+確認日: 2026-09-20。状態: **N18までの小系校正とN36零flux準備を実施。非零CSLポンプは未検証**。
 最近接模型の `M/Msat=1/9` とは別の、零磁化・拡張交換模型を正応答対照にする。
 ここでの正応答対照は非零応答の検証を意味し、応答の符号は固定しない。
 この設計に続く[明示Qの検証](p3_explicit_charge_validation.md)と
 [拡張交換模型の実装・小系照合](p3_extended_model_validation.md)、
 [chirality演算子の実装・独立校正](p3_chirality_validation.md)は別記録とする。
+続く[N18Q0の独立ED・測定照合](p3_extended18_validation.md)も完了した。
+2点の小系校正は非零CSLポンプの再現とは分ける。
 
 研究全体では、[最近接1/9の静的研究](p4_static_plateau_strategy.md)を主対象に保ち、
-この対照の残る校正を並行する。直近はN27の追加収束を保留し、本対照の
-chirality校正を完了し、次に拡張模型N18Q0の照合へ進む。本書の各段階は
+この対照の残る校正を並行する。chirality校正と拡張模型N18Q0の照合を完了し、
+N36の零flux状態準備と資源測定へ進めた。NN側はN18・Q6比較に続き、保存済みQ2の
+[近接中性二重項の密度・bond遷移解析](p4_static18_neutral_validation.md)も完了した。
+その後のN27/N54比較とN36準備は[段階的研究走行](p4_p3_staged_campaign.md)に記録し、
+NNのbulk評価・非零ポンプとは区別する。本書の各段階は
 CSL側の条件であり、最近接模型の磁化境界・競合秩序の計算を待たせない。
 既知非零応答の再現は、1/9の輸送を物理的なポンプとして解釈する前に必要とする。
 
@@ -92,7 +97,7 @@ J2 の `3/4`、J3 の `1`、画像を含む bond 一意性を確認した。
 | bond | `kagome_j1j2j3_cylinder` と `bond_families` を追加 | 既存NNを維持。J3は六角形対向頂点のみ。零結合も保存 |
 | 保存 | 実際の全bond・family・Qを保存し再計算で照合 | source一致が必要。旧ソースの自動移行は未実装 |
 | continuation | 始点・保存状態のQを全点で継承 | 初期零flux profileを保持。拡張模型の枝追跡は後続 |
-| ED | NN距離参照に加え、平面六角形探索による拡張参照を追加 | productionのbondテンプレート・MPOを参照しない。N18Q0の拡張模型照合は後続 |
+| ED | NN距離参照に加え、平面六角形探索による拡張参照を追加。N18Q0の2点も照合済み | productionのbondテンプレート・MPOを参照しない。有限個の低準位で完全性やbulk gapを主張しない |
 | 観測 | Sz、Schmidt、overlap、variance、bond energy、方向付きscalar chirality | 三spin行列・合成chiral状態で符号・ゲージを校正済み。実CSL状態の診断・ポンプは後続 |
 
 現在の checkpoint はソース・manifest 一致を要求する。
@@ -129,3 +134,24 @@ seed に明示的 chirality 項を加えた場合はモデル変更として別�
 初回監査で行った計算は上記の幾何学的検算のみだった。その後の拡張模型の
 ソース変更・小系ED/DMRGは[実装検証記録](p3_extended_model_validation.md)に分ける。
 CSLポンプの再現、相同定、新規性は依然として主張していない。
+その後、上記段階3のN18Q0をθ=0,.37、χ512・各6 sweeps、外側600秒上限で実施した。
+残差・射影・実空間/Schmidt・chiralityを照合し、149.397秒で通過した。
+移送とchiralityは数値精度内で零であり、時間反転対称な小系基底状態と整合する。
+段階4ではN36・Q0・χ128を零fluxで累積6 sweepsまで進めた。
+最終E/J=−15.94656614、variance/J²=0.4330477、実測切断誤差1.1062e−3で、
+保存・測定の整合性は通過したがfluxの事前精度基準を満たしていない。
+χ256の新しいvariance-enabled基準状態と、初期診断を通過した場合だけのπ/12への
+逐次追跡を上限600秒で試した。538.307秒で新しい零flux2 sweepsと全診断を終えたが、
+variance=0.2407315 J²、切断誤差6.4078e−4、sweep間energy差0.0058647 Jが上限を超え、
+初期診断で`unresolved`となった。受理checkpointと非零flux trialはいずれも0。
+零flux準備比較までの結果で、非零flux・非零ポンプ校正は未達である。
+旧trialを受理済みへ付け替えず、予想pump値も判定に使っていない。N36は原著N288の再現ではない。
+[診断・実行・core journal](p4_p3_staged_campaign.md#3-csl対照の状態準備とflux)を正本とする。
+
+続く[固定χ追加比較](p4_q5_csl_fixed_chi_followup.md)では、このχ256 trialから
+零flux2 sweepsを追加し、新しいtrialを保存・厳密reloadした。
+E/J=−16.042073560344676、最終切断誤差7.27421e−4、sweep energy差1.24208e−4 J。
+後二者は元の開始基準を超えている。Schmidt・bond・chiralityを取得した後、
+保存後H†Hの分散測定中に600秒上限で停止し、598.299秒で終了を確認した。
+新しい分散は未取得、全診断の完了フラグもない。時間切れのworker recordを修正せず、
+取得済みの量だけを別の解析・監査として保存する。非零flux trialは引き続き0である。

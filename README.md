@@ -13,6 +13,17 @@ Kagome Heisenberg 模型の U(1) cylinder DMRG と flux insertion による
 文献の `h/J ≈ 0.35–0.42` を出発点に、固定Q間の交換エネルギーを比較します。
 既知CSLの校正は並行して進め、1/9ポンプを解釈する前の条件とします。
 この方針は研究計画であり、当リポジトリでbulk plateauを確認したという意味ではありません。
+N18のQ=0,2,4,6を比較した範囲では、1/9 sectorの区間は
+`0.2585201582<h/J<0.4869821958`です。Q6の追加で区間は変わりませんでした。
+[追加比較の精度・出典・未探索範囲](docs/research/p4_static18_q6_validation.md)を記録しています。
+保存済みN18Q2では、約`0.00186467503 J`上の中性二重項が円周運動量`±2π/3`を持ち、
+密度・NN bondの両方に非零の遷移強度を示しました。
+[有限系の構造診断と独立検証](docs/research/p4_static18_neutral_validation.md)として保存し、
+bulk gapやVBCの同定とは区別しています。
+N27ではQ1/Q3のχ256・累積8を固定し、Q5だけ累積10 sweepsへ進めると、有限trialの区間は
+`0.2586414244<h/J<0.4837321046`となりました。Q5追加2 sweepsで幅は約0.50%狭まり、
+分布変化は小さくなったものの、精度5条件は引き続き未達です。
+[固定χの追加比較と検証範囲](docs/research/p4_q5_csl_fixed_chi_followup.md)を参照してください。
 
 ## 現在の実装
 
@@ -26,6 +37,9 @@ NN模型のN12Q0・θ=0,0.37とN9Q=−1,1,3の5点を独立EDと照合しまし�
 別名の `kagome_j1j2j3_cylinder` で六角形内のJ2/J3を追加し、`bond_energies` と
 結合種類の保存にも対応しました。`J1=1,J2=J3=.5` のN12Q0・零/非零fluxが独立EDと一致しました。
 [拡張模型の検証記録](docs/research/p3_extended_model_validation.md)に数値と範囲を記載しています。
+N18Q0のθ=0,.37でも独立EDとの残差≤`9.60e-12`で一致し、bond energy・chirality・
+実空間/Schmidt移送を照合しました。[N18の測定検証](docs/research/p3_extended18_validation.md)。
+この小系の移送は数値精度内で零であり、非零CSLポンプの検証は未完了です。
 局所 Sz、相関、実空間の移送量、各 sweep の実測切断誤差を取得できます。
 独立したスピン基底 ED と小系を照合しています。切断修正・保存履歴の修正時に
 行った独立校正と、実行範囲・中断を含む詳細は
@@ -128,6 +142,15 @@ julia +1.13 --project=research --startup-file=no --threads=1 examples/validate_i
 ```
 
 既知 CSL の正応答対照については、[原論文・補足の監査と実装条件](docs/research/p3_csl_control_design.md)を参照してください。
+
+N27の隣接磁化sector、9/27サイト周期の初期試行状態、CSL対照の状態準備には、
+configでケースを固定して一つずつ実行する `examples/run_research.py` を用意しました。
+各走行は起動・保存・診断込み最大600秒、Julia/BLAS各1 threadです。
+保存したtrialの数値整合性と基底状態への収束を区別します。
+[ケースと事前判定基準](docs/research/p4_p3_staged_campaign.md)、
+[周期初期状態の定義・校正](docs/research/order_seed_design.md)を参照してください。
+以前のcheckpointを再開する際は、そのsource・依存関係・solver設定との厳密な一致が必要です。
+時間切れの記録では外側の `execution.toml` と完了したbatchを併読します。
 
 ## 言語とリリース方針
 

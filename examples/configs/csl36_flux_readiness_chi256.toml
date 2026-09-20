@@ -1,0 +1,32 @@
+schema_version = 1
+mode = "flux"
+start_checkpoint = "outputs/p3-campaign-csl36-refine-chi128/trial/checkpoint-CDJpSy"
+start_status = "trial"
+
+[solver]
+seed = 11
+maxdim = 256
+initial_linkdim = 4
+eigsolve_tol = 1e-11
+eigsolve_krylovdim = 40
+eigsolve_maxiter = 20
+
+[flux]
+targets = [0.2617993877991494]
+initial_step = 0.2617993877991494
+min_step = 0.06544984694978735
+max_trials = 5
+sweeps = 2
+max_bond_change = 0.01
+max_chirality_change = 0.01
+
+[policy]
+min_overlap = 0.95
+max_density_change = 0.01
+max_entropy_change = 0.10
+max_schmidt_change = 0.05
+max_variance = 1e-3
+max_truncation_error = 1e-5
+max_sweep_energy_change = 1e-4
+max_cut_spread = 0.01
+consistency_tol = 1e-9

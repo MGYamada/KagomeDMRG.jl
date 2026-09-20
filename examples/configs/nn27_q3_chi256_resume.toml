@@ -1,0 +1,23 @@
+schema_version = 1
+case_id = "nn27_q3_chi256_cumulative4_to8"
+Lx = 3
+Ly = 3
+Q = 3
+seed = 11
+maxdim = 256
+batches = 2
+batch_sweeps = 2
+initialization = "resume"
+initial_completed_sweeps = 4
+parent_checkpoint = "outputs/p4-static27-refine-20260919/trial/checkpoint-iYdlHH"
+parent_record = "docs/research/data/p4_static27_refine_outcome.toml"
+parent_record_sha256 = "99f7c3e9cdf8ab0eebf761842734b1079e02d87acf5d9cf882c65f8c17e3d8f4"
+parent_metadata_sha256 = "f34ce3598bd03028437a459a2a97149532aa3a6528c7ad1728c162aeebd7e258"
+backend_snapshot_origin = "48d15e2b566b4d4b50a6c5295b84348cc5f30f8d; exact archived 179 source files"
+
+[stationarity]
+energy_per_site = 1e-6
+sz_profile = 1e-4
+bond_profile = 1e-4
+variance_per_site = 1e-5
+truncation = 1e-6
