@@ -1,0 +1,2765 @@
+{
+  "comparison_json_interval_max_error": 0.0,
+  "comparisons": {
+    "chi256_9_to_previous256_10": {
+      "circumference_shift_rms": [
+        {
+          "bond_rms": 0.004444736616745055,
+          "shift": 0,
+          "sz_rms": 0.0019594593612463585
+        },
+        {
+          "bond_rms": 0.008991491899284124,
+          "shift": 1,
+          "sz_rms": 0.004178126847484241
+        },
+        {
+          "bond_rms": 0.009704121314190047,
+          "shift": 2,
+          "sz_rms": 0.004524658651473728
+        }
+      ],
+      "energy_difference": -0.00013819080290389252,
+      "max_bond_difference": 0.015686030121345285,
+      "max_sz_difference": 0.0070501032554438625,
+      "rms_bond_difference": 0.004444736616745055,
+      "rms_sz_difference": 0.0019594593612463585,
+      "variance_difference": 7.909044749965233e-05
+    },
+    "chi256_to_chi512": {
+      "circumference_shift_rms": [
+        {
+          "bond_rms": 0.005025488095276077,
+          "shift": 0,
+          "sz_rms": 0.002611895868077418
+        },
+        {
+          "bond_rms": 0.00917109336644495,
+          "shift": 1,
+          "sz_rms": 0.004233939951204654
+        },
+        {
+          "bond_rms": 0.00909122073694553,
+          "shift": 2,
+          "sz_rms": 0.004165348498742853
+        }
+      ],
+      "energy_difference": -0.0017515746250378328,
+      "max_bond_difference": 0.01490427333150729,
+      "max_sz_difference": 0.0076173280609219685,
+      "rms_bond_difference": 0.005025488095276077,
+      "rms_sz_difference": 0.002611895868077418,
+      "variance_difference": -0.007296111468406252
+    },
+    "cumulative9_energy_agreement": 0.0,
+    "parent_to_chi256_q5": {
+      "circumference_shift_rms": [
+        {
+          "bond_rms": 0.01415632030599443,
+          "shift": 0,
+          "sz_rms": 0.006389177222114635
+        },
+        {
+          "bond_rms": 0.024974404852360837,
+          "shift": 1,
+          "sz_rms": 0.011278246027340092
+        },
+        {
+          "bond_rms": 0.02616619692944631,
+          "shift": 2,
+          "sz_rms": 0.01175168753077973
+        }
+      ],
+      "energy_difference": -0.0009843391813895153,
+      "final_two_sweep_difference": null,
+      "max_bond_difference": 0.052893537653321554,
+      "max_sz_difference": 0.02263729958974381,
+      "precision": {
+        "bond_profile": {
+          "passed": false,
+          "threshold": 0.0001,
+          "value": 0.052893537653321554
+        },
+        "energy_per_site": {
+          "passed": false,
+          "threshold": 1e-06,
+          "value": 3.6457006718130196e-05
+        },
+        "sz_profile": {
+          "passed": false,
+          "threshold": 0.0001,
+          "value": 0.02263729958974381
+        },
+        "truncation": {
+          "passed": false,
+          "threshold": 1e-06,
+          "value": 5.783024944077583e-05
+        },
+        "variance_per_site": {
+          "passed": false,
+          "threshold": 1e-05,
+          "value": 0.0003008817717816075
+        }
+      },
+      "rms_bond_difference": 0.01415632030599443,
+      "rms_sz_difference": 0.006389177222114635,
+      "variance_difference": -0.00043050557596302497
+    },
+    "parent_to_chi512_q5": {
+      "circumference_shift_rms": [
+        {
+          "bond_rms": 0.018501499203206106,
+          "shift": 0,
+          "sz_rms": 0.008423287600267114
+        },
+        {
+          "bond_rms": 0.02222359373656731,
+          "shift": 1,
+          "sz_rms": 0.009919382641650897
+        },
+        {
+          "bond_rms": 0.022577403320490567,
+          "shift": 2,
+          "sz_rms": 0.009955816690038642
+        }
+      ],
+      "energy_difference": -0.002735913806427348,
+      "final_two_sweep_difference": null,
+      "max_bond_difference": 0.06562477457592486,
+      "max_sz_difference": 0.02750968550154087,
+      "precision": {
+        "bond_profile": {
+          "passed": false,
+          "threshold": 0.0001,
+          "value": 0.06562477457592486
+        },
+        "energy_per_site": {
+          "passed": false,
+          "threshold": 1e-06,
+          "value": 0.00010133014097879067
+        },
+        "sz_profile": {
+          "passed": false,
+          "threshold": 0.0001,
+          "value": 0.02750968550154087
+        },
+        "truncation": {
+          "passed": false,
+          "threshold": 1e-06,
+          "value": 4.304243429602868e-06
+        },
+        "variance_per_site": {
+          "passed": false,
+          "threshold": 1e-05,
+          "value": 3.065542109989447e-05
+        }
+      },
+      "rms_bond_difference": 0.018501499203206106,
+      "rms_sz_difference": 0.008423287600267114,
+      "variance_difference": -0.007726617044369277
+    }
+  },
+  "csl": {
+    "arithmetic_errors": {
+      "charge_error_arithmetic": 2.244637310223896e-20,
+      "density_difference_arithmetic": 0.0,
+      "energy_difference_arithmetic": 0.0,
+      "old_bond_sum": 7.105427357601002e-15,
+      "remeasured_variance_arithmetic": 0.0,
+      "roundoff_scale": 0.0,
+      "variance_arithmetic": 0.0
+    },
+    "backend_identity": "a9664563e5271c735ab5bc9759c82e667045d1e8bafe33c0c47b677f55e86649",
+    "checkpoint": "outputs/p3-csl36-fixed-chi-8to10-20260920/trial/checkpoint-N8JX0z",
+    "new_diagnostic_checks_recomputed": {
+      "charge": true,
+      "finite_moment": true,
+      "moment_imaginary": true,
+      "norm_after": true,
+      "norm_before": true,
+      "profile_agreement": true,
+      "remeasured_energy_agreement": true,
+      "state_overlap": true,
+      "state_tensors_unchanged": true,
+      "variance_nonnegative_within_roundoff": true
+    },
+    "new_variance": 0.24237055856747247,
+    "nonzero_pump_calibrated": false,
+    "old_execution_status": "timed_out",
+    "old_full_integrity": null,
+    "old_parent_overlap": null,
+    "old_variance": null,
+    "old_worker_status": "running",
+    "original_worker_finalized": false,
+    "readiness_comparisons": {
+      "sweep_energy_change": {
+        "passed": false,
+        "threshold": 0.0001,
+        "value": 0.00012420809335722538
+      },
+      "truncation": {
+        "passed": false,
+        "threshold": 1e-05,
+        "value": 0.0007274211696857013
+      },
+      "variance": {
+        "passed": false,
+        "threshold": 0.001,
+        "value": 0.24237055856747247
+      }
+    },
+    "schmidt_from_old_probabilities": [
+      {
+        "bond": 12,
+        "errors": {
+          "entropy_from_saved": 1.7763568394002505e-15,
+          "mean_from_density": 2.511554332562671e-16,
+          "mean_from_saved": 3.3484906470857e-17,
+          "probability_sum": 0.0,
+          "variance_from_saved": 5.551115123125783e-17
+        }
+      },
+      {
+        "bond": 24,
+        "errors": {
+          "entropy_from_saved": 1.3322676295501878e-15,
+          "mean_from_density": 2.296882302410541e-16,
+          "mean_from_saved": 7.589415207398531e-18,
+          "probability_sum": 0.0,
+          "variance_from_saved": 0.0
+        }
+      }
+    ]
+  },
+  "discrepancies": [],
+  "field_intervals": {
+    "chi256_q5": {
+      "h_lower": 0.2586414243894595,
+      "h_upper": 0.4838702953597007,
+      "width": 0.22522887097024125
+    },
+    "chi512_q5": {
+      "h_lower": 0.2586414243894595,
+      "h_upper": 0.4821187207346629,
+      "width": 0.2234772963452034
+    },
+    "parent_q5": {
+      "h_lower": 0.2586414243894595,
+      "h_upper": 0.48485463454109023,
+      "width": 0.22621321015163076
+    },
+    "previous25610": {
+      "h_lower": 0.2586414243894595,
+      "h_upper": 0.4837321045567968,
+      "width": 0.22509068016733735
+    }
+  },
+  "files": {
+    "docs/research/data/p4_campaign_nn27_q1_chi256_validation.toml": {
+      "bytes": 278144,
+      "sha256": "54ca8d248792d7ee8802211ae6549f4a86d12c45d53d429c0492bf531897691d"
+    },
+    "docs/research/data/p4_campaign_nn27_q3_chi256_validation.toml": {
+      "bytes": 203366,
+      "sha256": "c68b17de275f50c6850f23b0dd3243a51f56326abb07df4bd42600b94d4bbbe1"
+    },
+    "docs/research/data/p4_campaign_nn27_q5_chi256_validation.toml": {
+      "bytes": 276746,
+      "sha256": "bf5256421e86f4832d27f1ce0b5538b90bc87287fad127a9c25e53c986868c8f"
+    },
+    "docs/research/data/p4_q5_fixed_chi_8to10_validation.toml": {
+      "bytes": 119680,
+      "sha256": "0fb693db44db665b225231afdbee897ae20a94fde07135ea053e4fd3b5d351e6"
+    },
+    "docs/research/data/p4_q5_matched_chi_8to9_comparison.json": {
+      "bytes": 224957,
+      "sha256": "796da0ddf6fcb0dc7218c00a2726cd8a67900d3504a49a35f2684da270588098"
+    },
+    "docs/research/data/p4_sector_refine_nn27_q1_chi256_validation.toml": {
+      "bytes": 120162,
+      "sha256": "75e505e7c10ce7951065206be6e345c6bb85c2903553910238f3c65098afaa07"
+    },
+    "docs/research/data/p4_sector_refine_nn27_q5_chi256_validation.toml": {
+      "bytes": 119586,
+      "sha256": "74630d5ad95142fd5fd0c024a959716ce075f38cf445caf526eff6a1d8ca9e40"
+    },
+    "outputs/p3-csl36-fixed-chi-8to10-20260920/analysis-sources/config.toml": {
+      "bytes": 1313,
+      "sha256": "b552cb8de302c3d6c70e9ab8ccffd8d669660904dffcd67da32e2df87ce3be97"
+    },
+    "outputs/p3-csl36-fixed-chi-8to10-20260920/analysis-sources/examples/research_csl.jl": {
+      "bytes": 29820,
+      "sha256": "e5d13f59fb462110eb177d8893a7ca91ba7b0b41e51da53ca6e315e4763acf69"
+    },
+    "outputs/p3-csl36-fixed-chi-8to10-20260920/analysis-sources/examples/run_research.py": {
+      "bytes": 2273,
+      "sha256": "a3718f882aaa7a9187644bfc26b3f0faecbedceef9b8f26d7d7bd9bba5c0a798"
+    },
+    "outputs/p3-csl36-fixed-chi-8to10-20260920/analysis-sources/examples/run_static18.py": {
+      "bytes": 6975,
+      "sha256": "4e6a8d542352aaa0414ad610eefd81e11cc6b86955b192eb5f3fc76bddd6f5b2"
+    },
+    "outputs/p3-csl36-fixed-chi-8to10-20260920/analysis-sources/examples/run_static27.py": {
+      "bytes": 4835,
+      "sha256": "0267b91f6848a66d4e2ca0c10faee0752f28ed7116ec7b78b0c7cf72bec21ae6"
+    },
+    "outputs/p3-csl36-fixed-chi-8to10-20260920/execution.toml": {
+      "bytes": 1505,
+      "sha256": "3a11bec1f66185609db1834b1431824c1640634e26726bfcf7841b961a9b045b"
+    },
+    "outputs/p3-csl36-fixed-chi-8to10-20260920/trial/checkpoint-N8JX0z/checksums.toml": {
+      "bytes": 248,
+      "sha256": "174684d46681bbf949c3a9604b0433fa127d4564bf6e705253e544728d07f991"
+    },
+    "outputs/p3-csl36-fixed-chi-8to10-20260920/trial/checkpoint-N8JX0z/metadata.toml": {
+      "bytes": 51268,
+      "sha256": "a7f8f870712212e0cc27683c473edbabe0e22ec3e53931f32b2ade196ebfca45"
+    },
+    "outputs/p3-csl36-fixed-chi-8to10-20260920/trial/checkpoint-N8JX0z/state.jls": {
+      "bytes": 10540498,
+      "sha256": "12b6acd3895af98dcde7d99c4c63889e03e74c6526cc60918f1d2cbdcadf9cd8"
+    },
+    "outputs/p3-csl36-fixed-chi-8to10-20260920/validation.toml": {
+      "bytes": 67909,
+      "sha256": "1d55e1cd1304711abca8d490ec2fadf1d4629a38035b6af8ffe9501333584102"
+    },
+    "outputs/p3-csl36-saved-moment-20260920/analysis-sources/examples/audit_csl_saved_moment.jl": {
+      "bytes": 12778,
+      "sha256": "c97735f6116082d46a58a27a549e8912cc776fc6d5f229f09b1712c28d7d19d4"
+    },
+    "outputs/p3-csl36-saved-moment-20260920/analysis-sources/examples/run_csl_saved_moment.py": {
+      "bytes": 1849,
+      "sha256": "6844610ddf02a732e71cee35f921d10bff3277926c8572609727d6ee20025e45"
+    },
+    "outputs/p3-csl36-saved-moment-20260920/analysis-sources/examples/run_static18.py": {
+      "bytes": 6975,
+      "sha256": "4e6a8d542352aaa0414ad610eefd81e11cc6b86955b192eb5f3fc76bddd6f5b2"
+    },
+    "outputs/p3-csl36-saved-moment-20260920/analysis-sources/examples/run_static27.py": {
+      "bytes": 4835,
+      "sha256": "0267b91f6848a66d4e2ca0c10faee0752f28ed7116ec7b78b0c7cf72bec21ae6"
+    },
+    "outputs/p3-csl36-saved-moment-20260920/execution.toml": {
+      "bytes": 1347,
+      "sha256": "5707c3949aa24e65fa53d19fcd988c4261ce00d42bf80e8e2427379a55d63ab6"
+    },
+    "outputs/p3-csl36-saved-moment-20260920/validation.toml": {
+      "bytes": 48913,
+      "sha256": "19a922a02ffe203937fc88917191bea88e60f62904e4d697ff068473afeb806e"
+    },
+    "outputs/p4-campaign-nn27-q1-chi256/trial/checkpoint-LH4Wpt/checksums.toml": {
+      "bytes": 247,
+      "sha256": "60e53912e3ab50b66eec6a989850d7ed74ba02b255338b72345ed5db03b289b5"
+    },
+    "outputs/p4-campaign-nn27-q1-chi256/trial/checkpoint-LH4Wpt/metadata.toml": {
+      "bytes": 37545,
+      "sha256": "bf98c2e275477f70b41ade6b90312c1d35540698113ea77f56b4f8fbc101c81d"
+    },
+    "outputs/p4-campaign-nn27-q1-chi256/trial/checkpoint-LH4Wpt/state.jls": {
+      "bytes": 5858786,
+      "sha256": "dd57a61c4cc7f7e70d04b5afb44c9542401ce257f669cf891fe9ad68989a8de2"
+    },
+    "outputs/p4-campaign-nn27-q3-chi256/analysis-sources/examples/configs/nn27_q3_chi256_resume.toml": {
+      "bytes": 744,
+      "sha256": "a4effc90b0943278047d429ded532bd55f8be7979164e5c12a01f5a6e2c51f20"
+    },
+    "outputs/p4-campaign-nn27-q3-chi256/analysis-sources/examples/research_static.jl": {
+      "bytes": 14369,
+      "sha256": "4f200ddd67b7a6630ccae4ff8e2261862b8aee2a23ab9c1a52a01616aea52e26"
+    },
+    "outputs/p4-campaign-nn27-q3-chi256/analysis-sources/examples/run_research.py": {
+      "bytes": 2026,
+      "sha256": "4030fe52844c7aa3b96230175349695755be6efeaeb9b46fa416d52e00a17ae3"
+    },
+    "outputs/p4-campaign-nn27-q3-chi256/analysis-sources/examples/run_static18.py": {
+      "bytes": 6968,
+      "sha256": "d03c350aeb0a1e6bf55d925f56973cf00682d23f4bde40b8257a036ce0b26a29"
+    },
+    "outputs/p4-campaign-nn27-q3-chi256/analysis-sources/examples/run_static27.py": {
+      "bytes": 4828,
+      "sha256": "3664f6c8cdb73bdf508ac7a9b413410fd469a01f16009bc8e8fcae770934d8d9"
+    },
+    "outputs/p4-campaign-nn27-q3-chi256/execution.toml": {
+      "bytes": 1404,
+      "sha256": "266423e5c5b9e20b0bb3447dc3a7f3d9c45d98301d95d7643227f2ec20ffb197"
+    },
+    "outputs/p4-campaign-nn27-q3-chi256/trial/checkpoint-YcJjo5/checksums.toml": {
+      "bytes": 247,
+      "sha256": "aef220a0877b1a36edf179055489345ed68560fc7dd63fc536f5f156e7f909f8"
+    },
+    "outputs/p4-campaign-nn27-q3-chi256/trial/checkpoint-YcJjo5/metadata.toml": {
+      "bytes": 37535,
+      "sha256": "b3b51d03371f338d5c8008989a70d9f4d9ff8c96a0859984eb2e99fc803d33e1"
+    },
+    "outputs/p4-campaign-nn27-q3-chi256/trial/checkpoint-YcJjo5/state.jls": {
+      "bytes": 5835010,
+      "sha256": "7f440025bbea563f633b8d39b21b86c201d292c6de5163ab4d1162b9fe138395"
+    },
+    "outputs/p4-campaign-nn27-q5-chi256/trial/checkpoint-w8h1SL/checksums.toml": {
+      "bytes": 247,
+      "sha256": "82350a26f3190daa83212db63bd28dc5f33b5c49450ebb970da6945a71c6eb9b"
+    },
+    "outputs/p4-campaign-nn27-q5-chi256/trial/checkpoint-w8h1SL/metadata.toml": {
+      "bytes": 37536,
+      "sha256": "af52c178163a6f8d7ad00e1d4353e3cac8b991c2568964715441208f5eb64308"
+    },
+    "outputs/p4-campaign-nn27-q5-chi256/trial/checkpoint-w8h1SL/state.jls": {
+      "bytes": 5718850,
+      "sha256": "c1253416dbc4eb30c6ba1ff2285a4bdf23fadea3018b713270a3938f5699a8ea"
+    },
+    "outputs/p4-q5-fixed-chi-8to10-20260920/analysis-sources/config.toml": {
+      "bytes": 774,
+      "sha256": "4d4f7786817de6c297674adae75d55c6d841aac5ef0a8d57742ec472029043fc"
+    },
+    "outputs/p4-q5-fixed-chi-8to10-20260920/analysis-sources/examples/research_static.jl": {
+      "bytes": 17041,
+      "sha256": "56f7d12052f881eefe752b46d88485790eb30086a09a7885678a169378441219"
+    },
+    "outputs/p4-q5-fixed-chi-8to10-20260920/analysis-sources/examples/run_research.py": {
+      "bytes": 2273,
+      "sha256": "a3718f882aaa7a9187644bfc26b3f0faecbedceef9b8f26d7d7bd9bba5c0a798"
+    },
+    "outputs/p4-q5-fixed-chi-8to10-20260920/analysis-sources/examples/run_static18.py": {
+      "bytes": 6975,
+      "sha256": "4e6a8d542352aaa0414ad610eefd81e11cc6b86955b192eb5f3fc76bddd6f5b2"
+    },
+    "outputs/p4-q5-fixed-chi-8to10-20260920/analysis-sources/examples/run_static27.py": {
+      "bytes": 4835,
+      "sha256": "0267b91f6848a66d4e2ca0c10faee0752f28ed7116ec7b78b0c7cf72bec21ae6"
+    },
+    "outputs/p4-q5-fixed-chi-8to10-20260920/execution.toml": {
+      "bytes": 1414,
+      "sha256": "584fc08bff6ced1ea74a18c820cbce770a6bbc9a2ddd6ffe7b4454d65facfd1c"
+    },
+    "outputs/p4-q5-fixed-chi-8to10-20260920/trial/checkpoint-DRzoIB/checksums.toml": {
+      "bytes": 247,
+      "sha256": "4cd9a1f1d14a782e82426fbb64a0a7459f5201e8ab012362be7f19c4a3ff0eba"
+    },
+    "outputs/p4-q5-fixed-chi-8to10-20260920/trial/checkpoint-DRzoIB/metadata.toml": {
+      "bytes": 37527,
+      "sha256": "7c10479ed2a1817febe6861088f224d953a4fac21d310ddccfbb15f27ed234cc"
+    },
+    "outputs/p4-q5-fixed-chi-8to10-20260920/trial/checkpoint-DRzoIB/state.jls": {
+      "bytes": 5789218,
+      "sha256": "4ecfb5b2db387fe37147641ea77875cf049ed771c12b36260d38e22e927f1d50"
+    },
+    "outputs/p4-q5-matched-chi256-8to9-20260920-r1/analysis-sources/config.toml": {
+      "bytes": 781,
+      "sha256": "67274e00b3986367ded94a998bf83e77175b3d1bbe07bdc780dd8e5715ee916c"
+    },
+    "outputs/p4-q5-matched-chi256-8to9-20260920-r1/analysis-sources/examples/research_static.jl": {
+      "bytes": 17041,
+      "sha256": "56f7d12052f881eefe752b46d88485790eb30086a09a7885678a169378441219"
+    },
+    "outputs/p4-q5-matched-chi256-8to9-20260920-r1/analysis-sources/examples/run_research.py": {
+      "bytes": 2273,
+      "sha256": "a3718f882aaa7a9187644bfc26b3f0faecbedceef9b8f26d7d7bd9bba5c0a798"
+    },
+    "outputs/p4-q5-matched-chi256-8to9-20260920-r1/analysis-sources/examples/run_static18.py": {
+      "bytes": 6975,
+      "sha256": "4e6a8d542352aaa0414ad610eefd81e11cc6b86955b192eb5f3fc76bddd6f5b2"
+    },
+    "outputs/p4-q5-matched-chi256-8to9-20260920-r1/analysis-sources/examples/run_static27.py": {
+      "bytes": 4835,
+      "sha256": "0267b91f6848a66d4e2ca0c10faee0752f28ed7116ec7b78b0c7cf72bec21ae6"
+    },
+    "outputs/p4-q5-matched-chi256-8to9-20260920-r1/execution.toml": {
+      "bytes": 1430,
+      "sha256": "2dfc84436fe350b50e41c36689a14efd7fe6ae146c6ef361cef7181fb0b15134"
+    },
+    "outputs/p4-q5-matched-chi256-8to9-20260920-r1/trial/checkpoint-HYsQja/checksums.toml": {
+      "bytes": 247,
+      "sha256": "42845839a0aae4f25ba7162704dc1c9ddddc918c5d9e34745d08ac41676ad27c"
+    },
+    "outputs/p4-q5-matched-chi256-8to9-20260920-r1/trial/checkpoint-HYsQja/metadata.toml": {
+      "bytes": 37477,
+      "sha256": "3d47002fe3f442b6310a1a36ac7d12d718cc9f3880e55b732f6f86b8c2641b1b"
+    },
+    "outputs/p4-q5-matched-chi256-8to9-20260920-r1/trial/checkpoint-HYsQja/state.jls": {
+      "bytes": 5775778,
+      "sha256": "40e18078f90a79fa8b3ec02ccec337b2b6187f4d9190f4b99c142c3ba9ef71f3"
+    },
+    "outputs/p4-q5-matched-chi256-8to9-20260920-r1/validation.toml": {
+      "bytes": 119547,
+      "sha256": "2688c6af1885a23f078b9284a1ba6a74ad4bf9be90e7435e23e619539ddb5215"
+    },
+    "outputs/p4-q5-matched-chi512-8to9-20260920/analysis-sources/config.toml": {
+      "bytes": 781,
+      "sha256": "d00a82febad38d27db3ff7e5b66e8c209fd548e3a4b93610d8e8fbd1e0f0d06e"
+    },
+    "outputs/p4-q5-matched-chi512-8to9-20260920/analysis-sources/examples/research_static.jl": {
+      "bytes": 17041,
+      "sha256": "56f7d12052f881eefe752b46d88485790eb30086a09a7885678a169378441219"
+    },
+    "outputs/p4-q5-matched-chi512-8to9-20260920/analysis-sources/examples/run_research.py": {
+      "bytes": 2273,
+      "sha256": "a3718f882aaa7a9187644bfc26b3f0faecbedceef9b8f26d7d7bd9bba5c0a798"
+    },
+    "outputs/p4-q5-matched-chi512-8to9-20260920/analysis-sources/examples/run_static18.py": {
+      "bytes": 6975,
+      "sha256": "4e6a8d542352aaa0414ad610eefd81e11cc6b86955b192eb5f3fc76bddd6f5b2"
+    },
+    "outputs/p4-q5-matched-chi512-8to9-20260920/analysis-sources/examples/run_static27.py": {
+      "bytes": 4835,
+      "sha256": "0267b91f6848a66d4e2ca0c10faee0752f28ed7116ec7b78b0c7cf72bec21ae6"
+    },
+    "outputs/p4-q5-matched-chi512-8to9-20260920/execution.toml": {
+      "bytes": 1425,
+      "sha256": "e01ed7e237b53a2f65f92d210c2aa216f8b0fb65e16eb89c727b8ce2d03134d9"
+    },
+    "outputs/p4-q5-matched-chi512-8to9-20260920/trial/checkpoint-QYxrII/checksums.toml": {
+      "bytes": 248,
+      "sha256": "1055e57436408cd2f92fd37991a9842d910e33262739e85bac94ff59a15749f9"
+    },
+    "outputs/p4-q5-matched-chi512-8to9-20260920/trial/checkpoint-QYxrII/metadata.toml": {
+      "bytes": 37469,
+      "sha256": "766a33f1f40d9d32053aeb84b9707060f1f3d09be3ebac85e5e30baa5308ffaf"
+    },
+    "outputs/p4-q5-matched-chi512-8to9-20260920/trial/checkpoint-QYxrII/state.jls": {
+      "bytes": 17911154,
+      "sha256": "bc7c308eb34892179ddfa1e68842ee7df8c2574be331e7fdb4865a416b8c08fe"
+    },
+    "outputs/p4-q5-matched-chi512-8to9-20260920/validation.toml": {
+      "bytes": 130501,
+      "sha256": "82e85c8e0e3213651b2dbadc89f31759052c638dda534bd1bb5b27f808840db6"
+    },
+    "outputs/p4-sector-refine-nn27-q1-chi256-20260920-retry/analysis-sources/config.toml": {
+      "bytes": 754,
+      "sha256": "85dce0caf8491ad87729ed15d909d0b4c693b353d543c767bb272718f0205751"
+    },
+    "outputs/p4-sector-refine-nn27-q1-chi256-20260920-retry/analysis-sources/examples/research_static.jl": {
+      "bytes": 16813,
+      "sha256": "d8d473fa96ceaefd51117c768b84dc930847f733fe90e444a89a2db03638e17c"
+    },
+    "outputs/p4-sector-refine-nn27-q1-chi256-20260920-retry/analysis-sources/examples/run_research.py": {
+      "bytes": 2026,
+      "sha256": "4030fe52844c7aa3b96230175349695755be6efeaeb9b46fa416d52e00a17ae3"
+    },
+    "outputs/p4-sector-refine-nn27-q1-chi256-20260920-retry/analysis-sources/examples/run_static18.py": {
+      "bytes": 6975,
+      "sha256": "4e6a8d542352aaa0414ad610eefd81e11cc6b86955b192eb5f3fc76bddd6f5b2"
+    },
+    "outputs/p4-sector-refine-nn27-q1-chi256-20260920-retry/analysis-sources/examples/run_static27.py": {
+      "bytes": 4835,
+      "sha256": "0267b91f6848a66d4e2ca0c10faee0752f28ed7116ec7b78b0c7cf72bec21ae6"
+    },
+    "outputs/p4-sector-refine-nn27-q1-chi256-20260920-retry/execution.toml": {
+      "bytes": 1430,
+      "sha256": "0faf84ab49209c452da3409cddfa3c4edfdf2f02aa7fbfad4d1368c13b581b5f"
+    },
+    "outputs/p4-sector-refine-nn27-q1-chi256-20260920-retry/trial/checkpoint-q5FuXN/checksums.toml": {
+      "bytes": 247,
+      "sha256": "a72a4dcea60cf29a125a2060ec8126a7f52b6b91971e70487f642037c3f13fe1"
+    },
+    "outputs/p4-sector-refine-nn27-q1-chi256-20260920-retry/trial/checkpoint-q5FuXN/metadata.toml": {
+      "bytes": 37545,
+      "sha256": "f2a4b8876683872befe528b64e8e055f25379c04a42a49c3cfea3426ae6f72f5"
+    },
+    "outputs/p4-sector-refine-nn27-q1-chi256-20260920-retry/trial/checkpoint-q5FuXN/state.jls": {
+      "bytes": 5854882,
+      "sha256": "fcfa0157461a3fb5efcfe2aad6e8d1e503e8c949f359a92480c3d7e74056b5c6"
+    },
+    "outputs/p4-sector-refine-nn27-q5-chi256-20260920/analysis-sources/config.toml": {
+      "bytes": 754,
+      "sha256": "d8feca92621de91698a310b9182d6d16bb6753791fb9040c51ca7ff7ac3067fd"
+    },
+    "outputs/p4-sector-refine-nn27-q5-chi256-20260920/analysis-sources/examples/research_static.jl": {
+      "bytes": 16813,
+      "sha256": "d8d473fa96ceaefd51117c768b84dc930847f733fe90e444a89a2db03638e17c"
+    },
+    "outputs/p4-sector-refine-nn27-q5-chi256-20260920/analysis-sources/examples/run_research.py": {
+      "bytes": 2026,
+      "sha256": "4030fe52844c7aa3b96230175349695755be6efeaeb9b46fa416d52e00a17ae3"
+    },
+    "outputs/p4-sector-refine-nn27-q5-chi256-20260920/analysis-sources/examples/run_static18.py": {
+      "bytes": 6975,
+      "sha256": "4e6a8d542352aaa0414ad610eefd81e11cc6b86955b192eb5f3fc76bddd6f5b2"
+    },
+    "outputs/p4-sector-refine-nn27-q5-chi256-20260920/analysis-sources/examples/run_static27.py": {
+      "bytes": 4835,
+      "sha256": "0267b91f6848a66d4e2ca0c10faee0752f28ed7116ec7b78b0c7cf72bec21ae6"
+    },
+    "outputs/p4-sector-refine-nn27-q5-chi256-20260920/execution.toml": {
+      "bytes": 1423,
+      "sha256": "5f78e82c95d90f244e7dc6df6ec5b5fe69caae15f10926f406f998333e909b89"
+    },
+    "outputs/p4-sector-refine-nn27-q5-chi256-20260920/trial/checkpoint-fdv5cd/checksums.toml": {
+      "bytes": 247,
+      "sha256": "fedae57a0dc62891c32078f814dd8ba081ff364c69031e6fb98be2f6e5c383f4"
+    },
+    "outputs/p4-sector-refine-nn27-q5-chi256-20260920/trial/checkpoint-fdv5cd/metadata.toml": {
+      "bytes": 37511,
+      "sha256": "ab1bd1205f454a548d4bd0811b0ab6e3ec0c14a6233af3bfb169235ba7e20feb"
+    },
+    "outputs/p4-sector-refine-nn27-q5-chi256-20260920/trial/checkpoint-fdv5cd/state.jls": {
+      "bytes": 5740370,
+      "sha256": "b73e637112b2d4dd531fce461487fe06c0ef2d09bd3b56e4ac296985d620caf3"
+    },
+    "outputs/p4-static27-refine-20260919/trial/checkpoint-iYdlHH/checksums.toml": {
+      "bytes": 247,
+      "sha256": "539eaadf66480dbf26a41d51fd471cb5bb0aedd7ff46846493512251840dd8a7"
+    },
+    "outputs/p4-static27-refine-20260919/trial/checkpoint-iYdlHH/metadata.toml": {
+      "bytes": 37515,
+      "sha256": "f34ce3598bd03028437a459a2a97149532aa3a6528c7ad1728c162aeebd7e258"
+    },
+    "outputs/p4-static27-refine-20260919/trial/checkpoint-iYdlHH/state.jls": {
+      "bytes": 5810386,
+      "sha256": "b6e07a0f14301cbf9acfd42a5874e0f7e748daf46e4162d47c4698a04ffa29f9"
+    },
+    "outputs/source-snapshots/csl36-pre-env-split-20260920/Manifest-v1.13.toml": {
+      "bytes": 38577,
+      "sha256": "134a3797eb3ba08171879ce51e354b8da641733911dc64b1f5944b0199c7187b"
+    },
+    "outputs/source-snapshots/csl36-pre-env-split-20260920/Project.toml": {
+      "bytes": 1015,
+      "sha256": "debb9b90c699e01f034a8ec21602c9eba26795a60fe5a69c0e8e793ed9a6bb0e"
+    },
+    "outputs/source-snapshots/csl36-pre-env-split-20260920/src/KagomeDMRG.jl": {
+      "bytes": 998,
+      "sha256": "c47a84d16584264430aa76c44addf00351b7c15c0e1c8188f82d2bda41d2fd81"
+    },
+    "outputs/source-snapshots/csl36-pre-env-split-20260920/src/checkpoint.jl": {
+      "bytes": 20907,
+      "sha256": "2faea3170bb2f94c8bc112e9c13f87496946e463d51396a1620903acbcfbcff4"
+    },
+    "outputs/source-snapshots/csl36-pre-env-split-20260920/src/chirality.jl": {
+      "bytes": 6431,
+      "sha256": "b09f8dee7cd0952920e190bbcbc244a505cebfac9756b4c5b7498e6780a4f18b"
+    },
+    "outputs/source-snapshots/csl36-pre-env-split-20260920/src/continuation.jl": {
+      "bytes": 20114,
+      "sha256": "613c5151ff09040fecd8002465a626fde5e70eb501be59aff45619044d3ae44e"
+    },
+    "outputs/source-snapshots/csl36-pre-env-split-20260920/src/dmrg.jl": {
+      "bytes": 10258,
+      "sha256": "94e66b1668b3bc3e502924ab8c6b11b6dd533ea5b65122ddc040d18fe0217012"
+    },
+    "outputs/source-snapshots/csl36-pre-env-split-20260920/src/extended_model.jl": {
+      "bytes": 4024,
+      "sha256": "3db76c474147afbee04d04e56db5e34e318cf485e18f74858898539a903eb120"
+    },
+    "outputs/source-snapshots/csl36-pre-env-split-20260920/src/lattice.jl": {
+      "bytes": 7776,
+      "sha256": "15d9ea5bea1514f49b36ac45bc139489fd6c6c03b00dff4e836d3d3e3aa7b2ec"
+    },
+    "outputs/source-snapshots/csl36-pre-env-split-20260920/src/model.jl": {
+      "bytes": 2456,
+      "sha256": "ec57b01141fd90a4938fc22d2833bd7a3ddfa107a107fb083753a4a39e91f58b"
+    },
+    "outputs/source-snapshots/csl36-pre-env-split-20260920/src/observables.jl": {
+      "bytes": 2963,
+      "sha256": "dfc48cc85a2cc6f51c99e4a58dc64f7709fad9f3834136e9fa915659147b29f8"
+    },
+    "outputs/source-snapshots/csl36-pre-env-split-20260920/src/provenance.jl": {
+      "bytes": 6553,
+      "sha256": "360724cf18a928363418a6dceef90c89ffad1fdde0f40fe43bd4c717175da5d2"
+    },
+    "outputs/source-snapshots/csl36-pre-env-split-20260920/src/schmidt.jl": {
+      "bytes": 4049,
+      "sha256": "13517078685ce1e1ca43b6200cbc61ff7aa6113757fa61ed9fcee4dfee3cbd0a"
+    },
+    "outputs/source-snapshots/csl36-pre-env-split-20260920/vendor/NDTensors/Project.toml": {
+      "bytes": 3420,
+      "sha256": "59d3d69bcb46b7af4386ea455483ac9419fcc89b169f21d6a2b6b0c1eb3a7c87"
+    },
+    "outputs/source-snapshots/csl36-pre-env-split-20260920/vendor/NDTensors/ext/NDTensorsAMDGPUExt/NDTensorsAMDGPUExt.jl": {
+      "bytes": 213,
+      "sha256": "bb1acaffbbfac3b92a001f60d1025593df8fb4c8f00cfba30181fa74b84aa14d"
+    },
+    "outputs/source-snapshots/csl36-pre-env-split-20260920/vendor/NDTensors/ext/NDTensorsAMDGPUExt/adapt.jl": {
+      "bytes": 1162,
+      "sha256": "d8aa0643a3c9798ff4d9fed8949c34029b1407b805fa97384bff4fa9ecf9b5f8"
+    },
+    "outputs/source-snapshots/csl36-pre-env-split-20260920/vendor/NDTensors/ext/NDTensorsAMDGPUExt/append.jl": {
+      "bytes": 332,
+      "sha256": "063fab626a97267ef21b31cbc9df4173ed242a6b6c2e8b26a34a626197c197af"
+    },
+    "outputs/source-snapshots/csl36-pre-env-split-20260920/vendor/NDTensors/ext/NDTensorsAMDGPUExt/copyto.jl": {
+      "bytes": 1072,
+      "sha256": "c2cf9fea12a743bf002de9cd22d1e857244108380665c520533b21f6fb2b8b4d"
+    },
+    "outputs/source-snapshots/csl36-pre-env-split-20260920/vendor/NDTensors/ext/NDTensorsAMDGPUExt/indexing.jl": {
+      "bytes": 683,
+      "sha256": "3b0455a0677f5bb192244c821d6eb5dcdf0301f2b6f5e2d0a50a296469cbe6b5"
+    },
+    "outputs/source-snapshots/csl36-pre-env-split-20260920/vendor/NDTensors/ext/NDTensorsAMDGPUExt/linearalgebra.jl": {
+      "bytes": 787,
+      "sha256": "9fb2bb3c028b92e20f5283c74b617567575ec2329a0b417bd938579ef52ccbb9"
+    },
+    "outputs/source-snapshots/csl36-pre-env-split-20260920/vendor/NDTensors/ext/NDTensorsAMDGPUExt/mul.jl": {
+      "bytes": 1309,
+      "sha256": "fdb4bdaa980ada17fe6d43eef03c30c735e3a76671b28fc059d688c85ecff355"
+    },
+    "outputs/source-snapshots/csl36-pre-env-split-20260920/vendor/NDTensors/ext/NDTensorsAMDGPUExt/permutedims.jl": {
+      "bytes": 782,
+      "sha256": "e65ec0ce70cbd50fae5c5e659479b06e3776e28836b42626d485df29a8bb54df"
+    },
+    "outputs/source-snapshots/csl36-pre-env-split-20260920/vendor/NDTensors/ext/NDTensorsAMDGPUExt/set_types.jl": {
+      "bytes": 229,
+      "sha256": "f3f39efbacd0da22e0685758cbc067db85cfeb0671f500ac94871f0de489fac9"
+    },
+    "outputs/source-snapshots/csl36-pre-env-split-20260920/vendor/NDTensors/ext/NDTensorsCUDAExt/NDTensorsCUDAExt.jl": {
+      "bytes": 259,
+      "sha256": "c2be69a4f4562d15ddfaf709d1ff78fbbfa6869d0a361d371a58063a80697e09"
+    },
+    "outputs/source-snapshots/csl36-pre-env-split-20260920/vendor/NDTensors/ext/NDTensorsCUDAExt/adapt.jl": {
+      "bytes": 1124,
+      "sha256": "bbbd1a16b485eaa40f91a7ea25eb1079aedd7e2a82656533f072e70dced42f2f"
+    },
+    "outputs/source-snapshots/csl36-pre-env-split-20260920/vendor/NDTensors/ext/NDTensorsCUDAExt/append.jl": {
+      "bytes": 328,
+      "sha256": "3c6d3da547c826d9f137cd9ab8c9549d97282d5d89d9ebf4467fb7be019032fa"
+    },
+    "outputs/source-snapshots/csl36-pre-env-split-20260920/vendor/NDTensors/ext/NDTensorsCUDAExt/copyto.jl": {
+      "bytes": 927,
+      "sha256": "96fafee4f759697e78fd0b4cacf94489130e531ba150b91900a4775a458bf7eb"
+    },
+    "outputs/source-snapshots/csl36-pre-env-split-20260920/vendor/NDTensors/ext/NDTensorsCUDAExt/default_kwargs.jl": {
+      "bytes": 113,
+      "sha256": "58b93e96de1142122f22e6e18c2c9c96a55de605bd59f9170ec49dea16c23eb8"
+    },
+    "outputs/source-snapshots/csl36-pre-env-split-20260920/vendor/NDTensors/ext/NDTensorsCUDAExt/indexing.jl": {
+      "bytes": 683,
+      "sha256": "2585ee449609317792f7c91c27756d6b9b3b1af62c9f870ea1595d881120a371"
+    },
+    "outputs/source-snapshots/csl36-pre-env-split-20260920/vendor/NDTensors/ext/NDTensorsCUDAExt/iscu.jl": {
+      "bytes": 89,
+      "sha256": "eac86157ecfc52cb3294ee253a18eb7c1848d4b0d2555b757159a9420fed67af"
+    },
+    "outputs/source-snapshots/csl36-pre-env-split-20260920/vendor/NDTensors/ext/NDTensorsCUDAExt/linearalgebra.jl": {
+      "bytes": 1802,
+      "sha256": "b0db2ce8390966d028729c8ba20b086c2d488c953c2833f171086abb134a3cc3"
+    },
+    "outputs/source-snapshots/csl36-pre-env-split-20260920/vendor/NDTensors/ext/NDTensorsCUDAExt/mul.jl": {
+      "bytes": 1356,
+      "sha256": "bb5a63ba0f60fb5c060a34aa5b1867aa15d5de2681673393982be28d187c6d4d"
+    },
+    "outputs/source-snapshots/csl36-pre-env-split-20260920/vendor/NDTensors/ext/NDTensorsCUDAExt/permutedims.jl": {
+      "bytes": 764,
+      "sha256": "b08a6bcea0aa1ae69017ac0629cd72f1c69827f81d44f17232ae8468d4a8db7d"
+    },
+    "outputs/source-snapshots/csl36-pre-env-split-20260920/vendor/NDTensors/ext/NDTensorsCUDAExt/set_types.jl": {
+      "bytes": 247,
+      "sha256": "03311e18a80634f5e59c39329c5a33ea33c05d227f510a70de7a4a76b74cfa0b"
+    },
+    "outputs/source-snapshots/csl36-pre-env-split-20260920/vendor/NDTensors/ext/NDTensorsGPUArraysCoreExt/NDTensorsGPUArraysCoreExt.jl": {
+      "bytes": 92,
+      "sha256": "9cd9b5eb73583b656d301d0aab1b6c75466e913ccec28e0f7af66c532381773c"
+    },
+    "outputs/source-snapshots/csl36-pre-env-split-20260920/vendor/NDTensors/ext/NDTensorsGPUArraysCoreExt/blocksparsetensor.jl": {
+      "bytes": 1087,
+      "sha256": "7f09e9551d323b533ecec0756e0968541481d9f27f7f0d41bada7ce920229e3c"
+    },
+    "outputs/source-snapshots/csl36-pre-env-split-20260920/vendor/NDTensors/ext/NDTensorsGPUArraysCoreExt/contract.jl": {
+      "bytes": 2857,
+      "sha256": "acb83f46c5ead56ce5ecd1cbbff8d9c4f38339931637198d45561023a8823bc9"
+    },
+    "outputs/source-snapshots/csl36-pre-env-split-20260920/vendor/NDTensors/ext/NDTensorsHDF5Ext/NDTensorsHDF5Ext.jl": {
+      "bytes": 141,
+      "sha256": "1e1c233183cb0b8c3e624eebcbab8b437fe6db79f7776938acfd545d93c36de7"
+    },
+    "outputs/source-snapshots/csl36-pre-env-split-20260920/vendor/NDTensors/ext/NDTensorsHDF5Ext/blocksparse.jl": {
+      "bytes": 2335,
+      "sha256": "04abf715f0d956f4fbc770450c939a4a8cf1b921a3f7f9a81536d068605bb282"
+    },
+    "outputs/source-snapshots/csl36-pre-env-split-20260920/vendor/NDTensors/ext/NDTensorsHDF5Ext/dense.jl": {
+      "bytes": 1395,
+      "sha256": "219e28b4a9a845eed582ba2508d98b703c36e64a1c6714330cb90812f50f5b47"
+    },
+    "outputs/source-snapshots/csl36-pre-env-split-20260920/vendor/NDTensors/ext/NDTensorsHDF5Ext/diag.jl": {
+      "bytes": 1478,
+      "sha256": "c8783890968f1c146aee3bccf636530ee23426d39301ee4a54884cf1f1309f04"
+    },
+    "outputs/source-snapshots/csl36-pre-env-split-20260920/vendor/NDTensors/ext/NDTensorsHDF5Ext/empty.jl": {
+      "bytes": 1012,
+      "sha256": "878d058d51c63222082a1abcda33d022cfa830176f168ae9bd04291ff6c87854"
+    },
+    "outputs/source-snapshots/csl36-pre-env-split-20260920/vendor/NDTensors/ext/NDTensorsJLArraysExt/NDTensorsJLArraysExt.jl": {
+      "bytes": 150,
+      "sha256": "c52d0e1359ff2245acf3da6499c74f5b5c1a0c94da6417839a7ce81532b7a25f"
+    },
+    "outputs/source-snapshots/csl36-pre-env-split-20260920/vendor/NDTensors/ext/NDTensorsJLArraysExt/copyto.jl": {
+      "bytes": 933,
+      "sha256": "3845eefcfe25c541115f93ff25454f0a45bf196e04b68382e331fce14c9295e7"
+    },
+    "outputs/source-snapshots/csl36-pre-env-split-20260920/vendor/NDTensors/ext/NDTensorsJLArraysExt/indexing.jl": {
+      "bytes": 535,
+      "sha256": "5fc8f8ad3ac50a44a4c198f5646aba9a85b4988b601982da61a7a49a772c6dcb"
+    },
+    "outputs/source-snapshots/csl36-pre-env-split-20260920/vendor/NDTensors/ext/NDTensorsJLArraysExt/linearalgebra.jl": {
+      "bytes": 1832,
+      "sha256": "a1573a844829ee4d0069275be5803d5038b58ca026abe6eed6d820c8acb78d41"
+    },
+    "outputs/source-snapshots/csl36-pre-env-split-20260920/vendor/NDTensors/ext/NDTensorsJLArraysExt/mul.jl": {
+      "bytes": 1186,
+      "sha256": "72e3e6e22d1d5e6c006e3a82f8aaf5559b7f88bb27cb88ad7b380d557a2b9632"
+    },
+    "outputs/source-snapshots/csl36-pre-env-split-20260920/vendor/NDTensors/ext/NDTensorsJLArraysExt/permutedims.jl": {
+      "bytes": 797,
+      "sha256": "3acb431354be8599e802bb100c499f17680c31e05260a6d1c0277132e9b774b2"
+    },
+    "outputs/source-snapshots/csl36-pre-env-split-20260920/vendor/NDTensors/ext/NDTensorsMappedArraysExt/NDTensorsMappedArraysExt.jl": {
+      "bytes": 1542,
+      "sha256": "9ad0b0aed6d7fad2483c7832bbb0e64f62ccfd2db28a02d8ff821bfdadd76cf6"
+    },
+    "outputs/source-snapshots/csl36-pre-env-split-20260920/vendor/NDTensors/ext/NDTensorsMetalExt/NDTensorsMetalExt.jl": {
+      "bytes": 212,
+      "sha256": "3c0a3e75578417edc321b9ac0388f5a715acde4d11f3f79282580cee67c50fef"
+    },
+    "outputs/source-snapshots/csl36-pre-env-split-20260920/vendor/NDTensors/ext/NDTensorsMetalExt/adapt.jl": {
+      "bytes": 1218,
+      "sha256": "8abdb539d3f47701f32e3805b0f22188ffe09fccb6ad0037f140e863cf7c944b"
+    },
+    "outputs/source-snapshots/csl36-pre-env-split-20260920/vendor/NDTensors/ext/NDTensorsMetalExt/append.jl": {
+      "bytes": 494,
+      "sha256": "f959252459f5de9815cfd9769f091b2c1bb3e42832174e0a0dcf0556cbb2daa7"
+    },
+    "outputs/source-snapshots/csl36-pre-env-split-20260920/vendor/NDTensors/ext/NDTensorsMetalExt/copyto.jl": {
+      "bytes": 875,
+      "sha256": "89e61ab070b7500a54dda539c2532ef6cedc69615cef159c1e6b68631f8d7853"
+    },
+    "outputs/source-snapshots/csl36-pre-env-split-20260920/vendor/NDTensors/ext/NDTensorsMetalExt/indexing.jl": {
+      "bytes": 516,
+      "sha256": "a9980cb384868bc7a7253d5bb3868bc0dc30910d1ecf836a1be78333d0d89ee4"
+    },
+    "outputs/source-snapshots/csl36-pre-env-split-20260920/vendor/NDTensors/ext/NDTensorsMetalExt/linearalgebra.jl": {
+      "bytes": 1722,
+      "sha256": "a3f2cd3e72254c33b3f5728fed9bbb7bc8ef45dcf37000d7788bc230fcc18cc9"
+    },
+    "outputs/source-snapshots/csl36-pre-env-split-20260920/vendor/NDTensors/ext/NDTensorsMetalExt/mul.jl": {
+      "bytes": 1288,
+      "sha256": "a40ab18645e079125811c6e25d3fcf9ce1a7c817691b22a659ab309b19f15629"
+    },
+    "outputs/source-snapshots/csl36-pre-env-split-20260920/vendor/NDTensors/ext/NDTensorsMetalExt/permutedims.jl": {
+      "bytes": 1406,
+      "sha256": "008d467a5cbc59ddd4859a7313749f941cc615043c6e7222fa48f733086f01c7"
+    },
+    "outputs/source-snapshots/csl36-pre-env-split-20260920/vendor/NDTensors/ext/NDTensorsMetalExt/set_types.jl": {
+      "bytes": 250,
+      "sha256": "6b4b915b4ea4b7c843e780be8f846cad4bfce85a3ecb59bbf7efff7eaff5cc74"
+    },
+    "outputs/source-snapshots/csl36-pre-env-split-20260920/vendor/NDTensors/ext/NDTensorsOctavianExt/NDTensorsOctavianExt.jl": {
+      "bytes": 110,
+      "sha256": "da1dc0f60d567fc36f46f4cfbac218d618b76db3c760e5392c774c19acf72663"
+    },
+    "outputs/source-snapshots/csl36-pre-env-split-20260920/vendor/NDTensors/ext/NDTensorsOctavianExt/import.jl": {
+      "bytes": 43,
+      "sha256": "f2d8a4be22d07849ec3ea5274e02f310dfedd90bfed960d4441e5c69556a43a6"
+    },
+    "outputs/source-snapshots/csl36-pre-env-split-20260920/vendor/NDTensors/ext/NDTensorsOctavianExt/octavian.jl": {
+      "bytes": 419,
+      "sha256": "979931868e2b22652b2825eb73aa187e5da409a61d508889f17de7d8e6efee48"
+    },
+    "outputs/source-snapshots/csl36-pre-env-split-20260920/vendor/NDTensors/ext/NDTensorsTBLISExt/NDTensorsTBLISExt.jl": {
+      "bytes": 129,
+      "sha256": "5b613aedc8141e47c57011f92609657d932496fe3bf5651d6e3e29c5b148240e"
+    },
+    "outputs/source-snapshots/csl36-pre-env-split-20260920/vendor/NDTensors/ext/NDTensorsTBLISExt/contract.jl": {
+      "bytes": 988,
+      "sha256": "db281c3a609e01e909595dd46db2f1c546234a80510bbb4ae7c52bfc17829471"
+    },
+    "outputs/source-snapshots/csl36-pre-env-split-20260920/vendor/NDTensors/ext/NDTensorscuTENSORExt/NDTensorscuTENSORExt.jl": {
+      "bytes": 55,
+      "sha256": "d550d70ebaff58ad9f2fbe752e7e79fc5f37d8b6ff0b246db01e17f2e1fb3190"
+    },
+    "outputs/source-snapshots/csl36-pre-env-split-20260920/vendor/NDTensors/ext/NDTensorscuTENSORExt/contract.jl": {
+      "bytes": 2150,
+      "sha256": "0e87d4952463e12b815fa44b6cd297d4c618e963dbcb870195af8387ec0601ef"
+    },
+    "outputs/source-snapshots/csl36-pre-env-split-20260920/vendor/NDTensors/src/NDTensors.jl": {
+      "bytes": 8705,
+      "sha256": "93c116350d38bd51a23896b892a09554b80c4f60606a66af532c85e9316903ed"
+    },
+    "outputs/source-snapshots/csl36-pre-env-split-20260920/vendor/NDTensors/src/abstractarray/diaginterface.jl": {
+      "bytes": 743,
+      "sha256": "dafc569213a1ef7faefa0602a836caf036645170631fd40ba2c0f511ecf9ffe0"
+    },
+    "outputs/source-snapshots/csl36-pre-env-split-20260920/vendor/NDTensors/src/abstractarray/generic_array_constructors.jl": {
+      "bytes": 1762,
+      "sha256": "377bbc3565a58ebcacce575fb3038458c990b31038f45a388d75563d2eb4d3e3"
+    },
+    "outputs/source-snapshots/csl36-pre-env-split-20260920/vendor/NDTensors/src/abstractarray/iscu.jl": {
+      "bytes": 303,
+      "sha256": "a4db07b5b7bf728fd27004e568b2f428918ad39c8fd2b6ef7942f11b5eeb0e79"
+    },
+    "outputs/source-snapshots/csl36-pre-env-split-20260920/vendor/NDTensors/src/abstractarray/mul.jl": {
+      "bytes": 429,
+      "sha256": "cdfeab2363d527ab3dcb0077e44b61bdf338fd1ea28c3d7e844adf826893ee0d"
+    },
+    "outputs/source-snapshots/csl36-pre-env-split-20260920/vendor/NDTensors/src/abstractarray/permutedims.jl": {
+      "bytes": 261,
+      "sha256": "fbf318e87d0ba11fafd55ce545a05bee96e5900292a20a885f810519f8155ae1"
+    },
+    "outputs/source-snapshots/csl36-pre-env-split-20260920/vendor/NDTensors/src/abstractarray/set_types.jl": {
+      "bytes": 504,
+      "sha256": "c5897f70892af64f9de9fbc0e7fbc7b171079bfaed01c054e72fa7d99c58523e"
+    },
+    "outputs/source-snapshots/csl36-pre-env-split-20260920/vendor/NDTensors/src/abstractarray/similar.jl": {
+      "bytes": 5988,
+      "sha256": "2a6fa581a450b2cbb705cd1dbca84930a54a0290934bfb3f424ad7c7f1c9f0f2"
+    },
+    "outputs/source-snapshots/csl36-pre-env-split-20260920/vendor/NDTensors/src/abstractarray/tensoralgebra/contract.jl": {
+      "bytes": 5081,
+      "sha256": "2ca9c0080c960d381e850153ebb7f1aeac3487f6fe339c4182a24ef0dd9b440c"
+    },
+    "outputs/source-snapshots/csl36-pre-env-split-20260920/vendor/NDTensors/src/abstractarray/to_shape.jl": {
+      "bytes": 522,
+      "sha256": "902d5b8c92b0f1a2bdb6320d1a4ecb6a8ff01aa391bce372215fcd8c9e09cfe3"
+    },
+    "outputs/source-snapshots/csl36-pre-env-split-20260920/vendor/NDTensors/src/adapt.jl": {
+      "bytes": 1476,
+      "sha256": "703430e951574cc2213197db19872e4cce4731f5683dc66a067e15b14cd43ded"
+    },
+    "outputs/source-snapshots/csl36-pre-env-split-20260920/vendor/NDTensors/src/aliasstyle.jl": {
+      "bytes": 1132,
+      "sha256": "37b9abfaf80131020f72a518a454ed1404dabcfdac579c19d012fb0428644dbd"
+    },
+    "outputs/source-snapshots/csl36-pre-env-split-20260920/vendor/NDTensors/src/array/mul.jl": {
+      "bytes": 184,
+      "sha256": "b289d62407d9013511623a21d2bab0234f9aeab86a4e8b3075e0261aad2fff07"
+    },
+    "outputs/source-snapshots/csl36-pre-env-split-20260920/vendor/NDTensors/src/array/permutedims.jl": {
+      "bytes": 756,
+      "sha256": "cd1c04c0b1454f105eac0499413ea8a441641220b498812ce68e9b00453246bc"
+    },
+    "outputs/source-snapshots/csl36-pre-env-split-20260920/vendor/NDTensors/src/blocksparse/adapt.jl": {
+      "bytes": 165,
+      "sha256": "02cac5677ab74ff2430f7e32a8580e7b5cd4cb15d1f02b210c062148ff03aa5e"
+    },
+    "outputs/source-snapshots/csl36-pre-env-split-20260920/vendor/NDTensors/src/blocksparse/block.jl": {
+      "bytes": 4187,
+      "sha256": "87a64296109a7b5a31f334f207c70c313b28cbd20759151ac79a84eda3abb224"
+    },
+    "outputs/source-snapshots/csl36-pre-env-split-20260920/vendor/NDTensors/src/blocksparse/blockdims.jl": {
+      "bytes": 4982,
+      "sha256": "150dc643646b655b35c9747618e09cc96cb9fec174d9465e83329d8059227096"
+    },
+    "outputs/source-snapshots/csl36-pre-env-split-20260920/vendor/NDTensors/src/blocksparse/blockoffsets.jl": {
+      "bytes": 5049,
+      "sha256": "c7ed7c47f72114478552833472ffd4b53b70c8a53ed89044cf6b5ef123ae2f2e"
+    },
+    "outputs/source-snapshots/csl36-pre-env-split-20260920/vendor/NDTensors/src/blocksparse/blocksparse.jl": {
+      "bytes": 7307,
+      "sha256": "688917f03103228bbd16afd731dcba418925d47e73862d2a41d5e59e7886d93e"
+    },
+    "outputs/source-snapshots/csl36-pre-env-split-20260920/vendor/NDTensors/src/blocksparse/blocksparsetensor.jl": {
+      "bytes": 34124,
+      "sha256": "2c85d550bf5b36f0e6b38c8dc2ae8f4733ec48bd119803cdde9456f7119289c7"
+    },
+    "outputs/source-snapshots/csl36-pre-env-split-20260920/vendor/NDTensors/src/blocksparse/combiner.jl": {
+      "bytes": 5267,
+      "sha256": "0206a11fd7e4bf672e567ce98ab3b52accbcfca5a487daaf130c9f683ed4b2a4"
+    },
+    "outputs/source-snapshots/csl36-pre-env-split-20260920/vendor/NDTensors/src/blocksparse/contract.jl": {
+      "bytes": 2187,
+      "sha256": "6b5e86ef8621732d67471fa43bb0c528088351d3379c72b476c571ffd329bee4"
+    },
+    "outputs/source-snapshots/csl36-pre-env-split-20260920/vendor/NDTensors/src/blocksparse/contract_generic.jl": {
+      "bytes": 3868,
+      "sha256": "4b2861b60a9e122a91c2a5325955bd21c9812ae7281875a25ac5832333d29c7d"
+    },
+    "outputs/source-snapshots/csl36-pre-env-split-20260920/vendor/NDTensors/src/blocksparse/contract_sequential.jl": {
+      "bytes": 3440,
+      "sha256": "33a8c02b9da93aa7a77291134681860051de2069662e5db005e746348825dd67"
+    },
+    "outputs/source-snapshots/csl36-pre-env-split-20260920/vendor/NDTensors/src/blocksparse/contract_threaded.jl": {
+      "bytes": 3049,
+      "sha256": "86a30e45a582e0316626822f3f9a65d4b7fa67f408af97db9c69b778c68050c6"
+    },
+    "outputs/source-snapshots/csl36-pre-env-split-20260920/vendor/NDTensors/src/blocksparse/contract_utilities.jl": {
+      "bytes": 2573,
+      "sha256": "9174a6a4022b6b5269c67ced65a8e6bd0fffc8c8368c5f9571d852de76d9d5b8"
+    },
+    "outputs/source-snapshots/csl36-pre-env-split-20260920/vendor/NDTensors/src/blocksparse/diagblocksparse.jl": {
+      "bytes": 23733,
+      "sha256": "565c6f0cd87b3fc3e5cc0ddeb52524567530152629e5a9bb379ba93f57bb2d20"
+    },
+    "outputs/source-snapshots/csl36-pre-env-split-20260920/vendor/NDTensors/src/blocksparse/fermions.jl": {
+      "bytes": 145,
+      "sha256": "26af87d934bc9b167fdb92c5f38ba9c76d213933e9506b2fb91a6fafe67e13fc"
+    },
+    "outputs/source-snapshots/csl36-pre-env-split-20260920/vendor/NDTensors/src/blocksparse/linearalgebra.jl": {
+      "bytes": 13854,
+      "sha256": "fde39b44654889cef82b2fe1f330e03d814b16d1bb786a801ae176ebbb3d880b"
+    },
+    "outputs/source-snapshots/csl36-pre-env-split-20260920/vendor/NDTensors/src/blocksparse/similar.jl": {
+      "bytes": 2384,
+      "sha256": "2ecf8a7b0afe013be4c9fd06d417cf91e957f09f49b41f2a90c9333d1a1a16af"
+    },
+    "outputs/source-snapshots/csl36-pre-env-split-20260920/vendor/NDTensors/src/blocksparse/truncate_spectrum.jl": {
+      "bytes": 4437,
+      "sha256": "3f5b958c7878288619b7bc64f2449a5c36c2b9587e7906a20488448ef27a2a8b"
+    },
+    "outputs/source-snapshots/csl36-pre-env-split-20260920/vendor/NDTensors/src/combiner/combiner.jl": {
+      "bytes": 5546,
+      "sha256": "4a0e1e9eb7a3ae941bfdf389db0d310824f24c278aa59e6471e662a9ab66b19f"
+    },
+    "outputs/source-snapshots/csl36-pre-env-split-20260920/vendor/NDTensors/src/combiner/contract.jl": {
+      "bytes": 3914,
+      "sha256": "efd57cea1168a7e13401a0ae9b05e3ea119d47dd3a7134f53fe4974c3d647bac"
+    },
+    "outputs/source-snapshots/csl36-pre-env-split-20260920/vendor/NDTensors/src/default_kwargs.jl": {
+      "bytes": 451,
+      "sha256": "48a588e7cfcfeec1f13cb3de4b0e8359164de14da21710083499afbd7402e1b5"
+    },
+    "outputs/source-snapshots/csl36-pre-env-split-20260920/vendor/NDTensors/src/dense/dense.jl": {
+      "bytes": 4605,
+      "sha256": "114ea60f15bd54b422f95234b11b86e57a822a1740130734813116f6a8ebac21"
+    },
+    "outputs/source-snapshots/csl36-pre-env-split-20260920/vendor/NDTensors/src/dense/densetensor.jl": {
+      "bytes": 8936,
+      "sha256": "eb656cf8d9af846c1e8fa268f18458939296995aed805a7a6e86aa7f4a5d9e8d"
+    },
+    "outputs/source-snapshots/csl36-pre-env-split-20260920/vendor/NDTensors/src/dense/generic_array_constructors.jl": {
+      "bytes": 1156,
+      "sha256": "47b3ba9ae03dfe3bf24756804b657b37413654f598d8b98c42b4b354a33dfdae"
+    },
+    "outputs/source-snapshots/csl36-pre-env-split-20260920/vendor/NDTensors/src/dense/linearalgebra/decompositions.jl": {
+      "bytes": 3137,
+      "sha256": "6a0d32e99fe1b0aa70ed04f803aed53d66fc0127253d312a445ee092753b43e9"
+    },
+    "outputs/source-snapshots/csl36-pre-env-split-20260920/vendor/NDTensors/src/dense/set_types.jl": {
+      "bytes": 761,
+      "sha256": "1dc6576102a723c2dbb6578a7555f7d1a3b5bafe4ba0d5c5325b77703e245ff5"
+    },
+    "outputs/source-snapshots/csl36-pre-env-split-20260920/vendor/NDTensors/src/dense/tensoralgebra/contract.jl": {
+      "bytes": 6266,
+      "sha256": "6e130bff906e28909b0027fdf2ac99bf8274503039c83bf2773878c603cb70ab"
+    },
+    "outputs/source-snapshots/csl36-pre-env-split-20260920/vendor/NDTensors/src/dense/tensoralgebra/outer.jl": {
+      "bytes": 1141,
+      "sha256": "95feeda74e5bd9186769c9573909e8a83c8238b6c0df476817d263807235245c"
+    },
+    "outputs/source-snapshots/csl36-pre-env-split-20260920/vendor/NDTensors/src/deprecated.jl": {
+      "bytes": 239,
+      "sha256": "32c8a23e3f8971a7a14e82dbcfbdfbfdf523eafd5d5db495a61016a45d0a7f14"
+    },
+    "outputs/source-snapshots/csl36-pre-env-split-20260920/vendor/NDTensors/src/diag/diag.jl": {
+      "bytes": 4597,
+      "sha256": "4d86cc755b5c2100cd7c1ce56a4107dce686f913c3b22a721e643387f5f2d106"
+    },
+    "outputs/source-snapshots/csl36-pre-env-split-20260920/vendor/NDTensors/src/diag/diagtensor.jl": {
+      "bytes": 6936,
+      "sha256": "a85308112964847e38ede59e26341561e4bd6dbf6873dd740598fb8a4150a6a0"
+    },
+    "outputs/source-snapshots/csl36-pre-env-split-20260920/vendor/NDTensors/src/diag/set_types.jl": {
+      "bytes": 702,
+      "sha256": "eae287d3a100a7e3fb2896fca49a3642f92d4ed0d55fb2d08d974ae4781449a3"
+    },
+    "outputs/source-snapshots/csl36-pre-env-split-20260920/vendor/NDTensors/src/diag/similar.jl": {
+      "bytes": 1091,
+      "sha256": "196bc09444f3b2313adc26fee80da2f49b1501cf663155bfd6fd1e559ce0148a"
+    },
+    "outputs/source-snapshots/csl36-pre-env-split-20260920/vendor/NDTensors/src/diag/tensoralgebra/contract.jl": {
+      "bytes": 8222,
+      "sha256": "397d27c466bcf5fe3dd8e88deb196ba3d4a70b6773cc800297287f6e5145eb96"
+    },
+    "outputs/source-snapshots/csl36-pre-env-split-20260920/vendor/NDTensors/src/diag/tensoralgebra/outer.jl": {
+      "bytes": 1042,
+      "sha256": "f29c15122ffe7b8bd15ea47dba3c34dbf2a3fb3b4268d38a1398a54ca585d715"
+    },
+    "outputs/source-snapshots/csl36-pre-env-split-20260920/vendor/NDTensors/src/dims.jl": {
+      "bytes": 2172,
+      "sha256": "a58a06bf0f6e75706257249743ad9cebdb361a20949e9ba691642c736835daee"
+    },
+    "outputs/source-snapshots/csl36-pre-env-split-20260920/vendor/NDTensors/src/empty/EmptyTensor.jl": {
+      "bytes": 5659,
+      "sha256": "73af0d8585bed3922717d34eb426b03689adb90e962c9a4cb2e26f6726fbdc68"
+    },
+    "outputs/source-snapshots/csl36-pre-env-split-20260920/vendor/NDTensors/src/empty/adapt.jl": {
+      "bytes": 280,
+      "sha256": "5866d1124f4ae6d5474f7a71ec6d6178e2b009e02b4d26e7a680fe90e6edecf7"
+    },
+    "outputs/source-snapshots/csl36-pre-env-split-20260920/vendor/NDTensors/src/empty/empty.jl": {
+      "bytes": 2881,
+      "sha256": "749946e78eb9b6506cd20d9f86a460b867b3184e6ebbf0cd79c2368f0cf786cc"
+    },
+    "outputs/source-snapshots/csl36-pre-env-split-20260920/vendor/NDTensors/src/empty/tensoralgebra/contract.jl": {
+      "bytes": 2361,
+      "sha256": "e998e877e4600b116d47ce946e8cd98211d0cf92e524adc654f7db8deaa1190f"
+    },
+    "outputs/source-snapshots/csl36-pre-env-split-20260920/vendor/NDTensors/src/emptynumber.jl": {
+      "bytes": 1446,
+      "sha256": "18a15b78659bb2612c92a84449a45a7dc30388900286e1d57a559688b19fec52"
+    },
+    "outputs/source-snapshots/csl36-pre-env-split-20260920/vendor/NDTensors/src/exports.jl": {
+      "bytes": 1252,
+      "sha256": "5780406d52a704d209d3160f4558159ddfa841f347ec36bfd6d038ec92770648"
+    },
+    "outputs/source-snapshots/csl36-pre-env-split-20260920/vendor/NDTensors/src/imports.jl": {
+      "bytes": 1806,
+      "sha256": "fa0ebef6a1db4ad0b6bdecea2c17e82ed26c20c473006e3016b9a5f08f313c04"
+    },
+    "outputs/source-snapshots/csl36-pre-env-split-20260920/vendor/NDTensors/src/kagome_source_identity.jl": {
+      "bytes": 985,
+      "sha256": "8aafb41dceea0bcdf042fa981f73a024f8a02f24d82e5dc1981f7f5631fd8543"
+    },
+    "outputs/source-snapshots/csl36-pre-env-split-20260920/vendor/NDTensors/src/lib/AMDGPUExtensions/.JuliaFormatter.toml": {
+      "bytes": 26,
+      "sha256": "7dcb26f6bc8dd8a9ddb2efdcd31fc918d15f078ff50a83aaecd8dbf56f4bdb13"
+    },
+    "outputs/source-snapshots/csl36-pre-env-split-20260920/vendor/NDTensors/src/lib/AMDGPUExtensions/src/AMDGPUExtensions.jl": {
+      "bytes": 48,
+      "sha256": "636dc90e1c2b4226cf5ec7b473b6f86f7803574353cb2215e42d45ddee5d2380"
+    },
+    "outputs/source-snapshots/csl36-pre-env-split-20260920/vendor/NDTensors/src/lib/AMDGPUExtensions/src/roc.jl": {
+      "bytes": 638,
+      "sha256": "d24a448ae7b72b5167f7117fbefe0128e6dab4e64fa744d51def80db7e9dbafb"
+    },
+    "outputs/source-snapshots/csl36-pre-env-split-20260920/vendor/NDTensors/src/lib/AMDGPUExtensions/test/runtests.jl": {
+      "bytes": 284,
+      "sha256": "298bb6050e8d35100f16cb678dabe29bd051598ef923e33e00217e9c04c33678"
+    },
+    "outputs/source-snapshots/csl36-pre-env-split-20260920/vendor/NDTensors/src/lib/BackendSelection/.JuliaFormatter.toml": {
+      "bytes": 26,
+      "sha256": "7dcb26f6bc8dd8a9ddb2efdcd31fc918d15f078ff50a83aaecd8dbf56f4bdb13"
+    },
+    "outputs/source-snapshots/csl36-pre-env-split-20260920/vendor/NDTensors/src/lib/BackendSelection/src/BackendSelection.jl": {
+      "bytes": 272,
+      "sha256": "c7d1da4c95b760078b8b4f18350c437e403c50795ad79b684e27f0b1679368dd"
+    },
+    "outputs/source-snapshots/csl36-pre-env-split-20260920/vendor/NDTensors/src/lib/BackendSelection/src/abstractbackend.jl": {
+      "bytes": 153,
+      "sha256": "0fb2873af5570b1c1492e0677408a034a64a607d2c93df95abbec31ef3f2713b"
+    },
+    "outputs/source-snapshots/csl36-pre-env-split-20260920/vendor/NDTensors/src/lib/BackendSelection/src/backend_types.jl": {
+      "bytes": 1911,
+      "sha256": "ebcd62b00d17d16d48f6d7d941b9f2d28010ba4d162ba02a8e71140761bf5ba2"
+    },
+    "outputs/source-snapshots/csl36-pre-env-split-20260920/vendor/NDTensors/src/lib/BackendSelection/test/Project.toml": {
+      "bytes": 104,
+      "sha256": "6028c353382f17791c029e17fe16b661cd81873e181a609caf3ed60b60560e1b"
+    },
+    "outputs/source-snapshots/csl36-pre-env-split-20260920/vendor/NDTensors/src/lib/BackendSelection/test/runtests.jl": {
+      "bytes": 1076,
+      "sha256": "46f712cfacfe4091b35ef5ecbd91c3f7388df6f76e571ba4a16ae6aa03ccd8c5"
+    },
+    "outputs/source-snapshots/csl36-pre-env-split-20260920/vendor/NDTensors/src/lib/CUDAExtensions/.JuliaFormatter.toml": {
+      "bytes": 26,
+      "sha256": "7dcb26f6bc8dd8a9ddb2efdcd31fc918d15f078ff50a83aaecd8dbf56f4bdb13"
+    },
+    "outputs/source-snapshots/csl36-pre-env-split-20260920/vendor/NDTensors/src/lib/CUDAExtensions/src/CUDAExtensions.jl": {
+      "bytes": 47,
+      "sha256": "50d3e5fede2305e521da55a51fe7a12efd53e93b962c5197c73fd86bf45bd1d4"
+    },
+    "outputs/source-snapshots/csl36-pre-env-split-20260920/vendor/NDTensors/src/lib/CUDAExtensions/src/cuda.jl": {
+      "bytes": 661,
+      "sha256": "9c1a2ab1e413281d124009d36835f26ba8131e62706dbbdb2b6f18acd0adf58c"
+    },
+    "outputs/source-snapshots/csl36-pre-env-split-20260920/vendor/NDTensors/src/lib/CUDAExtensions/test/runtests.jl": {
+      "bytes": 273,
+      "sha256": "a850ccd891344cbb1384b9322932d1bf43d0140ae47d8722e85b004af3553e90"
+    },
+    "outputs/source-snapshots/csl36-pre-env-split-20260920/vendor/NDTensors/src/lib/Expose/.JuliaFormatter.toml": {
+      "bytes": 26,
+      "sha256": "7dcb26f6bc8dd8a9ddb2efdcd31fc918d15f078ff50a83aaecd8dbf56f4bdb13"
+    },
+    "outputs/source-snapshots/csl36-pre-env-split-20260920/vendor/NDTensors/src/lib/Expose/README.md": {
+      "bytes": 496,
+      "sha256": "dfc15377f47fbf8463c35779f88e329ae237e0ff0122509700b5810573dca132"
+    },
+    "outputs/source-snapshots/csl36-pre-env-split-20260920/vendor/NDTensors/src/lib/Expose/TODO.md": {
+      "bytes": 172,
+      "sha256": "f568062cfd9a4f0a3241512f85d31bac9ffa3b9117efae1ed5a814fa0afe7dec"
+    },
+    "outputs/source-snapshots/csl36-pre-env-split-20260920/vendor/NDTensors/src/lib/Expose/src/Expose.jl": {
+      "bytes": 600,
+      "sha256": "1873ff885d771dde4de13ee2566444f20b3fb50b8adedc7486ad26d7b3198726"
+    },
+    "outputs/source-snapshots/csl36-pre-env-split-20260920/vendor/NDTensors/src/lib/Expose/src/exposed.jl": {
+      "bytes": 733,
+      "sha256": "688e7cb2db3a68ff97bae652640ffbd0e931ba4148edab29d13a12546bdf043a"
+    },
+    "outputs/source-snapshots/csl36-pre-env-split-20260920/vendor/NDTensors/src/lib/Expose/src/functions/abstractarray.jl": {
+      "bytes": 476,
+      "sha256": "7acf81bb297f49240446f4f61d31b85d297b3335cc97b49bd220693a48f1679c"
+    },
+    "outputs/source-snapshots/csl36-pre-env-split-20260920/vendor/NDTensors/src/lib/Expose/src/functions/adapt.jl": {
+      "bytes": 405,
+      "sha256": "fc6a78e161b3cc7097c51b29b157f33d314bd262077597a02e27bac044c3e5e3"
+    },
+    "outputs/source-snapshots/csl36-pre-env-split-20260920/vendor/NDTensors/src/lib/Expose/src/functions/append.jl": {
+      "bytes": 122,
+      "sha256": "ff04c35717bf2addfebbff5b6c65780f6a844714a56b1d2b221250d874e0693d"
+    },
+    "outputs/source-snapshots/csl36-pre-env-split-20260920/vendor/NDTensors/src/lib/Expose/src/functions/copyto.jl": {
+      "bytes": 106,
+      "sha256": "0e9cd5ebf64e832adf111d3e585ca33e3e7eb2865f868885a06df3a8d5bcbc0f"
+    },
+    "outputs/source-snapshots/csl36-pre-env-split-20260920/vendor/NDTensors/src/lib/Expose/src/functions/linearalgebra.jl": {
+      "bytes": 767,
+      "sha256": "ac9aa39e22dd459de607ed2198ff57772e1e4fa85e861375eda20945152d4525"
+    },
+    "outputs/source-snapshots/csl36-pre-env-split-20260920/vendor/NDTensors/src/lib/Expose/src/functions/mul.jl": {
+      "bytes": 148,
+      "sha256": "a0f4d99444b0471765fccdde61216ed8f5b91d6cc38b2df4719f2e66b8738850"
+    },
+    "outputs/source-snapshots/csl36-pre-env-split-20260920/vendor/NDTensors/src/lib/Expose/src/functions/permutedims.jl": {
+      "bytes": 394,
+      "sha256": "ec3577180b019f360ad85e3c7759f282b094c01b45144799b10267ff4c65c1ca"
+    },
+    "outputs/source-snapshots/csl36-pre-env-split-20260920/vendor/NDTensors/src/lib/Expose/src/import.jl": {
+      "bytes": 161,
+      "sha256": "c53b91ca346fe1e3067d3cfea41359ca27b157d5088a405ba2c23447d1399044"
+    },
+    "outputs/source-snapshots/csl36-pre-env-split-20260920/vendor/NDTensors/src/lib/Expose/test/Project.toml": {
+      "bytes": 261,
+      "sha256": "4b2187c8580ca3f1ca4492f89229019fa1a743b5ad35e83fb32aec866bcd42b5"
+    },
+    "outputs/source-snapshots/csl36-pre-env-split-20260920/vendor/NDTensors/src/lib/Expose/test/runtests.jl": {
+      "bytes": 8033,
+      "sha256": "2ee83b1fcd4bf7d47b9da29b9b4f9a674e19d55cdcd0d6da3ae8e249a7e411a2"
+    },
+    "outputs/source-snapshots/csl36-pre-env-split-20260920/vendor/NDTensors/src/lib/GPUArraysCoreExtensions/.JuliaFormatter.toml": {
+      "bytes": 26,
+      "sha256": "7dcb26f6bc8dd8a9ddb2efdcd31fc918d15f078ff50a83aaecd8dbf56f4bdb13"
+    },
+    "outputs/source-snapshots/csl36-pre-env-split-20260920/vendor/NDTensors/src/lib/GPUArraysCoreExtensions/Project.toml": {
+      "bytes": 128,
+      "sha256": "e0267f2c0f73dd928edc0daea60aae622f0e2244da9f990333e45b0586e4e6c6"
+    },
+    "outputs/source-snapshots/csl36-pre-env-split-20260920/vendor/NDTensors/src/lib/GPUArraysCoreExtensions/src/GPUArraysCoreExtensions.jl": {
+      "bytes": 65,
+      "sha256": "5de26f3c1e1712e69ae4264a1f6ee02f7f08ecf9c35fc937dafe95fa352f3641"
+    },
+    "outputs/source-snapshots/csl36-pre-env-split-20260920/vendor/NDTensors/src/lib/GPUArraysCoreExtensions/src/gpuarrayscore.jl": {
+      "bytes": 441,
+      "sha256": "7fdc8fdb5951a674c32bfb79592788e91e4113bb78099178d9a6950742d655fa"
+    },
+    "outputs/source-snapshots/csl36-pre-env-split-20260920/vendor/NDTensors/src/lib/GPUArraysCoreExtensions/test/runtests.jl": {
+      "bytes": 176,
+      "sha256": "8755efad84f4ebb5a4ef825f3ed3b276eb4e20de3bf5d08792042d6b2da09d6f"
+    },
+    "outputs/source-snapshots/csl36-pre-env-split-20260920/vendor/NDTensors/src/lib/MetalExtensions/.JuliaFormatter.toml": {
+      "bytes": 26,
+      "sha256": "7dcb26f6bc8dd8a9ddb2efdcd31fc918d15f078ff50a83aaecd8dbf56f4bdb13"
+    },
+    "outputs/source-snapshots/csl36-pre-env-split-20260920/vendor/NDTensors/src/lib/MetalExtensions/src/MetalExtensions.jl": {
+      "bytes": 49,
+      "sha256": "16ed92900cd973ab8ccc4be31d446bbf291d55cb2ae48676f7d499b99d8f86fb"
+    },
+    "outputs/source-snapshots/csl36-pre-env-split-20260920/vendor/NDTensors/src/lib/MetalExtensions/src/metal.jl": {
+      "bytes": 669,
+      "sha256": "e1b799e61c9349bdd631e77ddeabae63e79d7a3f1c1475f1fa55876a95a2dbe6"
+    },
+    "outputs/source-snapshots/csl36-pre-env-split-20260920/vendor/NDTensors/src/lib/MetalExtensions/test/runtests.jl": {
+      "bytes": 162,
+      "sha256": "860df1edc08553a8815c5631be7944909a539b802fb612c4aaf6066a37b5f665"
+    },
+    "outputs/source-snapshots/csl36-pre-env-split-20260920/vendor/NDTensors/src/lib/RankFactorization/.JuliaFormatter.toml": {
+      "bytes": 26,
+      "sha256": "7dcb26f6bc8dd8a9ddb2efdcd31fc918d15f078ff50a83aaecd8dbf56f4bdb13"
+    },
+    "outputs/source-snapshots/csl36-pre-env-split-20260920/vendor/NDTensors/src/lib/RankFactorization/src/RankFactorization.jl": {
+      "bytes": 115,
+      "sha256": "97b0e57d4bae6f04d8391c61d97c2fce0cf856249f72bcb24f995ce875582de9"
+    },
+    "outputs/source-snapshots/csl36-pre-env-split-20260920/vendor/NDTensors/src/lib/RankFactorization/src/default_kwargs.jl": {
+      "bytes": 451,
+      "sha256": "48a588e7cfcfeec1f13cb3de4b0e8359164de14da21710083499afbd7402e1b5"
+    },
+    "outputs/source-snapshots/csl36-pre-env-split-20260920/vendor/NDTensors/src/lib/RankFactorization/src/spectrum.jl": {
+      "bytes": 618,
+      "sha256": "33f3df88dc5464ea24192f459d2bd962af2107339187f7f094ad9333eb18ac3e"
+    },
+    "outputs/source-snapshots/csl36-pre-env-split-20260920/vendor/NDTensors/src/lib/RankFactorization/src/truncate_spectrum.jl": {
+      "bytes": 2754,
+      "sha256": "f17a8bf3795f08f8c8b7fe4446ede6f91b3e3144471fd039f9e26776a8de4c1b"
+    },
+    "outputs/source-snapshots/csl36-pre-env-split-20260920/vendor/NDTensors/src/linearalgebra/linearalgebra.jl": {
+      "bytes": 15590,
+      "sha256": "395a7d6db964aa0c8bddc37752d8d89a2cf13d1679c6569c2c0a4108435e90b3"
+    },
+    "outputs/source-snapshots/csl36-pre-env-split-20260920/vendor/NDTensors/src/linearalgebra/svd.jl": {
+      "bytes": 1874,
+      "sha256": "682f12af30e8a7e215b38d67af071db3e0f53e17ac2dfcc3c2dc7f828514ddc5"
+    },
+    "outputs/source-snapshots/csl36-pre-env-split-20260920/vendor/NDTensors/src/linearalgebra/symmetric.jl": {
+      "bytes": 1074,
+      "sha256": "7d2b80f41ef1a370a673c8bdd951224ff3c6c94bc0089528f94c4b00cbef1349"
+    },
+    "outputs/source-snapshots/csl36-pre-env-split-20260920/vendor/NDTensors/src/nodata.jl": {
+      "bytes": 146,
+      "sha256": "8cd0c0d0fe97d6007c364561a180037199a4852e8da8e12e7dc17df0086f82c5"
+    },
+    "outputs/source-snapshots/csl36-pre-env-split-20260920/vendor/NDTensors/src/tensor/set_types.jl": {
+      "bytes": 1075,
+      "sha256": "14baee12a641bad6631b7c268bb92102b066a13ee16e4908d2819db42e01f27c"
+    },
+    "outputs/source-snapshots/csl36-pre-env-split-20260920/vendor/NDTensors/src/tensor/similar.jl": {
+      "bytes": 3897,
+      "sha256": "ac6c5231858c06cc7bef492c461db583b191645e3e3daef61f463d2a87f635cd"
+    },
+    "outputs/source-snapshots/csl36-pre-env-split-20260920/vendor/NDTensors/src/tensor/tensor.jl": {
+      "bytes": 15071,
+      "sha256": "2fb8ab3c1eba14d556963f8b231b91f4e8d6235a3f7f349530db4b15bda6b2b9"
+    },
+    "outputs/source-snapshots/csl36-pre-env-split-20260920/vendor/NDTensors/src/tensoroperations/contraction_logic.jl": {
+      "bytes": 18564,
+      "sha256": "13183fce7f3935e46b6045abcf6939a686187c65cd050298f21a57d13abe1ce3"
+    },
+    "outputs/source-snapshots/csl36-pre-env-split-20260920/vendor/NDTensors/src/tensoroperations/generic_tensor_operations.jl": {
+      "bytes": 8063,
+      "sha256": "4f185ec78d7d2fd43a5b825b37738c7110da0b8cb3d90b52a51a2a3af36357d0"
+    },
+    "outputs/source-snapshots/csl36-pre-env-split-20260920/vendor/NDTensors/src/tensorstorage/default_storage.jl": {
+      "bytes": 941,
+      "sha256": "165385a10b9d429d177382f1be85bb05993af6236d615d15f453febfdfd68a4b"
+    },
+    "outputs/source-snapshots/csl36-pre-env-split-20260920/vendor/NDTensors/src/tensorstorage/set_types.jl": {
+      "bytes": 345,
+      "sha256": "2b3e1d4b912e1c1bf59a297fb764f7f2de329504b59178c756c6f015ffb3a229"
+    },
+    "outputs/source-snapshots/csl36-pre-env-split-20260920/vendor/NDTensors/src/tensorstorage/similar.jl": {
+      "bytes": 4252,
+      "sha256": "5df277863e03c364d1c542f590b55b824bc7c59fd80d4cbbe235c541026fbbf5"
+    },
+    "outputs/source-snapshots/csl36-pre-env-split-20260920/vendor/NDTensors/src/tensorstorage/tensorstorage.jl": {
+      "bytes": 3190,
+      "sha256": "4de5792ce6f2b4428de4312931542f90f899bbea324712ee745aa8c46f532bbd"
+    },
+    "outputs/source-snapshots/csl36-pre-env-split-20260920/vendor/NDTensors/src/truncate.jl": {
+      "bytes": 2801,
+      "sha256": "29526042ddab5a0a99f185ff422654642c552bc654f7a871593022c3aff1ded3"
+    },
+    "outputs/source-snapshots/csl36-pre-env-split-20260920/vendor/NDTensors/src/tupletools.jl": {
+      "bytes": 7147,
+      "sha256": "fac0b91a445c0843fff057ad6ff9dede713f68d9945155a99f7b322d4e4e5f7d"
+    },
+    "outputs/source-snapshots/n27-refine-before-chirality-20260919/Manifest-v1.13.toml": {
+      "bytes": 38577,
+      "sha256": "134a3797eb3ba08171879ce51e354b8da641733911dc64b1f5944b0199c7187b"
+    },
+    "outputs/source-snapshots/n27-refine-before-chirality-20260919/Project.toml": {
+      "bytes": 1015,
+      "sha256": "debb9b90c699e01f034a8ec21602c9eba26795a60fe5a69c0e8e793ed9a6bb0e"
+    },
+    "outputs/source-snapshots/n27-refine-before-chirality-20260919/src/KagomeDMRG.jl": {
+      "bytes": 888,
+      "sha256": "11c332090f4343dcaacef3844f56c5fd448aa8cf564cab687a18f8d20bca4f36"
+    },
+    "outputs/source-snapshots/n27-refine-before-chirality-20260919/src/checkpoint.jl": {
+      "bytes": 20907,
+      "sha256": "2faea3170bb2f94c8bc112e9c13f87496946e463d51396a1620903acbcfbcff4"
+    },
+    "outputs/source-snapshots/n27-refine-before-chirality-20260919/src/continuation.jl": {
+      "bytes": 20114,
+      "sha256": "613c5151ff09040fecd8002465a626fde5e70eb501be59aff45619044d3ae44e"
+    },
+    "outputs/source-snapshots/n27-refine-before-chirality-20260919/src/dmrg.jl": {
+      "bytes": 10258,
+      "sha256": "94e66b1668b3bc3e502924ab8c6b11b6dd533ea5b65122ddc040d18fe0217012"
+    },
+    "outputs/source-snapshots/n27-refine-before-chirality-20260919/src/extended_model.jl": {
+      "bytes": 4024,
+      "sha256": "3db76c474147afbee04d04e56db5e34e318cf485e18f74858898539a903eb120"
+    },
+    "outputs/source-snapshots/n27-refine-before-chirality-20260919/src/lattice.jl": {
+      "bytes": 7776,
+      "sha256": "15d9ea5bea1514f49b36ac45bc139489fd6c6c03b00dff4e836d3d3e3aa7b2ec"
+    },
+    "outputs/source-snapshots/n27-refine-before-chirality-20260919/src/model.jl": {
+      "bytes": 2456,
+      "sha256": "ec57b01141fd90a4938fc22d2833bd7a3ddfa107a107fb083753a4a39e91f58b"
+    },
+    "outputs/source-snapshots/n27-refine-before-chirality-20260919/src/observables.jl": {
+      "bytes": 2963,
+      "sha256": "dfc48cc85a2cc6f51c99e4a58dc64f7709fad9f3834136e9fa915659147b29f8"
+    },
+    "outputs/source-snapshots/n27-refine-before-chirality-20260919/src/provenance.jl": {
+      "bytes": 6533,
+      "sha256": "6a027b5383f70bded31c3477fb113044b55a991a37cc74ecd3daa5c7e99dc81a"
+    },
+    "outputs/source-snapshots/n27-refine-before-chirality-20260919/src/schmidt.jl": {
+      "bytes": 4049,
+      "sha256": "13517078685ce1e1ca43b6200cbc61ff7aa6113757fa61ed9fcee4dfee3cbd0a"
+    },
+    "outputs/source-snapshots/n27-refine-before-chirality-20260919/vendor/NDTensors/Project.toml": {
+      "bytes": 3420,
+      "sha256": "59d3d69bcb46b7af4386ea455483ac9419fcc89b169f21d6a2b6b0c1eb3a7c87"
+    },
+    "outputs/source-snapshots/n27-refine-before-chirality-20260919/vendor/NDTensors/ext/NDTensorsAMDGPUExt/NDTensorsAMDGPUExt.jl": {
+      "bytes": 213,
+      "sha256": "bb1acaffbbfac3b92a001f60d1025593df8fb4c8f00cfba30181fa74b84aa14d"
+    },
+    "outputs/source-snapshots/n27-refine-before-chirality-20260919/vendor/NDTensors/ext/NDTensorsAMDGPUExt/adapt.jl": {
+      "bytes": 1162,
+      "sha256": "d8aa0643a3c9798ff4d9fed8949c34029b1407b805fa97384bff4fa9ecf9b5f8"
+    },
+    "outputs/source-snapshots/n27-refine-before-chirality-20260919/vendor/NDTensors/ext/NDTensorsAMDGPUExt/append.jl": {
+      "bytes": 332,
+      "sha256": "063fab626a97267ef21b31cbc9df4173ed242a6b6c2e8b26a34a626197c197af"
+    },
+    "outputs/source-snapshots/n27-refine-before-chirality-20260919/vendor/NDTensors/ext/NDTensorsAMDGPUExt/copyto.jl": {
+      "bytes": 1072,
+      "sha256": "c2cf9fea12a743bf002de9cd22d1e857244108380665c520533b21f6fb2b8b4d"
+    },
+    "outputs/source-snapshots/n27-refine-before-chirality-20260919/vendor/NDTensors/ext/NDTensorsAMDGPUExt/indexing.jl": {
+      "bytes": 683,
+      "sha256": "3b0455a0677f5bb192244c821d6eb5dcdf0301f2b6f5e2d0a50a296469cbe6b5"
+    },
+    "outputs/source-snapshots/n27-refine-before-chirality-20260919/vendor/NDTensors/ext/NDTensorsAMDGPUExt/linearalgebra.jl": {
+      "bytes": 787,
+      "sha256": "9fb2bb3c028b92e20f5283c74b617567575ec2329a0b417bd938579ef52ccbb9"
+    },
+    "outputs/source-snapshots/n27-refine-before-chirality-20260919/vendor/NDTensors/ext/NDTensorsAMDGPUExt/mul.jl": {
+      "bytes": 1309,
+      "sha256": "fdb4bdaa980ada17fe6d43eef03c30c735e3a76671b28fc059d688c85ecff355"
+    },
+    "outputs/source-snapshots/n27-refine-before-chirality-20260919/vendor/NDTensors/ext/NDTensorsAMDGPUExt/permutedims.jl": {
+      "bytes": 782,
+      "sha256": "e65ec0ce70cbd50fae5c5e659479b06e3776e28836b42626d485df29a8bb54df"
+    },
+    "outputs/source-snapshots/n27-refine-before-chirality-20260919/vendor/NDTensors/ext/NDTensorsAMDGPUExt/set_types.jl": {
+      "bytes": 229,
+      "sha256": "f3f39efbacd0da22e0685758cbc067db85cfeb0671f500ac94871f0de489fac9"
+    },
+    "outputs/source-snapshots/n27-refine-before-chirality-20260919/vendor/NDTensors/ext/NDTensorsCUDAExt/NDTensorsCUDAExt.jl": {
+      "bytes": 259,
+      "sha256": "c2be69a4f4562d15ddfaf709d1ff78fbbfa6869d0a361d371a58063a80697e09"
+    },
+    "outputs/source-snapshots/n27-refine-before-chirality-20260919/vendor/NDTensors/ext/NDTensorsCUDAExt/adapt.jl": {
+      "bytes": 1124,
+      "sha256": "bbbd1a16b485eaa40f91a7ea25eb1079aedd7e2a82656533f072e70dced42f2f"
+    },
+    "outputs/source-snapshots/n27-refine-before-chirality-20260919/vendor/NDTensors/ext/NDTensorsCUDAExt/append.jl": {
+      "bytes": 328,
+      "sha256": "3c6d3da547c826d9f137cd9ab8c9549d97282d5d89d9ebf4467fb7be019032fa"
+    },
+    "outputs/source-snapshots/n27-refine-before-chirality-20260919/vendor/NDTensors/ext/NDTensorsCUDAExt/copyto.jl": {
+      "bytes": 927,
+      "sha256": "96fafee4f759697e78fd0b4cacf94489130e531ba150b91900a4775a458bf7eb"
+    },
+    "outputs/source-snapshots/n27-refine-before-chirality-20260919/vendor/NDTensors/ext/NDTensorsCUDAExt/default_kwargs.jl": {
+      "bytes": 113,
+      "sha256": "58b93e96de1142122f22e6e18c2c9c96a55de605bd59f9170ec49dea16c23eb8"
+    },
+    "outputs/source-snapshots/n27-refine-before-chirality-20260919/vendor/NDTensors/ext/NDTensorsCUDAExt/indexing.jl": {
+      "bytes": 683,
+      "sha256": "2585ee449609317792f7c91c27756d6b9b3b1af62c9f870ea1595d881120a371"
+    },
+    "outputs/source-snapshots/n27-refine-before-chirality-20260919/vendor/NDTensors/ext/NDTensorsCUDAExt/iscu.jl": {
+      "bytes": 89,
+      "sha256": "eac86157ecfc52cb3294ee253a18eb7c1848d4b0d2555b757159a9420fed67af"
+    },
+    "outputs/source-snapshots/n27-refine-before-chirality-20260919/vendor/NDTensors/ext/NDTensorsCUDAExt/linearalgebra.jl": {
+      "bytes": 1802,
+      "sha256": "b0db2ce8390966d028729c8ba20b086c2d488c953c2833f171086abb134a3cc3"
+    },
+    "outputs/source-snapshots/n27-refine-before-chirality-20260919/vendor/NDTensors/ext/NDTensorsCUDAExt/mul.jl": {
+      "bytes": 1356,
+      "sha256": "bb5a63ba0f60fb5c060a34aa5b1867aa15d5de2681673393982be28d187c6d4d"
+    },
+    "outputs/source-snapshots/n27-refine-before-chirality-20260919/vendor/NDTensors/ext/NDTensorsCUDAExt/permutedims.jl": {
+      "bytes": 764,
+      "sha256": "b08a6bcea0aa1ae69017ac0629cd72f1c69827f81d44f17232ae8468d4a8db7d"
+    },
+    "outputs/source-snapshots/n27-refine-before-chirality-20260919/vendor/NDTensors/ext/NDTensorsCUDAExt/set_types.jl": {
+      "bytes": 247,
+      "sha256": "03311e18a80634f5e59c39329c5a33ea33c05d227f510a70de7a4a76b74cfa0b"
+    },
+    "outputs/source-snapshots/n27-refine-before-chirality-20260919/vendor/NDTensors/ext/NDTensorsGPUArraysCoreExt/NDTensorsGPUArraysCoreExt.jl": {
+      "bytes": 92,
+      "sha256": "9cd9b5eb73583b656d301d0aab1b6c75466e913ccec28e0f7af66c532381773c"
+    },
+    "outputs/source-snapshots/n27-refine-before-chirality-20260919/vendor/NDTensors/ext/NDTensorsGPUArraysCoreExt/blocksparsetensor.jl": {
+      "bytes": 1087,
+      "sha256": "7f09e9551d323b533ecec0756e0968541481d9f27f7f0d41bada7ce920229e3c"
+    },
+    "outputs/source-snapshots/n27-refine-before-chirality-20260919/vendor/NDTensors/ext/NDTensorsGPUArraysCoreExt/contract.jl": {
+      "bytes": 2857,
+      "sha256": "acb83f46c5ead56ce5ecd1cbbff8d9c4f38339931637198d45561023a8823bc9"
+    },
+    "outputs/source-snapshots/n27-refine-before-chirality-20260919/vendor/NDTensors/ext/NDTensorsHDF5Ext/NDTensorsHDF5Ext.jl": {
+      "bytes": 141,
+      "sha256": "1e1c233183cb0b8c3e624eebcbab8b437fe6db79f7776938acfd545d93c36de7"
+    },
+    "outputs/source-snapshots/n27-refine-before-chirality-20260919/vendor/NDTensors/ext/NDTensorsHDF5Ext/blocksparse.jl": {
+      "bytes": 2335,
+      "sha256": "04abf715f0d956f4fbc770450c939a4a8cf1b921a3f7f9a81536d068605bb282"
+    },
+    "outputs/source-snapshots/n27-refine-before-chirality-20260919/vendor/NDTensors/ext/NDTensorsHDF5Ext/dense.jl": {
+      "bytes": 1395,
+      "sha256": "219e28b4a9a845eed582ba2508d98b703c36e64a1c6714330cb90812f50f5b47"
+    },
+    "outputs/source-snapshots/n27-refine-before-chirality-20260919/vendor/NDTensors/ext/NDTensorsHDF5Ext/diag.jl": {
+      "bytes": 1478,
+      "sha256": "c8783890968f1c146aee3bccf636530ee23426d39301ee4a54884cf1f1309f04"
+    },
+    "outputs/source-snapshots/n27-refine-before-chirality-20260919/vendor/NDTensors/ext/NDTensorsHDF5Ext/empty.jl": {
+      "bytes": 1012,
+      "sha256": "878d058d51c63222082a1abcda33d022cfa830176f168ae9bd04291ff6c87854"
+    },
+    "outputs/source-snapshots/n27-refine-before-chirality-20260919/vendor/NDTensors/ext/NDTensorsJLArraysExt/NDTensorsJLArraysExt.jl": {
+      "bytes": 150,
+      "sha256": "c52d0e1359ff2245acf3da6499c74f5b5c1a0c94da6417839a7ce81532b7a25f"
+    },
+    "outputs/source-snapshots/n27-refine-before-chirality-20260919/vendor/NDTensors/ext/NDTensorsJLArraysExt/copyto.jl": {
+      "bytes": 933,
+      "sha256": "3845eefcfe25c541115f93ff25454f0a45bf196e04b68382e331fce14c9295e7"
+    },
+    "outputs/source-snapshots/n27-refine-before-chirality-20260919/vendor/NDTensors/ext/NDTensorsJLArraysExt/indexing.jl": {
+      "bytes": 535,
+      "sha256": "5fc8f8ad3ac50a44a4c198f5646aba9a85b4988b601982da61a7a49a772c6dcb"
+    },
+    "outputs/source-snapshots/n27-refine-before-chirality-20260919/vendor/NDTensors/ext/NDTensorsJLArraysExt/linearalgebra.jl": {
+      "bytes": 1832,
+      "sha256": "a1573a844829ee4d0069275be5803d5038b58ca026abe6eed6d820c8acb78d41"
+    },
+    "outputs/source-snapshots/n27-refine-before-chirality-20260919/vendor/NDTensors/ext/NDTensorsJLArraysExt/mul.jl": {
+      "bytes": 1186,
+      "sha256": "72e3e6e22d1d5e6c006e3a82f8aaf5559b7f88bb27cb88ad7b380d557a2b9632"
+    },
+    "outputs/source-snapshots/n27-refine-before-chirality-20260919/vendor/NDTensors/ext/NDTensorsJLArraysExt/permutedims.jl": {
+      "bytes": 797,
+      "sha256": "3acb431354be8599e802bb100c499f17680c31e05260a6d1c0277132e9b774b2"
+    },
+    "outputs/source-snapshots/n27-refine-before-chirality-20260919/vendor/NDTensors/ext/NDTensorsMappedArraysExt/NDTensorsMappedArraysExt.jl": {
+      "bytes": 1542,
+      "sha256": "9ad0b0aed6d7fad2483c7832bbb0e64f62ccfd2db28a02d8ff821bfdadd76cf6"
+    },
+    "outputs/source-snapshots/n27-refine-before-chirality-20260919/vendor/NDTensors/ext/NDTensorsMetalExt/NDTensorsMetalExt.jl": {
+      "bytes": 212,
+      "sha256": "3c0a3e75578417edc321b9ac0388f5a715acde4d11f3f79282580cee67c50fef"
+    },
+    "outputs/source-snapshots/n27-refine-before-chirality-20260919/vendor/NDTensors/ext/NDTensorsMetalExt/adapt.jl": {
+      "bytes": 1218,
+      "sha256": "8abdb539d3f47701f32e3805b0f22188ffe09fccb6ad0037f140e863cf7c944b"
+    },
+    "outputs/source-snapshots/n27-refine-before-chirality-20260919/vendor/NDTensors/ext/NDTensorsMetalExt/append.jl": {
+      "bytes": 494,
+      "sha256": "f959252459f5de9815cfd9769f091b2c1bb3e42832174e0a0dcf0556cbb2daa7"
+    },
+    "outputs/source-snapshots/n27-refine-before-chirality-20260919/vendor/NDTensors/ext/NDTensorsMetalExt/copyto.jl": {
+      "bytes": 875,
+      "sha256": "89e61ab070b7500a54dda539c2532ef6cedc69615cef159c1e6b68631f8d7853"
+    },
+    "outputs/source-snapshots/n27-refine-before-chirality-20260919/vendor/NDTensors/ext/NDTensorsMetalExt/indexing.jl": {
+      "bytes": 516,
+      "sha256": "a9980cb384868bc7a7253d5bb3868bc0dc30910d1ecf836a1be78333d0d89ee4"
+    },
+    "outputs/source-snapshots/n27-refine-before-chirality-20260919/vendor/NDTensors/ext/NDTensorsMetalExt/linearalgebra.jl": {
+      "bytes": 1722,
+      "sha256": "a3f2cd3e72254c33b3f5728fed9bbb7bc8ef45dcf37000d7788bc230fcc18cc9"
+    },
+    "outputs/source-snapshots/n27-refine-before-chirality-20260919/vendor/NDTensors/ext/NDTensorsMetalExt/mul.jl": {
+      "bytes": 1288,
+      "sha256": "a40ab18645e079125811c6e25d3fcf9ce1a7c817691b22a659ab309b19f15629"
+    },
+    "outputs/source-snapshots/n27-refine-before-chirality-20260919/vendor/NDTensors/ext/NDTensorsMetalExt/permutedims.jl": {
+      "bytes": 1406,
+      "sha256": "008d467a5cbc59ddd4859a7313749f941cc615043c6e7222fa48f733086f01c7"
+    },
+    "outputs/source-snapshots/n27-refine-before-chirality-20260919/vendor/NDTensors/ext/NDTensorsMetalExt/set_types.jl": {
+      "bytes": 250,
+      "sha256": "6b4b915b4ea4b7c843e780be8f846cad4bfce85a3ecb59bbf7efff7eaff5cc74"
+    },
+    "outputs/source-snapshots/n27-refine-before-chirality-20260919/vendor/NDTensors/ext/NDTensorsOctavianExt/NDTensorsOctavianExt.jl": {
+      "bytes": 110,
+      "sha256": "da1dc0f60d567fc36f46f4cfbac218d618b76db3c760e5392c774c19acf72663"
+    },
+    "outputs/source-snapshots/n27-refine-before-chirality-20260919/vendor/NDTensors/ext/NDTensorsOctavianExt/import.jl": {
+      "bytes": 43,
+      "sha256": "f2d8a4be22d07849ec3ea5274e02f310dfedd90bfed960d4441e5c69556a43a6"
+    },
+    "outputs/source-snapshots/n27-refine-before-chirality-20260919/vendor/NDTensors/ext/NDTensorsOctavianExt/octavian.jl": {
+      "bytes": 419,
+      "sha256": "979931868e2b22652b2825eb73aa187e5da409a61d508889f17de7d8e6efee48"
+    },
+    "outputs/source-snapshots/n27-refine-before-chirality-20260919/vendor/NDTensors/ext/NDTensorsTBLISExt/NDTensorsTBLISExt.jl": {
+      "bytes": 129,
+      "sha256": "5b613aedc8141e47c57011f92609657d932496fe3bf5651d6e3e29c5b148240e"
+    },
+    "outputs/source-snapshots/n27-refine-before-chirality-20260919/vendor/NDTensors/ext/NDTensorsTBLISExt/contract.jl": {
+      "bytes": 988,
+      "sha256": "db281c3a609e01e909595dd46db2f1c546234a80510bbb4ae7c52bfc17829471"
+    },
+    "outputs/source-snapshots/n27-refine-before-chirality-20260919/vendor/NDTensors/ext/NDTensorscuTENSORExt/NDTensorscuTENSORExt.jl": {
+      "bytes": 55,
+      "sha256": "d550d70ebaff58ad9f2fbe752e7e79fc5f37d8b6ff0b246db01e17f2e1fb3190"
+    },
+    "outputs/source-snapshots/n27-refine-before-chirality-20260919/vendor/NDTensors/ext/NDTensorscuTENSORExt/contract.jl": {
+      "bytes": 2150,
+      "sha256": "0e87d4952463e12b815fa44b6cd297d4c618e963dbcb870195af8387ec0601ef"
+    },
+    "outputs/source-snapshots/n27-refine-before-chirality-20260919/vendor/NDTensors/src/NDTensors.jl": {
+      "bytes": 8705,
+      "sha256": "93c116350d38bd51a23896b892a09554b80c4f60606a66af532c85e9316903ed"
+    },
+    "outputs/source-snapshots/n27-refine-before-chirality-20260919/vendor/NDTensors/src/abstractarray/diaginterface.jl": {
+      "bytes": 743,
+      "sha256": "dafc569213a1ef7faefa0602a836caf036645170631fd40ba2c0f511ecf9ffe0"
+    },
+    "outputs/source-snapshots/n27-refine-before-chirality-20260919/vendor/NDTensors/src/abstractarray/generic_array_constructors.jl": {
+      "bytes": 1762,
+      "sha256": "377bbc3565a58ebcacce575fb3038458c990b31038f45a388d75563d2eb4d3e3"
+    },
+    "outputs/source-snapshots/n27-refine-before-chirality-20260919/vendor/NDTensors/src/abstractarray/iscu.jl": {
+      "bytes": 303,
+      "sha256": "a4db07b5b7bf728fd27004e568b2f428918ad39c8fd2b6ef7942f11b5eeb0e79"
+    },
+    "outputs/source-snapshots/n27-refine-before-chirality-20260919/vendor/NDTensors/src/abstractarray/mul.jl": {
+      "bytes": 429,
+      "sha256": "cdfeab2363d527ab3dcb0077e44b61bdf338fd1ea28c3d7e844adf826893ee0d"
+    },
+    "outputs/source-snapshots/n27-refine-before-chirality-20260919/vendor/NDTensors/src/abstractarray/permutedims.jl": {
+      "bytes": 261,
+      "sha256": "fbf318e87d0ba11fafd55ce545a05bee96e5900292a20a885f810519f8155ae1"
+    },
+    "outputs/source-snapshots/n27-refine-before-chirality-20260919/vendor/NDTensors/src/abstractarray/set_types.jl": {
+      "bytes": 504,
+      "sha256": "c5897f70892af64f9de9fbc0e7fbc7b171079bfaed01c054e72fa7d99c58523e"
+    },
+    "outputs/source-snapshots/n27-refine-before-chirality-20260919/vendor/NDTensors/src/abstractarray/similar.jl": {
+      "bytes": 5988,
+      "sha256": "2a6fa581a450b2cbb705cd1dbca84930a54a0290934bfb3f424ad7c7f1c9f0f2"
+    },
+    "outputs/source-snapshots/n27-refine-before-chirality-20260919/vendor/NDTensors/src/abstractarray/tensoralgebra/contract.jl": {
+      "bytes": 5081,
+      "sha256": "2ca9c0080c960d381e850153ebb7f1aeac3487f6fe339c4182a24ef0dd9b440c"
+    },
+    "outputs/source-snapshots/n27-refine-before-chirality-20260919/vendor/NDTensors/src/abstractarray/to_shape.jl": {
+      "bytes": 522,
+      "sha256": "902d5b8c92b0f1a2bdb6320d1a4ecb6a8ff01aa391bce372215fcd8c9e09cfe3"
+    },
+    "outputs/source-snapshots/n27-refine-before-chirality-20260919/vendor/NDTensors/src/adapt.jl": {
+      "bytes": 1476,
+      "sha256": "703430e951574cc2213197db19872e4cce4731f5683dc66a067e15b14cd43ded"
+    },
+    "outputs/source-snapshots/n27-refine-before-chirality-20260919/vendor/NDTensors/src/aliasstyle.jl": {
+      "bytes": 1132,
+      "sha256": "37b9abfaf80131020f72a518a454ed1404dabcfdac579c19d012fb0428644dbd"
+    },
+    "outputs/source-snapshots/n27-refine-before-chirality-20260919/vendor/NDTensors/src/array/mul.jl": {
+      "bytes": 184,
+      "sha256": "b289d62407d9013511623a21d2bab0234f9aeab86a4e8b3075e0261aad2fff07"
+    },
+    "outputs/source-snapshots/n27-refine-before-chirality-20260919/vendor/NDTensors/src/array/permutedims.jl": {
+      "bytes": 756,
+      "sha256": "cd1c04c0b1454f105eac0499413ea8a441641220b498812ce68e9b00453246bc"
+    },
+    "outputs/source-snapshots/n27-refine-before-chirality-20260919/vendor/NDTensors/src/blocksparse/adapt.jl": {
+      "bytes": 165,
+      "sha256": "02cac5677ab74ff2430f7e32a8580e7b5cd4cb15d1f02b210c062148ff03aa5e"
+    },
+    "outputs/source-snapshots/n27-refine-before-chirality-20260919/vendor/NDTensors/src/blocksparse/block.jl": {
+      "bytes": 4187,
+      "sha256": "87a64296109a7b5a31f334f207c70c313b28cbd20759151ac79a84eda3abb224"
+    },
+    "outputs/source-snapshots/n27-refine-before-chirality-20260919/vendor/NDTensors/src/blocksparse/blockdims.jl": {
+      "bytes": 4982,
+      "sha256": "150dc643646b655b35c9747618e09cc96cb9fec174d9465e83329d8059227096"
+    },
+    "outputs/source-snapshots/n27-refine-before-chirality-20260919/vendor/NDTensors/src/blocksparse/blockoffsets.jl": {
+      "bytes": 5049,
+      "sha256": "c7ed7c47f72114478552833472ffd4b53b70c8a53ed89044cf6b5ef123ae2f2e"
+    },
+    "outputs/source-snapshots/n27-refine-before-chirality-20260919/vendor/NDTensors/src/blocksparse/blocksparse.jl": {
+      "bytes": 7307,
+      "sha256": "688917f03103228bbd16afd731dcba418925d47e73862d2a41d5e59e7886d93e"
+    },
+    "outputs/source-snapshots/n27-refine-before-chirality-20260919/vendor/NDTensors/src/blocksparse/blocksparsetensor.jl": {
+      "bytes": 34124,
+      "sha256": "2c85d550bf5b36f0e6b38c8dc2ae8f4733ec48bd119803cdde9456f7119289c7"
+    },
+    "outputs/source-snapshots/n27-refine-before-chirality-20260919/vendor/NDTensors/src/blocksparse/combiner.jl": {
+      "bytes": 5267,
+      "sha256": "0206a11fd7e4bf672e567ce98ab3b52accbcfca5a487daaf130c9f683ed4b2a4"
+    },
+    "outputs/source-snapshots/n27-refine-before-chirality-20260919/vendor/NDTensors/src/blocksparse/contract.jl": {
+      "bytes": 2187,
+      "sha256": "6b5e86ef8621732d67471fa43bb0c528088351d3379c72b476c571ffd329bee4"
+    },
+    "outputs/source-snapshots/n27-refine-before-chirality-20260919/vendor/NDTensors/src/blocksparse/contract_generic.jl": {
+      "bytes": 3868,
+      "sha256": "4b2861b60a9e122a91c2a5325955bd21c9812ae7281875a25ac5832333d29c7d"
+    },
+    "outputs/source-snapshots/n27-refine-before-chirality-20260919/vendor/NDTensors/src/blocksparse/contract_sequential.jl": {
+      "bytes": 3440,
+      "sha256": "33a8c02b9da93aa7a77291134681860051de2069662e5db005e746348825dd67"
+    },
+    "outputs/source-snapshots/n27-refine-before-chirality-20260919/vendor/NDTensors/src/blocksparse/contract_threaded.jl": {
+      "bytes": 3049,
+      "sha256": "86a30e45a582e0316626822f3f9a65d4b7fa67f408af97db9c69b778c68050c6"
+    },
+    "outputs/source-snapshots/n27-refine-before-chirality-20260919/vendor/NDTensors/src/blocksparse/contract_utilities.jl": {
+      "bytes": 2573,
+      "sha256": "9174a6a4022b6b5269c67ced65a8e6bd0fffc8c8368c5f9571d852de76d9d5b8"
+    },
+    "outputs/source-snapshots/n27-refine-before-chirality-20260919/vendor/NDTensors/src/blocksparse/diagblocksparse.jl": {
+      "bytes": 23733,
+      "sha256": "565c6f0cd87b3fc3e5cc0ddeb52524567530152629e5a9bb379ba93f57bb2d20"
+    },
+    "outputs/source-snapshots/n27-refine-before-chirality-20260919/vendor/NDTensors/src/blocksparse/fermions.jl": {
+      "bytes": 145,
+      "sha256": "26af87d934bc9b167fdb92c5f38ba9c76d213933e9506b2fb91a6fafe67e13fc"
+    },
+    "outputs/source-snapshots/n27-refine-before-chirality-20260919/vendor/NDTensors/src/blocksparse/linearalgebra.jl": {
+      "bytes": 13854,
+      "sha256": "fde39b44654889cef82b2fe1f330e03d814b16d1bb786a801ae176ebbb3d880b"
+    },
+    "outputs/source-snapshots/n27-refine-before-chirality-20260919/vendor/NDTensors/src/blocksparse/similar.jl": {
+      "bytes": 2384,
+      "sha256": "2ecf8a7b0afe013be4c9fd06d417cf91e957f09f49b41f2a90c9333d1a1a16af"
+    },
+    "outputs/source-snapshots/n27-refine-before-chirality-20260919/vendor/NDTensors/src/blocksparse/truncate_spectrum.jl": {
+      "bytes": 4437,
+      "sha256": "3f5b958c7878288619b7bc64f2449a5c36c2b9587e7906a20488448ef27a2a8b"
+    },
+    "outputs/source-snapshots/n27-refine-before-chirality-20260919/vendor/NDTensors/src/combiner/combiner.jl": {
+      "bytes": 5546,
+      "sha256": "4a0e1e9eb7a3ae941bfdf389db0d310824f24c278aa59e6471e662a9ab66b19f"
+    },
+    "outputs/source-snapshots/n27-refine-before-chirality-20260919/vendor/NDTensors/src/combiner/contract.jl": {
+      "bytes": 3914,
+      "sha256": "efd57cea1168a7e13401a0ae9b05e3ea119d47dd3a7134f53fe4974c3d647bac"
+    },
+    "outputs/source-snapshots/n27-refine-before-chirality-20260919/vendor/NDTensors/src/default_kwargs.jl": {
+      "bytes": 451,
+      "sha256": "48a588e7cfcfeec1f13cb3de4b0e8359164de14da21710083499afbd7402e1b5"
+    },
+    "outputs/source-snapshots/n27-refine-before-chirality-20260919/vendor/NDTensors/src/dense/dense.jl": {
+      "bytes": 4605,
+      "sha256": "114ea60f15bd54b422f95234b11b86e57a822a1740130734813116f6a8ebac21"
+    },
+    "outputs/source-snapshots/n27-refine-before-chirality-20260919/vendor/NDTensors/src/dense/densetensor.jl": {
+      "bytes": 8936,
+      "sha256": "eb656cf8d9af846c1e8fa268f18458939296995aed805a7a6e86aa7f4a5d9e8d"
+    },
+    "outputs/source-snapshots/n27-refine-before-chirality-20260919/vendor/NDTensors/src/dense/generic_array_constructors.jl": {
+      "bytes": 1156,
+      "sha256": "47b3ba9ae03dfe3bf24756804b657b37413654f598d8b98c42b4b354a33dfdae"
+    },
+    "outputs/source-snapshots/n27-refine-before-chirality-20260919/vendor/NDTensors/src/dense/linearalgebra/decompositions.jl": {
+      "bytes": 3137,
+      "sha256": "6a0d32e99fe1b0aa70ed04f803aed53d66fc0127253d312a445ee092753b43e9"
+    },
+    "outputs/source-snapshots/n27-refine-before-chirality-20260919/vendor/NDTensors/src/dense/set_types.jl": {
+      "bytes": 761,
+      "sha256": "1dc6576102a723c2dbb6578a7555f7d1a3b5bafe4ba0d5c5325b77703e245ff5"
+    },
+    "outputs/source-snapshots/n27-refine-before-chirality-20260919/vendor/NDTensors/src/dense/tensoralgebra/contract.jl": {
+      "bytes": 6266,
+      "sha256": "6e130bff906e28909b0027fdf2ac99bf8274503039c83bf2773878c603cb70ab"
+    },
+    "outputs/source-snapshots/n27-refine-before-chirality-20260919/vendor/NDTensors/src/dense/tensoralgebra/outer.jl": {
+      "bytes": 1141,
+      "sha256": "95feeda74e5bd9186769c9573909e8a83c8238b6c0df476817d263807235245c"
+    },
+    "outputs/source-snapshots/n27-refine-before-chirality-20260919/vendor/NDTensors/src/deprecated.jl": {
+      "bytes": 239,
+      "sha256": "32c8a23e3f8971a7a14e82dbcfbdfbfdf523eafd5d5db495a61016a45d0a7f14"
+    },
+    "outputs/source-snapshots/n27-refine-before-chirality-20260919/vendor/NDTensors/src/diag/diag.jl": {
+      "bytes": 4597,
+      "sha256": "4d86cc755b5c2100cd7c1ce56a4107dce686f913c3b22a721e643387f5f2d106"
+    },
+    "outputs/source-snapshots/n27-refine-before-chirality-20260919/vendor/NDTensors/src/diag/diagtensor.jl": {
+      "bytes": 6936,
+      "sha256": "a85308112964847e38ede59e26341561e4bd6dbf6873dd740598fb8a4150a6a0"
+    },
+    "outputs/source-snapshots/n27-refine-before-chirality-20260919/vendor/NDTensors/src/diag/set_types.jl": {
+      "bytes": 702,
+      "sha256": "eae287d3a100a7e3fb2896fca49a3642f92d4ed0d55fb2d08d974ae4781449a3"
+    },
+    "outputs/source-snapshots/n27-refine-before-chirality-20260919/vendor/NDTensors/src/diag/similar.jl": {
+      "bytes": 1091,
+      "sha256": "196bc09444f3b2313adc26fee80da2f49b1501cf663155bfd6fd1e559ce0148a"
+    },
+    "outputs/source-snapshots/n27-refine-before-chirality-20260919/vendor/NDTensors/src/diag/tensoralgebra/contract.jl": {
+      "bytes": 8222,
+      "sha256": "397d27c466bcf5fe3dd8e88deb196ba3d4a70b6773cc800297287f6e5145eb96"
+    },
+    "outputs/source-snapshots/n27-refine-before-chirality-20260919/vendor/NDTensors/src/diag/tensoralgebra/outer.jl": {
+      "bytes": 1042,
+      "sha256": "f29c15122ffe7b8bd15ea47dba3c34dbf2a3fb3b4268d38a1398a54ca585d715"
+    },
+    "outputs/source-snapshots/n27-refine-before-chirality-20260919/vendor/NDTensors/src/dims.jl": {
+      "bytes": 2172,
+      "sha256": "a58a06bf0f6e75706257249743ad9cebdb361a20949e9ba691642c736835daee"
+    },
+    "outputs/source-snapshots/n27-refine-before-chirality-20260919/vendor/NDTensors/src/empty/EmptyTensor.jl": {
+      "bytes": 5659,
+      "sha256": "73af0d8585bed3922717d34eb426b03689adb90e962c9a4cb2e26f6726fbdc68"
+    },
+    "outputs/source-snapshots/n27-refine-before-chirality-20260919/vendor/NDTensors/src/empty/adapt.jl": {
+      "bytes": 280,
+      "sha256": "5866d1124f4ae6d5474f7a71ec6d6178e2b009e02b4d26e7a680fe90e6edecf7"
+    },
+    "outputs/source-snapshots/n27-refine-before-chirality-20260919/vendor/NDTensors/src/empty/empty.jl": {
+      "bytes": 2881,
+      "sha256": "749946e78eb9b6506cd20d9f86a460b867b3184e6ebbf0cd79c2368f0cf786cc"
+    },
+    "outputs/source-snapshots/n27-refine-before-chirality-20260919/vendor/NDTensors/src/empty/tensoralgebra/contract.jl": {
+      "bytes": 2361,
+      "sha256": "e998e877e4600b116d47ce946e8cd98211d0cf92e524adc654f7db8deaa1190f"
+    },
+    "outputs/source-snapshots/n27-refine-before-chirality-20260919/vendor/NDTensors/src/emptynumber.jl": {
+      "bytes": 1446,
+      "sha256": "18a15b78659bb2612c92a84449a45a7dc30388900286e1d57a559688b19fec52"
+    },
+    "outputs/source-snapshots/n27-refine-before-chirality-20260919/vendor/NDTensors/src/exports.jl": {
+      "bytes": 1252,
+      "sha256": "5780406d52a704d209d3160f4558159ddfa841f347ec36bfd6d038ec92770648"
+    },
+    "outputs/source-snapshots/n27-refine-before-chirality-20260919/vendor/NDTensors/src/imports.jl": {
+      "bytes": 1806,
+      "sha256": "fa0ebef6a1db4ad0b6bdecea2c17e82ed26c20c473006e3016b9a5f08f313c04"
+    },
+    "outputs/source-snapshots/n27-refine-before-chirality-20260919/vendor/NDTensors/src/kagome_source_identity.jl": {
+      "bytes": 985,
+      "sha256": "8aafb41dceea0bcdf042fa981f73a024f8a02f24d82e5dc1981f7f5631fd8543"
+    },
+    "outputs/source-snapshots/n27-refine-before-chirality-20260919/vendor/NDTensors/src/lib/AMDGPUExtensions/.JuliaFormatter.toml": {
+      "bytes": 26,
+      "sha256": "7dcb26f6bc8dd8a9ddb2efdcd31fc918d15f078ff50a83aaecd8dbf56f4bdb13"
+    },
+    "outputs/source-snapshots/n27-refine-before-chirality-20260919/vendor/NDTensors/src/lib/AMDGPUExtensions/src/AMDGPUExtensions.jl": {
+      "bytes": 48,
+      "sha256": "636dc90e1c2b4226cf5ec7b473b6f86f7803574353cb2215e42d45ddee5d2380"
+    },
+    "outputs/source-snapshots/n27-refine-before-chirality-20260919/vendor/NDTensors/src/lib/AMDGPUExtensions/src/roc.jl": {
+      "bytes": 638,
+      "sha256": "d24a448ae7b72b5167f7117fbefe0128e6dab4e64fa744d51def80db7e9dbafb"
+    },
+    "outputs/source-snapshots/n27-refine-before-chirality-20260919/vendor/NDTensors/src/lib/AMDGPUExtensions/test/runtests.jl": {
+      "bytes": 284,
+      "sha256": "298bb6050e8d35100f16cb678dabe29bd051598ef923e33e00217e9c04c33678"
+    },
+    "outputs/source-snapshots/n27-refine-before-chirality-20260919/vendor/NDTensors/src/lib/BackendSelection/.JuliaFormatter.toml": {
+      "bytes": 26,
+      "sha256": "7dcb26f6bc8dd8a9ddb2efdcd31fc918d15f078ff50a83aaecd8dbf56f4bdb13"
+    },
+    "outputs/source-snapshots/n27-refine-before-chirality-20260919/vendor/NDTensors/src/lib/BackendSelection/src/BackendSelection.jl": {
+      "bytes": 272,
+      "sha256": "c7d1da4c95b760078b8b4f18350c437e403c50795ad79b684e27f0b1679368dd"
+    },
+    "outputs/source-snapshots/n27-refine-before-chirality-20260919/vendor/NDTensors/src/lib/BackendSelection/src/abstractbackend.jl": {
+      "bytes": 153,
+      "sha256": "0fb2873af5570b1c1492e0677408a034a64a607d2c93df95abbec31ef3f2713b"
+    },
+    "outputs/source-snapshots/n27-refine-before-chirality-20260919/vendor/NDTensors/src/lib/BackendSelection/src/backend_types.jl": {
+      "bytes": 1911,
+      "sha256": "ebcd62b00d17d16d48f6d7d941b9f2d28010ba4d162ba02a8e71140761bf5ba2"
+    },
+    "outputs/source-snapshots/n27-refine-before-chirality-20260919/vendor/NDTensors/src/lib/BackendSelection/test/Project.toml": {
+      "bytes": 104,
+      "sha256": "6028c353382f17791c029e17fe16b661cd81873e181a609caf3ed60b60560e1b"
+    },
+    "outputs/source-snapshots/n27-refine-before-chirality-20260919/vendor/NDTensors/src/lib/BackendSelection/test/runtests.jl": {
+      "bytes": 1076,
+      "sha256": "46f712cfacfe4091b35ef5ecbd91c3f7388df6f76e571ba4a16ae6aa03ccd8c5"
+    },
+    "outputs/source-snapshots/n27-refine-before-chirality-20260919/vendor/NDTensors/src/lib/CUDAExtensions/.JuliaFormatter.toml": {
+      "bytes": 26,
+      "sha256": "7dcb26f6bc8dd8a9ddb2efdcd31fc918d15f078ff50a83aaecd8dbf56f4bdb13"
+    },
+    "outputs/source-snapshots/n27-refine-before-chirality-20260919/vendor/NDTensors/src/lib/CUDAExtensions/src/CUDAExtensions.jl": {
+      "bytes": 47,
+      "sha256": "50d3e5fede2305e521da55a51fe7a12efd53e93b962c5197c73fd86bf45bd1d4"
+    },
+    "outputs/source-snapshots/n27-refine-before-chirality-20260919/vendor/NDTensors/src/lib/CUDAExtensions/src/cuda.jl": {
+      "bytes": 661,
+      "sha256": "9c1a2ab1e413281d124009d36835f26ba8131e62706dbbdb2b6f18acd0adf58c"
+    },
+    "outputs/source-snapshots/n27-refine-before-chirality-20260919/vendor/NDTensors/src/lib/CUDAExtensions/test/runtests.jl": {
+      "bytes": 273,
+      "sha256": "a850ccd891344cbb1384b9322932d1bf43d0140ae47d8722e85b004af3553e90"
+    },
+    "outputs/source-snapshots/n27-refine-before-chirality-20260919/vendor/NDTensors/src/lib/Expose/.JuliaFormatter.toml": {
+      "bytes": 26,
+      "sha256": "7dcb26f6bc8dd8a9ddb2efdcd31fc918d15f078ff50a83aaecd8dbf56f4bdb13"
+    },
+    "outputs/source-snapshots/n27-refine-before-chirality-20260919/vendor/NDTensors/src/lib/Expose/README.md": {
+      "bytes": 496,
+      "sha256": "dfc15377f47fbf8463c35779f88e329ae237e0ff0122509700b5810573dca132"
+    },
+    "outputs/source-snapshots/n27-refine-before-chirality-20260919/vendor/NDTensors/src/lib/Expose/TODO.md": {
+      "bytes": 172,
+      "sha256": "f568062cfd9a4f0a3241512f85d31bac9ffa3b9117efae1ed5a814fa0afe7dec"
+    },
+    "outputs/source-snapshots/n27-refine-before-chirality-20260919/vendor/NDTensors/src/lib/Expose/src/Expose.jl": {
+      "bytes": 600,
+      "sha256": "1873ff885d771dde4de13ee2566444f20b3fb50b8adedc7486ad26d7b3198726"
+    },
+    "outputs/source-snapshots/n27-refine-before-chirality-20260919/vendor/NDTensors/src/lib/Expose/src/exposed.jl": {
+      "bytes": 733,
+      "sha256": "688e7cb2db3a68ff97bae652640ffbd0e931ba4148edab29d13a12546bdf043a"
+    },
+    "outputs/source-snapshots/n27-refine-before-chirality-20260919/vendor/NDTensors/src/lib/Expose/src/functions/abstractarray.jl": {
+      "bytes": 476,
+      "sha256": "7acf81bb297f49240446f4f61d31b85d297b3335cc97b49bd220693a48f1679c"
+    },
+    "outputs/source-snapshots/n27-refine-before-chirality-20260919/vendor/NDTensors/src/lib/Expose/src/functions/adapt.jl": {
+      "bytes": 405,
+      "sha256": "fc6a78e161b3cc7097c51b29b157f33d314bd262077597a02e27bac044c3e5e3"
+    },
+    "outputs/source-snapshots/n27-refine-before-chirality-20260919/vendor/NDTensors/src/lib/Expose/src/functions/append.jl": {
+      "bytes": 122,
+      "sha256": "ff04c35717bf2addfebbff5b6c65780f6a844714a56b1d2b221250d874e0693d"
+    },
+    "outputs/source-snapshots/n27-refine-before-chirality-20260919/vendor/NDTensors/src/lib/Expose/src/functions/copyto.jl": {
+      "bytes": 106,
+      "sha256": "0e9cd5ebf64e832adf111d3e585ca33e3e7eb2865f868885a06df3a8d5bcbc0f"
+    },
+    "outputs/source-snapshots/n27-refine-before-chirality-20260919/vendor/NDTensors/src/lib/Expose/src/functions/linearalgebra.jl": {
+      "bytes": 767,
+      "sha256": "ac9aa39e22dd459de607ed2198ff57772e1e4fa85e861375eda20945152d4525"
+    },
+    "outputs/source-snapshots/n27-refine-before-chirality-20260919/vendor/NDTensors/src/lib/Expose/src/functions/mul.jl": {
+      "bytes": 148,
+      "sha256": "a0f4d99444b0471765fccdde61216ed8f5b91d6cc38b2df4719f2e66b8738850"
+    },
+    "outputs/source-snapshots/n27-refine-before-chirality-20260919/vendor/NDTensors/src/lib/Expose/src/functions/permutedims.jl": {
+      "bytes": 394,
+      "sha256": "ec3577180b019f360ad85e3c7759f282b094c01b45144799b10267ff4c65c1ca"
+    },
+    "outputs/source-snapshots/n27-refine-before-chirality-20260919/vendor/NDTensors/src/lib/Expose/src/import.jl": {
+      "bytes": 161,
+      "sha256": "c53b91ca346fe1e3067d3cfea41359ca27b157d5088a405ba2c23447d1399044"
+    },
+    "outputs/source-snapshots/n27-refine-before-chirality-20260919/vendor/NDTensors/src/lib/Expose/test/Project.toml": {
+      "bytes": 261,
+      "sha256": "4b2187c8580ca3f1ca4492f89229019fa1a743b5ad35e83fb32aec866bcd42b5"
+    },
+    "outputs/source-snapshots/n27-refine-before-chirality-20260919/vendor/NDTensors/src/lib/Expose/test/runtests.jl": {
+      "bytes": 8033,
+      "sha256": "2ee83b1fcd4bf7d47b9da29b9b4f9a674e19d55cdcd0d6da3ae8e249a7e411a2"
+    },
+    "outputs/source-snapshots/n27-refine-before-chirality-20260919/vendor/NDTensors/src/lib/GPUArraysCoreExtensions/.JuliaFormatter.toml": {
+      "bytes": 26,
+      "sha256": "7dcb26f6bc8dd8a9ddb2efdcd31fc918d15f078ff50a83aaecd8dbf56f4bdb13"
+    },
+    "outputs/source-snapshots/n27-refine-before-chirality-20260919/vendor/NDTensors/src/lib/GPUArraysCoreExtensions/Project.toml": {
+      "bytes": 128,
+      "sha256": "e0267f2c0f73dd928edc0daea60aae622f0e2244da9f990333e45b0586e4e6c6"
+    },
+    "outputs/source-snapshots/n27-refine-before-chirality-20260919/vendor/NDTensors/src/lib/GPUArraysCoreExtensions/src/GPUArraysCoreExtensions.jl": {
+      "bytes": 65,
+      "sha256": "5de26f3c1e1712e69ae4264a1f6ee02f7f08ecf9c35fc937dafe95fa352f3641"
+    },
+    "outputs/source-snapshots/n27-refine-before-chirality-20260919/vendor/NDTensors/src/lib/GPUArraysCoreExtensions/src/gpuarrayscore.jl": {
+      "bytes": 441,
+      "sha256": "7fdc8fdb5951a674c32bfb79592788e91e4113bb78099178d9a6950742d655fa"
+    },
+    "outputs/source-snapshots/n27-refine-before-chirality-20260919/vendor/NDTensors/src/lib/GPUArraysCoreExtensions/test/runtests.jl": {
+      "bytes": 176,
+      "sha256": "8755efad84f4ebb5a4ef825f3ed3b276eb4e20de3bf5d08792042d6b2da09d6f"
+    },
+    "outputs/source-snapshots/n27-refine-before-chirality-20260919/vendor/NDTensors/src/lib/MetalExtensions/.JuliaFormatter.toml": {
+      "bytes": 26,
+      "sha256": "7dcb26f6bc8dd8a9ddb2efdcd31fc918d15f078ff50a83aaecd8dbf56f4bdb13"
+    },
+    "outputs/source-snapshots/n27-refine-before-chirality-20260919/vendor/NDTensors/src/lib/MetalExtensions/src/MetalExtensions.jl": {
+      "bytes": 49,
+      "sha256": "16ed92900cd973ab8ccc4be31d446bbf291d55cb2ae48676f7d499b99d8f86fb"
+    },
+    "outputs/source-snapshots/n27-refine-before-chirality-20260919/vendor/NDTensors/src/lib/MetalExtensions/src/metal.jl": {
+      "bytes": 669,
+      "sha256": "e1b799e61c9349bdd631e77ddeabae63e79d7a3f1c1475f1fa55876a95a2dbe6"
+    },
+    "outputs/source-snapshots/n27-refine-before-chirality-20260919/vendor/NDTensors/src/lib/MetalExtensions/test/runtests.jl": {
+      "bytes": 162,
+      "sha256": "860df1edc08553a8815c5631be7944909a539b802fb612c4aaf6066a37b5f665"
+    },
+    "outputs/source-snapshots/n27-refine-before-chirality-20260919/vendor/NDTensors/src/lib/RankFactorization/.JuliaFormatter.toml": {
+      "bytes": 26,
+      "sha256": "7dcb26f6bc8dd8a9ddb2efdcd31fc918d15f078ff50a83aaecd8dbf56f4bdb13"
+    },
+    "outputs/source-snapshots/n27-refine-before-chirality-20260919/vendor/NDTensors/src/lib/RankFactorization/src/RankFactorization.jl": {
+      "bytes": 115,
+      "sha256": "97b0e57d4bae6f04d8391c61d97c2fce0cf856249f72bcb24f995ce875582de9"
+    },
+    "outputs/source-snapshots/n27-refine-before-chirality-20260919/vendor/NDTensors/src/lib/RankFactorization/src/default_kwargs.jl": {
+      "bytes": 451,
+      "sha256": "48a588e7cfcfeec1f13cb3de4b0e8359164de14da21710083499afbd7402e1b5"
+    },
+    "outputs/source-snapshots/n27-refine-before-chirality-20260919/vendor/NDTensors/src/lib/RankFactorization/src/spectrum.jl": {
+      "bytes": 618,
+      "sha256": "33f3df88dc5464ea24192f459d2bd962af2107339187f7f094ad9333eb18ac3e"
+    },
+    "outputs/source-snapshots/n27-refine-before-chirality-20260919/vendor/NDTensors/src/lib/RankFactorization/src/truncate_spectrum.jl": {
+      "bytes": 2754,
+      "sha256": "f17a8bf3795f08f8c8b7fe4446ede6f91b3e3144471fd039f9e26776a8de4c1b"
+    },
+    "outputs/source-snapshots/n27-refine-before-chirality-20260919/vendor/NDTensors/src/linearalgebra/linearalgebra.jl": {
+      "bytes": 15590,
+      "sha256": "395a7d6db964aa0c8bddc37752d8d89a2cf13d1679c6569c2c0a4108435e90b3"
+    },
+    "outputs/source-snapshots/n27-refine-before-chirality-20260919/vendor/NDTensors/src/linearalgebra/svd.jl": {
+      "bytes": 1874,
+      "sha256": "682f12af30e8a7e215b38d67af071db3e0f53e17ac2dfcc3c2dc7f828514ddc5"
+    },
+    "outputs/source-snapshots/n27-refine-before-chirality-20260919/vendor/NDTensors/src/linearalgebra/symmetric.jl": {
+      "bytes": 1074,
+      "sha256": "7d2b80f41ef1a370a673c8bdd951224ff3c6c94bc0089528f94c4b00cbef1349"
+    },
+    "outputs/source-snapshots/n27-refine-before-chirality-20260919/vendor/NDTensors/src/nodata.jl": {
+      "bytes": 146,
+      "sha256": "8cd0c0d0fe97d6007c364561a180037199a4852e8da8e12e7dc17df0086f82c5"
+    },
+    "outputs/source-snapshots/n27-refine-before-chirality-20260919/vendor/NDTensors/src/tensor/set_types.jl": {
+      "bytes": 1075,
+      "sha256": "14baee12a641bad6631b7c268bb92102b066a13ee16e4908d2819db42e01f27c"
+    },
+    "outputs/source-snapshots/n27-refine-before-chirality-20260919/vendor/NDTensors/src/tensor/similar.jl": {
+      "bytes": 3897,
+      "sha256": "ac6c5231858c06cc7bef492c461db583b191645e3e3daef61f463d2a87f635cd"
+    },
+    "outputs/source-snapshots/n27-refine-before-chirality-20260919/vendor/NDTensors/src/tensor/tensor.jl": {
+      "bytes": 15071,
+      "sha256": "2fb8ab3c1eba14d556963f8b231b91f4e8d6235a3f7f349530db4b15bda6b2b9"
+    },
+    "outputs/source-snapshots/n27-refine-before-chirality-20260919/vendor/NDTensors/src/tensoroperations/contraction_logic.jl": {
+      "bytes": 18564,
+      "sha256": "13183fce7f3935e46b6045abcf6939a686187c65cd050298f21a57d13abe1ce3"
+    },
+    "outputs/source-snapshots/n27-refine-before-chirality-20260919/vendor/NDTensors/src/tensoroperations/generic_tensor_operations.jl": {
+      "bytes": 8063,
+      "sha256": "4f185ec78d7d2fd43a5b825b37738c7110da0b8cb3d90b52a51a2a3af36357d0"
+    },
+    "outputs/source-snapshots/n27-refine-before-chirality-20260919/vendor/NDTensors/src/tensorstorage/default_storage.jl": {
+      "bytes": 941,
+      "sha256": "165385a10b9d429d177382f1be85bb05993af6236d615d15f453febfdfd68a4b"
+    },
+    "outputs/source-snapshots/n27-refine-before-chirality-20260919/vendor/NDTensors/src/tensorstorage/set_types.jl": {
+      "bytes": 345,
+      "sha256": "2b3e1d4b912e1c1bf59a297fb764f7f2de329504b59178c756c6f015ffb3a229"
+    },
+    "outputs/source-snapshots/n27-refine-before-chirality-20260919/vendor/NDTensors/src/tensorstorage/similar.jl": {
+      "bytes": 4252,
+      "sha256": "5df277863e03c364d1c542f590b55b824bc7c59fd80d4cbbe235c541026fbbf5"
+    },
+    "outputs/source-snapshots/n27-refine-before-chirality-20260919/vendor/NDTensors/src/tensorstorage/tensorstorage.jl": {
+      "bytes": 3190,
+      "sha256": "4de5792ce6f2b4428de4312931542f90f899bbea324712ee745aa8c46f532bbd"
+    },
+    "outputs/source-snapshots/n27-refine-before-chirality-20260919/vendor/NDTensors/src/truncate.jl": {
+      "bytes": 2801,
+      "sha256": "29526042ddab5a0a99f185ff422654642c552bc654f7a871593022c3aff1ded3"
+    },
+    "outputs/source-snapshots/n27-refine-before-chirality-20260919/vendor/NDTensors/src/tupletools.jl": {
+      "bytes": 7147,
+      "sha256": "fac0b91a445c0843fff057ad6ff9dede713f68d9945155a99f7b322d4e4e5f7d"
+    }
+  },
+  "limitations": [
+    "Recomputed saved scalar and array arithmetic only; MPS claims rely on separately recorded Julia worker.",
+    "Historical Q3 raw second moment and backend_unchanged flag are absent and remain unfilled; its original archived config was hash-verified.",
+    "One-sweep chi response is not converged chi extrapolation; all finite-sector intervals remain nonrigorous trial comparisons.",
+    "Missing historical CSL completion guards, integrity verdict and parent overlap are not reconstructed."
+  ],
+  "new_ED": false,
+  "new_MPS_contraction": false,
+  "nn": {
+    "chi256_q5": {
+      "backend_identity": "7e9807312d016307b8616db755694d4c33627caed9e402ea167f75cb6e06d8cd",
+      "checkpoint": "outputs/p4-q5-matched-chi256-8to9-20260920-r1/trial/checkpoint-HYsQja",
+      "config_archive_present": true,
+      "cumulative_sweeps": 9,
+      "energy": -10.820387752899613,
+      "errors": {
+        "bond_from_correlations": 0.0,
+        "bond_sum": 1.4210854715202004e-14,
+        "charge": 2.220446049250313e-15,
+        "fixed_charge_zz": 9.992007221626409e-16,
+        "pm_diagonal": 1.7763568394002505e-15,
+        "pm_hermiticity": 1.8324733574742454e-16,
+        "variance_arithmetic": 0.0,
+        "zz_diagonal": 8.326672684688674e-16,
+        "zz_imaginary": 2.6466002731566036e-17,
+        "zz_symmetry": 0.0
+      },
+      "final_truncation": 5.783024944077583e-05,
+      "historical_backend_unchanged_flag": true,
+      "raw_second_moment_available": true,
+      "record": "outputs/p4-q5-matched-chi256-8to9-20260920-r1/validation.toml",
+      "schmidt": [
+        {
+          "bond": 9,
+          "errors": {
+            "entropy_from_saved": 6.661338147750939e-16,
+            "mean_from_density": 4.440892098500626e-16,
+            "mean_from_saved": 2.220446049250313e-16,
+            "probability_sum": 2.220446049250313e-16,
+            "variance_from_correlations": 1.6653345369377348e-16,
+            "variance_from_saved": 1.1102230246251565e-16
+          }
+        },
+        {
+          "bond": 18,
+          "errors": {
+            "entropy_from_saved": 0.0,
+            "mean_from_density": 2.220446049250313e-16,
+            "mean_from_saved": 0.0,
+            "probability_sum": 2.220446049250313e-16,
+            "variance_from_correlations": 1.9984014443252818e-15,
+            "variance_from_saved": 1.6653345369377348e-16
+          }
+        }
+      ],
+      "variance": 0.008123807838103403,
+      "verified_config_path": "outputs/p4-q5-matched-chi256-8to9-20260920-r1/analysis-sources/config.toml"
+    },
+    "chi512_q5": {
+      "backend_identity": "7e9807312d016307b8616db755694d4c33627caed9e402ea167f75cb6e06d8cd",
+      "checkpoint": "outputs/p4-q5-matched-chi512-8to9-20260920/trial/checkpoint-QYxrII",
+      "config_archive_present": true,
+      "cumulative_sweeps": 9,
+      "energy": -10.822139327524651,
+      "errors": {
+        "bond_from_correlations": 0.0,
+        "bond_sum": 1.2434497875801753e-14,
+        "charge": 4.440892098500626e-15,
+        "fixed_charge_zz": 2.248201624865942e-15,
+        "pm_diagonal": 1.1102230246251565e-15,
+        "pm_hermiticity": 1.7261185159167725e-16,
+        "variance_arithmetic": 0.0,
+        "zz_diagonal": 3.885780586188048e-16,
+        "zz_imaginary": 2.893713037639662e-17,
+        "zz_symmetry": 0.0
+      },
+      "final_truncation": 4.304243429602868e-06,
+      "historical_backend_unchanged_flag": true,
+      "raw_second_moment_available": true,
+      "record": "outputs/p4-q5-matched-chi512-8to9-20260920/validation.toml",
+      "schmidt": [
+        {
+          "bond": 9,
+          "errors": {
+            "entropy_from_saved": 1.3322676295501878e-15,
+            "mean_from_density": 1.5543122344752192e-15,
+            "mean_from_saved": 1.1102230246251565e-16,
+            "probability_sum": 0.0,
+            "variance_from_correlations": 6.661338147750939e-16,
+            "variance_from_saved": 5.551115123125783e-17
+          }
+        },
+        {
+          "bond": 18,
+          "errors": {
+            "entropy_from_saved": 4.440892098500626e-15,
+            "mean_from_density": 1.5543122344752192e-15,
+            "mean_from_saved": 2.220446049250313e-16,
+            "probability_sum": 2.220446049250313e-16,
+            "variance_from_correlations": 6.661338147750939e-15,
+            "variance_from_saved": 5.551115123125783e-17
+          }
+        }
+      ],
+      "variance": 0.0008276963696971507,
+      "verified_config_path": "outputs/p4-q5-matched-chi512-8to9-20260920/analysis-sources/config.toml"
+    },
+    "fixed_q1": {
+      "backend_identity": "7e9807312d016307b8616db755694d4c33627caed9e402ea167f75cb6e06d8cd",
+      "checkpoint": "outputs/p4-sector-refine-nn27-q1-chi256-20260920-retry/trial/checkpoint-q5FuXN",
+      "config_archive_present": true,
+      "cumulative_sweeps": 8,
+      "energy": -11.562899472648773,
+      "errors": {
+        "bond_from_correlations": 0.0,
+        "bond_sum": 5.329070518200751e-15,
+        "charge": 5.551115123125783e-16,
+        "fixed_charge_zz": 6.140921104957897e-16,
+        "pm_diagonal": 2.220446049250313e-15,
+        "pm_hermiticity": 4.0812963407738187e-16,
+        "variance_arithmetic": 0.0,
+        "zz_diagonal": 9.43689570931383e-16,
+        "zz_imaginary": 7.725737550057406e-17,
+        "zz_symmetry": 0.0
+      },
+      "final_truncation": 3.476475835267023e-05,
+      "historical_backend_unchanged_flag": true,
+      "raw_second_moment_available": true,
+      "record": "docs/research/data/p4_sector_refine_nn27_q1_chi256_validation.toml",
+      "schmidt": [
+        {
+          "bond": 9,
+          "errors": {
+            "entropy_from_saved": 2.220446049250313e-16,
+            "mean_from_density": 9.71445146547012e-17,
+            "mean_from_saved": 4.163336342344337e-17,
+            "probability_sum": 0.0,
+            "variance_from_correlations": 5.551115123125783e-17,
+            "variance_from_saved": 5.551115123125783e-17
+          }
+        },
+        {
+          "bond": 18,
+          "errors": {
+            "entropy_from_saved": 8.881784197001252e-16,
+            "mean_from_density": 6.106226635438361e-16,
+            "mean_from_saved": 1.1102230246251565e-16,
+            "probability_sum": 2.220446049250313e-16,
+            "variance_from_correlations": 5.551115123125783e-17,
+            "variance_from_saved": 1.1102230246251565e-16
+          }
+        }
+      ],
+      "variance": 0.0043535316112865985,
+      "verified_config_path": "outputs/p4-sector-refine-nn27-q1-chi256-20260920-retry/analysis-sources/config.toml"
+    },
+    "fixed_q3": {
+      "backend_identity": "7e9807312d016307b8616db755694d4c33627caed9e402ea167f75cb6e06d8cd",
+      "checkpoint": "outputs/p4-campaign-nn27-q3-chi256/trial/checkpoint-YcJjo5",
+      "config_archive_present": true,
+      "cumulative_sweeps": 8,
+      "energy": -11.304258048259314,
+      "errors": {
+        "bond_from_correlations": 0.0,
+        "bond_sum": 1.0658141036401503e-14,
+        "charge": 2.220446049250313e-15,
+        "fixed_charge_zz": 8.326672684688674e-16,
+        "pm_diagonal": 1.6653345369377348e-15,
+        "pm_hermiticity": 2.8117156395401704e-16,
+        "zz_diagonal": 8.604228440844963e-16,
+        "zz_imaginary": 4.309488997179151e-17,
+        "zz_symmetry": 0.0
+      },
+      "final_truncation": 4.982766955179003e-05,
+      "historical_backend_unchanged_flag": null,
+      "raw_second_moment_available": false,
+      "record": "docs/research/data/p4_campaign_nn27_q3_chi256_validation.toml",
+      "schmidt": [
+        {
+          "bond": 9,
+          "errors": {
+            "entropy_from_saved": 8.881784197001252e-16,
+            "mean_from_density": 2.7755575615628914e-16,
+            "mean_from_saved": 5.551115123125783e-17,
+            "probability_sum": 0.0,
+            "variance_from_correlations": 1.1102230246251565e-15,
+            "variance_from_saved": 0.0
+          }
+        },
+        {
+          "bond": 18,
+          "errors": {
+            "entropy_from_saved": 2.220446049250313e-15,
+            "mean_from_density": 5.551115123125783e-16,
+            "mean_from_saved": 1.1102230246251565e-16,
+            "probability_sum": 0.0,
+            "variance_from_correlations": 4.440892098500626e-16,
+            "variance_from_saved": 1.1102230246251565e-16
+          }
+        }
+      ],
+      "variance": 0.007326738807591937,
+      "verified_config_path": "outputs/p4-campaign-nn27-q3-chi256/analysis-sources/examples/configs/nn27_q3_chi256_resume.toml"
+    },
+    "parent_q5": {
+      "backend_identity": "7e9807312d016307b8616db755694d4c33627caed9e402ea167f75cb6e06d8cd",
+      "checkpoint": "outputs/p4-sector-refine-nn27-q5-chi256-20260920/trial/checkpoint-fdv5cd",
+      "config_archive_present": true,
+      "cumulative_sweeps": 8,
+      "energy": -10.819403413718224,
+      "errors": {
+        "bond_from_correlations": 0.0,
+        "bond_sum": 8.881784197001252e-15,
+        "charge": 5.773159728050814e-15,
+        "fixed_charge_zz": 1.1657341758564144e-15,
+        "pm_diagonal": 2.1094237467877974e-15,
+        "pm_hermiticity": 2.344084958844507e-16,
+        "variance_arithmetic": 0.0,
+        "zz_diagonal": 8.881784197001252e-16,
+        "zz_imaginary": 3.768402727193479e-17,
+        "zz_symmetry": 0.0
+      },
+      "final_truncation": 5.412573668486223e-05,
+      "historical_backend_unchanged_flag": true,
+      "raw_second_moment_available": true,
+      "record": "docs/research/data/p4_sector_refine_nn27_q5_chi256_validation.toml",
+      "schmidt": [
+        {
+          "bond": 9,
+          "errors": {
+            "entropy_from_saved": 1.9984014443252818e-15,
+            "mean_from_density": 2.220446049250313e-16,
+            "mean_from_saved": 1.1102230246251565e-16,
+            "probability_sum": 0.0,
+            "variance_from_correlations": 9.43689570931383e-16,
+            "variance_from_saved": 5.551115123125783e-17
+          }
+        },
+        {
+          "bond": 18,
+          "errors": {
+            "entropy_from_saved": 1.7763568394002505e-15,
+            "mean_from_density": 2.886579864025407e-15,
+            "mean_from_saved": 2.220446049250313e-16,
+            "probability_sum": 2.220446049250313e-16,
+            "variance_from_correlations": 4.440892098500626e-16,
+            "variance_from_saved": 1.1102230246251565e-16
+          }
+        }
+      ],
+      "variance": 0.008554313414066428,
+      "verified_config_path": "outputs/p4-sector-refine-nn27-q5-chi256-20260920/analysis-sources/config.toml"
+    },
+    "previous25610": {
+      "backend_identity": "7e9807312d016307b8616db755694d4c33627caed9e402ea167f75cb6e06d8cd",
+      "checkpoint": "outputs/p4-q5-fixed-chi-8to10-20260920/trial/checkpoint-DRzoIB",
+      "config_archive_present": true,
+      "cumulative_sweeps": 10,
+      "energy": -10.820525943702517,
+      "errors": {
+        "bond_from_correlations": 0.0,
+        "bond_sum": 1.7763568394002505e-15,
+        "charge": 3.552713678800501e-15,
+        "fixed_charge_zz": 1.9984014443252818e-15,
+        "pm_diagonal": 2.6645352591003757e-15,
+        "pm_hermiticity": 1.061584378296336e-16,
+        "variance_arithmetic": 0.0,
+        "zz_diagonal": 9.43689570931383e-16,
+        "zz_imaginary": 3.014269547390386e-17,
+        "zz_symmetry": 0.0
+      },
+      "final_truncation": 5.8985645830192173e-05,
+      "historical_backend_unchanged_flag": true,
+      "raw_second_moment_available": true,
+      "record": "docs/research/data/p4_q5_fixed_chi_8to10_validation.toml",
+      "schmidt": [
+        {
+          "bond": 9,
+          "errors": {
+            "entropy_from_saved": 2.220446049250313e-16,
+            "mean_from_density": 6.661338147750939e-16,
+            "mean_from_saved": 0.0,
+            "probability_sum": 1.1102230246251565e-16,
+            "variance_from_correlations": 2.220446049250313e-16,
+            "variance_from_saved": 2.220446049250313e-16
+          }
+        },
+        {
+          "bond": 18,
+          "errors": {
+            "entropy_from_saved": 1.7763568394002505e-15,
+            "mean_from_density": 2.4424906541753444e-15,
+            "mean_from_saved": 2.220446049250313e-16,
+            "probability_sum": 3.3306690738754696e-16,
+            "variance_from_correlations": 1.1102230246251565e-15,
+            "variance_from_saved": 8.326672684688674e-16
+          }
+        }
+      ],
+      "variance": 0.008202898285603055,
+      "verified_config_path": "outputs/p4-q5-fixed-chi-8to10-20260920/analysis-sources/config.toml"
+    }
+  },
+  "passed": true,
+  "recorded_at_utc": "2026-09-20T09:54:43.959867+00:00",
+  "reproduction": {
+    "instruction": "Save python_source to a temporary .py file, adjust ROOT if needed, remove or rename only its generated audit output, then execute with Python 3.11+; no analyzer helper imports. Original numerical inputs must exist.",
+    "python_source": "from pathlib import Path\nimport datetime, hashlib, json, math, os, sys, tomllib\n\nROOT = Path('/Users/masa/git/KagomeDMRG.jl')\nDEST = ROOT / 'docs/research/data/p4_q5_matched_chi_csl_provenance_audit.json'\nPATHS = {\n 'fixed_q1': 'docs/research/data/p4_sector_refine_nn27_q1_chi256_validation.toml',\n 'fixed_q3': 'docs/research/data/p4_campaign_nn27_q3_chi256_validation.toml',\n 'parent_q5': 'docs/research/data/p4_sector_refine_nn27_q5_chi256_validation.toml',\n 'chi256_q5': 'outputs/p4-q5-matched-chi256-8to9-20260920-r1/validation.toml',\n 'chi512_q5': 'outputs/p4-q5-matched-chi512-8to9-20260920/validation.toml',\n 'previous25610': 'docs/research/data/p4_q5_fixed_chi_8to10_validation.toml',\n 'csl_old': 'outputs/p3-csl36-fixed-chi-8to10-20260920/validation.toml',\n 'csl_new': 'outputs/p3-csl36-saved-moment-20260920/validation.toml',\n}\nfiles, discrepancies, sources = {}, [], {}\ndef check(value, description):\n    if not value: discrepancies.append(description)\ndef digest(path): return hashlib.sha256(path.read_bytes()).hexdigest()\ndef file(path, expected=None):\n    path = ROOT / path\n    h = digest(path)\n    files[str(path.relative_to(ROOT))] = {'sha256': h, 'bytes': path.stat().st_size}\n    if expected is not None: check(h == expected, 'hash mismatch: '+str(path.relative_to(ROOT)))\n    return h\ndef read(path):\n    file(path)\n    return tomllib.loads((ROOT / path).read_text())\ndef backend(d):\n    identity = hashlib.sha256(json.dumps(d['code']['source_sha256'],sort_keys=True).encode()).hexdigest()\n    if identity not in sources:\n        base=d['backend_project']; source_map=d['code']['source_sha256']\n        for f,h in source_map.items(): file(str(Path(base)/f),h)\n        sources[identity]={'backend_project':base,'source_sha256':source_map,'files_rehashed':len(source_map)}\n    return identity\ndef schmidt(rows, sz, zz=None):\n    result=[]\n    for s in rows:\n        p=s['probabilities'];q=s['left_q'];b=s['bond']\n        mean=math.fsum(pp*qq/2 for pp,qq in zip(p,q))\n        variance=math.fsum(pp*(qq/2)**2 for pp,qq in zip(p,q))-mean**2\n        errors={'probability_sum':abs(math.fsum(p)-1),'mean_from_saved':abs(mean-s['mean_left_sz']),\n            'variance_from_saved':abs(variance-s['variance_left_sz']),\n            'entropy_from_saved':abs(-math.fsum(pp*math.log(pp) for pp in p if pp>0)-s['entropy']),\n            'mean_from_density':abs(mean-math.fsum(sz[:b]))}\n        if zz is not None: errors['variance_from_correlations']=abs(variance-(math.fsum(zz[i][j] for i in range(b) for j in range(b))-math.fsum(sz[:b])**2))\n        check(max(errors.values())<1e-9,'Schmidt mismatch at bond '+str(b))\n        result.append({'bond':b,'errors':errors})\n    return result\ndef checkpoint(cp,d,row,csl=False):\n    m=read(str(Path(cp)/'metadata.toml')); c=read(str(Path(cp)/'checksums.toml'))\n    for f,v in c['files'].items():\n        file(str(Path(cp)/f),v['sha256']);check((ROOT/cp/f).stat().st_size==v['bytes'],'checkpoint byte count: '+cp+'/'+f)\n    check(m['configuration']==d['configuration'],'checkpoint model: '+cp)\n    check(m['provenance']['source_sha256']==d['code']['source_sha256'],'checkpoint backend: '+cp)\n    check(m['runtime']=={k:v for k,v in d['runtime'].items() if k not in ['julia_threads','blas_threads']},'checkpoint runtime: '+cp)\n    check(m['status']=='trial' and m['theta_path']==[0.0],'checkpoint status/path: '+cp)\n    check(m['state']['energy']==row['energy'] and m['state']['sz']==row['sz_profile'],'checkpoint observables: '+cp)\n    return m\ndef nn(role,d):\n    rows=[r for r in d['batches'] if r.get('active_phase')=='completed']\n    r=rows[-1];cp=r['checkpoint'];m=checkpoint(cp,d,r);ident=backend(d)\n    out=Path(cp).parents[1]\n    e=read(str(out/'execution.toml'))\n    check(e['status']=='exited' and e['worker_exit_code']==0 and e['worker_exit_confirmed'],'NN execution: '+role)\n    archive=out/'analysis-sources'\n    for f,h in d['analysis_source_sha256'].items(): file(str(archive/f),h)\n    config_candidates=[ROOT/archive/'config.toml',ROOT/archive/d['config_path']]\n    config_archive=next((p for p in config_candidates if p.is_file()),config_candidates[0])\n    if config_archive.is_file(): file(str(config_archive.relative_to(ROOT)),d['config_sha256'])\n    else: file(d['config_path'],d['config_sha256'])\n    if 'parent' in d:\n        for f,h in d['parent']['checkpoint_sha256'].items(): file(f,h)\n    z=r['correlations']['zz_real'];zi=r['correlations']['zz_imag'];p=r['correlations']['pm_real'];pi=r['correlations']['pm_imag'];sz=r['sz_profile'];N=d['N'];Q=d['Q']\n    bonds=[b['Jz']*z[b['i']-1][b['j']-1]+b['Jxy']*p[b['i']-1][b['j']-1] for b in d['configuration']['bonds']]\n    errors={'charge':abs(math.fsum(sz)-Q/2),'bond_sum':abs(math.fsum(r['bond_energy'])-r['energy']),\n      'bond_from_correlations':max(abs(a-b) for a,b in zip(bonds,r['bond_energy'])),\n      'zz_diagonal':max(abs(z[i][i]-.25) for i in range(N)),\n      'pm_diagonal':max(abs(p[i][i]-(.5+sz[i])) for i in range(N)),\n      'zz_imaginary':max(abs(x) for rr in zi for x in rr),\n      'zz_symmetry':max(abs(z[i][j]-z[j][i]) for i in range(N) for j in range(N)),\n      'pm_hermiticity':max(abs(complex(p[i][j]-p[j][i],pi[i][j]+pi[j][i])) for i in range(N) for j in range(N)),\n      'fixed_charge_zz':max(abs(math.fsum(z[i])-Q/2*sz[i]) for i in range(N))}\n    if 'HdaggerH_real' in r: errors['variance_arithmetic']=abs(r['HdaggerH_real']-r['energy']**2-r['variance'])\n    check(max(errors.values())<1e-9,'NN observable arithmetic: '+role)\n    return r,{'record':PATHS[role],'backend_identity':ident,'checkpoint':cp,\n      'energy':r['energy'],'variance':r['variance'],'final_truncation':r['measured_truncation_errors'][-1],\n      'errors':errors,'schmidt':schmidt(r['schmidt'],sz,z),'cumulative_sweeps':r['cumulative_sweeps'],\n      'historical_backend_unchanged_flag':d.get('backend_unchanged'),\n      'raw_second_moment_available':'HdaggerH_real' in r,\n      'config_archive_present':config_archive.is_file(),\n      'verified_config_path':str(config_archive.relative_to(ROOT)) if config_archive.is_file() else d['config_path']}\ndef profile_comparison(a,b,g):\n    difference=lambda x,y:[bb-aa for aa,bb in zip(x,y)]\n    dz=difference(a['sz_profile'],b['sz_profile']);db=difference(a['bond_energy'],b['bond_energy'])\n    result={'energy_difference':b['energy']-a['energy'],'variance_difference':b['variance']-a['variance'],\n      'max_sz_difference':max(map(abs,dz)),'max_bond_difference':max(map(abs,db)),\n      'rms_sz_difference':math.sqrt(math.fsum(x*x for x in dz)/len(dz)),\n      'rms_bond_difference':math.sqrt(math.fsum(x*x for x in db)/len(db))}\n    site_lookup={(s['x'],s['y'],s['sublattice']):s['index']-1 for s in g['sites']}\n    bond_lookup={tuple(sorted((bb['i']-1,bb['j']-1))):k for k,bb in enumerate(g['bonds'])}\n    shifts=[]\n    for shift in range(3):\n        perm=[site_lookup[(s['x'],(s['y']+shift)%3,s['sublattice'])] for s in g['sites']]\n        ds=[b['sz_profile'][perm[i]]-a['sz_profile'][i] for i in range(27)]\n        de=[b['bond_energy'][bond_lookup[tuple(sorted((perm[bb['i']-1],perm[bb['j']-1])))]]-a['bond_energy'][k] for k,bb in enumerate(g['bonds'])]\n        shifts.append({'shift':shift,'sz_rms':math.sqrt(math.fsum(x*x for x in ds)/27),'bond_rms':math.sqrt(math.fsum(x*x for x in de)/len(de))})\n    result['circumference_shift_rms']=shifts\n    return result\ndef main():\n    d={role:read(p) for role,p in PATHS.items()}\n    for role in ['chi256_q5','chi512_q5']: assert d[role]['status']=='completed_bounded_case_accuracy_separate',role+' unfinished'\n    assert d['csl_new']['status']=='passed_saved_state_moment_audit','CSL unfinished or failed'\n    audit={'schema_version':1,'recorded_at_utc':datetime.datetime.now(datetime.timezone.utc).isoformat(),\n      'scope':'independent Python byte, metadata, and saved-number arithmetic audit; no analyzer helper imports; no new MPS contraction or ED',\n      'new_MPS_contraction':False,'new_ED':False,'discrepancies':discrepancies,'nn':{}}\n    rows={}\n    for role in ['fixed_q1','fixed_q3','parent_q5','chi256_q5','chi512_q5','previous25610']:\n        rows[role],audit['nn'][role]=nn(role,d[role])\n    a,b=d['chi256_q5'],d['chi512_q5']; check(a['parent']==b['parent'],'common parent identity')\n    check({k:v for k,v in a['config'].items() if k not in ['case_id','maxdim']}=={k:v for k,v in b['config'].items() if k not in ['case_id','maxdim']},'matched configs')\n    check({k:v for k,v in a['solver'].items() if k!='maxdim'}=={k:v for k,v in b['solver'].items() if k!='maxdim'},'matched solver')\n    g=a['configuration'];parent=rows['parent_q5'];comparisons={}\n    for role in ['chi256_q5','chi512_q5']:\n        r=rows[role];comparison=profile_comparison(parent,r,g)\n        values={'energy_per_site':max(abs(r['energy']-parent['energy']),abs(r['energy']-r['sweep_energies'][-1]))/27,\n          'sz_profile':comparison['max_sz_difference'],'bond_profile':comparison['max_bond_difference'],\n          'variance_per_site':abs(r['variance'])/27,'truncation':r['measured_truncation_errors'][-1]}\n        comparison['precision']={k:{'value':v,'threshold':d[role]['config']['stationarity'][k],'passed':v<=d[role]['config']['stationarity'][k]} for k,v in values.items()}\n        comparison['final_two_sweep_difference']=None\n        check(r['within_batch_sweep_change_measured'] is False and 'last_sweep_energy_change' not in r,'one-sweep missing semantics '+role)\n        same=role=='chi256_q5';check(r['stationarity_evaluated']==same and r['same_chi_comparison']==same,'stationarity interpretation '+role)\n        check(r['stationarity_passed']==(same and all(x['passed'] for x in comparison['precision'].values())),'stationarity decision '+role)\n        comparisons['parent_to_'+role]=comparison\n    comparisons['chi256_to_chi512']=profile_comparison(rows['chi256_q5'],rows['chi512_q5'],g)\n    comparisons['chi256_9_to_previous256_10']=profile_comparison(rows['chi256_q5'],rows['previous25610'],g)\n    comparisons['cumulative9_energy_agreement']=rows['chi256_q5']['energy']-rows['previous25610']['sweep_energies'][0]\n    audit['comparisons']=comparisons\n    e1,e3=rows['fixed_q1']['energy'],rows['fixed_q3']['energy'];audit['field_intervals']={};audit['sector_column_changes']={}\n    for role in ['parent_q5','chi256_q5','chi512_q5','previous25610']:\n        r=rows[role];lower=e3-e1;upper=r['energy']-e3\n        audit['field_intervals'][role]={'h_lower':lower,'h_upper':upper,'width':upper-lower}\n        columns=[math.fsum(r['sz_profile'][9*x+i]-rows['fixed_q3']['sz_profile'][9*x+i] for i in range(9)) for x in range(3)]\n        audit['sector_column_changes'][role]={'Q3_to_Q5':columns,'sum_error':abs(math.fsum(columns)-1)}\n        check(abs(math.fsum(columns)-1)<1e-10,'sector column sum '+role)\n    old,new=d['csl_old'],d['csl_new'];r=old['preparation_batches'][0];m=new['measurement'];ident=backend(new)\n    for p,h in new['input_sha256'].items(): file(p,h)\n    newdir=Path(PATHS['csl_new']).parent\n    for p,h in new['analysis_source_sha256'].items():file(str(newdir/'analysis-sources'/p),h)\n    ex=read(str(newdir/'execution.toml'));check(ex['status']=='exited' and ex['worker_exit_code']==0 and ex['worker_exit_confirmed'],'CSL new execution')\n    oe=read(str(Path(PATHS['csl_old']).parent/'execution.toml'))\n    check(old['status']=='running' and oe['status']=='timed_out' and r['active_phase']=='variance','old CSL unfinished preserved')\n    check(all(k not in r for k in ['raw_variance','integrity_passed','change_from_parent']),'old CSL missing fields preserved')\n    meta=checkpoint(new['measurement']['checkpoint'],old,r,True)\n    check(new['code']['source_sha256']==old['code']['source_sha256'] and new['runtime']==old['runtime'] and new['configuration']==old['configuration'],'CSL model/runtime/source match')\n    check(meta['settings']['measure_variance'] is False and new['checkpoint_solver_variance_setting_changed'] is False,'saved variance setting preserved')\n    check(new['original_worker_finalized'] is False and new['original_full_integrity_retroactively_claimed'] is False,'CSL historical completion semantics')\n    floor=100*sys.float_info.epsilon*max(1,m['saved_energy']**2);variance=m['HdaggerH_real']-m['saved_energy']**2\n    errors={'variance_arithmetic':abs(variance-m['raw_variance']),\n      'remeasured_variance_arithmetic':abs(m['HdaggerH_real']-m['remeasured_energy_real']**2-m['variance_using_remeasured_energy']),\n      'roundoff_scale':abs(floor-m['variance_roundoff_scale']),\n      'energy_difference_arithmetic':abs(abs(complex(m['remeasured_energy_real']-m['saved_energy'],m['remeasured_energy_imag']))-m['energy_difference']),\n      'density_difference_arithmetic':abs(max(abs(a-b) for a,b in zip(m['remeasured_sz_profile'],r['sz_profile']))-m['profile_max_difference']),\n      'charge_error_arithmetic':abs(abs(math.fsum(m['remeasured_sz_profile']))-m['total_sz_error']),\n      'old_bond_sum':abs(math.fsum(r['bond_energy_profile'])-r['energy'])}\n    check(max(errors.values())<1e-9,'CSL arithmetic')\n    fresh_checks={'finite_moment':math.isfinite(m['HdaggerH_real']) and math.isfinite(m['HdaggerH_imag']),\n      'moment_imaginary':abs(m['HdaggerH_imag'])<=floor,'variance_nonnegative_within_roundoff':math.isfinite(variance) and variance>=-floor,\n      'remeasured_energy_agreement':m['energy_difference']<=1e-10*max(1,abs(m['saved_energy'])),\n      'norm_before':abs(m['norm_before']-1)<=1e-12,'norm_after':abs(m['norm_after']-1)<=1e-12,\n      'state_overlap':m['overlap_change_error']<=1e-12,'state_tensors_unchanged':m['max_tensor_change']==0,\n      'charge':m['total_sz_error']<=1e-12,'profile_agreement':m['profile_max_difference']<=1e-12 and all(math.isfinite(x) for x in m['remeasured_sz_profile'])}\n    check(fresh_checks==m['checks'] and all(fresh_checks.values()) and m['passed'],'CSL diagnostic decisions')\n    readiness={'variance':{'value':variance,'threshold':1e-3,'passed':variance<=1e-3},\n      'truncation':{'value':r['measured_truncation_errors'][-1],'threshold':1e-5,'passed':r['measured_truncation_errors'][-1]<=1e-5},\n      'sweep_energy_change':{'value':max(abs(r['sweep_energies'][-1]-r['sweep_energies'][-2]),abs(r['energy']-r['sweep_energies'][-1])),'threshold':1e-4}}\n    readiness['sweep_energy_change']['passed']=readiness['sweep_energy_change']['value']<=1e-4\n    audit['csl']={'backend_identity':ident,'checkpoint':m['checkpoint'],'old_worker_status':old['status'],'old_execution_status':oe['status'],\n      'old_variance':None,'old_full_integrity':None,'old_parent_overlap':None,'new_variance':variance,'arithmetic_errors':errors,\n      'schmidt_from_old_probabilities':schmidt(r['schmidt'],r['sz_profile']),'readiness_comparisons':readiness,\n      'new_diagnostic_checks_recomputed':fresh_checks,'original_worker_finalized':False,'nonzero_pump_calibrated':False}\n    comparison_path=ROOT/'docs/research/data/p4_q5_matched_chi_8to9_comparison.json'\n    if comparison_path.exists():\n        file(str(comparison_path.relative_to(ROOT))); comparison=json.loads(comparison_path.read_text());errs=[]\n        for role,v in audit['field_intervals'].items():\n            for k,x in v.items():errs.append(abs(x-comparison['field_intervals'][role][k]))\n        audit['comparison_json_interval_max_error']=max(errs)\n        check(max(errs)<1e-12,'comparison JSON intervals')\n    audit['source_maps']=sources;audit['files']=files;audit['passed']=not discrepancies\n    audit['limitations']=['Recomputed saved scalar and array arithmetic only; MPS claims rely on separately recorded Julia worker.',\n      'Historical Q3 raw second moment and backend_unchanged flag are absent and remain unfilled; its original archived config was hash-verified.',\n      'One-sweep chi response is not converged chi extrapolation; all finite-sector intervals remain nonrigorous trial comparisons.',\n      'Missing historical CSL completion guards, integrity verdict and parent overlap are not reconstructed.']\n    audit['reproduction']={'instruction':'Save python_source to a temporary .py file, adjust ROOT if needed, remove or rename only its generated audit output, then execute with Python 3.11+; no analyzer helper imports. Original numerical inputs must exist.',\n       'python_source':Path(__file__).read_text()}\n    assert not DEST.exists() or '--replace-own-audit' in sys.argv,'refuse to replace existing audit without explicit regeneration flag'\n    encoded=json.dumps(audit,indent=2,sort_keys=True,allow_nan=False)+'\\n'\n    with DEST.open('w' if '--replace-own-audit' in sys.argv else 'x') as f:f.write(encoded)\n    print(json.dumps({'path':str(DEST.relative_to(ROOT)),'passed':audit['passed'],'discrepancies':discrepancies,'field_intervals':audit['field_intervals'],'csl_readiness':readiness},indent=2))\n    if discrepancies:sys.exit(1)\nif __name__=='__main__':main()\n"
+  },
+  "schema_version": 1,
+  "scope": "independent Python byte, metadata, and saved-number arithmetic audit; no analyzer helper imports; no new MPS contraction or ED",
+  "sector_column_changes": {
+    "chi256_q5": {
+      "Q3_to_Q5": [
+        0.1368531280689114,
+        0.23331666110164523,
+        0.6298302108294478
+      ],
+      "sum_error": 4.440892098500626e-15
+    },
+    "chi512_q5": {
+      "Q3_to_Q5": [
+        0.14075457112451145,
+        0.23370039867223338,
+        0.6255450302032532
+      ],
+      "sum_error": 1.887379141862766e-15
+    },
+    "parent_q5": {
+      "Q3_to_Q5": [
+        0.14385722654139524,
+        0.24073259853568865,
+        0.6154101749229244
+      ],
+      "sum_error": 8.215650382226158e-15
+    },
+    "previous25610": {
+      "Q3_to_Q5": [
+        0.13721303301234658,
+        0.23302850218197715,
+        0.6297584648056824
+      ],
+      "sum_error": 6.217248937900877e-15
+    }
+  },
+  "source_maps": {
+    "7e9807312d016307b8616db755694d4c33627caed9e402ea167f75cb6e06d8cd": {
+      "backend_project": "outputs/source-snapshots/n27-refine-before-chirality-20260919",
+      "files_rehashed": 179,
+      "source_sha256": {
+        "Manifest-v1.13.toml": "134a3797eb3ba08171879ce51e354b8da641733911dc64b1f5944b0199c7187b",
+        "Project.toml": "debb9b90c699e01f034a8ec21602c9eba26795a60fe5a69c0e8e793ed9a6bb0e",
+        "src/KagomeDMRG.jl": "11c332090f4343dcaacef3844f56c5fd448aa8cf564cab687a18f8d20bca4f36",
+        "src/checkpoint.jl": "2faea3170bb2f94c8bc112e9c13f87496946e463d51396a1620903acbcfbcff4",
+        "src/continuation.jl": "613c5151ff09040fecd8002465a626fde5e70eb501be59aff45619044d3ae44e",
+        "src/dmrg.jl": "94e66b1668b3bc3e502924ab8c6b11b6dd533ea5b65122ddc040d18fe0217012",
+        "src/extended_model.jl": "3db76c474147afbee04d04e56db5e34e318cf485e18f74858898539a903eb120",
+        "src/lattice.jl": "15d9ea5bea1514f49b36ac45bc139489fd6c6c03b00dff4e836d3d3e3aa7b2ec",
+        "src/model.jl": "ec57b01141fd90a4938fc22d2833bd7a3ddfa107a107fb083753a4a39e91f58b",
+        "src/observables.jl": "dfc48cc85a2cc6f51c99e4a58dc64f7709fad9f3834136e9fa915659147b29f8",
+        "src/provenance.jl": "6a027b5383f70bded31c3477fb113044b55a991a37cc74ecd3daa5c7e99dc81a",
+        "src/schmidt.jl": "13517078685ce1e1ca43b6200cbc61ff7aa6113757fa61ed9fcee4dfee3cbd0a",
+        "vendor/NDTensors/Project.toml": "59d3d69bcb46b7af4386ea455483ac9419fcc89b169f21d6a2b6b0c1eb3a7c87",
+        "vendor/NDTensors/ext/NDTensorsAMDGPUExt/NDTensorsAMDGPUExt.jl": "bb1acaffbbfac3b92a001f60d1025593df8fb4c8f00cfba30181fa74b84aa14d",
+        "vendor/NDTensors/ext/NDTensorsAMDGPUExt/adapt.jl": "d8aa0643a3c9798ff4d9fed8949c34029b1407b805fa97384bff4fa9ecf9b5f8",
+        "vendor/NDTensors/ext/NDTensorsAMDGPUExt/append.jl": "063fab626a97267ef21b31cbc9df4173ed242a6b6c2e8b26a34a626197c197af",
+        "vendor/NDTensors/ext/NDTensorsAMDGPUExt/copyto.jl": "c2cf9fea12a743bf002de9cd22d1e857244108380665c520533b21f6fb2b8b4d",
+        "vendor/NDTensors/ext/NDTensorsAMDGPUExt/indexing.jl": "3b0455a0677f5bb192244c821d6eb5dcdf0301f2b6f5e2d0a50a296469cbe6b5",
+        "vendor/NDTensors/ext/NDTensorsAMDGPUExt/linearalgebra.jl": "9fb2bb3c028b92e20f5283c74b617567575ec2329a0b417bd938579ef52ccbb9",
+        "vendor/NDTensors/ext/NDTensorsAMDGPUExt/mul.jl": "fdb4bdaa980ada17fe6d43eef03c30c735e3a76671b28fc059d688c85ecff355",
+        "vendor/NDTensors/ext/NDTensorsAMDGPUExt/permutedims.jl": "e65ec0ce70cbd50fae5c5e659479b06e3776e28836b42626d485df29a8bb54df",
+        "vendor/NDTensors/ext/NDTensorsAMDGPUExt/set_types.jl": "f3f39efbacd0da22e0685758cbc067db85cfeb0671f500ac94871f0de489fac9",
+        "vendor/NDTensors/ext/NDTensorsCUDAExt/NDTensorsCUDAExt.jl": "c2be69a4f4562d15ddfaf709d1ff78fbbfa6869d0a361d371a58063a80697e09",
+        "vendor/NDTensors/ext/NDTensorsCUDAExt/adapt.jl": "bbbd1a16b485eaa40f91a7ea25eb1079aedd7e2a82656533f072e70dced42f2f",
+        "vendor/NDTensors/ext/NDTensorsCUDAExt/append.jl": "3c6d3da547c826d9f137cd9ab8c9549d97282d5d89d9ebf4467fb7be019032fa",
+        "vendor/NDTensors/ext/NDTensorsCUDAExt/copyto.jl": "96fafee4f759697e78fd0b4cacf94489130e531ba150b91900a4775a458bf7eb",
+        "vendor/NDTensors/ext/NDTensorsCUDAExt/default_kwargs.jl": "58b93e96de1142122f22e6e18c2c9c96a55de605bd59f9170ec49dea16c23eb8",
+        "vendor/NDTensors/ext/NDTensorsCUDAExt/indexing.jl": "2585ee449609317792f7c91c27756d6b9b3b1af62c9f870ea1595d881120a371",
+        "vendor/NDTensors/ext/NDTensorsCUDAExt/iscu.jl": "eac86157ecfc52cb3294ee253a18eb7c1848d4b0d2555b757159a9420fed67af",
+        "vendor/NDTensors/ext/NDTensorsCUDAExt/linearalgebra.jl": "b0db2ce8390966d028729c8ba20b086c2d488c953c2833f171086abb134a3cc3",
+        "vendor/NDTensors/ext/NDTensorsCUDAExt/mul.jl": "bb5a63ba0f60fb5c060a34aa5b1867aa15d5de2681673393982be28d187c6d4d",
+        "vendor/NDTensors/ext/NDTensorsCUDAExt/permutedims.jl": "b08a6bcea0aa1ae69017ac0629cd72f1c69827f81d44f17232ae8468d4a8db7d",
+        "vendor/NDTensors/ext/NDTensorsCUDAExt/set_types.jl": "03311e18a80634f5e59c39329c5a33ea33c05d227f510a70de7a4a76b74cfa0b",
+        "vendor/NDTensors/ext/NDTensorsGPUArraysCoreExt/NDTensorsGPUArraysCoreExt.jl": "9cd9b5eb73583b656d301d0aab1b6c75466e913ccec28e0f7af66c532381773c",
+        "vendor/NDTensors/ext/NDTensorsGPUArraysCoreExt/blocksparsetensor.jl": "7f09e9551d323b533ecec0756e0968541481d9f27f7f0d41bada7ce920229e3c",
+        "vendor/NDTensors/ext/NDTensorsGPUArraysCoreExt/contract.jl": "acb83f46c5ead56ce5ecd1cbbff8d9c4f38339931637198d45561023a8823bc9",
+        "vendor/NDTensors/ext/NDTensorsHDF5Ext/NDTensorsHDF5Ext.jl": "1e1c233183cb0b8c3e624eebcbab8b437fe6db79f7776938acfd545d93c36de7",
+        "vendor/NDTensors/ext/NDTensorsHDF5Ext/blocksparse.jl": "04abf715f0d956f4fbc770450c939a4a8cf1b921a3f7f9a81536d068605bb282",
+        "vendor/NDTensors/ext/NDTensorsHDF5Ext/dense.jl": "219e28b4a9a845eed582ba2508d98b703c36e64a1c6714330cb90812f50f5b47",
+        "vendor/NDTensors/ext/NDTensorsHDF5Ext/diag.jl": "c8783890968f1c146aee3bccf636530ee23426d39301ee4a54884cf1f1309f04",
+        "vendor/NDTensors/ext/NDTensorsHDF5Ext/empty.jl": "878d058d51c63222082a1abcda33d022cfa830176f168ae9bd04291ff6c87854",
+        "vendor/NDTensors/ext/NDTensorsJLArraysExt/NDTensorsJLArraysExt.jl": "c52d0e1359ff2245acf3da6499c74f5b5c1a0c94da6417839a7ce81532b7a25f",
+        "vendor/NDTensors/ext/NDTensorsJLArraysExt/copyto.jl": "3845eefcfe25c541115f93ff25454f0a45bf196e04b68382e331fce14c9295e7",
+        "vendor/NDTensors/ext/NDTensorsJLArraysExt/indexing.jl": "5fc8f8ad3ac50a44a4c198f5646aba9a85b4988b601982da61a7a49a772c6dcb",
+        "vendor/NDTensors/ext/NDTensorsJLArraysExt/linearalgebra.jl": "a1573a844829ee4d0069275be5803d5038b58ca026abe6eed6d820c8acb78d41",
+        "vendor/NDTensors/ext/NDTensorsJLArraysExt/mul.jl": "72e3e6e22d1d5e6c006e3a82f8aaf5559b7f88bb27cb88ad7b380d557a2b9632",
+        "vendor/NDTensors/ext/NDTensorsJLArraysExt/permutedims.jl": "3acb431354be8599e802bb100c499f17680c31e05260a6d1c0277132e9b774b2",
+        "vendor/NDTensors/ext/NDTensorsMappedArraysExt/NDTensorsMappedArraysExt.jl": "9ad0b0aed6d7fad2483c7832bbb0e64f62ccfd2db28a02d8ff821bfdadd76cf6",
+        "vendor/NDTensors/ext/NDTensorsMetalExt/NDTensorsMetalExt.jl": "3c0a3e75578417edc321b9ac0388f5a715acde4d11f3f79282580cee67c50fef",
+        "vendor/NDTensors/ext/NDTensorsMetalExt/adapt.jl": "8abdb539d3f47701f32e3805b0f22188ffe09fccb6ad0037f140e863cf7c944b",
+        "vendor/NDTensors/ext/NDTensorsMetalExt/append.jl": "f959252459f5de9815cfd9769f091b2c1bb3e42832174e0a0dcf0556cbb2daa7",
+        "vendor/NDTensors/ext/NDTensorsMetalExt/copyto.jl": "89e61ab070b7500a54dda539c2532ef6cedc69615cef159c1e6b68631f8d7853",
+        "vendor/NDTensors/ext/NDTensorsMetalExt/indexing.jl": "a9980cb384868bc7a7253d5bb3868bc0dc30910d1ecf836a1be78333d0d89ee4",
+        "vendor/NDTensors/ext/NDTensorsMetalExt/linearalgebra.jl": "a3f2cd3e72254c33b3f5728fed9bbb7bc8ef45dcf37000d7788bc230fcc18cc9",
+        "vendor/NDTensors/ext/NDTensorsMetalExt/mul.jl": "a40ab18645e079125811c6e25d3fcf9ce1a7c817691b22a659ab309b19f15629",
+        "vendor/NDTensors/ext/NDTensorsMetalExt/permutedims.jl": "008d467a5cbc59ddd4859a7313749f941cc615043c6e7222fa48f733086f01c7",
+        "vendor/NDTensors/ext/NDTensorsMetalExt/set_types.jl": "6b4b915b4ea4b7c843e780be8f846cad4bfce85a3ecb59bbf7efff7eaff5cc74",
+        "vendor/NDTensors/ext/NDTensorsOctavianExt/NDTensorsOctavianExt.jl": "da1dc0f60d567fc36f46f4cfbac218d618b76db3c760e5392c774c19acf72663",
+        "vendor/NDTensors/ext/NDTensorsOctavianExt/import.jl": "f2d8a4be22d07849ec3ea5274e02f310dfedd90bfed960d4441e5c69556a43a6",
+        "vendor/NDTensors/ext/NDTensorsOctavianExt/octavian.jl": "979931868e2b22652b2825eb73aa187e5da409a61d508889f17de7d8e6efee48",
+        "vendor/NDTensors/ext/NDTensorsTBLISExt/NDTensorsTBLISExt.jl": "5b613aedc8141e47c57011f92609657d932496fe3bf5651d6e3e29c5b148240e",
+        "vendor/NDTensors/ext/NDTensorsTBLISExt/contract.jl": "db281c3a609e01e909595dd46db2f1c546234a80510bbb4ae7c52bfc17829471",
+        "vendor/NDTensors/ext/NDTensorscuTENSORExt/NDTensorscuTENSORExt.jl": "d550d70ebaff58ad9f2fbe752e7e79fc5f37d8b6ff0b246db01e17f2e1fb3190",
+        "vendor/NDTensors/ext/NDTensorscuTENSORExt/contract.jl": "0e87d4952463e12b815fa44b6cd297d4c618e963dbcb870195af8387ec0601ef",
+        "vendor/NDTensors/src/NDTensors.jl": "93c116350d38bd51a23896b892a09554b80c4f60606a66af532c85e9316903ed",
+        "vendor/NDTensors/src/abstractarray/diaginterface.jl": "dafc569213a1ef7faefa0602a836caf036645170631fd40ba2c0f511ecf9ffe0",
+        "vendor/NDTensors/src/abstractarray/generic_array_constructors.jl": "377bbc3565a58ebcacce575fb3038458c990b31038f45a388d75563d2eb4d3e3",
+        "vendor/NDTensors/src/abstractarray/iscu.jl": "a4db07b5b7bf728fd27004e568b2f428918ad39c8fd2b6ef7942f11b5eeb0e79",
+        "vendor/NDTensors/src/abstractarray/mul.jl": "cdfeab2363d527ab3dcb0077e44b61bdf338fd1ea28c3d7e844adf826893ee0d",
+        "vendor/NDTensors/src/abstractarray/permutedims.jl": "fbf318e87d0ba11fafd55ce545a05bee96e5900292a20a885f810519f8155ae1",
+        "vendor/NDTensors/src/abstractarray/set_types.jl": "c5897f70892af64f9de9fbc0e7fbc7b171079bfaed01c054e72fa7d99c58523e",
+        "vendor/NDTensors/src/abstractarray/similar.jl": "2a6fa581a450b2cbb705cd1dbca84930a54a0290934bfb3f424ad7c7f1c9f0f2",
+        "vendor/NDTensors/src/abstractarray/tensoralgebra/contract.jl": "2ca9c0080c960d381e850153ebb7f1aeac3487f6fe339c4182a24ef0dd9b440c",
+        "vendor/NDTensors/src/abstractarray/to_shape.jl": "902d5b8c92b0f1a2bdb6320d1a4ecb6a8ff01aa391bce372215fcd8c9e09cfe3",
+        "vendor/NDTensors/src/adapt.jl": "703430e951574cc2213197db19872e4cce4731f5683dc66a067e15b14cd43ded",
+        "vendor/NDTensors/src/aliasstyle.jl": "37b9abfaf80131020f72a518a454ed1404dabcfdac579c19d012fb0428644dbd",
+        "vendor/NDTensors/src/array/mul.jl": "b289d62407d9013511623a21d2bab0234f9aeab86a4e8b3075e0261aad2fff07",
+        "vendor/NDTensors/src/array/permutedims.jl": "cd1c04c0b1454f105eac0499413ea8a441641220b498812ce68e9b00453246bc",
+        "vendor/NDTensors/src/blocksparse/adapt.jl": "02cac5677ab74ff2430f7e32a8580e7b5cd4cb15d1f02b210c062148ff03aa5e",
+        "vendor/NDTensors/src/blocksparse/block.jl": "87a64296109a7b5a31f334f207c70c313b28cbd20759151ac79a84eda3abb224",
+        "vendor/NDTensors/src/blocksparse/blockdims.jl": "150dc643646b655b35c9747618e09cc96cb9fec174d9465e83329d8059227096",
+        "vendor/NDTensors/src/blocksparse/blockoffsets.jl": "c7ed7c47f72114478552833472ffd4b53b70c8a53ed89044cf6b5ef123ae2f2e",
+        "vendor/NDTensors/src/blocksparse/blocksparse.jl": "688917f03103228bbd16afd731dcba418925d47e73862d2a41d5e59e7886d93e",
+        "vendor/NDTensors/src/blocksparse/blocksparsetensor.jl": "2c85d550bf5b36f0e6b38c8dc2ae8f4733ec48bd119803cdde9456f7119289c7",
+        "vendor/NDTensors/src/blocksparse/combiner.jl": "0206a11fd7e4bf672e567ce98ab3b52accbcfca5a487daaf130c9f683ed4b2a4",
+        "vendor/NDTensors/src/blocksparse/contract.jl": "6b5e86ef8621732d67471fa43bb0c528088351d3379c72b476c571ffd329bee4",
+        "vendor/NDTensors/src/blocksparse/contract_generic.jl": "4b2861b60a9e122a91c2a5325955bd21c9812ae7281875a25ac5832333d29c7d",
+        "vendor/NDTensors/src/blocksparse/contract_sequential.jl": "33a8c02b9da93aa7a77291134681860051de2069662e5db005e746348825dd67",
+        "vendor/NDTensors/src/blocksparse/contract_threaded.jl": "86a30e45a582e0316626822f3f9a65d4b7fa67f408af97db9c69b778c68050c6",
+        "vendor/NDTensors/src/blocksparse/contract_utilities.jl": "9174a6a4022b6b5269c67ced65a8e6bd0fffc8c8368c5f9571d852de76d9d5b8",
+        "vendor/NDTensors/src/blocksparse/diagblocksparse.jl": "565c6f0cd87b3fc3e5cc0ddeb52524567530152629e5a9bb379ba93f57bb2d20",
+        "vendor/NDTensors/src/blocksparse/fermions.jl": "26af87d934bc9b167fdb92c5f38ba9c76d213933e9506b2fb91a6fafe67e13fc",
+        "vendor/NDTensors/src/blocksparse/linearalgebra.jl": "fde39b44654889cef82b2fe1f330e03d814b16d1bb786a801ae176ebbb3d880b",
+        "vendor/NDTensors/src/blocksparse/similar.jl": "2ecf8a7b0afe013be4c9fd06d417cf91e957f09f49b41f2a90c9333d1a1a16af",
+        "vendor/NDTensors/src/blocksparse/truncate_spectrum.jl": "3f5b958c7878288619b7bc64f2449a5c36c2b9587e7906a20488448ef27a2a8b",
+        "vendor/NDTensors/src/combiner/combiner.jl": "4a0e1e9eb7a3ae941bfdf389db0d310824f24c278aa59e6471e662a9ab66b19f",
+        "vendor/NDTensors/src/combiner/contract.jl": "efd57cea1168a7e13401a0ae9b05e3ea119d47dd3a7134f53fe4974c3d647bac",
+        "vendor/NDTensors/src/default_kwargs.jl": "48a588e7cfcfeec1f13cb3de4b0e8359164de14da21710083499afbd7402e1b5",
+        "vendor/NDTensors/src/dense/dense.jl": "114ea60f15bd54b422f95234b11b86e57a822a1740130734813116f6a8ebac21",
+        "vendor/NDTensors/src/dense/densetensor.jl": "eb656cf8d9af846c1e8fa268f18458939296995aed805a7a6e86aa7f4a5d9e8d",
+        "vendor/NDTensors/src/dense/generic_array_constructors.jl": "47b3ba9ae03dfe3bf24756804b657b37413654f598d8b98c42b4b354a33dfdae",
+        "vendor/NDTensors/src/dense/linearalgebra/decompositions.jl": "6a0d32e99fe1b0aa70ed04f803aed53d66fc0127253d312a445ee092753b43e9",
+        "vendor/NDTensors/src/dense/set_types.jl": "1dc6576102a723c2dbb6578a7555f7d1a3b5bafe4ba0d5c5325b77703e245ff5",
+        "vendor/NDTensors/src/dense/tensoralgebra/contract.jl": "6e130bff906e28909b0027fdf2ac99bf8274503039c83bf2773878c603cb70ab",
+        "vendor/NDTensors/src/dense/tensoralgebra/outer.jl": "95feeda74e5bd9186769c9573909e8a83c8238b6c0df476817d263807235245c",
+        "vendor/NDTensors/src/deprecated.jl": "32c8a23e3f8971a7a14e82dbcfbdfbfdf523eafd5d5db495a61016a45d0a7f14",
+        "vendor/NDTensors/src/diag/diag.jl": "4d86cc755b5c2100cd7c1ce56a4107dce686f913c3b22a721e643387f5f2d106",
+        "vendor/NDTensors/src/diag/diagtensor.jl": "a85308112964847e38ede59e26341561e4bd6dbf6873dd740598fb8a4150a6a0",
+        "vendor/NDTensors/src/diag/set_types.jl": "eae287d3a100a7e3fb2896fca49a3642f92d4ed0d55fb2d08d974ae4781449a3",
+        "vendor/NDTensors/src/diag/similar.jl": "196bc09444f3b2313adc26fee80da2f49b1501cf663155bfd6fd1e559ce0148a",
+        "vendor/NDTensors/src/diag/tensoralgebra/contract.jl": "397d27c466bcf5fe3dd8e88deb196ba3d4a70b6773cc800297287f6e5145eb96",
+        "vendor/NDTensors/src/diag/tensoralgebra/outer.jl": "f29c15122ffe7b8bd15ea47dba3c34dbf2a3fb3b4268d38a1398a54ca585d715",
+        "vendor/NDTensors/src/dims.jl": "a58a06bf0f6e75706257249743ad9cebdb361a20949e9ba691642c736835daee",
+        "vendor/NDTensors/src/empty/EmptyTensor.jl": "73af0d8585bed3922717d34eb426b03689adb90e962c9a4cb2e26f6726fbdc68",
+        "vendor/NDTensors/src/empty/adapt.jl": "5866d1124f4ae6d5474f7a71ec6d6178e2b009e02b4d26e7a680fe90e6edecf7",
+        "vendor/NDTensors/src/empty/empty.jl": "749946e78eb9b6506cd20d9f86a460b867b3184e6ebbf0cd79c2368f0cf786cc",
+        "vendor/NDTensors/src/empty/tensoralgebra/contract.jl": "e998e877e4600b116d47ce946e8cd98211d0cf92e524adc654f7db8deaa1190f",
+        "vendor/NDTensors/src/emptynumber.jl": "18a15b78659bb2612c92a84449a45a7dc30388900286e1d57a559688b19fec52",
+        "vendor/NDTensors/src/exports.jl": "5780406d52a704d209d3160f4558159ddfa841f347ec36bfd6d038ec92770648",
+        "vendor/NDTensors/src/imports.jl": "fa0ebef6a1db4ad0b6bdecea2c17e82ed26c20c473006e3016b9a5f08f313c04",
+        "vendor/NDTensors/src/kagome_source_identity.jl": "8aafb41dceea0bcdf042fa981f73a024f8a02f24d82e5dc1981f7f5631fd8543",
+        "vendor/NDTensors/src/lib/AMDGPUExtensions/.JuliaFormatter.toml": "7dcb26f6bc8dd8a9ddb2efdcd31fc918d15f078ff50a83aaecd8dbf56f4bdb13",
+        "vendor/NDTensors/src/lib/AMDGPUExtensions/src/AMDGPUExtensions.jl": "636dc90e1c2b4226cf5ec7b473b6f86f7803574353cb2215e42d45ddee5d2380",
+        "vendor/NDTensors/src/lib/AMDGPUExtensions/src/roc.jl": "d24a448ae7b72b5167f7117fbefe0128e6dab4e64fa744d51def80db7e9dbafb",
+        "vendor/NDTensors/src/lib/AMDGPUExtensions/test/runtests.jl": "298bb6050e8d35100f16cb678dabe29bd051598ef923e33e00217e9c04c33678",
+        "vendor/NDTensors/src/lib/BackendSelection/.JuliaFormatter.toml": "7dcb26f6bc8dd8a9ddb2efdcd31fc918d15f078ff50a83aaecd8dbf56f4bdb13",
+        "vendor/NDTensors/src/lib/BackendSelection/src/BackendSelection.jl": "c7d1da4c95b760078b8b4f18350c437e403c50795ad79b684e27f0b1679368dd",
+        "vendor/NDTensors/src/lib/BackendSelection/src/abstractbackend.jl": "0fb2873af5570b1c1492e0677408a034a64a607d2c93df95abbec31ef3f2713b",
+        "vendor/NDTensors/src/lib/BackendSelection/src/backend_types.jl": "ebcd62b00d17d16d48f6d7d941b9f2d28010ba4d162ba02a8e71140761bf5ba2",
+        "vendor/NDTensors/src/lib/BackendSelection/test/Project.toml": "6028c353382f17791c029e17fe16b661cd81873e181a609caf3ed60b60560e1b",
+        "vendor/NDTensors/src/lib/BackendSelection/test/runtests.jl": "46f712cfacfe4091b35ef5ecbd91c3f7388df6f76e571ba4a16ae6aa03ccd8c5",
+        "vendor/NDTensors/src/lib/CUDAExtensions/.JuliaFormatter.toml": "7dcb26f6bc8dd8a9ddb2efdcd31fc918d15f078ff50a83aaecd8dbf56f4bdb13",
+        "vendor/NDTensors/src/lib/CUDAExtensions/src/CUDAExtensions.jl": "50d3e5fede2305e521da55a51fe7a12efd53e93b962c5197c73fd86bf45bd1d4",
+        "vendor/NDTensors/src/lib/CUDAExtensions/src/cuda.jl": "9c1a2ab1e413281d124009d36835f26ba8131e62706dbbdb2b6f18acd0adf58c",
+        "vendor/NDTensors/src/lib/CUDAExtensions/test/runtests.jl": "a850ccd891344cbb1384b9322932d1bf43d0140ae47d8722e85b004af3553e90",
+        "vendor/NDTensors/src/lib/Expose/.JuliaFormatter.toml": "7dcb26f6bc8dd8a9ddb2efdcd31fc918d15f078ff50a83aaecd8dbf56f4bdb13",
+        "vendor/NDTensors/src/lib/Expose/README.md": "dfc15377f47fbf8463c35779f88e329ae237e0ff0122509700b5810573dca132",
+        "vendor/NDTensors/src/lib/Expose/TODO.md": "f568062cfd9a4f0a3241512f85d31bac9ffa3b9117efae1ed5a814fa0afe7dec",
+        "vendor/NDTensors/src/lib/Expose/src/Expose.jl": "1873ff885d771dde4de13ee2566444f20b3fb50b8adedc7486ad26d7b3198726",
+        "vendor/NDTensors/src/lib/Expose/src/exposed.jl": "688e7cb2db3a68ff97bae652640ffbd0e931ba4148edab29d13a12546bdf043a",
+        "vendor/NDTensors/src/lib/Expose/src/functions/abstractarray.jl": "7acf81bb297f49240446f4f61d31b85d297b3335cc97b49bd220693a48f1679c",
+        "vendor/NDTensors/src/lib/Expose/src/functions/adapt.jl": "fc6a78e161b3cc7097c51b29b157f33d314bd262077597a02e27bac044c3e5e3",
+        "vendor/NDTensors/src/lib/Expose/src/functions/append.jl": "ff04c35717bf2addfebbff5b6c65780f6a844714a56b1d2b221250d874e0693d",
+        "vendor/NDTensors/src/lib/Expose/src/functions/copyto.jl": "0e9cd5ebf64e832adf111d3e585ca33e3e7eb2865f868885a06df3a8d5bcbc0f",
+        "vendor/NDTensors/src/lib/Expose/src/functions/linearalgebra.jl": "ac9aa39e22dd459de607ed2198ff57772e1e4fa85e861375eda20945152d4525",
+        "vendor/NDTensors/src/lib/Expose/src/functions/mul.jl": "a0f4d99444b0471765fccdde61216ed8f5b91d6cc38b2df4719f2e66b8738850",
+        "vendor/NDTensors/src/lib/Expose/src/functions/permutedims.jl": "ec3577180b019f360ad85e3c7759f282b094c01b45144799b10267ff4c65c1ca",
+        "vendor/NDTensors/src/lib/Expose/src/import.jl": "c53b91ca346fe1e3067d3cfea41359ca27b157d5088a405ba2c23447d1399044",
+        "vendor/NDTensors/src/lib/Expose/test/Project.toml": "4b2187c8580ca3f1ca4492f89229019fa1a743b5ad35e83fb32aec866bcd42b5",
+        "vendor/NDTensors/src/lib/Expose/test/runtests.jl": "2ee83b1fcd4bf7d47b9da29b9b4f9a674e19d55cdcd0d6da3ae8e249a7e411a2",
+        "vendor/NDTensors/src/lib/GPUArraysCoreExtensions/.JuliaFormatter.toml": "7dcb26f6bc8dd8a9ddb2efdcd31fc918d15f078ff50a83aaecd8dbf56f4bdb13",
+        "vendor/NDTensors/src/lib/GPUArraysCoreExtensions/Project.toml": "e0267f2c0f73dd928edc0daea60aae622f0e2244da9f990333e45b0586e4e6c6",
+        "vendor/NDTensors/src/lib/GPUArraysCoreExtensions/src/GPUArraysCoreExtensions.jl": "5de26f3c1e1712e69ae4264a1f6ee02f7f08ecf9c35fc937dafe95fa352f3641",
+        "vendor/NDTensors/src/lib/GPUArraysCoreExtensions/src/gpuarrayscore.jl": "7fdc8fdb5951a674c32bfb79592788e91e4113bb78099178d9a6950742d655fa",
+        "vendor/NDTensors/src/lib/GPUArraysCoreExtensions/test/runtests.jl": "8755efad84f4ebb5a4ef825f3ed3b276eb4e20de3bf5d08792042d6b2da09d6f",
+        "vendor/NDTensors/src/lib/MetalExtensions/.JuliaFormatter.toml": "7dcb26f6bc8dd8a9ddb2efdcd31fc918d15f078ff50a83aaecd8dbf56f4bdb13",
+        "vendor/NDTensors/src/lib/MetalExtensions/src/MetalExtensions.jl": "16ed92900cd973ab8ccc4be31d446bbf291d55cb2ae48676f7d499b99d8f86fb",
+        "vendor/NDTensors/src/lib/MetalExtensions/src/metal.jl": "e1b799e61c9349bdd631e77ddeabae63e79d7a3f1c1475f1fa55876a95a2dbe6",
+        "vendor/NDTensors/src/lib/MetalExtensions/test/runtests.jl": "860df1edc08553a8815c5631be7944909a539b802fb612c4aaf6066a37b5f665",
+        "vendor/NDTensors/src/lib/RankFactorization/.JuliaFormatter.toml": "7dcb26f6bc8dd8a9ddb2efdcd31fc918d15f078ff50a83aaecd8dbf56f4bdb13",
+        "vendor/NDTensors/src/lib/RankFactorization/src/RankFactorization.jl": "97b0e57d4bae6f04d8391c61d97c2fce0cf856249f72bcb24f995ce875582de9",
+        "vendor/NDTensors/src/lib/RankFactorization/src/default_kwargs.jl": "48a588e7cfcfeec1f13cb3de4b0e8359164de14da21710083499afbd7402e1b5",
+        "vendor/NDTensors/src/lib/RankFactorization/src/spectrum.jl": "33f3df88dc5464ea24192f459d2bd962af2107339187f7f094ad9333eb18ac3e",
+        "vendor/NDTensors/src/lib/RankFactorization/src/truncate_spectrum.jl": "f17a8bf3795f08f8c8b7fe4446ede6f91b3e3144471fd039f9e26776a8de4c1b",
+        "vendor/NDTensors/src/linearalgebra/linearalgebra.jl": "395a7d6db964aa0c8bddc37752d8d89a2cf13d1679c6569c2c0a4108435e90b3",
+        "vendor/NDTensors/src/linearalgebra/svd.jl": "682f12af30e8a7e215b38d67af071db3e0f53e17ac2dfcc3c2dc7f828514ddc5",
+        "vendor/NDTensors/src/linearalgebra/symmetric.jl": "7d2b80f41ef1a370a673c8bdd951224ff3c6c94bc0089528f94c4b00cbef1349",
+        "vendor/NDTensors/src/nodata.jl": "8cd0c0d0fe97d6007c364561a180037199a4852e8da8e12e7dc17df0086f82c5",
+        "vendor/NDTensors/src/tensor/set_types.jl": "14baee12a641bad6631b7c268bb92102b066a13ee16e4908d2819db42e01f27c",
+        "vendor/NDTensors/src/tensor/similar.jl": "ac6c5231858c06cc7bef492c461db583b191645e3e3daef61f463d2a87f635cd",
+        "vendor/NDTensors/src/tensor/tensor.jl": "2fb8ab3c1eba14d556963f8b231b91f4e8d6235a3f7f349530db4b15bda6b2b9",
+        "vendor/NDTensors/src/tensoroperations/contraction_logic.jl": "13183fce7f3935e46b6045abcf6939a686187c65cd050298f21a57d13abe1ce3",
+        "vendor/NDTensors/src/tensoroperations/generic_tensor_operations.jl": "4f185ec78d7d2fd43a5b825b37738c7110da0b8cb3d90b52a51a2a3af36357d0",
+        "vendor/NDTensors/src/tensorstorage/default_storage.jl": "165385a10b9d429d177382f1be85bb05993af6236d615d15f453febfdfd68a4b",
+        "vendor/NDTensors/src/tensorstorage/set_types.jl": "2b3e1d4b912e1c1bf59a297fb764f7f2de329504b59178c756c6f015ffb3a229",
+        "vendor/NDTensors/src/tensorstorage/similar.jl": "5df277863e03c364d1c542f590b55b824bc7c59fd80d4cbbe235c541026fbbf5",
+        "vendor/NDTensors/src/tensorstorage/tensorstorage.jl": "4de5792ce6f2b4428de4312931542f90f899bbea324712ee745aa8c46f532bbd",
+        "vendor/NDTensors/src/truncate.jl": "29526042ddab5a0a99f185ff422654642c552bc654f7a871593022c3aff1ded3",
+        "vendor/NDTensors/src/tupletools.jl": "fac0b91a445c0843fff057ad6ff9dede713f68d9945155a99f7b322d4e4e5f7d"
+      }
+    },
+    "a9664563e5271c735ab5bc9759c82e667045d1e8bafe33c0c47b677f55e86649": {
+      "backend_project": "outputs/source-snapshots/csl36-pre-env-split-20260920",
+      "files_rehashed": 180,
+      "source_sha256": {
+        "Manifest-v1.13.toml": "134a3797eb3ba08171879ce51e354b8da641733911dc64b1f5944b0199c7187b",
+        "Project.toml": "debb9b90c699e01f034a8ec21602c9eba26795a60fe5a69c0e8e793ed9a6bb0e",
+        "src/KagomeDMRG.jl": "c47a84d16584264430aa76c44addf00351b7c15c0e1c8188f82d2bda41d2fd81",
+        "src/checkpoint.jl": "2faea3170bb2f94c8bc112e9c13f87496946e463d51396a1620903acbcfbcff4",
+        "src/chirality.jl": "b09f8dee7cd0952920e190bbcbc244a505cebfac9756b4c5b7498e6780a4f18b",
+        "src/continuation.jl": "613c5151ff09040fecd8002465a626fde5e70eb501be59aff45619044d3ae44e",
+        "src/dmrg.jl": "94e66b1668b3bc3e502924ab8c6b11b6dd533ea5b65122ddc040d18fe0217012",
+        "src/extended_model.jl": "3db76c474147afbee04d04e56db5e34e318cf485e18f74858898539a903eb120",
+        "src/lattice.jl": "15d9ea5bea1514f49b36ac45bc139489fd6c6c03b00dff4e836d3d3e3aa7b2ec",
+        "src/model.jl": "ec57b01141fd90a4938fc22d2833bd7a3ddfa107a107fb083753a4a39e91f58b",
+        "src/observables.jl": "dfc48cc85a2cc6f51c99e4a58dc64f7709fad9f3834136e9fa915659147b29f8",
+        "src/provenance.jl": "360724cf18a928363418a6dceef90c89ffad1fdde0f40fe43bd4c717175da5d2",
+        "src/schmidt.jl": "13517078685ce1e1ca43b6200cbc61ff7aa6113757fa61ed9fcee4dfee3cbd0a",
+        "vendor/NDTensors/Project.toml": "59d3d69bcb46b7af4386ea455483ac9419fcc89b169f21d6a2b6b0c1eb3a7c87",
+        "vendor/NDTensors/ext/NDTensorsAMDGPUExt/NDTensorsAMDGPUExt.jl": "bb1acaffbbfac3b92a001f60d1025593df8fb4c8f00cfba30181fa74b84aa14d",
+        "vendor/NDTensors/ext/NDTensorsAMDGPUExt/adapt.jl": "d8aa0643a3c9798ff4d9fed8949c34029b1407b805fa97384bff4fa9ecf9b5f8",
+        "vendor/NDTensors/ext/NDTensorsAMDGPUExt/append.jl": "063fab626a97267ef21b31cbc9df4173ed242a6b6c2e8b26a34a626197c197af",
+        "vendor/NDTensors/ext/NDTensorsAMDGPUExt/copyto.jl": "c2cf9fea12a743bf002de9cd22d1e857244108380665c520533b21f6fb2b8b4d",
+        "vendor/NDTensors/ext/NDTensorsAMDGPUExt/indexing.jl": "3b0455a0677f5bb192244c821d6eb5dcdf0301f2b6f5e2d0a50a296469cbe6b5",
+        "vendor/NDTensors/ext/NDTensorsAMDGPUExt/linearalgebra.jl": "9fb2bb3c028b92e20f5283c74b617567575ec2329a0b417bd938579ef52ccbb9",
+        "vendor/NDTensors/ext/NDTensorsAMDGPUExt/mul.jl": "fdb4bdaa980ada17fe6d43eef03c30c735e3a76671b28fc059d688c85ecff355",
+        "vendor/NDTensors/ext/NDTensorsAMDGPUExt/permutedims.jl": "e65ec0ce70cbd50fae5c5e659479b06e3776e28836b42626d485df29a8bb54df",
+        "vendor/NDTensors/ext/NDTensorsAMDGPUExt/set_types.jl": "f3f39efbacd0da22e0685758cbc067db85cfeb0671f500ac94871f0de489fac9",
+        "vendor/NDTensors/ext/NDTensorsCUDAExt/NDTensorsCUDAExt.jl": "c2be69a4f4562d15ddfaf709d1ff78fbbfa6869d0a361d371a58063a80697e09",
+        "vendor/NDTensors/ext/NDTensorsCUDAExt/adapt.jl": "bbbd1a16b485eaa40f91a7ea25eb1079aedd7e2a82656533f072e70dced42f2f",
+        "vendor/NDTensors/ext/NDTensorsCUDAExt/append.jl": "3c6d3da547c826d9f137cd9ab8c9549d97282d5d89d9ebf4467fb7be019032fa",
+        "vendor/NDTensors/ext/NDTensorsCUDAExt/copyto.jl": "96fafee4f759697e78fd0b4cacf94489130e531ba150b91900a4775a458bf7eb",
+        "vendor/NDTensors/ext/NDTensorsCUDAExt/default_kwargs.jl": "58b93e96de1142122f22e6e18c2c9c96a55de605bd59f9170ec49dea16c23eb8",
+        "vendor/NDTensors/ext/NDTensorsCUDAExt/indexing.jl": "2585ee449609317792f7c91c27756d6b9b3b1af62c9f870ea1595d881120a371",
+        "vendor/NDTensors/ext/NDTensorsCUDAExt/iscu.jl": "eac86157ecfc52cb3294ee253a18eb7c1848d4b0d2555b757159a9420fed67af",
+        "vendor/NDTensors/ext/NDTensorsCUDAExt/linearalgebra.jl": "b0db2ce8390966d028729c8ba20b086c2d488c953c2833f171086abb134a3cc3",
+        "vendor/NDTensors/ext/NDTensorsCUDAExt/mul.jl": "bb5a63ba0f60fb5c060a34aa5b1867aa15d5de2681673393982be28d187c6d4d",
+        "vendor/NDTensors/ext/NDTensorsCUDAExt/permutedims.jl": "b08a6bcea0aa1ae69017ac0629cd72f1c69827f81d44f17232ae8468d4a8db7d",
+        "vendor/NDTensors/ext/NDTensorsCUDAExt/set_types.jl": "03311e18a80634f5e59c39329c5a33ea33c05d227f510a70de7a4a76b74cfa0b",
+        "vendor/NDTensors/ext/NDTensorsGPUArraysCoreExt/NDTensorsGPUArraysCoreExt.jl": "9cd9b5eb73583b656d301d0aab1b6c75466e913ccec28e0f7af66c532381773c",
+        "vendor/NDTensors/ext/NDTensorsGPUArraysCoreExt/blocksparsetensor.jl": "7f09e9551d323b533ecec0756e0968541481d9f27f7f0d41bada7ce920229e3c",
+        "vendor/NDTensors/ext/NDTensorsGPUArraysCoreExt/contract.jl": "acb83f46c5ead56ce5ecd1cbbff8d9c4f38339931637198d45561023a8823bc9",
+        "vendor/NDTensors/ext/NDTensorsHDF5Ext/NDTensorsHDF5Ext.jl": "1e1c233183cb0b8c3e624eebcbab8b437fe6db79f7776938acfd545d93c36de7",
+        "vendor/NDTensors/ext/NDTensorsHDF5Ext/blocksparse.jl": "04abf715f0d956f4fbc770450c939a4a8cf1b921a3f7f9a81536d068605bb282",
+        "vendor/NDTensors/ext/NDTensorsHDF5Ext/dense.jl": "219e28b4a9a845eed582ba2508d98b703c36e64a1c6714330cb90812f50f5b47",
+        "vendor/NDTensors/ext/NDTensorsHDF5Ext/diag.jl": "c8783890968f1c146aee3bccf636530ee23426d39301ee4a54884cf1f1309f04",
+        "vendor/NDTensors/ext/NDTensorsHDF5Ext/empty.jl": "878d058d51c63222082a1abcda33d022cfa830176f168ae9bd04291ff6c87854",
+        "vendor/NDTensors/ext/NDTensorsJLArraysExt/NDTensorsJLArraysExt.jl": "c52d0e1359ff2245acf3da6499c74f5b5c1a0c94da6417839a7ce81532b7a25f",
+        "vendor/NDTensors/ext/NDTensorsJLArraysExt/copyto.jl": "3845eefcfe25c541115f93ff25454f0a45bf196e04b68382e331fce14c9295e7",
+        "vendor/NDTensors/ext/NDTensorsJLArraysExt/indexing.jl": "5fc8f8ad3ac50a44a4c198f5646aba9a85b4988b601982da61a7a49a772c6dcb",
+        "vendor/NDTensors/ext/NDTensorsJLArraysExt/linearalgebra.jl": "a1573a844829ee4d0069275be5803d5038b58ca026abe6eed6d820c8acb78d41",
+        "vendor/NDTensors/ext/NDTensorsJLArraysExt/mul.jl": "72e3e6e22d1d5e6c006e3a82f8aaf5559b7f88bb27cb88ad7b380d557a2b9632",
+        "vendor/NDTensors/ext/NDTensorsJLArraysExt/permutedims.jl": "3acb431354be8599e802bb100c499f17680c31e05260a6d1c0277132e9b774b2",
+        "vendor/NDTensors/ext/NDTensorsMappedArraysExt/NDTensorsMappedArraysExt.jl": "9ad0b0aed6d7fad2483c7832bbb0e64f62ccfd2db28a02d8ff821bfdadd76cf6",
+        "vendor/NDTensors/ext/NDTensorsMetalExt/NDTensorsMetalExt.jl": "3c0a3e75578417edc321b9ac0388f5a715acde4d11f3f79282580cee67c50fef",
+        "vendor/NDTensors/ext/NDTensorsMetalExt/adapt.jl": "8abdb539d3f47701f32e3805b0f22188ffe09fccb6ad0037f140e863cf7c944b",
+        "vendor/NDTensors/ext/NDTensorsMetalExt/append.jl": "f959252459f5de9815cfd9769f091b2c1bb3e42832174e0a0dcf0556cbb2daa7",
+        "vendor/NDTensors/ext/NDTensorsMetalExt/copyto.jl": "89e61ab070b7500a54dda539c2532ef6cedc69615cef159c1e6b68631f8d7853",
+        "vendor/NDTensors/ext/NDTensorsMetalExt/indexing.jl": "a9980cb384868bc7a7253d5bb3868bc0dc30910d1ecf836a1be78333d0d89ee4",
+        "vendor/NDTensors/ext/NDTensorsMetalExt/linearalgebra.jl": "a3f2cd3e72254c33b3f5728fed9bbb7bc8ef45dcf37000d7788bc230fcc18cc9",
+        "vendor/NDTensors/ext/NDTensorsMetalExt/mul.jl": "a40ab18645e079125811c6e25d3fcf9ce1a7c817691b22a659ab309b19f15629",
+        "vendor/NDTensors/ext/NDTensorsMetalExt/permutedims.jl": "008d467a5cbc59ddd4859a7313749f941cc615043c6e7222fa48f733086f01c7",
+        "vendor/NDTensors/ext/NDTensorsMetalExt/set_types.jl": "6b4b915b4ea4b7c843e780be8f846cad4bfce85a3ecb59bbf7efff7eaff5cc74",
+        "vendor/NDTensors/ext/NDTensorsOctavianExt/NDTensorsOctavianExt.jl": "da1dc0f60d567fc36f46f4cfbac218d618b76db3c760e5392c774c19acf72663",
+        "vendor/NDTensors/ext/NDTensorsOctavianExt/import.jl": "f2d8a4be22d07849ec3ea5274e02f310dfedd90bfed960d4441e5c69556a43a6",
+        "vendor/NDTensors/ext/NDTensorsOctavianExt/octavian.jl": "979931868e2b22652b2825eb73aa187e5da409a61d508889f17de7d8e6efee48",
+        "vendor/NDTensors/ext/NDTensorsTBLISExt/NDTensorsTBLISExt.jl": "5b613aedc8141e47c57011f92609657d932496fe3bf5651d6e3e29c5b148240e",
+        "vendor/NDTensors/ext/NDTensorsTBLISExt/contract.jl": "db281c3a609e01e909595dd46db2f1c546234a80510bbb4ae7c52bfc17829471",
+        "vendor/NDTensors/ext/NDTensorscuTENSORExt/NDTensorscuTENSORExt.jl": "d550d70ebaff58ad9f2fbe752e7e79fc5f37d8b6ff0b246db01e17f2e1fb3190",
+        "vendor/NDTensors/ext/NDTensorscuTENSORExt/contract.jl": "0e87d4952463e12b815fa44b6cd297d4c618e963dbcb870195af8387ec0601ef",
+        "vendor/NDTensors/src/NDTensors.jl": "93c116350d38bd51a23896b892a09554b80c4f60606a66af532c85e9316903ed",
+        "vendor/NDTensors/src/abstractarray/diaginterface.jl": "dafc569213a1ef7faefa0602a836caf036645170631fd40ba2c0f511ecf9ffe0",
+        "vendor/NDTensors/src/abstractarray/generic_array_constructors.jl": "377bbc3565a58ebcacce575fb3038458c990b31038f45a388d75563d2eb4d3e3",
+        "vendor/NDTensors/src/abstractarray/iscu.jl": "a4db07b5b7bf728fd27004e568b2f428918ad39c8fd2b6ef7942f11b5eeb0e79",
+        "vendor/NDTensors/src/abstractarray/mul.jl": "cdfeab2363d527ab3dcb0077e44b61bdf338fd1ea28c3d7e844adf826893ee0d",
+        "vendor/NDTensors/src/abstractarray/permutedims.jl": "fbf318e87d0ba11fafd55ce545a05bee96e5900292a20a885f810519f8155ae1",
+        "vendor/NDTensors/src/abstractarray/set_types.jl": "c5897f70892af64f9de9fbc0e7fbc7b171079bfaed01c054e72fa7d99c58523e",
+        "vendor/NDTensors/src/abstractarray/similar.jl": "2a6fa581a450b2cbb705cd1dbca84930a54a0290934bfb3f424ad7c7f1c9f0f2",
+        "vendor/NDTensors/src/abstractarray/tensoralgebra/contract.jl": "2ca9c0080c960d381e850153ebb7f1aeac3487f6fe339c4182a24ef0dd9b440c",
+        "vendor/NDTensors/src/abstractarray/to_shape.jl": "902d5b8c92b0f1a2bdb6320d1a4ecb6a8ff01aa391bce372215fcd8c9e09cfe3",
+        "vendor/NDTensors/src/adapt.jl": "703430e951574cc2213197db19872e4cce4731f5683dc66a067e15b14cd43ded",
+        "vendor/NDTensors/src/aliasstyle.jl": "37b9abfaf80131020f72a518a454ed1404dabcfdac579c19d012fb0428644dbd",
+        "vendor/NDTensors/src/array/mul.jl": "b289d62407d9013511623a21d2bab0234f9aeab86a4e8b3075e0261aad2fff07",
+        "vendor/NDTensors/src/array/permutedims.jl": "cd1c04c0b1454f105eac0499413ea8a441641220b498812ce68e9b00453246bc",
+        "vendor/NDTensors/src/blocksparse/adapt.jl": "02cac5677ab74ff2430f7e32a8580e7b5cd4cb15d1f02b210c062148ff03aa5e",
+        "vendor/NDTensors/src/blocksparse/block.jl": "87a64296109a7b5a31f334f207c70c313b28cbd20759151ac79a84eda3abb224",
+        "vendor/NDTensors/src/blocksparse/blockdims.jl": "150dc643646b655b35c9747618e09cc96cb9fec174d9465e83329d8059227096",
+        "vendor/NDTensors/src/blocksparse/blockoffsets.jl": "c7ed7c47f72114478552833472ffd4b53b70c8a53ed89044cf6b5ef123ae2f2e",
+        "vendor/NDTensors/src/blocksparse/blocksparse.jl": "688917f03103228bbd16afd731dcba418925d47e73862d2a41d5e59e7886d93e",
+        "vendor/NDTensors/src/blocksparse/blocksparsetensor.jl": "2c85d550bf5b36f0e6b38c8dc2ae8f4733ec48bd119803cdde9456f7119289c7",
+        "vendor/NDTensors/src/blocksparse/combiner.jl": "0206a11fd7e4bf672e567ce98ab3b52accbcfca5a487daaf130c9f683ed4b2a4",
+        "vendor/NDTensors/src/blocksparse/contract.jl": "6b5e86ef8621732d67471fa43bb0c528088351d3379c72b476c571ffd329bee4",
+        "vendor/NDTensors/src/blocksparse/contract_generic.jl": "4b2861b60a9e122a91c2a5325955bd21c9812ae7281875a25ac5832333d29c7d",
+        "vendor/NDTensors/src/blocksparse/contract_sequential.jl": "33a8c02b9da93aa7a77291134681860051de2069662e5db005e746348825dd67",
+        "vendor/NDTensors/src/blocksparse/contract_threaded.jl": "86a30e45a582e0316626822f3f9a65d4b7fa67f408af97db9c69b778c68050c6",
+        "vendor/NDTensors/src/blocksparse/contract_utilities.jl": "9174a6a4022b6b5269c67ced65a8e6bd0fffc8c8368c5f9571d852de76d9d5b8",
+        "vendor/NDTensors/src/blocksparse/diagblocksparse.jl": "565c6f0cd87b3fc3e5cc0ddeb52524567530152629e5a9bb379ba93f57bb2d20",
+        "vendor/NDTensors/src/blocksparse/fermions.jl": "26af87d934bc9b167fdb92c5f38ba9c76d213933e9506b2fb91a6fafe67e13fc",
+        "vendor/NDTensors/src/blocksparse/linearalgebra.jl": "fde39b44654889cef82b2fe1f330e03d814b16d1bb786a801ae176ebbb3d880b",
+        "vendor/NDTensors/src/blocksparse/similar.jl": "2ecf8a7b0afe013be4c9fd06d417cf91e957f09f49b41f2a90c9333d1a1a16af",
+        "vendor/NDTensors/src/blocksparse/truncate_spectrum.jl": "3f5b958c7878288619b7bc64f2449a5c36c2b9587e7906a20488448ef27a2a8b",
+        "vendor/NDTensors/src/combiner/combiner.jl": "4a0e1e9eb7a3ae941bfdf389db0d310824f24c278aa59e6471e662a9ab66b19f",
+        "vendor/NDTensors/src/combiner/contract.jl": "efd57cea1168a7e13401a0ae9b05e3ea119d47dd3a7134f53fe4974c3d647bac",
+        "vendor/NDTensors/src/default_kwargs.jl": "48a588e7cfcfeec1f13cb3de4b0e8359164de14da21710083499afbd7402e1b5",
+        "vendor/NDTensors/src/dense/dense.jl": "114ea60f15bd54b422f95234b11b86e57a822a1740130734813116f6a8ebac21",
+        "vendor/NDTensors/src/dense/densetensor.jl": "eb656cf8d9af846c1e8fa268f18458939296995aed805a7a6e86aa7f4a5d9e8d",
+        "vendor/NDTensors/src/dense/generic_array_constructors.jl": "47b3ba9ae03dfe3bf24756804b657b37413654f598d8b98c42b4b354a33dfdae",
+        "vendor/NDTensors/src/dense/linearalgebra/decompositions.jl": "6a0d32e99fe1b0aa70ed04f803aed53d66fc0127253d312a445ee092753b43e9",
+        "vendor/NDTensors/src/dense/set_types.jl": "1dc6576102a723c2dbb6578a7555f7d1a3b5bafe4ba0d5c5325b77703e245ff5",
+        "vendor/NDTensors/src/dense/tensoralgebra/contract.jl": "6e130bff906e28909b0027fdf2ac99bf8274503039c83bf2773878c603cb70ab",
+        "vendor/NDTensors/src/dense/tensoralgebra/outer.jl": "95feeda74e5bd9186769c9573909e8a83c8238b6c0df476817d263807235245c",
+        "vendor/NDTensors/src/deprecated.jl": "32c8a23e3f8971a7a14e82dbcfbdfbfdf523eafd5d5db495a61016a45d0a7f14",
+        "vendor/NDTensors/src/diag/diag.jl": "4d86cc755b5c2100cd7c1ce56a4107dce686f913c3b22a721e643387f5f2d106",
+        "vendor/NDTensors/src/diag/diagtensor.jl": "a85308112964847e38ede59e26341561e4bd6dbf6873dd740598fb8a4150a6a0",
+        "vendor/NDTensors/src/diag/set_types.jl": "eae287d3a100a7e3fb2896fca49a3642f92d4ed0d55fb2d08d974ae4781449a3",
+        "vendor/NDTensors/src/diag/similar.jl": "196bc09444f3b2313adc26fee80da2f49b1501cf663155bfd6fd1e559ce0148a",
+        "vendor/NDTensors/src/diag/tensoralgebra/contract.jl": "397d27c466bcf5fe3dd8e88deb196ba3d4a70b6773cc800297287f6e5145eb96",
+        "vendor/NDTensors/src/diag/tensoralgebra/outer.jl": "f29c15122ffe7b8bd15ea47dba3c34dbf2a3fb3b4268d38a1398a54ca585d715",
+        "vendor/NDTensors/src/dims.jl": "a58a06bf0f6e75706257249743ad9cebdb361a20949e9ba691642c736835daee",
+        "vendor/NDTensors/src/empty/EmptyTensor.jl": "73af0d8585bed3922717d34eb426b03689adb90e962c9a4cb2e26f6726fbdc68",
+        "vendor/NDTensors/src/empty/adapt.jl": "5866d1124f4ae6d5474f7a71ec6d6178e2b009e02b4d26e7a680fe90e6edecf7",
+        "vendor/NDTensors/src/empty/empty.jl": "749946e78eb9b6506cd20d9f86a460b867b3184e6ebbf0cd79c2368f0cf786cc",
+        "vendor/NDTensors/src/empty/tensoralgebra/contract.jl": "e998e877e4600b116d47ce946e8cd98211d0cf92e524adc654f7db8deaa1190f",
+        "vendor/NDTensors/src/emptynumber.jl": "18a15b78659bb2612c92a84449a45a7dc30388900286e1d57a559688b19fec52",
+        "vendor/NDTensors/src/exports.jl": "5780406d52a704d209d3160f4558159ddfa841f347ec36bfd6d038ec92770648",
+        "vendor/NDTensors/src/imports.jl": "fa0ebef6a1db4ad0b6bdecea2c17e82ed26c20c473006e3016b9a5f08f313c04",
+        "vendor/NDTensors/src/kagome_source_identity.jl": "8aafb41dceea0bcdf042fa981f73a024f8a02f24d82e5dc1981f7f5631fd8543",
+        "vendor/NDTensors/src/lib/AMDGPUExtensions/.JuliaFormatter.toml": "7dcb26f6bc8dd8a9ddb2efdcd31fc918d15f078ff50a83aaecd8dbf56f4bdb13",
+        "vendor/NDTensors/src/lib/AMDGPUExtensions/src/AMDGPUExtensions.jl": "636dc90e1c2b4226cf5ec7b473b6f86f7803574353cb2215e42d45ddee5d2380",
+        "vendor/NDTensors/src/lib/AMDGPUExtensions/src/roc.jl": "d24a448ae7b72b5167f7117fbefe0128e6dab4e64fa744d51def80db7e9dbafb",
+        "vendor/NDTensors/src/lib/AMDGPUExtensions/test/runtests.jl": "298bb6050e8d35100f16cb678dabe29bd051598ef923e33e00217e9c04c33678",
+        "vendor/NDTensors/src/lib/BackendSelection/.JuliaFormatter.toml": "7dcb26f6bc8dd8a9ddb2efdcd31fc918d15f078ff50a83aaecd8dbf56f4bdb13",
+        "vendor/NDTensors/src/lib/BackendSelection/src/BackendSelection.jl": "c7d1da4c95b760078b8b4f18350c437e403c50795ad79b684e27f0b1679368dd",
+        "vendor/NDTensors/src/lib/BackendSelection/src/abstractbackend.jl": "0fb2873af5570b1c1492e0677408a034a64a607d2c93df95abbec31ef3f2713b",
+        "vendor/NDTensors/src/lib/BackendSelection/src/backend_types.jl": "ebcd62b00d17d16d48f6d7d941b9f2d28010ba4d162ba02a8e71140761bf5ba2",
+        "vendor/NDTensors/src/lib/BackendSelection/test/Project.toml": "6028c353382f17791c029e17fe16b661cd81873e181a609caf3ed60b60560e1b",
+        "vendor/NDTensors/src/lib/BackendSelection/test/runtests.jl": "46f712cfacfe4091b35ef5ecbd91c3f7388df6f76e571ba4a16ae6aa03ccd8c5",
+        "vendor/NDTensors/src/lib/CUDAExtensions/.JuliaFormatter.toml": "7dcb26f6bc8dd8a9ddb2efdcd31fc918d15f078ff50a83aaecd8dbf56f4bdb13",
+        "vendor/NDTensors/src/lib/CUDAExtensions/src/CUDAExtensions.jl": "50d3e5fede2305e521da55a51fe7a12efd53e93b962c5197c73fd86bf45bd1d4",
+        "vendor/NDTensors/src/lib/CUDAExtensions/src/cuda.jl": "9c1a2ab1e413281d124009d36835f26ba8131e62706dbbdb2b6f18acd0adf58c",
+        "vendor/NDTensors/src/lib/CUDAExtensions/test/runtests.jl": "a850ccd891344cbb1384b9322932d1bf43d0140ae47d8722e85b004af3553e90",
+        "vendor/NDTensors/src/lib/Expose/.JuliaFormatter.toml": "7dcb26f6bc8dd8a9ddb2efdcd31fc918d15f078ff50a83aaecd8dbf56f4bdb13",
+        "vendor/NDTensors/src/lib/Expose/README.md": "dfc15377f47fbf8463c35779f88e329ae237e0ff0122509700b5810573dca132",
+        "vendor/NDTensors/src/lib/Expose/TODO.md": "f568062cfd9a4f0a3241512f85d31bac9ffa3b9117efae1ed5a814fa0afe7dec",
+        "vendor/NDTensors/src/lib/Expose/src/Expose.jl": "1873ff885d771dde4de13ee2566444f20b3fb50b8adedc7486ad26d7b3198726",
+        "vendor/NDTensors/src/lib/Expose/src/exposed.jl": "688e7cb2db3a68ff97bae652640ffbd0e931ba4148edab29d13a12546bdf043a",
+        "vendor/NDTensors/src/lib/Expose/src/functions/abstractarray.jl": "7acf81bb297f49240446f4f61d31b85d297b3335cc97b49bd220693a48f1679c",
+        "vendor/NDTensors/src/lib/Expose/src/functions/adapt.jl": "fc6a78e161b3cc7097c51b29b157f33d314bd262077597a02e27bac044c3e5e3",
+        "vendor/NDTensors/src/lib/Expose/src/functions/append.jl": "ff04c35717bf2addfebbff5b6c65780f6a844714a56b1d2b221250d874e0693d",
+        "vendor/NDTensors/src/lib/Expose/src/functions/copyto.jl": "0e9cd5ebf64e832adf111d3e585ca33e3e7eb2865f868885a06df3a8d5bcbc0f",
+        "vendor/NDTensors/src/lib/Expose/src/functions/linearalgebra.jl": "ac9aa39e22dd459de607ed2198ff57772e1e4fa85e861375eda20945152d4525",
+        "vendor/NDTensors/src/lib/Expose/src/functions/mul.jl": "a0f4d99444b0471765fccdde61216ed8f5b91d6cc38b2df4719f2e66b8738850",
+        "vendor/NDTensors/src/lib/Expose/src/functions/permutedims.jl": "ec3577180b019f360ad85e3c7759f282b094c01b45144799b10267ff4c65c1ca",
+        "vendor/NDTensors/src/lib/Expose/src/import.jl": "c53b91ca346fe1e3067d3cfea41359ca27b157d5088a405ba2c23447d1399044",
+        "vendor/NDTensors/src/lib/Expose/test/Project.toml": "4b2187c8580ca3f1ca4492f89229019fa1a743b5ad35e83fb32aec866bcd42b5",
+        "vendor/NDTensors/src/lib/Expose/test/runtests.jl": "2ee83b1fcd4bf7d47b9da29b9b4f9a674e19d55cdcd0d6da3ae8e249a7e411a2",
+        "vendor/NDTensors/src/lib/GPUArraysCoreExtensions/.JuliaFormatter.toml": "7dcb26f6bc8dd8a9ddb2efdcd31fc918d15f078ff50a83aaecd8dbf56f4bdb13",
+        "vendor/NDTensors/src/lib/GPUArraysCoreExtensions/Project.toml": "e0267f2c0f73dd928edc0daea60aae622f0e2244da9f990333e45b0586e4e6c6",
+        "vendor/NDTensors/src/lib/GPUArraysCoreExtensions/src/GPUArraysCoreExtensions.jl": "5de26f3c1e1712e69ae4264a1f6ee02f7f08ecf9c35fc937dafe95fa352f3641",
+        "vendor/NDTensors/src/lib/GPUArraysCoreExtensions/src/gpuarrayscore.jl": "7fdc8fdb5951a674c32bfb79592788e91e4113bb78099178d9a6950742d655fa",
+        "vendor/NDTensors/src/lib/GPUArraysCoreExtensions/test/runtests.jl": "8755efad84f4ebb5a4ef825f3ed3b276eb4e20de3bf5d08792042d6b2da09d6f",
+        "vendor/NDTensors/src/lib/MetalExtensions/.JuliaFormatter.toml": "7dcb26f6bc8dd8a9ddb2efdcd31fc918d15f078ff50a83aaecd8dbf56f4bdb13",
+        "vendor/NDTensors/src/lib/MetalExtensions/src/MetalExtensions.jl": "16ed92900cd973ab8ccc4be31d446bbf291d55cb2ae48676f7d499b99d8f86fb",
+        "vendor/NDTensors/src/lib/MetalExtensions/src/metal.jl": "e1b799e61c9349bdd631e77ddeabae63e79d7a3f1c1475f1fa55876a95a2dbe6",
+        "vendor/NDTensors/src/lib/MetalExtensions/test/runtests.jl": "860df1edc08553a8815c5631be7944909a539b802fb612c4aaf6066a37b5f665",
+        "vendor/NDTensors/src/lib/RankFactorization/.JuliaFormatter.toml": "7dcb26f6bc8dd8a9ddb2efdcd31fc918d15f078ff50a83aaecd8dbf56f4bdb13",
+        "vendor/NDTensors/src/lib/RankFactorization/src/RankFactorization.jl": "97b0e57d4bae6f04d8391c61d97c2fce0cf856249f72bcb24f995ce875582de9",
+        "vendor/NDTensors/src/lib/RankFactorization/src/default_kwargs.jl": "48a588e7cfcfeec1f13cb3de4b0e8359164de14da21710083499afbd7402e1b5",
+        "vendor/NDTensors/src/lib/RankFactorization/src/spectrum.jl": "33f3df88dc5464ea24192f459d2bd962af2107339187f7f094ad9333eb18ac3e",
+        "vendor/NDTensors/src/lib/RankFactorization/src/truncate_spectrum.jl": "f17a8bf3795f08f8c8b7fe4446ede6f91b3e3144471fd039f9e26776a8de4c1b",
+        "vendor/NDTensors/src/linearalgebra/linearalgebra.jl": "395a7d6db964aa0c8bddc37752d8d89a2cf13d1679c6569c2c0a4108435e90b3",
+        "vendor/NDTensors/src/linearalgebra/svd.jl": "682f12af30e8a7e215b38d67af071db3e0f53e17ac2dfcc3c2dc7f828514ddc5",
+        "vendor/NDTensors/src/linearalgebra/symmetric.jl": "7d2b80f41ef1a370a673c8bdd951224ff3c6c94bc0089528f94c4b00cbef1349",
+        "vendor/NDTensors/src/nodata.jl": "8cd0c0d0fe97d6007c364561a180037199a4852e8da8e12e7dc17df0086f82c5",
+        "vendor/NDTensors/src/tensor/set_types.jl": "14baee12a641bad6631b7c268bb92102b066a13ee16e4908d2819db42e01f27c",
+        "vendor/NDTensors/src/tensor/similar.jl": "ac6c5231858c06cc7bef492c461db583b191645e3e3daef61f463d2a87f635cd",
+        "vendor/NDTensors/src/tensor/tensor.jl": "2fb8ab3c1eba14d556963f8b231b91f4e8d6235a3f7f349530db4b15bda6b2b9",
+        "vendor/NDTensors/src/tensoroperations/contraction_logic.jl": "13183fce7f3935e46b6045abcf6939a686187c65cd050298f21a57d13abe1ce3",
+        "vendor/NDTensors/src/tensoroperations/generic_tensor_operations.jl": "4f185ec78d7d2fd43a5b825b37738c7110da0b8cb3d90b52a51a2a3af36357d0",
+        "vendor/NDTensors/src/tensorstorage/default_storage.jl": "165385a10b9d429d177382f1be85bb05993af6236d615d15f453febfdfd68a4b",
+        "vendor/NDTensors/src/tensorstorage/set_types.jl": "2b3e1d4b912e1c1bf59a297fb764f7f2de329504b59178c756c6f015ffb3a229",
+        "vendor/NDTensors/src/tensorstorage/similar.jl": "5df277863e03c364d1c542f590b55b824bc7c59fd80d4cbbe235c541026fbbf5",
+        "vendor/NDTensors/src/tensorstorage/tensorstorage.jl": "4de5792ce6f2b4428de4312931542f90f899bbea324712ee745aa8c46f532bbd",
+        "vendor/NDTensors/src/truncate.jl": "29526042ddab5a0a99f185ff422654642c552bc654f7a871593022c3aff1ded3",
+        "vendor/NDTensors/src/tupletools.jl": "fac0b91a445c0843fff057ad6ff9dede713f68d9945155a99f7b322d4e4e5f7d"
+      }
+    }
+  }
+}

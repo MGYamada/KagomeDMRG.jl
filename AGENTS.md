@@ -23,12 +23,20 @@ These instructions apply throughout this repository, including delegated work.
 
 ## Current Research Priority
 
-- Prioritize static nearest-neighbor 1/9 research: compare exchange energies
-  across magnetization sectors, resolve finite-size field intervals, and compare
-  competing density and bond-order patterns. Use the published `h/J ≈ 0.35–0.42`
-  interval as a starting reference, not an acceptance criterion. At fixed Q,
-  a uniform Zeeman field only shifts energy by `-h*Q/2`; do not repeat DMRG over
-  an h grid within the same sector.
+- Follow [ROADMAP.md](ROADMAP.md) for current priorities. Prioritize competing
+  central bond/spin structures at nearest-neighbor 1/9 magnetization, separating
+  preparation, edge, and finite-width effects. The next planned comparison is
+  N54, Q6 with literature-motivated hourglass/windmill preparation and an
+  unpinned complex reference. This protocol is not yet implemented; existing
+  period9/27 seeds are not the published VBC wavefunctions.
+- Add sectors, sweeps, bond dimensions, or geometries when they can resolve a
+  stated physical uncertainty. Do not default to further N27 refinement or
+  repeat passed benchmarks. Allocate resources to a physical comparison as a
+  whole; previous 600/900-second run caps are not permanent research limits.
+- Preserve numerical integrity and existing accuracy criteria. Unconverged
+  trials can inform exploration, but do not establish converged energy rankings,
+  boundaries, or phases. Use the published `h/J ≈ 0.35–0.42` only as a reference.
+  At fixed Q a uniform field shifts energy by `-h*Q/2`; do not repeat DMRG over h.
 - Advance the known-CSL measurement control alongside this static work.
   Its nonzero-pump calibration is required before interpreting the 1/9 pump,
   but does not block static nearest-neighbor calculations or bounded numerical
@@ -36,10 +44,10 @@ These instructions apply throughout this repository, including delegated work.
 - Include geometries compatible with both nine-site and 27-site competing
   order patterns. Treat edge charge rearrangements, finite-cluster field
   intervals, bulk plateaus, and neutral gaps as separate findings.
-- Use the bounded stages and decision criteria in
-  [the static research strategy](docs/research/p4_static_plateau_strategy.md).
-  Add cases when they resolve an uncertainty; do not require every combination
-  of size, charge, seed, and bond dimension in every study.
+- Use [the static research protocol](docs/research/p4_static_plateau_strategy.md)
+  for conventions and accuracy criteria, and the linked research reports for
+  historical evidence. Do not require every combination of size, charge, seed,
+  and bond dimension. Keep current decisions in ROADMAP and run history in reports.
 
 ## Active Use of Sub-agents
 
