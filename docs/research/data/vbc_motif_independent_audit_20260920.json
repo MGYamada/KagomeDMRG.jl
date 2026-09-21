@@ -1,0 +1,483 @@
+{
+  "schema_version": 1,
+  "recorded_at_utc": "2026-09-20T15:11:02.889476+00:00",
+  "status": "independent_geometry_checks_passed",
+  "method": "Python standard-library Cartesian coordinates and finite-set arithmetic; no production Julia geometry, motif table, or MPO called. Explicit candidate coordinate sets are transcribed independently from the proposed mapping and visually compared with source figures.",
+  "scope": "Geometry and period of selected preparation bonds, not a published wavefunction reproduction, DMRG convergence, or phase identification.",
+  "site_positions": {
+    "A": "x*a1+y*a2",
+    "B": "x*a1+y*a2+a1/2",
+    "C": "x*a1+y*a2+a2/2"
+  },
+  "primitive_vectors": {
+    "a1": [
+      1.0,
+      0.0
+    ],
+    "a2": [
+      0.5,
+      0.8660254037844386
+    ]
+  },
+  "periodic_audit_cell": [
+    3,
+    3
+  ],
+  "periodic_audit_site_count": 27,
+  "periodic_audit_NN_bond_count": 54,
+  "periodic_audit_all_degrees": 4,
+  "floating_distance_tolerance": 1e-12,
+  "source_figures": {
+    "hourglass": "Fang et al., arXiv:2306.09563, Fig.1(b)",
+    "windmill": "Cheng and Li, arXiv:2507.20308, Fig.5"
+  },
+  "hourglass": {
+    "selected_classes_disjoint": true,
+    "all_selected_bonds_are_NN": true,
+    "nearest_neighbor_distance_squared": 0.25,
+    "max_distance_squared_error": 2.7755575615628914e-16,
+    "class_counts_in_27_site_cell": {
+      "bowtie": 18,
+      "background": 36
+    },
+    "translation_stabilizer_modulo_three": [
+      [
+        0,
+        0
+      ],
+      [
+        1,
+        1
+      ],
+      [
+        2,
+        2
+      ]
+    ],
+    "primitive_cell_sites": 9,
+    "centers_in_27_site_cell": [
+      [
+        0,
+        0,
+        "C"
+      ],
+      [
+        1,
+        1,
+        "C"
+      ],
+      [
+        2,
+        2,
+        "C"
+      ]
+    ],
+    "single_bowtie_bonds": [
+      [
+        [
+          0,
+          0,
+          "A"
+        ],
+        [
+          0,
+          0,
+          "B"
+        ]
+      ],
+      [
+        [
+          0,
+          0,
+          "A"
+        ],
+        [
+          0,
+          0,
+          "C"
+        ]
+      ],
+      [
+        [
+          0,
+          0,
+          "B"
+        ],
+        [
+          0,
+          0,
+          "C"
+        ]
+      ],
+      [
+        [
+          0,
+          1,
+          "A"
+        ],
+        [
+          -1,
+          1,
+          "B"
+        ]
+      ],
+      [
+        [
+          0,
+          1,
+          "A"
+        ],
+        [
+          0,
+          0,
+          "C"
+        ]
+      ],
+      [
+        [
+          -1,
+          1,
+          "B"
+        ],
+        [
+          0,
+          0,
+          "C"
+        ]
+      ]
+    ],
+    "single_cluster_sites": 5,
+    "single_cluster_bonds": 6,
+    "bonds_per_9_site_cell": {
+      "bowtie": 6,
+      "background": 12
+    },
+    "primitive_translations": [
+      [
+        1,
+        1
+      ],
+      [
+        -1,
+        2
+      ]
+    ],
+    "figure_visual_comparison": "The connected shared-vertex two-triangle geometry matches the hourglass motif in Fang et al. Fig.1(b). All four published bond classes are not reproduced. Individual hourglass edges have visibly different colors in the inspected figure.",
+    "interpretation_limit": "The preparation tests a geometrically selected hourglass bias; it cannot reject the published VBC candidate based on failure to retain this chosen bias."
+  },
+  "windmill": {
+    "selected_classes_disjoint": true,
+    "all_selected_bonds_are_NN": true,
+    "nearest_neighbor_distance_squared": 0.25,
+    "max_distance_squared_error": 1.1102230246251565e-16,
+    "class_counts_in_27_site_cell": {
+      "ring": 6,
+      "wing": 6,
+      "dumbbell": 6,
+      "background": 36
+    },
+    "translation_stabilizer_modulo_three": [
+      [
+        0,
+        0
+      ]
+    ],
+    "primitive_cell_sites": 27,
+    "ring_coordinates": [
+      [
+        0,
+        0,
+        "B"
+      ],
+      [
+        1,
+        0,
+        "A"
+      ],
+      [
+        1,
+        0,
+        "C"
+      ],
+      [
+        0,
+        1,
+        "B"
+      ],
+      [
+        0,
+        1,
+        "A"
+      ],
+      [
+        0,
+        0,
+        "C"
+      ]
+    ],
+    "wing_bonds": [
+      [
+        [
+          1,
+          0,
+          "B"
+        ],
+        [
+          2,
+          -1,
+          "C"
+        ]
+      ],
+      [
+        [
+          1,
+          -1,
+          "C"
+        ],
+        [
+          1,
+          -1,
+          "A"
+        ]
+      ],
+      [
+        [
+          0,
+          0,
+          "A"
+        ],
+        [
+          -1,
+          0,
+          "B"
+        ]
+      ],
+      [
+        [
+          -1,
+          1,
+          "B"
+        ],
+        [
+          -1,
+          1,
+          "C"
+        ]
+      ],
+      [
+        [
+          0,
+          1,
+          "C"
+        ],
+        [
+          0,
+          2,
+          "A"
+        ]
+      ],
+      [
+        [
+          1,
+          1,
+          "A"
+        ],
+        [
+          1,
+          1,
+          "B"
+        ]
+      ]
+    ],
+    "dumbbell_coordinates": [
+      [
+        [
+          -2,
+          2,
+          "B"
+        ],
+        [
+          -1,
+          2,
+          "A"
+        ],
+        [
+          -1,
+          2,
+          "B"
+        ]
+      ],
+      [
+        [
+          -1,
+          0,
+          "A"
+        ],
+        [
+          -1,
+          0,
+          "C"
+        ],
+        [
+          -1,
+          1,
+          "A"
+        ]
+      ],
+      [
+        [
+          0,
+          2,
+          "C"
+        ],
+        [
+          0,
+          2,
+          "B"
+        ],
+        [
+          1,
+          1,
+          "C"
+        ]
+      ]
+    ],
+    "windmill_cluster_sites": 18,
+    "dumbbell_sites_per_cell": 9,
+    "cluster_and_dumbbell_sites_disjoint": true,
+    "cluster_and_dumbbell_sites_cover_27_site_cell": true,
+    "figure_magnetization_class_counts": {
+      "0.1458": 3,
+      "-0.1002": 3,
+      "0.0937": 6,
+      "-0.0782": 6,
+      "0.2652": 6,
+      "-0.1070": 3
+    },
+    "sum_rounded_figure_site_magnetizations": 1.5,
+    "figure_visual_comparison": "Six oriented red wings and three orientations of green three-site dumbbells agree with Cheng and Li Fig.5; six ring, six wing, six dumbbell bonds per primitive cell."
+  },
+  "numerical_preparation_validation": {
+    "reviewed_at_utc": "2026-09-21T02:35:31.110580+00:00",
+    "status": "independent_saved_result_review_passed",
+    "validation_record": "outputs/p4-vbc-preparation-validation/validation.toml",
+    "validation_record_sha256": "1a460c0d12cd84e0bcaf1b548b7fa9740d20d183c6060dde8ee94d3fa97a0670",
+    "reported_wall_elapsed_seconds": 73.890980042,
+    "elapsed_time_scope": "Checker internal elapsed time, starting before imports; no execution.toml is present in this output directory.",
+    "N": 9,
+    "Q": 1,
+    "matrix_theta": 0.371,
+    "warm_start_theta": 0.0,
+    "lambda": 0.3,
+    "origin_cell": [
+      0,
+      0
+    ],
+    "origin_verification": "Checker snapshotted source explicitly uses origin=(0,0); current campaign configuration uses origin=[0,0].",
+    "sources_unchanged_at_completion": true,
+    "analysis_source_sha256": {
+      "examples/validate_vbc_preparation.jl": "13dbec1e9a17accd477bea57548e2309079fa49bab6ef90f033b2d0d5af0863b",
+      "examples/vbc_motif_tools.jl": "ec224f3f317b4f38f4cc3535944e1c42fff42b8313d8cb91e20da858134a1c6c",
+      "test/itensor_helpers.jl": "68cc6e13292bea25757783b165aa387c85a4906cbe7cd63323c8ad56ef88290f",
+      "test/reference_ed.jl": "328ea4a572b96031ea55818e0b326e90ab8ceb0d58ed16850f4786a218c5e93e"
+    },
+    "analysis_sources_match_current_and_saved_snapshots": true,
+    "backend_source_hashes_verified_count": 179,
+    "backend_source_hashes_match_current": true,
+    "environment_sha256": {
+      "manifest:Manifest-v1.13.toml": "9785e98e00b520fbb52ddbfe9b46ec99b509d21d9609963bddfcb7d8d178d0cd",
+      "project:Project.toml": "4afb36a2bad8756cdccc2ab82dc18c1220bc82b02a9f04735749454a15489dd1"
+    },
+    "environment_hashes_match_research_project": true,
+    "runtime": {
+      "ITensorMPS": "0.4.1",
+      "ITensors": "0.9.31",
+      "KrylovKit": "0.10.4",
+      "LinearAlgebra": "1.13.0",
+      "NDTensors": "0.4.31+1",
+      "SHA": "1.0.0",
+      "Serialization": "1.11.0",
+      "TOML": "1.0.3",
+      "arch": "aarch64",
+      "julia": "1.13.0",
+      "kernel": "Darwin",
+      "word_size": 64
+    },
+    "checker_checks": {
+      "hourglass_exact_removal": true,
+      "hourglass_matrix_contract": true,
+      "hourglass_preparation_nonzero": true,
+      "hourglass_sites_and_winding_preserved": true,
+      "prepared_checkpoint_overlap": true,
+      "prepared_checkpoint_rejected_as_NN": true,
+      "released_checkpoint_matches_NN": true,
+      "released_state_matches_NN_ED": true,
+      "warm_start_complex_charge_sites": true,
+      "windmill_exact_removal": true,
+      "windmill_matrix_contract": true,
+      "windmill_preparation_nonzero": true,
+      "windmill_sites_and_winding_preserved": true
+    },
+    "raw_metrics": {
+      "hourglass": {
+        "charge_commutator_max_error": 0.0,
+        "hermiticity_max_error": 3.3306690738754696e-16,
+        "preparation_matrix_change": 0.44999999999999973,
+        "prepared_mpo_max_error": 1.1102230246251565e-15,
+        "removed_mpo_max_error": 8.881784197001252e-16
+      },
+      "warm_start": {
+        "NN_residual_norm": 5.632267193118713e-14,
+        "energy_error_per_site": 3.4540271877227093e-16,
+        "measured_truncation_errors": [
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "prepared_energy": -3.6256335055530124,
+        "relaxed_NN_energy": -3.561967560726589,
+        "total_sz_error": 1.1102230246251565e-16
+      },
+      "windmill": {
+        "charge_commutator_max_error": 0.0,
+        "hermiticity_max_error": 8.893194933732293e-16,
+        "preparation_matrix_change": 0.38148407349024266,
+        "prepared_mpo_max_error": 8.881784197001252e-16,
+        "removed_mpo_max_error": 8.881784197001252e-16
+      }
+    },
+    "raw_numeric_thresholds_rechecked": true,
+    "same_site_indices_and_charge_across_preparation_removal": true,
+    "saved_prepared_couplings_match_independent_hourglass_bond_classes": true,
+    "saved_released_couplings_exactly_isotropic_J1": true,
+    "checkpoints": {
+      "prepared": {
+        "path": "outputs/p4-vbc-preparation-validation/prepared/trial/checkpoint-Ghkyeu",
+        "sha256": {
+          "metadata.toml": "85dcbcb5da36210264afcb33c3df65e022de2d4ca1ef1d0f3e2249f3e5871ad8",
+          "state.jls": "c449c441cfd27326d1850801439380f10df4814cae9926378c79b3d77ad05e0b",
+          "checksums.toml": "6dc0ee4bad24e59324f7decaf5c25d45e0616fdcd9e91cfdec05661c504cef81"
+        },
+        "file_checksums_and_lengths_verified": true,
+        "recorded_Q": 1,
+        "theta": 0.0,
+        "isotropic_couplings_verified": true
+      },
+      "released": {
+        "path": "outputs/p4-vbc-preparation-validation/released/trial/checkpoint-YiJ2n7",
+        "sha256": {
+          "metadata.toml": "9f5c5832881903a8393511e9adad61acf4dd627b847c00d0fb561252cda0868c",
+          "state.jls": "bbc71bba572dd0ce589dc8209f7be17759e0ae51f38b7cc70301f8945ceba6ad",
+          "checksums.toml": "bfba2fe2254e4d920394bb01f5ab691286a2dc39c6be7fa16f4616835c562a39"
+        },
+        "file_checksums_and_lengths_verified": true,
+        "recorded_Q": 1,
+        "theta": 0.0,
+        "isotropic_couplings_verified": true
+      }
+    },
+    "review_method": "Read-only Python TOML/JSON/hash/metadata checks; no Julia numerical worker or binary deserialization started during the N54 campaign.",
+    "scope_limit": "Confirms the recorded N9 Hamiltonian application/removal and checkpoint checks. Motif weights are shared input to the spin-basis Hamiltonian comparison. N54 convergence, phase identity, and published wavefunction reproduction remain outside this check."
+  }
+}

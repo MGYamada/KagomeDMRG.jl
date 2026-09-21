@@ -334,6 +334,15 @@ P_c(\theta)=\sum_{i\in R_c}
 静的なSz・bond patternの比較は先に進められる。固定Qでは横磁化の一体期待値がゼロなので、
 磁気秩序の検討には縦相関と `⟨S+i S−j⟩` も使い、端で誘起された変調の長さ依存を調べる。
 
+N54・Q6の[準備依存比較](research/p4_vbc54_preparation_comparison.md)では、
+文献の図に基づく一時的なbond誘導 `Jxy_b=Jz_b=1+λw_b` を実装した。
+hourglassはbowtie部分の選択的誘導、windmillは著者稿の4種類のbond対応であり、
+どちらも文献波動関数そのものではない。λ=0で全bondを元のJ=1へ戻し、
+同じsite indices・QのままMPOと環境を再構築して比較する。
+準備中の別模型のenergyと、除去後の最近接模型のenergyを混ぜない。
+中央窓は両端が窓内のbondだけを含め、円周方向のdomain位置も照合する。
+この静的な準備・除去はflux continuationの受理済み経路や非零ポンプ校正ではない。
+
 `schmidt_diagnostics(psi,b)` はこのうち MPS prefix `1:b` の確率・絶対電荷・
 entropy・左物理 Sz の平均と分散を実装した。幾何学 cut `c` は `b=3Ly*c` に対応する。
 MPS のコピーを正準化して切断なし SVD を行い、左テンソル群の flux の和から

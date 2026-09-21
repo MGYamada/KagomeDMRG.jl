@@ -1,0 +1,41 @@
+schema_version = 1
+case_id = "nn54_q6_vbc_preparation_comparison"
+Lx = 6
+Ly = 3
+Q = 6
+seed = 11
+origin = [0, 0]
+branches = ["random", "hourglass", "windmill"]
+wall_seconds = 2700
+question = "Do distinct bond preparations leave different central profiles after removing the preparation Hamiltonian?"
+
+[[stages]]
+name = "prepare"
+lambda = 0.3
+maxdim = [32, 64]
+measure = false
+
+[[stages]]
+name = "reduce"
+lambda = 0.1
+maxdim = [128, 128]
+measure = false
+
+[[stages]]
+name = "release"
+lambda = 0.0
+maxdim = [128, 128]
+measure = true
+
+[[stages]]
+name = "relax"
+lambda = 0.0
+maxdim = [128, 128]
+measure = true
+
+[precision]
+energy_per_site = 1e-6
+sz_profile = 1e-4
+bond_profile = 1e-4
+variance_per_site = 1e-5
+truncation = 1e-6

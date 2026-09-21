@@ -25,10 +25,16 @@ These instructions apply throughout this repository, including delegated work.
 
 - Follow [ROADMAP.md](ROADMAP.md) for current priorities. Prioritize competing
   central bond/spin structures at nearest-neighbor 1/9 magnetization, separating
-  preparation, edge, and finite-width effects. The next planned comparison is
-  N54, Q6 with literature-motivated hourglass/windmill preparation and an
-  unpinned complex reference. This protocol is not yet implemented; existing
-  period9/27 seeds are not the published VBC wavefunctions.
+  preparation, edge, and finite-width effects. The initial N54, Q6 comparison
+  of hourglass/windmill bond preparation and an unpinned complex reference is
+  implemented and run, but all branches remain unconverged. Next compare
+  equal additional sweeps at chi128/256 from each saved eight-sweep parent of
+  random and windmill, chosen for their largest central bond contrast after
+  circumferential alignment,
+  not their trial energy ranking. This matched-parent comparison is not yet
+  implemented. The hourglass preparation selects only part of the published
+  bond hierarchy; neither it nor existing period9/27 seeds are published VBC
+  wavefunctions. See the linked report in ROADMAP for the actual protocol.
 - Add sectors, sweeps, bond dimensions, or geometries when they can resolve a
   stated physical uncertainty. Do not default to further N27 refinement or
   repeat passed benchmarks. Allocate resources to a physical comparison as a
