@@ -1,0 +1,620 @@
+{
+  "schema_version": 1,
+  "date": "2026-09-20",
+  "scope": "known_CSL_resource_decision_saved_data_only",
+  "new_DMRG": false,
+  "new_ED": false,
+  "new_MPS_contractions": false,
+  "new_nonzero_flux": false,
+  "nonzero_pump_calibrated": false,
+  "sources_sha256": {
+    "docs/research/data/p3_campaign_csl36_prepare_chi128_validation.toml": "da8965b6040f21f57c7bc54bac360f93cb15ee59709fd159a505bd6346caa1a6",
+    "docs/research/data/p3_campaign_csl36_refine_chi128_validation.toml": "ad2e6d3c3febec0cea6eafbbd7ec5a9f73582ed6d0fe4a30e3b54042059bc766",
+    "docs/research/data/p3_campaign_csl36_flux_readiness_chi256_validation.toml": "2d46e63ef5f8bba515792a705237ce01a39c0ac00a2440e19d4e7bb5e56f127c",
+    "docs/research/data/p3_csl36_fixed_chi_8to10_validation.toml": "1d55e1cd1304711abca8d490ec2fadf1d4629a38035b6af8ffe9501333584102",
+    "docs/research/data/p3_csl36_saved_moment_validation.toml": "19a922a02ffe203937fc88917191bea88e60f62904e4d697ff068473afeb806e",
+    "docs/research/data/p3_campaign_csl36_refine_chi128_execution.toml": "bb5e3ded9aa178a4001270be82916b4e5067c0d99e3c96e305ce415cbde2e423",
+    "docs/research/data/p3_campaign_csl36_flux_readiness_chi256_execution.toml": "115811133fb258c221ee768d42721bf5617736e9509fc0e69855e9d22ba4a9d3",
+    "docs/research/data/p3_csl36_fixed_chi_8to10_execution.toml": "3a11bec1f66185609db1834b1431824c1640634e26726bfcf7841b961a9b045b",
+    "docs/research/data/p3_csl36_saved_moment_execution.toml": "5707c3949aa24e65fa53d19fcd988c4261ce00d42bf80e8e2427379a55d63ab6"
+  },
+  "checks": [
+    {
+      "check": "model_geometry_charge",
+      "input": "p3_campaign_csl36_prepare_chi128_validation.toml",
+      "passed": true
+    },
+    {
+      "check": "model_geometry_charge",
+      "input": "p3_campaign_csl36_refine_chi128_validation.toml",
+      "passed": true
+    },
+    {
+      "check": "model_geometry_charge",
+      "input": "p3_campaign_csl36_flux_readiness_chi256_validation.toml",
+      "passed": true
+    },
+    {
+      "check": "model_geometry_charge",
+      "input": "p3_csl36_fixed_chi_8to10_validation.toml",
+      "passed": true
+    },
+    {
+      "check": "model_geometry_charge",
+      "input": "p3_csl36_saved_moment_validation.toml",
+      "passed": true
+    },
+    {
+      "check": "all_saved_moment_original_inputs_still_match",
+      "count": 10,
+      "passed": true
+    },
+    {
+      "check": "independent_saved_scalar_and_probability_recomputation",
+      "passed": true,
+      "maximum_absolute_errors": {
+        "schmidt_density": 2.4390212072233908e-15,
+        "schmidt_entropy": 2.220446049250313e-15,
+        "schmidt_variance": 1.1102230246251565e-16,
+        "schmidt_normalization": 2.220446049250313e-16,
+        "column_sz": 5.204170427930421e-18,
+        "bond_energy": 4.440892098500626e-14
+      }
+    }
+  ],
+  "history": [
+    {
+      "cumulative_sweeps_from_recorded_history": 2,
+      "maxlinkdim": 64,
+      "energy": -15.324890443880914,
+      "variance": 0.688961013031161,
+      "variance_source": "separate_HdaggerH_contraction_after_trial_checkpoint",
+      "final_truncation_error": 0.0,
+      "last_sweep_energy_change": 0.48822554228124027,
+      "dmrg_seconds": 44.955339041,
+      "dmrg_includes_variance": false,
+      "chirality_mean": 0.0010381474410260264,
+      "schmidt": [
+        {
+          "bond": 12,
+          "retained_rank": 64,
+          "charge_2Sz_support": [
+            -6,
+            -4,
+            -2,
+            0,
+            2,
+            4,
+            6
+          ],
+          "entropy": 0.6054157943818387,
+          "effective_rank_exp_entropy": 1.8320137915858894,
+          "retained_lowest_quarter_probability": 2.2674967408126978e-05,
+          "mean_left_sz": 0.012353590599667504,
+          "variance_left_sz": 0.0727084969872024
+        },
+        {
+          "bond": 24,
+          "retained_rank": 64,
+          "charge_2Sz_support": [
+            -6,
+            -4,
+            -2,
+            0,
+            2,
+            4,
+            6
+          ],
+          "entropy": 0.525355858178128,
+          "effective_rank_exp_entropy": 1.691060519033438,
+          "retained_lowest_quarter_probability": 1.8170070067687265e-05,
+          "mean_left_sz": 0.016665965849091878,
+          "variance_left_sz": 0.060564428692955266
+        }
+      ]
+    },
+    {
+      "cumulative_sweeps_from_recorded_history": 4,
+      "maxlinkdim": 128,
+      "energy": -15.896898306045497,
+      "variance": 0.4529422477173739,
+      "variance_source": "separate_HdaggerH_contraction_after_trial_checkpoint",
+      "final_truncation_error": 0.0009470471775361133,
+      "last_sweep_energy_change": 0.21174807849453892,
+      "dmrg_seconds": 85.969596042,
+      "dmrg_includes_variance": false,
+      "chirality_mean": 0.010404238670909423,
+      "schmidt": [
+        {
+          "bond": 12,
+          "retained_rank": 128,
+          "charge_2Sz_support": [
+            -4,
+            -2,
+            0,
+            2,
+            4
+          ],
+          "entropy": 1.9679404130914473,
+          "effective_rank_exp_entropy": 7.155923055129915,
+          "retained_lowest_quarter_probability": 5.0594683865366784e-05,
+          "mean_left_sz": -0.0010793740936499087,
+          "variance_left_sz": 0.3330024810401692
+        },
+        {
+          "bond": 24,
+          "retained_rank": 128,
+          "charge_2Sz_support": [
+            -4,
+            -2,
+            0,
+            2,
+            4
+          ],
+          "entropy": 2.6233059795497837,
+          "effective_rank_exp_entropy": 13.781208751439072,
+          "retained_lowest_quarter_probability": 0.00018540666975609262,
+          "mean_left_sz": 0.0014661069013697694,
+          "variance_left_sz": 0.48076077611132345
+        }
+      ]
+    },
+    {
+      "cumulative_sweeps_from_recorded_history": 6,
+      "maxlinkdim": 128,
+      "energy": -15.946566143769756,
+      "variance": 0.433047732638272,
+      "variance_source": "separate_HdaggerH_contraction_after_trial_checkpoint",
+      "final_truncation_error": 0.0011062120778185605,
+      "last_sweep_energy_change": 0.005197244346193841,
+      "dmrg_seconds": 115.494863625,
+      "dmrg_includes_variance": false,
+      "chirality_mean": 0.0039966137812466555,
+      "schmidt": [
+        {
+          "bond": 12,
+          "retained_rank": 128,
+          "charge_2Sz_support": [
+            -4,
+            -2,
+            0,
+            2,
+            4
+          ],
+          "entropy": 2.098469824222567,
+          "effective_rank_exp_entropy": 8.153683792588497,
+          "retained_lowest_quarter_probability": 5.939117456019398e-05,
+          "mean_left_sz": -0.00030563608499486,
+          "variance_left_sz": 0.36658449438971635
+        },
+        {
+          "bond": 24,
+          "retained_rank": 128,
+          "charge_2Sz_support": [
+            -4,
+            -2,
+            0,
+            2,
+            4
+          ],
+          "entropy": 2.6398397383242753,
+          "effective_rank_exp_entropy": 14.010958008187746,
+          "retained_lowest_quarter_probability": 0.00016192519867366624,
+          "mean_left_sz": 0.0007590686193872363,
+          "variance_left_sz": 0.4714892018490375
+        }
+      ]
+    },
+    {
+      "cumulative_sweeps_from_recorded_history": 8,
+      "maxlinkdim": 256,
+      "energy": -16.04147694678745,
+      "variance": 0.24073151474607357,
+      "variance_source": "run_dmrg_measured_variance",
+      "final_truncation_error": 0.0006407760400777702,
+      "last_sweep_energy_change": 0.0058647137673091265,
+      "dmrg_seconds": 495.210931792,
+      "dmrg_includes_variance": true,
+      "chirality_mean": 0.0012830923601794223,
+      "schmidt": [
+        {
+          "bond": 12,
+          "retained_rank": 256,
+          "charge_2Sz_support": [
+            -6,
+            -4,
+            -2,
+            0,
+            2,
+            4,
+            6
+          ],
+          "entropy": 2.3600579882902952,
+          "effective_rank_exp_entropy": 10.59156562140824,
+          "retained_lowest_quarter_probability": 5.580606201232217e-05,
+          "mean_left_sz": 0.0001824394320899936,
+          "variance_left_sz": 0.42612831600343
+        },
+        {
+          "bond": 24,
+          "retained_rank": 256,
+          "charge_2Sz_support": [
+            -4,
+            -2,
+            0,
+            2,
+            4,
+            6
+          ],
+          "entropy": 2.720130820444426,
+          "effective_rank_exp_entropy": 15.182308271360105,
+          "retained_lowest_quarter_probability": 0.0001295730945168198,
+          "mean_left_sz": 0.0005051378736229573,
+          "variance_left_sz": 0.44187315316059117
+        }
+      ]
+    },
+    {
+      "cumulative_sweeps_from_recorded_history": 10,
+      "maxlinkdim": 256,
+      "energy": -16.042073560344676,
+      "variance": 0.24237055856747247,
+      "variance_source": "separate_saved_state_audit",
+      "final_truncation_error": 0.0007274211696857013,
+      "last_sweep_energy_change": 0.00012420809335722538,
+      "dmrg_seconds": 461.576713958,
+      "dmrg_includes_variance": false,
+      "chirality_mean": 0.00040544623181429254,
+      "schmidt": [
+        {
+          "bond": 12,
+          "retained_rank": 256,
+          "charge_2Sz_support": [
+            -6,
+            -4,
+            -2,
+            0,
+            2,
+            4,
+            6
+          ],
+          "entropy": 2.367289195875407,
+          "effective_rank_exp_entropy": 10.668433018167507,
+          "retained_lowest_quarter_probability": 5.805961939295389e-05,
+          "mean_left_sz": 1.80536024773092e-05,
+          "variance_left_sz": 0.4276372274221943
+        },
+        {
+          "bond": 24,
+          "retained_rank": 256,
+          "charge_2Sz_support": [
+            -4,
+            -2,
+            0,
+            2,
+            4
+          ],
+          "entropy": 2.717057700223723,
+          "effective_rank_exp_entropy": 15.13572283080712,
+          "retained_lowest_quarter_probability": 0.00013165780795656103,
+          "mean_left_sz": 0.0002461992377990032,
+          "variance_left_sz": 0.43933976840674743
+        }
+      ]
+    }
+  ],
+  "fixed_chi_8to10_change": {
+    "energy": -0.0005966135572244013,
+    "variance": 0.0016390438213989,
+    "final_truncation_error": 8.664512960793104e-05,
+    "last_sweep_energy_change": -0.005740505673951901,
+    "chirality_mean": -0.0008776461283651298,
+    "variance_fraction": 0.006808596801826228,
+    "final_truncation_fraction": 0.13521905344247115
+  },
+  "latest_flux_readiness": {
+    "variance": {
+      "value": 0.24237055856747247,
+      "limit": 0.001,
+      "ratio_to_limit": 242.37055856747247,
+      "passed": false
+    },
+    "final_truncation_error": {
+      "value": 0.0007274211696857013,
+      "limit": 1e-05,
+      "ratio_to_limit": 72.74211696857012,
+      "passed": false
+    },
+    "last_sweep_energy_change": {
+      "value": 0.00012420809335722538,
+      "limit": 0.0001,
+      "ratio_to_limit": 1.2420809335722538,
+      "passed": false
+    }
+  },
+  "zero_flux_reoptimization_only_right_density_changes": [
+    0.0001643858296120633,
+    0.0002589386358242966
+  ],
+  "zero_flux_density_difference_is_pump": false,
+  "geometry": [
+    {
+      "Lx": 3,
+      "Ly": 4,
+      "N": 36,
+      "cuts_by_minimum_number_of_columns_on_each_side": {
+        "1": [
+          1,
+          2
+        ],
+        "2": [],
+        "3": []
+      }
+    },
+    {
+      "Lx": 6,
+      "Ly": 4,
+      "N": 72,
+      "cuts_by_minimum_number_of_columns_on_each_side": {
+        "1": [
+          1,
+          2,
+          3,
+          4,
+          5
+        ],
+        "2": [
+          2,
+          3,
+          4
+        ],
+        "3": [
+          3
+        ]
+      }
+    },
+    {
+      "Lx": 8,
+      "Ly": 4,
+      "N": 96,
+      "cuts_by_minimum_number_of_columns_on_each_side": {
+        "1": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7
+        ],
+        "2": [
+          2,
+          3,
+          4,
+          5,
+          6
+        ],
+        "3": [
+          3,
+          4,
+          5
+        ]
+      }
+    },
+    {
+      "Lx": 24,
+      "Ly": 4,
+      "N": 288,
+      "cuts_by_minimum_number_of_columns_on_each_side": {
+        "1": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16,
+          17,
+          18,
+          19,
+          20,
+          21,
+          22,
+          23
+        ],
+        "2": [
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16,
+          17,
+          18,
+          19,
+          20,
+          21,
+          22
+        ],
+        "3": [
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16,
+          17,
+          18,
+          19,
+          20,
+          21
+        ]
+      }
+    }
+  ],
+  "execution": {
+    "p3_campaign_csl36_refine_chi128_execution.toml": {
+      "wall_elapsed_seconds": 170.92608566599665,
+      "worker_cpu_total_seconds": 169.200579,
+      "worker_peak_rss_bytes": 2706849792,
+      "worker_peak_rss_GiB": 2.5209503173828125
+    },
+    "p3_campaign_csl36_flux_readiness_chi256_execution.toml": {
+      "wall_elapsed_seconds": 538.3073578329931,
+      "worker_cpu_total_seconds": 535.606053,
+      "worker_peak_rss_bytes": 3616096256,
+      "worker_peak_rss_GiB": 3.3677520751953125
+    },
+    "p3_csl36_fixed_chi_8to10_execution.toml": {
+      "wall_elapsed_seconds": 598.2992624170147,
+      "worker_cpu_total_seconds": 593.528608,
+      "worker_peak_rss_bytes": 3779067904,
+      "worker_peak_rss_GiB": 3.51953125
+    },
+    "p3_csl36_saved_moment_execution.toml": {
+      "wall_elapsed_seconds": 123.52447424997808,
+      "worker_cpu_total_seconds": 122.2803,
+      "worker_peak_rss_bytes": 3907616768,
+      "worker_peak_rss_GiB": 3.639251708984375
+    }
+  },
+  "saved_moment_seconds": 92.133563333,
+  "cost_scenarios": {
+    "status": "uncalibrated_planning_scenarios_not_confidence_intervals",
+    "base": "N36_chi256_cumulative8to10_DMRG_without_variance",
+    "base_seconds_per_sweep": 230.788356979,
+    "formula": "base*(N/36)*(chi/256)^p, p=2 or 3",
+    "assumptions": "unchanged local solver difficulty and roughly linear length cost; neither assumption validated beyond N36; excludes variance, initialization, branch rejects and I/O",
+    "cases": [
+      {
+        "N": 72,
+        "chi": 512,
+        "seconds_per_sweep_quadratic_chi_scenario": 1846.306855832,
+        "seconds_per_sweep_cubic_chi_scenario": 3692.613711664,
+        "four_sweeps_hours_range": [
+          2.0514520620355556,
+          4.102904124071111
+        ],
+        "two_pi_24_steps_two_sweeps_per_step_dmrg_hours_range": [
+          24.617424744426668,
+          49.234849488853335
+        ]
+      },
+      {
+        "N": 96,
+        "chi": 512,
+        "seconds_per_sweep_quadratic_chi_scenario": 2461.7424744426667,
+        "seconds_per_sweep_cubic_chi_scenario": 4923.484948885333,
+        "four_sweeps_hours_range": [
+          2.7352694160474074,
+          5.470538832094815
+        ],
+        "two_pi_24_steps_two_sweeps_per_step_dmrg_hours_range": [
+          32.82323299256889,
+          65.64646598513778
+        ]
+      },
+      {
+        "N": 72,
+        "chi": 1024,
+        "seconds_per_sweep_quadratic_chi_scenario": 7385.227423328,
+        "seconds_per_sweep_cubic_chi_scenario": 29540.909693312,
+        "four_sweeps_hours_range": [
+          8.205808248142223,
+          32.82323299256889
+        ],
+        "two_pi_24_steps_two_sweeps_per_step_dmrg_hours_range": [
+          98.46969897770667,
+          393.8787959108267
+        ]
+      }
+    ]
+  },
+  "implementation_constraints": {
+    "driver": "examples/research_csl.jl",
+    "sha256": "e5d13f59fb462110eb177d8893a7ca91ba7b0b41e51da53ca6e315e4763acf69",
+    "hardcoded_Lx": 3,
+    "hardcoded_Ly": 4,
+    "hardcoded_cuts": [
+      1,
+      2
+    ],
+    "hardcoded_center_sites": [
+      13,
+      24
+    ],
+    "max_configured_chi": 512,
+    "chirality_seed_hamiltonian": false
+  },
+  "decision": {
+    "continue_same_chi256_N36_sweeps": false,
+    "next_proposed_geometry": [
+      6,
+      4
+    ],
+    "next_proposed_N": 72,
+    "next_proposed_Q": 0,
+    "next_proposed_max_chi": 512,
+    "next_proposed_preparation": "new current-source complex fixed-Q random seed 11; chi128 two sweeps, chi256 two sweeps, chi512 two plus at most two sweeps; unmodified J1=1,J2=J3=0.5 model",
+    "next_proposed_zero_flux_total_wall_hours": 8,
+    "next_proposed_diagnostic_reserve_hours": 1,
+    "numerical_processes": 1,
+    "julia_threads": 1,
+    "blas_threads": 1,
+    "measurement_cuts": [
+      2,
+      3,
+      4
+    ],
+    "measurement_center_columns_zero_based": [
+      2,
+      3
+    ],
+    "length_comparison_if_viable": [
+      8,
+      4
+    ],
+    "status": "planning_only_requires_driver_geometry_extension_and_fresh_provenance",
+    "stop_condition": "if N72 chi512 lacks readiness or usable separated-center diagnostics within the single budget, record failure and make explicit hardware/chi/time decision; no automatic same-chi restart or flux acceptance",
+    "successful_preparation_is_nonzero_pump_calibration": false,
+    "reference_pump_campaign_started": false
+  },
+  "literature": {
+    "published_source": "https://www.nature.com/articles/srep06317",
+    "author_manuscript": "https://arxiv.org/pdf/1312.4519v2",
+    "reported_pump_N": 288,
+    "reported_Lx": 24,
+    "reported_Ly": 4,
+    "reported_U1_max_states": 5000,
+    "reported_J2_J3": 0.5,
+    "reported_transfer_magnitude_2pi": 0.5,
+    "interpretation": "published result not reproduced here; sign is not a branch acceptance criterion"
+  },
+  "analysis_python": "from pathlib import Path\nimport hashlib,json,math,tomllib\nROOT=Path('/Users/masa/git/KagomeDMRG.jl')\nDATA=ROOT/'docs/research/data'\nnames=[\n'p3_campaign_csl36_prepare_chi128_validation.toml',\n'p3_campaign_csl36_refine_chi128_validation.toml',\n'p3_campaign_csl36_flux_readiness_chi256_validation.toml',\n'p3_csl36_fixed_chi_8to10_validation.toml',\n'p3_csl36_saved_moment_validation.toml',\n'p3_campaign_csl36_refine_chi128_execution.toml',\n'p3_campaign_csl36_flux_readiness_chi256_execution.toml',\n'p3_csl36_fixed_chi_8to10_execution.toml',\n'p3_csl36_saved_moment_execution.toml']\ndocs={name:tomllib.loads((DATA/name).read_text()) for name in names}\nsha=lambda p:hashlib.sha256(p.read_bytes()).hexdigest()\ninputs={str((DATA/name).relative_to(ROOT)):sha(DATA/name) for name in names}\nchecks=[]\nfor name in names[:5]:\n d=docs[name]\n assert d['N']==36 and d['Q']==0\n assert d['configuration']['Lx']==3 and d['configuration']['Ly']==4\n assert d['couplings']=={'J1':1.0,'J2':0.5,'J3':0.5}\n checks.append({'check':'model_geometry_charge','input':name,'passed':True})\nsupp=docs['p3_csl36_saved_moment_validation.toml']\nfor path,h in supp['input_sha256'].items():\n assert sha(ROOT/path)==h,path\nchecks.append({'check':'all_saved_moment_original_inputs_still_match','count':len(supp['input_sha256']),'passed':True})\nrows=[]\nselections=[(2,docs[names[0]]['preparation_batches'][0]),(4,docs[names[0]]['preparation_batches'][1]),(6,docs[names[1]]['preparation_batches'][0]),(8,docs[names[2]]['flux_start']),(10,docs[names[3]]['preparation_batches'][0])]\nmax_errors={'schmidt_density':0.0,'schmidt_entropy':0.0,'schmidt_variance':0.0,'schmidt_normalization':0.0,'column_sz':0.0,'bond_energy':0.0}\nfor sweep,r in selections:\n sch=[]\n for s in r['schmidt']:\n  p=s['probabilities'];q=s['left_q'];mean=sum(pi*qi/2 for pi,qi in zip(p,q));var=sum(pi*(qi/2-mean)**2 for pi,qi in zip(p,q));entropy=-sum(pi*math.log(pi) for pi in p if pi>0)\n  max_errors['schmidt_density']=max(max_errors['schmidt_density'],abs(mean-sum(r['sz_profile'][:s['bond']])))\n  max_errors['schmidt_entropy']=max(max_errors['schmidt_entropy'],abs(entropy-s['entropy']))\n  max_errors['schmidt_variance']=max(max_errors['schmidt_variance'],abs(var-s['variance_left_sz']))\n  max_errors['schmidt_normalization']=max(max_errors['schmidt_normalization'],abs(sum(p)-1))\n  sch.append({'bond':s['bond'],'retained_rank':len(p),'charge_2Sz_support':sorted(set(q)),'entropy':entropy,'effective_rank_exp_entropy':math.exp(entropy),'retained_lowest_quarter_probability':sum(sorted(p)[:len(p)//4]),'mean_left_sz':mean,'variance_left_sz':var})\n for x in range(3):max_errors['column_sz']=max(max_errors['column_sz'],abs(sum(r['sz_profile'][12*x:12*(x+1)])-r['column_sz'][x]))\n max_errors['bond_energy']=max(max_errors['bond_energy'],abs(sum(r['bond_energy_profile'])-r['energy']))\n variance=r.get('raw_variance',supp['measurement']['raw_variance'])\n rows.append({'cumulative_sweeps_from_recorded_history':sweep,'maxlinkdim':r['maxlinkdim'],'energy':r['energy'],'variance':variance,'variance_source':'separate_saved_state_audit' if sweep==10 else r['variance_source'],'final_truncation_error':r['measured_truncation_errors'][-1],'last_sweep_energy_change':r['sweep_energy_change'],'dmrg_seconds':r['dmrg_seconds'],'dmrg_includes_variance':r['settings']['measure_variance'],'chirality_mean':r['chirality_mean'],'schmidt':sch})\nassert max(max_errors.values())<1e-10,max_errors\nassert abs(supp['measurement']['HdaggerH_real']-supp['measurement']['saved_energy']**2-supp['measurement']['raw_variance'])<1e-12\nchecks.append({'check':'independent_saved_scalar_and_probability_recomputation','passed':True,'maximum_absolute_errors':max_errors})\na,b=rows[-2:]\nchange={k:b[k]-a[k] for k in ['energy','variance','final_truncation_error','last_sweep_energy_change','chirality_mean']}\nchange['variance_fraction']=change['variance']/a['variance']\nchange['final_truncation_fraction']=change['final_truncation_error']/a['final_truncation_error']\nlimits={'variance':1e-3,'final_truncation_error':1e-5,'last_sweep_energy_change':1e-4}\nreadiness={k:{'value':b[k],'limit':lim,'ratio_to_limit':b[k]/lim,'passed':b[k]<=lim} for k,lim in limits.items()}\na0,b0=selections[-2][1],selections[-1][1]\npseudo_transfer=[sum(y-x for x,y in zip(a0['sz_profile'][12*c:],b0['sz_profile'][12*c:])) for c in (1,2)]\ngeometry=[{'Lx':lx,'Ly':4,'N':12*lx,'cuts_by_minimum_number_of_columns_on_each_side':{str(g):[c for c in range(1,lx) if min(c,lx-c)>=g] for g in (1,2,3)}} for lx in (3,6,8,24)]\nseconds_per_sweep=b['dmrg_seconds']/2\nscenarios=[]\nfor n,chi in [(72,512),(96,512),(72,1024)]:\n lo=seconds_per_sweep*(n/36)*(chi/256)**2\n hi=seconds_per_sweep*(n/36)*(chi/256)**3\n scenarios.append({'N':n,'chi':chi,'seconds_per_sweep_quadratic_chi_scenario':lo,'seconds_per_sweep_cubic_chi_scenario':hi,'four_sweeps_hours_range':[4*lo/3600,4*hi/3600],'two_pi_24_steps_two_sweeps_per_step_dmrg_hours_range':[48*lo/3600,48*hi/3600]})\nexecution={}\nfor name in names[5:]:\n e=docs[name];execution[name]={k:e[k] for k in ['wall_elapsed_seconds','worker_cpu_total_seconds','worker_peak_rss_bytes']};execution[name]['worker_peak_rss_GiB']=e['worker_peak_rss_bytes']/2**30\nresult={'schema_version':1,'date':'2026-09-20','scope':'known_CSL_resource_decision_saved_data_only','new_DMRG':False,'new_ED':False,'new_MPS_contractions':False,'new_nonzero_flux':False,'nonzero_pump_calibrated':False,'sources_sha256':inputs,'checks':checks,'history':rows,'fixed_chi_8to10_change':change,'latest_flux_readiness':readiness,'zero_flux_reoptimization_only_right_density_changes':pseudo_transfer,'zero_flux_density_difference_is_pump':False,'geometry':geometry,'execution':execution,'saved_moment_seconds':supp['measurement']['moment_seconds'],'cost_scenarios':{'status':'uncalibrated_planning_scenarios_not_confidence_intervals','base':'N36_chi256_cumulative8to10_DMRG_without_variance','base_seconds_per_sweep':seconds_per_sweep,'formula':'base*(N/36)*(chi/256)^p, p=2 or 3','assumptions':'unchanged local solver difficulty and roughly linear length cost; neither assumption validated beyond N36; excludes variance, initialization, branch rejects and I/O','cases':scenarios},'implementation_constraints':{'driver':'examples/research_csl.jl','sha256':sha(ROOT/'examples/research_csl.jl'),'hardcoded_Lx':3,'hardcoded_Ly':4,'hardcoded_cuts':[1,2],'hardcoded_center_sites':[13,24],'max_configured_chi':512,'chirality_seed_hamiltonian':False},'decision':{'continue_same_chi256_N36_sweeps':False,'next_proposed_geometry':[6,4],'next_proposed_N':72,'next_proposed_Q':0,'next_proposed_max_chi':512,'next_proposed_preparation':'new current-source complex fixed-Q random seed 11; chi128 two sweeps, chi256 two sweeps, chi512 two plus at most two sweeps; unmodified J1=1,J2=J3=0.5 model','next_proposed_zero_flux_total_wall_hours':8,'next_proposed_diagnostic_reserve_hours':1,'numerical_processes':1,'julia_threads':1,'blas_threads':1,'measurement_cuts':[2,3,4],'measurement_center_columns_zero_based':[2,3],'length_comparison_if_viable':[8,4],'reference_pump_campaign_started':False,'status':'planning_only_requires_driver_geometry_extension_and_fresh_provenance','stop_condition':'if N72 chi512 lacks readiness or usable separated-center diagnostics within the single budget, record failure and make explicit hardware/chi/time decision; no automatic same-chi restart or flux acceptance','successful_preparation_is_nonzero_pump_calibration':False},'literature':{'published_source':'https://www.nature.com/articles/srep06317','author_manuscript':'https://arxiv.org/pdf/1312.4519v2','reported_pump_N':288,'reported_Lx':24,'reported_Ly':4,'reported_U1_max_states':5000,'reported_J2_J3':0.5,'reported_transfer_magnitude_2pi':0.5,'interpretation':'published result not reproduced here; sign is not a branch acceptance criterion'},'analysis_python':Path(__file__).read_text()}\nout=DATA/'p3_csl_resource_decision_20260920.json'\nassert not out.exists(),out\nout.write_text(json.dumps(result,indent=2,ensure_ascii=False,allow_nan=False)+'\\n')\nprint(json.dumps({'maximum_errors':max_errors,'latest_readiness':readiness,'cost_scenarios':scenarios,'execution':execution},indent=2))\n"
+}

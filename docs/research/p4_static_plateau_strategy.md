@@ -93,3 +93,5 @@ Julia/BLAS各1 thread、数値process一つを出発点に、途中保存と外�
 | 隣接Q・周期・長さ・CSL準備 | [段階的キャンペーン](p4_p3_staged_campaign.md)、[隣接Q追加](p4_static27_sector_refinement.md) |
 | Q5の精度依存とCSL診断 | [固定χ](p4_q5_csl_fixed_chi_followup.md)、[同一親χ比較](p4_q5_matched_chi_comparison.md) |
 | 最新のN27 χ512比較 | [Q1追加・Q5固定χ](p4_static512_sector_followup.md) |
+| N54・Q6の結合準備比較 | [3枝の除去後構造と精度](p4_vbc54_preparation_comparison.md)、[文献motif対応](vbc_motif_mapping.md) |
+| 既知CSLの資源判断 | [保存結果の再監査とN72準備案](p3_csl_resource_decision_20260920.md) |
