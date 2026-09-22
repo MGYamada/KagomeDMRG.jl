@@ -341,6 +341,9 @@ hourglassはbowtie部分の選択的誘導、windmillは著者稿の4種類のbo
 同じsite indices・QのままMPOと環境を再構築して比較する。
 準備中の別模型のenergyと、除去後の最近接模型のenergyを混ぜない。
 中央窓は両端が窓内のbondだけを含め、円周方向のdomain位置も照合する。
+続く[同一親χ128/256比較](research/p4_vbc54_matched_parent_comparison.md)では、
+random／windmill各8-sweep親から同じ追加2 sweepsを実行し、中央bond・Sz・相関の差の縮小を確認した。
+全4子の精度は未達であり、異なる安定状態や相の確定とは区別する。
 この静的な準備・除去はflux continuationの受理済み経路や非零ポンプ校正ではない。
 
 `schmidt_diagnostics(psi,b)` はこのうち MPS prefix `1:b` の確率・絶対電荷・
