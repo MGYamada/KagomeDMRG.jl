@@ -1,6 +1,6 @@
 # 最近接1/9の静的研究: 規約と判定
 
-更新日: 2026-09-20。現在の優先順位は[ROADMAP](../../ROADMAP.md)、
+更新日: 2026-09-22。現在の優先順位は[ROADMAP](../../ROADMAP.md)、
 競合文献と方針の根拠は[研究方向の再検討](research_direction_20260920.md)を参照する。
 本書は数値規約・精度基準・記録への入口に限定する。
 
@@ -94,4 +94,5 @@ Julia/BLAS各1 thread、数値process一つを出発点に、途中保存と外�
 | Q5の精度依存とCSL診断 | [固定χ](p4_q5_csl_fixed_chi_followup.md)、[同一親χ比較](p4_q5_matched_chi_comparison.md) |
 | 最新のN27 χ512比較 | [Q1追加・Q5固定χ](p4_static512_sector_followup.md) |
 | N54・Q6の結合準備比較 | [3枝の除去後構造と精度](p4_vbc54_preparation_comparison.md)、[文献motif対応](vbc_motif_mapping.md) |
-| 既知CSLの資源判断 | [保存結果の再監査とN72準備案](p3_csl_resource_decision_20260920.md) |
+| N54・Q6の同一親χ比較 | [random／windmillのχ128/256・追加2 sweeps](p4_vbc54_matched_parent_comparison.md) |
+| 既知CSLの資源判断 | [保存結果の再監査とN72準備案](p3_csl_resource_decision_20260920.md)、[N72実行可能性監査](p3_csl72_feasibility_20260922.md) |

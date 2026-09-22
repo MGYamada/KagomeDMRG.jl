@@ -1,0 +1,32 @@
+schema_version = 1
+case_id = "nn54_q6_random_windmill_matched8to10"
+Lx = 6
+Ly = 3
+Q = 6
+seed = 11
+branches = ["random", "windmill"]
+maxdims = [128, 256]
+additional_sweeps = 2
+wall_seconds = 3600
+question = "How much of the remaining central structural difference changes under equal extra relaxation and increased chi from the same parents?"
+
+[[parents]]
+branch = "random"
+checkpoint = "outputs/p4-vbc54-preparation-comparison/random/trial/checkpoint-ealXGD"
+record = "outputs/p4-vbc54-preparation-comparison/validation.toml"
+record_sha256 = "87d8deea682a39953d5a511876cb7068dcbc18a66f6d26b07952da599dd8b742"
+metadata_sha256 = "c3d9a1d5e459d6cd7110abd33cda252c9c4a26c3f464d41838f71905a598a0e0"
+
+[[parents]]
+branch = "windmill"
+checkpoint = "outputs/p4-vbc54-preparation-comparison/windmill/trial/checkpoint-buTACW"
+record = "outputs/p4-vbc54-preparation-comparison/validation.toml"
+record_sha256 = "87d8deea682a39953d5a511876cb7068dcbc18a66f6d26b07952da599dd8b742"
+metadata_sha256 = "042477d707ef341d7bf2cc256ec10e8bca90f9446c0ca7f6e7048ecd7d85febc"
+
+[precision]
+energy_per_site = 1e-6
+sz_profile = 1e-4
+bond_profile = 1e-4
+variance_per_site = 1e-5
+truncation = 1e-6

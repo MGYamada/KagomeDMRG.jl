@@ -27,12 +27,16 @@ These instructions apply throughout this repository, including delegated work.
   central bond/spin structures at nearest-neighbor 1/9 magnetization, separating
   preparation, edge, and finite-width effects. The initial N54, Q6 comparison
   of hourglass/windmill bond preparation and an unpinned complex reference is
-  implemented and run, but all branches remain unconverged. Next compare
-  equal additional sweeps at chi128/256 from each saved eight-sweep parent of
-  random and windmill, chosen for their largest central bond contrast after
-  circumferential alignment,
-  not their trial energy ranking. This matched-parent comparison is not yet
-  implemented. The hourglass preparation selects only part of the published
+  implemented and run, but all branches remain unconverged. The matched-parent
+  chi128/256 comparison from the saved eight-sweep random and windmill states
+  is also implemented and run: all four children fail all five precision
+  conditions, while aligned central bond/spin/correlation differences shrink.
+  Next add two fixed-chi256 sweeps to each saved ten-sweep chi256 child, as one
+  bounded two-case comparison, to isolate relaxation after increasing chi.
+  This next comparison is not yet implemented. Retain both branches, originally
+  chosen for central bond contrast after circumferential alignment, not trial
+  energy ranking. See docs/research/p4_vbc54_matched_parent_comparison.md.
+  The hourglass preparation selects only part of the published
   bond hierarchy; neither it nor existing period9/27 seeds are published VBC
   wavefunctions. See the linked report in ROADMAP for the actual protocol.
 - Add sectors, sweeps, bond dimensions, or geometries when they can resolve a
