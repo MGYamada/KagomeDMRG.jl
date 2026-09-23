@@ -33,6 +33,8 @@ vendored NDTensorsを同じ場所から読む。
 | `continuation` | 逐次更新・逆走、棄却・復元、各停止分岐 |
 | `provenance` | source・active環境の変更拒否、root Manifestなし、cached moduleでの環境再捕捉 |
 | `diagnostics` | 静的診断の直接／別process一致、独立複素状態参照、欠測・失敗・精度未達、入力保存不変性 |
+| `workflow` | 共通設定・solve記録・strict読込と診断の契約、example上限、型・改変・symlink拒否、失敗時と再実行時の保存不変性 |
+| `magnetization` | 全sectorの磁場包絡・飛び越し・一点縮退・近接判定・入力検証、N9独立ED、energy表のTOML/CSV出力 |
 
 テストの拡張モードは廃止し、重複した組合せ自体を削除した。
 QN 校正は17例、低水準の切断選択は6例とし、格子・Schmidt・flux追跡も
@@ -106,3 +108,52 @@ Test計測は5分0.3秒、`Pkg.test`呼出は305.561秒（外側Julia起動を�
 検証環境整備に残し、独立参照・strict再開・許容差は維持する。
 Julia 1.12で今回の追加機能を検証したとは扱わない。
 [実行例・数値・保存契約](../docs/static_diagnostics.md)を参照する。
+
+## 共通run契約追加後の重点確認（2026-09-23）
+
+`Pkg.test("KagomeDMRG"; allow_reresolve=false, test_args=["workflow", "provenance"])`
+をJulia 1.13.0・Julia/BLAS各1 threadで実行し、**154 / 154件が成功**した。
+Test計測は2分39.9秒、`Pkg.test`呼出は169.352秒（外側Julia起動を除く）。
+package precompileは約3秒（内数）。初版の`workflow`単独125件は50.1秒だったが、
+追加した型・symlink・診断失敗経路を含む最終版の群別時間は分離していない。
+
+共通設定、sealed solve記録、strict読込、保存元不変性、source・環境変更拒否を確認した。
+新規数値fixtureは解析的energyを持つN9・1 sweepの一例とし、その保存物を使い回す。
+既存exampleの設定テスト5件は`diagnostics`から`workflow`へ移し、重複させていない。
+既存の別process測定照合、全体suite、CLIの2-command例は今回再実行していない。
+測定アルゴリズム・物理許容差は変更せず、研究計算と過去結果の再計算も行っていない。
+
+source由来の既存回帰には複数のJulia process起動が含まれる。統合重点確認は60秒目標を
+超え、最終版の起動・JIT・数値処理内訳は未分離である。さらに重複実行せず、CIと
+日常検証費用を次の開発単位とする。[公開APIと保存契約](../docs/static_workflow.md)。
+
+## 磁化曲線解析の重点確認（2026-09-23）
+
+`Pkg.test("KagomeDMRG"; allow_reresolve=false, test_args=["magnetization"])`
+がJulia 1.13.0・Julia/BLAS各1 threadで成功した。最終`Pkg.test`呼出は
+10.216秒（外側Julia起動を除く、Pkgのstatus出力は抑制）。TOML/CSVの出力検証を
+加える前の直接実行では138件が4.7秒で成功した。全体suiteの時間とは区別する。
+
+人工energy列による区間・飛び越し・一点縮退・近接候補・欠測Q・精度ラベルの検査に加え、
+N9の全10sector（最大126次元）からの曲線を、磁場を直接入れた独立512次元EDと
+3点 `h=-0.2,0.2,4.0` で照合した。DMRGは起動していない。
+丸めで区別できない境界・overflow・桁落ちと、不正入力、CSVの縮退候補保持も確認した。
+
+初回は不正なBoolean energyを拒否する経路でJulia 1.13 processがsignal 4で停止した。
+energy検証をsector計算より先に移すことで解消し、不正入力の回帰は削除せず通過した。
+既存`target_sector`・物理的許容差は変更していない。
+全体suite・Julia 1.12・過去研究fixtureは再実行していない。
+[API契約・検証範囲](../docs/magnetization_curve.md)を参照する。
+
+## コードレビュー時の統合確認（2026-09-23）
+
+共通run契約と磁化曲線解析を含む全体suiteをJulia 1.13.0・Julia/BLAS各1 threadで
+1回実行し、**2,146 / 2,146件が成功**した。Test計測は5分9.9秒、
+`Pkg.test`呼出は315.305秒（外側Julia起動を除く）。3分の目標と5分の見直し基準を
+超えており、別processを使う由来検証・保存後測定を含む群別の費用分離は今後に残る。
+
+Python 23ファイルの構文検査と、campaign集計・VBC54・matched-parent解析の
+3つの合成データ自己検査も成功した。レビューで見つかったlauncherの非BMP文字の
+TOML出力を修正した後、Unicode・制御文字の往復検証と、絵文字を含む出力先での
+小さなPython workerの監視・終了記録読込を確認した。修正後のJulia suiteは重複実行
+していない。Julia 1.12と大規模研究fixtureの再実行は行っていない。

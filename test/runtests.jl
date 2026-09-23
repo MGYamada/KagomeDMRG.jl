@@ -10,6 +10,8 @@ const TEST_GROUPS = [
     "continuation" => ["test_continuation.jl"],
     "provenance" => ["test_provenance.jl"],
     "diagnostics" => ["test_static_diagnostics.jl"],
+    "workflow" => ["test_static_workflow.jl"],
+    "magnetization" => ["test_magnetization.jl"],
 ]
 const SELECTED_GROUPS = ARGS
 if SELECTED_GROUPS == ["--help"]

@@ -5,7 +5,9 @@
 
 **当面は研究計算の追加より、コードベースの充実を優先します。**
 実行・保存後診断の共通化、APIとデータ契約、テスト・CI、実測に基づく性能改善の順に整えます。
-保存後診断の共通APIと小系driverを実装・検証しました。次に設定・実行記録の契約を整えます。
+保存後診断に加え、設定検証・実行記録・trial保存と読込の共通APIを実装しました。
+固定Qのenergy表から有限系の磁化曲線を求める解析APIも追加しました。
+次にCIと日常の検証時間を整え、共有インターフェースの対象を広げます。
 N54の固定χ256追加計算と既知CSLのN72準備は保留します。
 開発の完了条件と研究再開時の候補は [ROADMAP](ROADMAP.md) にまとめています。
 
@@ -15,6 +17,8 @@ N54の固定χ256追加計算と既知CSLのN72準備は保留します。
 - 局所磁化、結合energy、相関、chirality、Schmidt診断と、実測切断誤差・分散。
 - 完了点のcheckpoint保存・再開と、診断に応じたflux刻みの調整・状態復元。
 - [保存後の静的診断](docs/static_diagnostics.md)：直接測定と保存状態に共通のAPI、小系のsolve／diagnose分離例。
+- [静的runの設定・保存契約](docs/static_workflow.md)：設定検証、solve記録、strict読込と診断の公開API。
+- [磁化曲線の解析](docs/magnetization_curve.md)：全sector競合による磁場区間・ジャンプ・縮退、未計算Qの明示とTOML/CSV出力。
 
 小系の独立ED照合と保存・測定の検証を研究基盤としています。
 [N54・Q6の結合準備比較](docs/research/p4_vbc54_preparation_comparison.md)を実装・実行しました。
