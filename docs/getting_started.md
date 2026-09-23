@@ -7,14 +7,16 @@ complex U(1) two-site DMRG reference solver using ITensors.jl and ITensorMPS.jl,
 and basic observables. Completed validation and its dependency baselines are
 recorded below; larger research systems have not been validated.
 
-The current priority is to compare competing central bond/spin structures on
-the same longer cylinder, separating preparation, boundary, and finite-width
-effects. The planned N54 comparison uses hourglass/windmill-inspired preparation
-and an unpinned complex reference; that protocol is not yet implemented.
-Additional sectors and higher accuracy are chosen to resolve specific physical
-uncertainties. Known-CSL pump calibration proceeds alongside static research
-and remains required before interpreting a 1/9 quantized pump. See the
-[roadmap](../ROADMAP.md) for priorities and the
+The current priority is codebase development: shared execution and saved-state
+diagnostics, documented API/data contracts, tests and CI, then performance work
+guided by profiling. The first unit, shared post-checkpoint diagnostics and a
+small-system driver, is implemented and validated. Next come configuration and
+run-record contracts for new drivers. Further N54 fixed-chi256 sweeps and
+N72 CSL preparation are deferred. The initial N54 preparation comparison and
+matched-parent chi128/256 comparison have been implemented and run, but all
+branches remain unconverged. Known-CSL pump calibration remains required before
+interpreting a 1/9 quantized pump when research resumes. See the
+[roadmap](../ROADMAP.md) for development priorities and deferred research, and the
 [static protocol](research/p4_static_plateau_strategy.md) for conventions and criteria.
 
 ## Run a small system
@@ -53,6 +55,8 @@ root `Manifest*.toml`; use the manifests in `research/` for the committed resear
 baseline. Existing checkpoints retain their original source/environment identity
 and require the corresponding historical checkout for restart.
 See the [test guide](../test/README.md) for the available groups and coverage.
+For separate solve/save/diagnose processes and the shared static measurement
+API, see [post-checkpoint diagnostics](static_diagnostics.md).
 
 At the Julia prompt:
 
@@ -154,6 +158,7 @@ left and right regions of each cut. Supply the measured zero-flux profile as
 | Observables | `sz_profile`, `spin_correlations`, `spin_transfer`, `bond_energies` |
 | Schmidt probabilities and absolute left charge | `schmidt_diagnostics` |
 | Local snapshots and completed-point restart | `save_checkpoint`, `load_checkpoint`, `resume_dmrg` |
+| Shared static measurement and separate-process postprocessing | `static_diagnostics`, `diagnose_checkpoint` |
 | Diagnostic-gated adaptive continuation | `FluxPolicy`, `continue_flux` |
 
 The exported data types are `Bond`, `KagomeSite`, `KagomeCylinder`, and `FluxPolicy`.

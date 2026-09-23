@@ -21,19 +21,43 @@ These instructions apply throughout this repository, including delegated work.
   results, preprints, research reports, and our own inferences; match model,
   geometry, charge, and flux conventions before comparing results.
 
-## Current Research Priority
+## Current Development Priority
 
-- Follow [ROADMAP.md](ROADMAP.md) for current priorities. Prioritize competing
-  central bond/spin structures at nearest-neighbor 1/9 magnetization, separating
-  preparation, edge, and finite-width effects. The initial N54, Q6 comparison
+- Follow [ROADMAP.md](ROADMAP.md) for current priorities. As of 2026-09-23,
+  prioritize codebase development over additional research calculations:
+  shared run/diagnostic workflows, documented API and data contracts,
+  focused tests and CI, then profiling-led performance improvements.
+  Build on the existing complex U(1) solver, checkpoint/restart, observables,
+  and independent ED checks; do not describe them as missing features.
+- The first development unit is implemented: `static_diagnostics` and
+  `diagnose_checkpoint`, with a small solve/diagnose driver. Direct versus
+  separate-process measurements, missing/failed/unmet statuses, and preservation
+  of parent checkpoints and original records are covered by the `diagnostics`
+  test group. See [the API and validation guide](docs/static_diagnostics.md).
+  Next consolidate configuration/run-record contracts for new drivers and
+  document the remaining shared interfaces, then add CI and address test cost.
+  Keep strict source/environment checks; do not re-run research fixtures just
+  to repeat the completed measurement validation.
+- Defer the N54 fixed-chi256 continuation and N72 CSL preparation. Do not launch
+  research runs automatically while developing the codebase. Use bounded small
+  systems for affected regressions and explicit budgets for profiling. Reassess
+  research resumption after the shared workflow, contracts, and verification
+  are in place; GPU/MPI or every proposed enhancement need not be completed first.
+
+## Deferred Research Priorities
+
+- On research resumption, compare competing central bond/spin structures at
+  nearest-neighbor 1/9 magnetization, separating preparation, edge, and
+  finite-width effects. The initial N54, Q6 comparison
   of hourglass/windmill bond preparation and an unpinned complex reference is
   implemented and run, but all branches remain unconverged. The matched-parent
   chi128/256 comparison from the saved eight-sweep random and windmill states
   is also implemented and run: all four children fail all five precision
   conditions, while aligned central bond/spin/correlation differences shrink.
-  Next add two fixed-chi256 sweeps to each saved ten-sweep chi256 child, as one
-  bounded two-case comparison, to isolate relaxation after increasing chi.
-  This next comparison is not yet implemented. Retain both branches, originally
+  A deferred next comparison would add two fixed-chi256 sweeps to each saved
+  ten-sweep chi256 child, as one bounded two-case comparison, to isolate
+  relaxation after increasing chi. It is not yet implemented or scheduled.
+  Retain both branches, originally
   chosen for central bond contrast after circumferential alignment, not trial
   energy ranking. See docs/research/p4_vbc54_matched_parent_comparison.md.
   The hourglass preparation selects only part of the published
@@ -47,7 +71,8 @@ These instructions apply throughout this repository, including delegated work.
   trials can inform exploration, but do not establish converged energy rankings,
   boundaries, or phases. Use the published `h/J ≈ 0.35–0.42` only as a reference.
   At fixed Q a uniform field shifts energy by `-h*Q/2`; do not repeat DMRG over h.
-- Advance the known-CSL measurement control alongside this static work.
+- When research resumes, advance the known-CSL measurement control alongside
+  this static work.
   Its nonzero-pump calibration is required before interpreting the 1/9 pump,
   but does not block static nearest-neighbor calculations or bounded numerical
   continuation checks. Keep the control's `J2=J3=0.5,Q=0` results distinct.

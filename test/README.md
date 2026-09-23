@@ -32,6 +32,7 @@ vendored NDTensorsを同じ場所から読む。
 | `truncation` | QN 保持 rank、実損失、cutoff・noise・停止 guard |
 | `continuation` | 逐次更新・逆走、棄却・復元、各停止分岐 |
 | `provenance` | source・active環境の変更拒否、root Manifestなし、cached moduleでの環境再捕捉 |
+| `diagnostics` | 静的診断の直接／別process一致、独立複素状態参照、欠測・失敗・精度未達、入力保存不変性 |
 
 テストの拡張モードは廃止し、重複した組合せ自体を削除した。
 QN 校正は17例、低水準の切断選択は6例とし、格子・Schmidt・flux追跡も
@@ -87,3 +88,21 @@ Julia 1.12.7では依存再解決、import、active環境hashと実行例の構�
 両研究manifestのpackage versionとtree hashは配置変更前と同一で、local pathのみ移動した。
 4 Python launcherはASTとmock起動で研究環境・cwd・出力先・1 thread・時間上限を確認した。
 研究scanと過去の数値結果の再計算は行っていない。
+
+## 共通静的診断追加後の確認（2026-09-23）
+
+研究環境から `Pkg.test("KagomeDMRG"; allow_reresolve=false)` を1回実行し、
+Julia 1.13.0・Julia/BLAS各1 threadで **1,855 / 1,855件が成功**した。
+Test計測は5分0.3秒、`Pkg.test`呼出は305.561秒（外側Julia起動を除く）。
+別processの保存後測定は、実DMRGのN9、非零flux・uniform gauge・Q=-1・磁場付き複素状態、
+幾何Schmidt cutを持つLx2解析状態を一つのchild processにまとめている。
+独立spin-basis照合、参照reportの由来とhash、未実施・失敗・精度未達、元ファイル不変性を含む。
+
+3分目標は未達で、5分の見直し基準にも達した。別process検証には新しいJuliaでの
+測定コードのコンパイルが必要であり、別途実行した小系driverではsolve/diagnose呼出の
+98.67%／99.39%をコンパイルが占めた（suite全体の内訳を同率と推定するものではない）。
+初版の重点197件は96.4秒だったが、参照由来・3ケース保存後照合を含む最終版の重点群だけの
+時間は未分離。全体再実行は重複せず、今後は影響した群を選ぶ。起動・JIT費用の削減は次の
+検証環境整備に残し、独立参照・strict再開・許容差は維持する。
+Julia 1.12で今回の追加機能を検証したとは扱わない。
+[実行例・数値・保存契約](../docs/static_diagnostics.md)を参照する。

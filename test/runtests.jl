@@ -9,6 +9,7 @@ const TEST_GROUPS = [
                      "test_truncation_guard.jl", "test_qn_calibration.jl"],
     "continuation" => ["test_continuation.jl"],
     "provenance" => ["test_provenance.jl"],
+    "diagnostics" => ["test_static_diagnostics.jl"],
 ]
 const SELECTED_GROUPS = ARGS
 if SELECTED_GROUPS == ["--help"]
