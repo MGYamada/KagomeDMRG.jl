@@ -34,10 +34,22 @@ These instructions apply throughout this repository, including delegated work.
   separate-process measurements, missing/failed/unmet statuses, and preservation
   of parent checkpoints and original records are covered by the `diagnostics`
   test group. See [the API and validation guide](docs/static_diagnostics.md).
-  Next consolidate configuration/run-record contracts for new drivers and
-  document the remaining shared interfaces, then add CI and address test cost.
+  The second implemented unit provides `static_run_config`, `run_static`, `load_static_run`,
+  and `diagnose_static_run` for zero-flux nearest-neighbor runs with random
+  fixed-charge initialization. See docs/static_workflow.md for configuration,
+  sealed run records, strict loading, and shared result interfaces; the
+  `workflow` group covers these contracts. Extended/prepared/continued run
+  contracts remain future work. Next add CI and address routine test cost.
   Keep strict source/environment checks; do not re-run research fixtures just
   to repeat the completed measurement validation.
+- A user-requested magnetization-curve analysis unit is implemented as
+  `magnetization_curve`: the lower envelope of supplied total zero-field
+  sector energies, with missing-sector coverage, skipped/point-only sectors,
+  exact versus near-tie samples, and caller-provided precision labels.
+  See docs/magnetization_curve.md and the `magnetization` test group.
+  It performs no DMRG and does not validate model/provenance or ground-state
+  convergence from bare energies. Shared run aggregation and a Q-solve driver
+  remain future work; do not start research scans automatically.
 - Defer the N54 fixed-chi256 continuation and N72 CSL preparation. Do not launch
   research runs automatically while developing the codebase. Use bounded small
   systems for affected regressions and explicit budgets for profiling. Reassess

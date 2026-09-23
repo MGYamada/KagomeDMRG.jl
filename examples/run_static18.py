@@ -29,7 +29,8 @@ def write_record(path, record):
         if isinstance(value, bool):
             return "true" if value else "false"
         if isinstance(value, str):
-            return json.dumps(value, ensure_ascii=True)
+            # Keep Unicode scalars intact; TOML also requires DEL to be escaped.
+            return json.dumps(value, ensure_ascii=False).replace("\x7f", "\\u007f")
         if isinstance(value, list):
             return "[" + ", ".join(encode(item) for item in value) + "]"
         return str(value)

@@ -1,0 +1,27 @@
+# Artificial lower-envelope fixture. These are NOT kagome energies.
+schema_version = 1
+format = "KagomeDMRG.magnetization_energy_table"
+scope = "synthetic_fixture"
+N = 4
+fields = [-4.0, -3.0, -2.0, -1.0, 0.0, 1.0, 2.0, 3.0, 4.0]
+tie_atol = 1e-10
+
+[[sectors]]
+Q = -4
+energy = 4.0
+
+[[sectors]]
+Q = -2
+energy = 1.0
+
+[[sectors]]
+Q = 0
+energy = 0.0
+
+[[sectors]]
+Q = 2
+energy = 1.0
+
+[[sectors]]
+Q = 4
+energy = 4.0

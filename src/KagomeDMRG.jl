@@ -21,6 +21,8 @@ include("schmidt.jl")
 include("checkpoint.jl")
 include("continuation.jl")
 include("static_diagnostics.jl")
+include("static_workflow.jl")
+include("magnetization.jl")
 
 export Bond, KagomeSite, KagomeCylinder, kagome_cylinder, nsites, site_index
 export kagome_j1j2j3_cylinder, bond_families
@@ -32,6 +34,8 @@ export schmidt_diagnostics
 export save_checkpoint, load_checkpoint, resume_dmrg
 export FluxPolicy, continue_flux
 export static_diagnostics, diagnose_checkpoint
+export static_run_config, run_static, load_static_run, diagnose_static_run
+export magnetization_curve
 
 function __init__()
     _initialize_execution_identity!()

@@ -10,8 +10,9 @@ recorded below; larger research systems have not been validated.
 The current priority is codebase development: shared execution and saved-state
 diagnostics, documented API/data contracts, tests and CI, then performance work
 guided by profiling. The first unit, shared post-checkpoint diagnostics and a
-small-system driver, is implemented and validated. Next come configuration and
-run-record contracts for new drivers. Further N54 fixed-chi256 sweeps and
+small-system driver, is implemented and validated. Shared configuration and
+run-record APIs are also implemented; see the [static workflow contract](static_workflow.md).
+CI and routine test cost remain development priorities. Further N54 fixed-chi256 sweeps and
 N72 CSL preparation are deferred. The initial N54 preparation comparison and
 matched-parent chi128/256 comparison have been implemented and run, but all
 branches remain unconverged. Known-CSL pump calibration remains required before
@@ -57,6 +58,9 @@ and require the corresponding historical checkout for restart.
 See the [test guide](../test/README.md) for the available groups and coverage.
 For separate solve/save/diagnose processes and the shared static measurement
 API, see [post-checkpoint diagnostics](static_diagnostics.md).
+For a finite-system magnetization curve from supplied total sector energies,
+see [`magnetization_curve` and its TOML/CSV example](magnetization_curve.md).
+This analysis runs no new optimization and reports missing sectors explicitly.
 
 At the Julia prompt:
 

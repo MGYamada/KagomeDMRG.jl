@@ -5,7 +5,8 @@
 const _CHECKPOINT_SOURCES = ("Project.toml", "src/KagomeDMRG.jl",
     "src/provenance.jl", "src/lattice.jl", "src/extended_model.jl", "src/model.jl", "src/dmrg.jl",
     "src/observables.jl", "src/chirality.jl", "src/checkpoint.jl", "src/schmidt.jl",
-    "src/continuation.jl", "src/static_diagnostics.jl")
+    "src/continuation.jl", "src/static_diagnostics.jl", "src/static_workflow.jl",
+    "src/magnetization.jl")
 
 _file_sha256(path) = bytes2hex(open(sha256, path))
 

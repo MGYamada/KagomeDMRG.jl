@@ -18,21 +18,26 @@ julia --project=research --startup-file=no --threads=1 examples/static_diagnosti
 ```
 
 The solve directory contains an immutable trial checkpoint, `config.toml`,
-`solve.toml`, its SHA-256, and `direct-diagnostics.toml`. The direct measurement
+`solve.toml`, its SHA-256, and `direct-diagnostics.toml`. Configuration and sealed
+solve records now use the [shared static-run contract](static_workflow.md).
+The direct measurement
 is a validation reference for comparison with the later process. The solve
 record retains `diagnostic_status = "not_run"` for the separate checkpoint
 diagnostic stage; it is not rewritten after diagnosis. A failed direct-reference
-measurement does not delete the already saved trial.
+measurement does not change the already completed solve or delete its saved trial.
+This optional reference is separate from the sealed solve artifacts.
 
 The diagnostic directory contains `diagnostics.toml` and `driver.toml`. The
-driver checks its source, solve record, config, and all checkpoint file hashes
+shared workflow checks its source, environment, solve record, config, and all checkpoint file hashes
 before and after measuring. Rerun into another new directory; the original solve
 record, parent checkpoint, and previous diagnostic outputs remain unchanged.
 Preflight errors (for example an altered solve record) abort before measurement.
 
-The example config accepts only `schema_version`, `Lx`, `Ly`, `Q`, `seed`,
-`nsweeps`, and `maxdim`. It deliberately bounds this development fixture to at
-most 18 sites, four sweeps, and dimension 64. These are example limits, not limits
+The committed example config supplies `schema_version`, `Lx`, `Ly`, `Q`, `seed`,
+`nsweeps`, and `maxdim`; the shared schema materializes model and solver defaults
+and accepts the optional fields documented in the [configuration contract](static_workflow.md#configuration-schema-1).
+The example deliberately bounds this development fixture to at
+most 18 sites, four sweeps, and dimension 64 (including the initial link). These are example limits, not limits
 of the library API or future research budgets. The example uses one Julia/BLAS
 thread. It is not a convergence study.
 
@@ -141,7 +146,7 @@ provenance bypass is provided here.
 
 ### Small-driver check (2026-09-23)
 
-The shipped N9 example was run in separate Julia 1.13.0 processes with one
+Before extracting the shared run contract, the N9 example was run in separate Julia 1.13.0 processes with one
 Julia/BLAS thread, using the fixed research environment. Direct and saved-state
 measurement values matched exactly in this run (maximum absolute difference
 0.0); the solve record and all pinned artifacts retained their hashes. The
@@ -155,7 +160,7 @@ compilation time respectively; these call timings exclude outer process startup
 and are not steady-state performance benchmarks. Local artifacts are retained
 under `outputs/codebase-diagnostics-20260923/`. No research-size state was run.
 
-The final integrated package suite passed **1,855/1,855** assertions in
+That initial diagnostics implementation's integrated package suite passed **1,855/1,855** assertions in
 300.3 seconds of Test time (`Pkg.test` call: 305.561 seconds, excluding outer
 Julia startup). It includes all three saved-state fixtures in one child process
 and the existing checkpoint/provenance regressions. Independent code review
@@ -163,3 +168,6 @@ checked equations, statuses and input preservation. The approximately five-minut
 suite still exceeds the daily three-minute target; see the
 [test guide](../test/README.md) for the timing limitation. This change was tested
 on Julia 1.13.0; no new Julia 1.12 test result is claimed.
+These timings and artifacts describe that earlier implementation, not a rerun of
+the refactored driver. Current run-contract checks are recorded in the
+[workflow guide](static_workflow.md) and [test guide](../test/README.md).

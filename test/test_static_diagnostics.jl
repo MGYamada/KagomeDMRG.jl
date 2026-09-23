@@ -1,18 +1,3 @@
-include(joinpath(@__DIR__, "..", "examples", "static_diagnostics.jl"))
-
-@testset "Small static diagnostic driver configuration" begin
-    config = TOML.parsefile(joinpath(@__DIR__, "..", "examples", "configs",
-                                   "static_diagnostics_small.toml"))
-    @test StaticDiagnosticsExample.validate_config(config) === config
-    @test_throws ArgumentError StaticDiagnosticsExample.validate_config(
-        merge(config, Dict("unknown_option" => true)))
-    @test_throws ArgumentError StaticDiagnosticsExample.validate_config(
-        merge(config, Dict("maxdim" => [65])))
-    @test_throws ArgumentError StaticDiagnosticsExample.validate_config(
-        merge(config, Dict("Q" => 0))) # Odd N requires odd integer Q.
-    @test_throws ArgumentError StaticDiagnosticsExample.main(String[])
-end
-
 # Compare every measurement, including nested Schmidt rows and complex
 # correlation components. Timings and process identity are deliberately not
 # numerical observables. Tolerances are stricter than the static protocol.
