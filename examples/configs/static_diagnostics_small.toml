@@ -1,0 +1,8 @@
+# Bounded development fixture; successful measurement does not imply convergence.
+schema_version = 1
+Lx = 1
+Ly = 3
+Q = 1
+seed = 20260923
+nsweeps = 2
+maxdim = [16, 32]

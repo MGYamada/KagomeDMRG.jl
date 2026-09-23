@@ -20,6 +20,7 @@ include("chirality.jl")
 include("schmidt.jl")
 include("checkpoint.jl")
 include("continuation.jl")
+include("static_diagnostics.jl")
 
 export Bond, KagomeSite, KagomeCylinder, kagome_cylinder, nsites, site_index
 export kagome_j1j2j3_cylinder, bond_families
@@ -30,6 +31,7 @@ export KagomeTriangle, oriented_triangles, scalar_chirality_mpo, triangle_chiral
 export schmidt_diagnostics
 export save_checkpoint, load_checkpoint, resume_dmrg
 export FluxPolicy, continue_flux
+export static_diagnostics, diagnose_checkpoint
 
 function __init__()
     _initialize_execution_identity!()
